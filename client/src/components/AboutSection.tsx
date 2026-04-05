@@ -12,7 +12,7 @@ const ABOUT_IMG =
 const stats = [
   { value: "500+", label: "Cakes Created" },
   { value: "100%", label: "Eggless Always" },
-  { value: "3+", label: "Years of Love" },
+  { value: "8+", label: "Years of Love" },
   { value: "⭐ 5.0", label: "Customer Rating" },
 ];
 

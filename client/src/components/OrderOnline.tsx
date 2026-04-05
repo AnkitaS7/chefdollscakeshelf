@@ -1,6 +1,6 @@
 /* =============================================================
-   OrderOnline — 4-step ordering guide, single horizontal row
-   Design: Compact info strip — all 4 steps in one row
+   OrderOnline - 4-step ordering guide, single horizontal row
+   Design: Compact info strip - all 4 steps in one row
    ============================================================= */
 
 import { Link } from "wouter";
@@ -73,7 +73,7 @@ export default function OrderOnline() {
               className="text-xs mt-0.5"
               style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
             >
-              From our kitchen to your celebration — as sweet as our cakes.
+              From our kitchen to your celebration - as sweet as our cakes.
             </p>
           </div>
           {/* CTA buttons inline with header on desktop */}

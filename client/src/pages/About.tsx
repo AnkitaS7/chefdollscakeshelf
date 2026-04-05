@@ -1,5 +1,5 @@
 /* =============================================================
-   About Page — Dhvani's story, values, and brand journey
+   About Page - Dhvani's story, values, and brand journey
    ============================================================= */
 
 import PageLayout from "@/components/PageLayout";

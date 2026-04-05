@@ -1,5 +1,5 @@
 /* =============================================================
-   GallerySection — Product showcase with category tabs
+   GallerySection - Product showcase with category tabs
    Design: Masonry-style grid with hover overlays
    ============================================================= */
 
@@ -130,7 +130,7 @@ export default function GallerySection() {
             className="text-base max-w-xl mx-auto"
             style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
           >
-            Each cake is a unique work of edible art — designed to match your
+            Each cake is a unique work of edible art - designed to match your
             vision, crafted with premium ingredients, and delivered with love.
           </p>
           <div className="ornament-line mt-4 max-w-xs mx-auto">

@@ -1,5 +1,5 @@
 /* =============================================================
-   ContactSection — Order inquiry form + social CTAs
+   ContactSection - Order inquiry form + social CTAs
    Design: Split layout with form and contact info
    ============================================================= */
 
@@ -321,7 +321,7 @@ export default function ContactSection() {
                     </label>
                     <textarea
                       rows={4}
-                      placeholder="Describe your cake — flavors, design ideas, number of tiers, delivery date, budget..."
+                      placeholder="Describe your cake - flavors, design ideas, number of tiers, delivery date, budget..."
                       value={form.message}
                       onChange={e =>
                         setForm({ ...form, message: e.target.value })

@@ -1,5 +1,5 @@
 /* =============================================================
-   Contact Page — Order inquiry form + Instagram feed
+   Contact Page - Order inquiry form + Instagram feed
    ============================================================= */
 
 import PageLayout from "@/components/PageLayout";

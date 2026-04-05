@@ -1,5 +1,5 @@
 /* =============================================================
-   BuildYourCake — Interactive cake builder section
+   BuildYourCake - Interactive cake builder section
    Design: Step-by-step selector with live preview summary
    ============================================================= */
 

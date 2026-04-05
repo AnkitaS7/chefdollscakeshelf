@@ -1,6 +1,6 @@
 /**
  * instagram.test.ts
- * Tests for the Instagram router — verifies the no-credentials fallback
+ * Tests for the Instagram router - verifies the no-credentials fallback
  * and the cache/error handling paths.
  */
 
@@ -8,7 +8,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
 
-// ── Minimal context (no user needed — all procedures are public) ──────────────
+// ── Minimal context (no user needed - all procedures are public) ──────────────
 function makeCtx(): TrpcContext {
   return {
     user: null,

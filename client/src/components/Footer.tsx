@@ -1,5 +1,5 @@
 /* =============================================================
-   Footer — Brand footer with multi-page navigation links
+   Footer - Brand footer with multi-page navigation links
    Design: Warm dark footer with gold accents
    ============================================================= */
 

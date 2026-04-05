@@ -1,5 +1,5 @@
 /* =============================================================
-   Order Page — Lead time, online ordering steps, and cake builder
+   Order Page - Lead time, online ordering steps, and cake builder
    ============================================================= */
 
 import PageLayout from "@/components/PageLayout";
@@ -41,7 +41,7 @@ export default function Order() {
             className="mt-3 text-base max-w-md mx-auto"
             style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
           >
-            Everything you need to know before placing your order — timelines,
+            Everything you need to know before placing your order - timelines,
             steps, and our interactive cake builder.
           </p>
           <div className="ornament-line mt-4 max-w-xs mx-auto">
@@ -52,13 +52,13 @@ export default function Order() {
 
       <MarqueeBanner />
 
-      {/* Order Online — 4-step process */}
+      {/* Order Online - 4-step process */}
       <OrderOnline />
 
-      {/* Order Lead Time — compact banner, shown before builder */}
+      {/* Order Lead Time - compact banner, shown before builder */}
       <OrderLeadTime />
 
-      {/* Build Your Cake — interactive builder */}
+      {/* Build Your Cake - interactive builder */}
       <BuildYourCake />
     </PageLayout>
   );

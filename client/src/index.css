@@ -1,6 +1,6 @@
 /* =============================================================
-   ChefDollsCakeShelf — Design System
-   Philosophy: Confectionery Editorial — Soft Maximalism
+   ChefDollsCakeShelf - Design System
+   Philosophy: Confectionery Editorial - Soft Maximalism
    Colors: Petal pink, warm cream, blush champagne, soft gold
    Typography: Cormorant Garamond (display) + Nunito (body) + Great Vibes (accent)
    ============================================================= */
@@ -40,7 +40,7 @@
 }
 
 :root {
-  /* Brand Colors — Warm Pastel Luxury */
+  /* Brand Colors - Warm Pastel Luxury */
   --blush: oklch(0.88 0.05 10);
   --cream: oklch(0.98 0.02 80);
   --champagne: oklch(0.93 0.04 60);

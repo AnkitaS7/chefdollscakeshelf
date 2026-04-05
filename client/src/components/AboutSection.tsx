@@ -1,5 +1,5 @@
 /* =============================================================
-   AboutSection — Story-driven content with baker portrait
+   AboutSection - Story-driven content with baker portrait
    Design: Asymmetric split with warm editorial feel
    ============================================================= */
 
@@ -133,7 +133,7 @@ export default function AboutSection() {
                     fontFamily: "var(--font-body)",
                   }}
                 >
-                  — Dhvani
+                  - Dhvani
                 </p>
               </div>
             </div>
@@ -161,7 +161,7 @@ export default function AboutSection() {
                 className="font-display text-2xl md:text-3xl font-medium leading-relaxed mb-4"
                 style={{ color: "oklch(0.28 0.05 30)" }}
               >
-                "Baking isn't just what I do — it's how I{" "}
+                "Baking isn't just what I do - it's how I{" "}
                 <em style={{ color: "oklch(0.55 0.12 10)" }}>celebrate</em> the
                 people I love."
               </p>
@@ -179,7 +179,7 @@ export default function AboutSection() {
                 <strong style={{ color: "oklch(0.35 0.06 20)" }}>
                   Dhvani Hariya
                 </strong>{" "}
-                — a Mumbai-based home baker with a deep passion for creating
+                - a Mumbai-based home baker with a deep passion for creating
                 cakes that don't just look stunning, but taste absolutely
                 divine. What started as a love for baking in my home kitchen has
                 grown into a boutique brand trusted by hundreds of families
@@ -193,7 +193,7 @@ export default function AboutSection() {
                 <strong style={{ color: "oklch(0.35 0.06 20)" }}>
                   100% eggless
                 </strong>{" "}
-                — because I believe that everyone deserves to enjoy the most
+                - because I believe that everyone deserves to enjoy the most
                 beautiful, indulgent cakes, regardless of dietary preferences. I
                 use only premium ingredients, and every cake is made fresh to
                 order with the same love I'd put into a cake for my own family.
@@ -203,7 +203,7 @@ export default function AboutSection() {
                 style={{ color: "oklch(0.45 0.04 30)" }}
               >
                 Whether it's a birthday, anniversary, wedding, or just a Tuesday
-                that deserves something special — I'm here to make it
+                that deserves something special - I'm here to make it
                 unforgettable.
               </p>
             </div>

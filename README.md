@@ -1,12 +1,12 @@
 # 🎂 ChefDollsCakeShelf
 
-> **Mumbai's premium home bakery** — Handcrafted 100% eggless custom cakes & desserts, made fresh to order by Dhvani Hariya.
+> **Mumbai's premium home bakery** - Handcrafted 100% eggless custom cakes & desserts, made fresh to order by Dhvani Hariya.
 
 ---
 
 ## 📖 About
 
-**ChefDollsCakeShelf** is the official website for a homegrown premium bakery based in Mumbai, India. The site showcases custom celebration cakes and desserts — all eggless — and allows customers to place orders for birthdays, weddings, and other special occasions.
+**ChefDollsCakeShelf** is the official website for a homegrown premium bakery based in Mumbai, India. The site showcases custom celebration cakes and desserts - all eggless - and allows customers to place orders for birthdays, weddings, and other special occasions.
 
 - 👩‍🍳 **Baker**: Dhvani Hariya
 - 📍 **Location**: Mumbai, India
@@ -28,9 +28,9 @@
 
 Three Google Fonts families are used for a refined, elegant aesthetic:
 
-- **[Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond)** — Weights 300–700, including italics (display / headings)
-- **[Nunito](https://fonts.google.com/specimen/Nunito)** — Weights 300–700 (body / UI text)
-- **[Great Vibes](https://fonts.google.com/specimen/Great+Vibes)** — Script font (decorative / branding accents)
+- **[Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond)** - Weights 300–700, including italics (display / headings)
+- **[Nunito](https://fonts.google.com/specimen/Nunito)** - Weights 300–700 (body / UI text)
+- **[Great Vibes](https://fonts.google.com/specimen/Great+Vibes)** - Script font (decorative / branding accents)
 
 ---
 
@@ -113,7 +113,7 @@ chefdollscakeshelf/
 
 The site is optimized for search engines with the following metadata:
 
-- **Title**: ChefDollsCakeShelf — Handcrafted Eggless Cakes in Mumbai
+- **Title**: ChefDollsCakeShelf - Handcrafted Eggless Cakes in Mumbai
 - **Description**: Mumbai's premium home bakery by Dhvani Hariya. 100% eggless custom cakes, celebration cakes & desserts made fresh to order.
 - **Keywords**: eggless cake Mumbai, custom cake Mumbai, birthday cake Mumbai, home bakery Mumbai
 - **Open Graph**: Configured for social sharing previews
@@ -122,7 +122,7 @@ The site is optimized for search engines with the following metadata:
 
 ## 📊 Analytics
 
-The project integrates **[Umami](https://umami.is/)** — a privacy-friendly, open-source web analytics platform — via a deferred script tag. Analytics data is tied to the `VITE_ANALYTICS_WEBSITE_ID` configured in your environment.
+The project integrates **[Umami](https://umami.is/)** - a privacy-friendly, open-source web analytics platform - via a deferred script tag. Analytics data is tied to the `VITE_ANALYTICS_WEBSITE_ID` configured in your environment.
 
 ---
 

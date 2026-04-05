@@ -1,5 +1,5 @@
 /* =============================================================
-   OrderProcess — Step-by-step ordering guide
+   OrderProcess - Step-by-step ordering guide
    Design: Connected steps with icons and animated connectors
    ============================================================= */
 

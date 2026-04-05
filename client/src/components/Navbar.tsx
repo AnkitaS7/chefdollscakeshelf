@@ -1,5 +1,5 @@
 /* =============================================================
-   Navbar — Sticky header with multi-page navigation
+   Navbar - Sticky header with multi-page navigation
    Design: Transparent → frosted glass on scroll
    ============================================================= */
 

@@ -1,6 +1,6 @@
 /* =============================================================
-   OrderLeadTime — Compact notice period banner
-   Design: Tight inline strip — minimal vertical space
+   OrderLeadTime - Compact notice period banner
+   Design: Tight inline strip - minimal vertical space
    ============================================================= */
 
 import { Clock, CalendarDays, AlertCircle } from "lucide-react";

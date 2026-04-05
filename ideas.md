@@ -1,4 +1,4 @@
-# ChefDollsCakeShelf — Design Brainstorm
+# ChefDollsCakeShelf - Design Brainstorm
 
 ## Approach 1: Parisian Patisserie Romance
 <response>
@@ -17,7 +17,7 @@
 - Off-white backgrounds with subtle warm texture to evoke handmade paper
 
 **Layout Paradigm:**
-- Staggered editorial grid — text and images offset and overlapping
+- Staggered editorial grid - text and images offset and overlapping
 - Full-bleed hero with text anchored bottom-left (not centered)
 - Diagonal section dividers using CSS clip-path
 - Floating decorative elements (rose petals, sparkles) at low opacity
@@ -45,20 +45,20 @@
 <probability>0.08</probability>
 </response>
 
-## Approach 2: Mumbai Boutique — Warm Minimalism
+## Approach 2: Mumbai Boutique - Warm Minimalism
 <response>
 <text>
-**Design Movement:** Contemporary Indian Luxury — Warm Minimalism with Cultural Warmth
+**Design Movement:** Contemporary Indian Luxury - Warm Minimalism with Cultural Warmth
 
 **Core Principles:**
 - Generous whitespace punctuated by rich warm tones
 - Typography-forward design where headings are the hero
-- Tactile quality — textures that suggest handmade craft
+- Tactile quality - textures that suggest handmade craft
 - Restrained color use with maximum emotional impact
 
 **Color Philosophy:**
 - Ivory (#FEFAF4), blush (#F9E4E4), warm sand (#EDD9C0), terracotta accent (#C47A5A)
-- Deep espresso (#2C1810) for text — warm, not cold black
+- Deep espresso (#2C1810) for text - warm, not cold black
 - Gold (#C9A96E) as the single luxury accent
 
 **Layout Paradigm:**
@@ -90,10 +90,10 @@
 <probability>0.07</probability>
 </response>
 
-## Approach 3: Confectionery Editorial — Soft Maximalism ✓ CHOSEN
+## Approach 3: Confectionery Editorial - Soft Maximalism ✓ CHOSEN
 <response>
 <text>
-**Design Movement:** Soft Maximalism — Confectionery Editorial with Feminine Luxury
+**Design Movement:** Soft Maximalism - Confectionery Editorial with Feminine Luxury
 
 **Core Principles:**
 - Lush, layered compositions that feel abundant and celebratory
@@ -105,7 +105,7 @@
 - Petal pink (#F8D7DA), warm cream (#FFF8F0), blush champagne (#F5E6D3), soft gold (#E8C97A)
 - Dusty rose (#D4A5A5) for secondary elements
 - Deep burgundy (#6B2D3E) as a dramatic accent for text/borders
-- Background: warm off-white (#FDFAF6) — never pure white
+- Background: warm off-white (#FDFAF6) - never pure white
 
 **Layout Paradigm:**
 - Full-bleed sections alternating between image-dominant and text-dominant
@@ -138,6 +138,6 @@
 <probability>0.09</probability>
 </response>
 
-## Selected Approach: Confectionery Editorial — Soft Maximalism
+## Selected Approach: Confectionery Editorial - Soft Maximalism
 
 Chosen for its perfect alignment with ChefDollsCakeShelf's brand identity: feminine luxury, celebratory warmth, and boutique premium feel. The editorial aesthetic elevates the brand beyond a typical bakery website while remaining approachable and emotionally resonant.

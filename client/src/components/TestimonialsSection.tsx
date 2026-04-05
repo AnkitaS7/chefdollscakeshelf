@@ -1,5 +1,5 @@
 /* =============================================================
-   TestimonialsSection — Real customer reviews from WhatsApp
+   TestimonialsSection - Real customer reviews from WhatsApp
    All reviews extracted from actual customer conversations
    ============================================================= */
 
@@ -11,7 +11,7 @@ const testimonials = [
     name: "Happy Customer",
     source: "WhatsApp Review",
     rating: 5,
-    text: "The cake was super awesome — everyone liked it very much, super soft and moist. The way I wanted, you made exactly the same. Thank you so much! 😊",
+    text: "The cake was super awesome - everyone liked it very much, super soft and moist. The way I wanted, you made exactly the same. Thank you so much! 😊",
     occasion: "Custom Cake",
     avatar: "🌸",
     avatarColor: "oklch(0.82 0.08 340)",
@@ -47,7 +47,7 @@ const testimonials = [
     name: "Akshay Doshi",
     source: "WhatsApp Review",
     rating: 5,
-    text: "Masst tha! I don't like cakes much — but I liked this one. That honestly says everything!",
+    text: "Masst tha! I don't like cakes much - but I liked this one. That honestly says everything!",
     occasion: "Anniversary Cake",
     avatar: "✨",
     avatarColor: "oklch(0.70 0.12 280)",
@@ -170,7 +170,7 @@ export default function TestimonialsSection() {
             className="text-sm max-w-md mx-auto"
             style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
           >
-            Real words from real customers — unfiltered, unedited, and full of love.
+            Real words from real customers - unfiltered, unedited, and full of love.
           </p>
           <div className="ornament-line mt-4 max-w-xs mx-auto">
             <span className="text-amber-400 text-sm">✦</span>
@@ -299,7 +299,7 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Mini preview cards — show 4 at a time */}
+        {/* Mini preview cards - show 4 at a time */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8 max-w-2xl mx-auto">
           {testimonials.slice(0, 4).map((item, i) => (
             <button

@@ -1,5 +1,5 @@
 /* =============================================================
-   PageLayout — Shared wrapper for all inner pages
+   PageLayout - Shared wrapper for all inner pages
    Includes: Navbar, FloatingParticles, WhatsApp button, Footer
    ============================================================= */
 

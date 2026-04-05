@@ -1,5 +1,5 @@
 /* =============================================================
-   MarqueeBanner — Scrolling brand message strip
+   MarqueeBanner - Scrolling brand message strip
    Design: Gold gradient band with continuous scroll
    ============================================================= */
 

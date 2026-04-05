@@ -4,7 +4,13 @@
    ============================================================= */
 
 import { useEffect, useRef, useState } from "react";
-import { MapPin, Instagram, MessageCircle, Send, CheckCircle } from "lucide-react";
+import {
+  MapPin,
+  Instagram,
+  MessageCircle,
+  Send,
+  CheckCircle,
+} from "lucide-react";
 
 const cakeTypes = [
   "Custom Cake",
@@ -43,8 +49,8 @@ export default function ContactSection() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting && headRef.current) {
             headRef.current.classList.add("visible");
           }
@@ -59,7 +65,7 @@ export default function ContactSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Build WhatsApp message
-    const msg = `Hi Dhvani! I'd like to order a cake from ChefDollsCakeShop.%0A%0A*Name:* ${form.name}%0A*Phone:* ${form.phone}%0A*Cake Type:* ${form.cakeType}%0A*Occasion:* ${form.occasion}%0A*Message:* ${form.message}`;
+    const msg = `Hi Dhvani! I'd like to order a cake from ChefDollsCakeShelf.%0A%0A*Name:* ${form.name}%0A*Phone:* ${form.phone}%0A*Cake Type:* ${form.cakeType}%0A*Occasion:* ${form.occasion}%0A*Message:* ${form.message}`;
     window.open(`https://wa.me/919999999999?text=${msg}`, "_blank");
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 5000);
@@ -97,14 +103,20 @@ export default function ContactSection() {
         />
         <div
           className="absolute top-0 left-0 right-0 h-px"
-          style={{ background: "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)" }}
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
+          }}
         />
       </div>
 
       <div className="container relative z-10">
         {/* Header */}
         <div ref={headRef} className="reveal text-center mb-14">
-          <p className="font-script text-2xl mb-1" style={{ color: "oklch(0.72 0.12 70)" }}>
+          <p
+            className="font-script text-2xl mb-1"
+            style={{ color: "oklch(0.72 0.12 70)" }}
+          >
             Let's Connect
           </p>
           <h2
@@ -119,7 +131,10 @@ export default function ContactSection() {
           </h2>
           <p
             className="text-base max-w-lg mx-auto"
-            style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+            style={{
+              color: "oklch(0.50 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
           >
             Fill out the form below and we'll get back to you within 24 hours.
             Or reach out directly via WhatsApp or Instagram!
@@ -146,7 +161,10 @@ export default function ContactSection() {
                     className="w-16 h-16 rounded-full flex items-center justify-center"
                     style={{ background: "oklch(0.94 0.05 140)" }}
                   >
-                    <CheckCircle className="w-8 h-8" style={{ color: "oklch(0.55 0.15 140)" }} />
+                    <CheckCircle
+                      className="w-8 h-8"
+                      style={{ color: "oklch(0.55 0.15 140)" }}
+                    />
                   </div>
                   <h3
                     className="font-display text-2xl font-semibold"
@@ -156,7 +174,10 @@ export default function ContactSection() {
                   </h3>
                   <p
                     className="text-center text-sm"
-                    style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+                    style={{
+                      color: "oklch(0.50 0.04 30)",
+                      fontFamily: "var(--font-body)",
+                    }}
                   >
                     Your order inquiry has been sent to WhatsApp. Dhvani will
                     get back to you within 24 hours!
@@ -168,7 +189,10 @@ export default function ContactSection() {
                     <div>
                       <label
                         className="block text-sm font-semibold mb-1.5"
-                        style={{ color: "oklch(0.35 0.06 30)", fontFamily: "var(--font-body)" }}
+                        style={{
+                          color: "oklch(0.35 0.06 30)",
+                          fontFamily: "var(--font-body)",
+                        }}
                       >
                         Your Name *
                       </label>
@@ -177,16 +201,25 @@ export default function ContactSection() {
                         required
                         placeholder="e.g. Priya Sharma"
                         value={form.name}
-                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        onChange={e =>
+                          setForm({ ...form, name: e.target.value })
+                        }
                         style={inputStyle}
-                        onFocus={(e) => (e.target.style.borderColor = "oklch(0.65 0.12 10)")}
-                        onBlur={(e) => (e.target.style.borderColor = "oklch(0.88 0.04 60)")}
+                        onFocus={e =>
+                          (e.target.style.borderColor = "oklch(0.65 0.12 10)")
+                        }
+                        onBlur={e =>
+                          (e.target.style.borderColor = "oklch(0.88 0.04 60)")
+                        }
                       />
                     </div>
                     <div>
                       <label
                         className="block text-sm font-semibold mb-1.5"
-                        style={{ color: "oklch(0.35 0.06 30)", fontFamily: "var(--font-body)" }}
+                        style={{
+                          color: "oklch(0.35 0.06 30)",
+                          fontFamily: "var(--font-body)",
+                        }}
                       >
                         Phone Number *
                       </label>
@@ -195,10 +228,16 @@ export default function ContactSection() {
                         required
                         placeholder="+91 98765 43210"
                         value={form.phone}
-                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        onChange={e =>
+                          setForm({ ...form, phone: e.target.value })
+                        }
                         style={inputStyle}
-                        onFocus={(e) => (e.target.style.borderColor = "oklch(0.65 0.12 10)")}
-                        onBlur={(e) => (e.target.style.borderColor = "oklch(0.88 0.04 60)")}
+                        onFocus={e =>
+                          (e.target.style.borderColor = "oklch(0.65 0.12 10)")
+                        }
+                        onBlur={e =>
+                          (e.target.style.borderColor = "oklch(0.88 0.04 60)")
+                        }
                       />
                     </div>
                   </div>
@@ -207,42 +246,64 @@ export default function ContactSection() {
                     <div>
                       <label
                         className="block text-sm font-semibold mb-1.5"
-                        style={{ color: "oklch(0.35 0.06 30)", fontFamily: "var(--font-body)" }}
+                        style={{
+                          color: "oklch(0.35 0.06 30)",
+                          fontFamily: "var(--font-body)",
+                        }}
                       >
                         Cake Type *
                       </label>
                       <select
                         required
                         value={form.cakeType}
-                        onChange={(e) => setForm({ ...form, cakeType: e.target.value })}
+                        onChange={e =>
+                          setForm({ ...form, cakeType: e.target.value })
+                        }
                         style={{ ...inputStyle, appearance: "none" }}
-                        onFocus={(e) => (e.target.style.borderColor = "oklch(0.65 0.12 10)")}
-                        onBlur={(e) => (e.target.style.borderColor = "oklch(0.88 0.04 60)")}
+                        onFocus={e =>
+                          (e.target.style.borderColor = "oklch(0.65 0.12 10)")
+                        }
+                        onBlur={e =>
+                          (e.target.style.borderColor = "oklch(0.88 0.04 60)")
+                        }
                       >
                         <option value="">Select cake type</option>
-                        {cakeTypes.map((t) => (
-                          <option key={t} value={t}>{t}</option>
+                        {cakeTypes.map(t => (
+                          <option key={t} value={t}>
+                            {t}
+                          </option>
                         ))}
                       </select>
                     </div>
                     <div>
                       <label
                         className="block text-sm font-semibold mb-1.5"
-                        style={{ color: "oklch(0.35 0.06 30)", fontFamily: "var(--font-body)" }}
+                        style={{
+                          color: "oklch(0.35 0.06 30)",
+                          fontFamily: "var(--font-body)",
+                        }}
                       >
                         Occasion *
                       </label>
                       <select
                         required
                         value={form.occasion}
-                        onChange={(e) => setForm({ ...form, occasion: e.target.value })}
+                        onChange={e =>
+                          setForm({ ...form, occasion: e.target.value })
+                        }
                         style={{ ...inputStyle, appearance: "none" }}
-                        onFocus={(e) => (e.target.style.borderColor = "oklch(0.65 0.12 10)")}
-                        onBlur={(e) => (e.target.style.borderColor = "oklch(0.88 0.04 60)")}
+                        onFocus={e =>
+                          (e.target.style.borderColor = "oklch(0.65 0.12 10)")
+                        }
+                        onBlur={e =>
+                          (e.target.style.borderColor = "oklch(0.88 0.04 60)")
+                        }
                       >
                         <option value="">Select occasion</option>
-                        {occasions.map((o) => (
-                          <option key={o} value={o}>{o}</option>
+                        {occasions.map(o => (
+                          <option key={o} value={o}>
+                            {o}
+                          </option>
                         ))}
                       </select>
                     </div>
@@ -251,7 +312,10 @@ export default function ContactSection() {
                   <div>
                     <label
                       className="block text-sm font-semibold mb-1.5"
-                      style={{ color: "oklch(0.35 0.06 30)", fontFamily: "var(--font-body)" }}
+                      style={{
+                        color: "oklch(0.35 0.06 30)",
+                        fontFamily: "var(--font-body)",
+                      }}
                     >
                       Tell Us About Your Dream Cake
                     </label>
@@ -259,10 +323,20 @@ export default function ContactSection() {
                       rows={4}
                       placeholder="Describe your cake — flavors, design ideas, number of tiers, delivery date, budget..."
                       value={form.message}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      style={{ ...inputStyle, resize: "vertical", minHeight: "100px" }}
-                      onFocus={(e) => (e.target.style.borderColor = "oklch(0.65 0.12 10)")}
-                      onBlur={(e) => (e.target.style.borderColor = "oklch(0.88 0.04 60)")}
+                      onChange={e =>
+                        setForm({ ...form, message: e.target.value })
+                      }
+                      style={{
+                        ...inputStyle,
+                        resize: "vertical",
+                        minHeight: "100px",
+                      }}
+                      onFocus={e =>
+                        (e.target.style.borderColor = "oklch(0.65 0.12 10)")
+                      }
+                      onBlur={e =>
+                        (e.target.style.borderColor = "oklch(0.88 0.04 60)")
+                      }
                     />
                   </div>
 
@@ -277,9 +351,13 @@ export default function ContactSection() {
 
                   <p
                     className="text-center text-xs"
-                    style={{ color: "oklch(0.60 0.04 30)", fontFamily: "var(--font-body)" }}
+                    style={{
+                      color: "oklch(0.60 0.04 30)",
+                      fontFamily: "var(--font-body)",
+                    }}
                   >
-                    This will open WhatsApp with your inquiry pre-filled. We respond within 24 hours.
+                    This will open WhatsApp with your inquiry pre-filled. We
+                    respond within 24 hours.
                   </p>
                 </form>
               )}
@@ -309,16 +387,28 @@ export default function ContactSection() {
                     className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
                     style={{ background: "oklch(0.94 0.05 140)" }}
                   >
-                    <MessageCircle className="w-4 h-4" style={{ color: "oklch(0.55 0.15 140)" }} />
+                    <MessageCircle
+                      className="w-4 h-4"
+                      style={{ color: "oklch(0.55 0.15 140)" }}
+                    />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: "oklch(0.35 0.05 30)", fontFamily: "var(--font-body)" }}>
+                    <p
+                      className="text-sm font-semibold"
+                      style={{
+                        color: "oklch(0.35 0.05 30)",
+                        fontFamily: "var(--font-body)",
+                      }}
+                    >
                       WhatsApp
                     </p>
                     <a
                       href="https://wa.me/919999999999"
                       className="text-sm hover:underline"
-                      style={{ color: "oklch(0.55 0.15 140)", fontFamily: "var(--font-body)" }}
+                      style={{
+                        color: "oklch(0.55 0.15 140)",
+                        fontFamily: "var(--font-body)",
+                      }}
                     >
                       +91 99999 99999
                     </a>
@@ -329,10 +419,19 @@ export default function ContactSection() {
                     className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
                     style={{ background: "oklch(0.94 0.04 320)" }}
                   >
-                    <Instagram className="w-4 h-4" style={{ color: "oklch(0.55 0.12 320)" }} />
+                    <Instagram
+                      className="w-4 h-4"
+                      style={{ color: "oklch(0.55 0.12 320)" }}
+                    />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: "oklch(0.35 0.05 30)", fontFamily: "var(--font-body)" }}>
+                    <p
+                      className="text-sm font-semibold"
+                      style={{
+                        color: "oklch(0.35 0.05 30)",
+                        fontFamily: "var(--font-body)",
+                      }}
+                    >
                       Instagram
                     </p>
                     <a
@@ -340,7 +439,10 @@ export default function ContactSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm hover:underline"
-                      style={{ color: "oklch(0.55 0.12 320)", fontFamily: "var(--font-body)" }}
+                      style={{
+                        color: "oklch(0.55 0.12 320)",
+                        fontFamily: "var(--font-body)",
+                      }}
                     >
                       @chefdollscakeshelf
                     </a>
@@ -351,13 +453,28 @@ export default function ContactSection() {
                     className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
                     style={{ background: "oklch(0.95 0.04 10)" }}
                   >
-                    <MapPin className="w-4 h-4" style={{ color: "oklch(0.60 0.12 10)" }} />
+                    <MapPin
+                      className="w-4 h-4"
+                      style={{ color: "oklch(0.60 0.12 10)" }}
+                    />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: "oklch(0.35 0.05 30)", fontFamily: "var(--font-body)" }}>
+                    <p
+                      className="text-sm font-semibold"
+                      style={{
+                        color: "oklch(0.35 0.05 30)",
+                        fontFamily: "var(--font-body)",
+                      }}
+                    >
                       Location
                     </p>
-                    <p className="text-sm" style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}>
+                    <p
+                      className="text-sm"
+                      style={{
+                        color: "oklch(0.50 0.04 30)",
+                        fontFamily: "var(--font-body)",
+                      }}
+                    >
                       Mumbai, Maharashtra, India
                     </p>
                   </div>
@@ -388,7 +505,8 @@ export default function ContactSection() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 w-full py-4 rounded-2xl text-sm font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
                 style={{
-                  background: "linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)",
+                  background:
+                    "linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)",
                   color: "white",
                   fontFamily: "var(--font-body)",
                   boxShadow: "0 4px 15px rgba(220, 39, 67, 0.3)",
@@ -409,11 +527,14 @@ export default function ContactSection() {
             >
               <p
                 className="text-xs leading-relaxed"
-                style={{ color: "oklch(0.45 0.06 30)", fontFamily: "var(--font-body)" }}
+                style={{
+                  color: "oklch(0.45 0.06 30)",
+                  fontFamily: "var(--font-body)",
+                }}
               >
                 <strong>📅 Booking Note:</strong> Please book at least{" "}
-                <strong>3 days in advance</strong> for regular cakes. For wedding
-                and multi-tier cakes, we recommend{" "}
+                <strong>3 days in advance</strong> for regular cakes. For
+                wedding and multi-tier cakes, we recommend{" "}
                 <strong>2+ weeks advance booking</strong> to ensure the best
                 quality and availability.
               </p>

@@ -2,14 +2,11 @@
    FloatingParticles — Ambient sparkle and decoration elements
    ============================================================= */
 
-import { useEffect, useRef } from "react";
-
 const particles = [
   { emoji: "✨", x: 5, y: 15, delay: 0, duration: 6 },
   { emoji: "🌸", x: 92, y: 25, delay: 1.5, duration: 7 },
   { emoji: "⭐", x: 15, y: 60, delay: 3, duration: 5.5 },
   { emoji: "💫", x: 85, y: 70, delay: 0.8, duration: 8 },
-  { emoji: "🎀", x: 50, y: 5, delay: 2, duration: 6.5 },
   { emoji: "✦", x: 30, y: 85, delay: 4, duration: 7 },
   { emoji: "🌺", x: 70, y: 90, delay: 1, duration: 5 },
 ];

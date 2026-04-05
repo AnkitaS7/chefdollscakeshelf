@@ -55,8 +55,8 @@ export default function OrderProcess() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting && headRef.current) {
             headRef.current.classList.add("visible");
           }
@@ -78,13 +78,19 @@ export default function OrderProcess() {
       {/* Decorative top border */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)" }}
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
+        }}
       />
 
       <div className="container relative z-10">
         {/* Header */}
         <div ref={headRef} className="reveal text-center mb-14">
-          <p className="font-script text-2xl mb-1" style={{ color: "oklch(0.72 0.12 70)" }}>
+          <p
+            className="font-script text-2xl mb-1"
+            style={{ color: "oklch(0.72 0.12 70)" }}
+          >
             Simple & Sweet
           </p>
           <h2
@@ -99,10 +105,13 @@ export default function OrderProcess() {
           </h2>
           <p
             className="text-base max-w-lg mx-auto"
-            style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+            style={{
+              color: "oklch(0.50 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
           >
-            Ordering your perfect cake is as easy as 1-2-3-4. We make the
-            entire process smooth, personal, and enjoyable.
+            Ordering your perfect cake is as easy as 1-2-3-4. We make the entire
+            process smooth, personal, and enjoyable.
           </p>
           <div className="ornament-line mt-4 max-w-xs mx-auto">
             <span className="text-amber-400 text-sm">✦</span>
@@ -115,7 +124,8 @@ export default function OrderProcess() {
           <div
             className="hidden lg:block absolute top-16 left-0 right-0 h-px"
             style={{
-              background: "linear-gradient(90deg, transparent 5%, oklch(0.88 0.04 60) 20%, oklch(0.88 0.04 60) 80%, transparent 95%)",
+              background:
+                "linear-gradient(90deg, transparent 5%, oklch(0.88 0.04 60) 20%, oklch(0.88 0.04 60) 80%, transparent 95%)",
               top: "3.5rem",
             }}
           />
@@ -131,13 +141,18 @@ export default function OrderProcess() {
         <div
           className="mt-14 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
           style={{
-            background: "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.55 0.14 350))",
+            background:
+              "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.55 0.14 350))",
           }}
         >
           {/* Decorative */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute -top-10 -right-10 text-6xl opacity-10">🎂</div>
-            <div className="absolute -bottom-10 -left-10 text-5xl opacity-10">✨</div>
+            <div className="absolute -top-10 -right-10 text-6xl opacity-10">
+              🎂
+            </div>
+            <div className="absolute -bottom-10 -left-10 text-5xl opacity-10">
+              ✨
+            </div>
           </div>
 
           <div className="relative z-10">
@@ -147,9 +162,7 @@ export default function OrderProcess() {
             >
               Ready to celebrate?
             </p>
-            <h3
-              className="font-display text-3xl md:text-4xl font-semibold text-white mb-4"
-            >
+            <h3 className="font-display text-3xl md:text-4xl font-semibold text-white mb-4">
               Let's Create Something
               <br />
               Beautiful Together
@@ -163,7 +176,7 @@ export default function OrderProcess() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="https://wa.me/919999999999?text=Hi%20Dhvani!%20I%20would%20like%20to%20order%20a%20cake%20from%20ChefDollsCakeShop."
+                href="https://wa.me/919999999999?text=Hi%20Dhvani!%20I%20would%20like%20to%20order%20a%20cake%20from%20ChefDollsCakeShelf."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
@@ -202,8 +215,8 @@ function StepCard({ step, delay }: { step: (typeof steps)[0]; delay: number }) {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting && cardRef.current) {
             setTimeout(() => {
               if (cardRef.current) cardRef.current.classList.add("visible");
@@ -218,7 +231,10 @@ function StepCard({ step, delay }: { step: (typeof steps)[0]; delay: number }) {
   }, [delay]);
 
   return (
-    <div ref={cardRef} className="reveal flex flex-col items-center text-center group">
+    <div
+      ref={cardRef}
+      className="reveal flex flex-col items-center text-center group"
+    >
       {/* Step number + icon */}
       <div className="relative mb-6">
         <div

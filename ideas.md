@@ -1,4 +1,4 @@
-# ChefDollsCakeShop — Design Brainstorm
+# ChefDollsCakeShelf — Design Brainstorm
 
 ## Approach 1: Parisian Patisserie Romance
 <response>
@@ -140,4 +140,4 @@
 
 ## Selected Approach: Confectionery Editorial — Soft Maximalism
 
-Chosen for its perfect alignment with ChefDollsCakeShop's brand identity: feminine luxury, celebratory warmth, and boutique premium feel. The editorial aesthetic elevates the brand beyond a typical bakery website while remaining approachable and emotionally resonant.
+Chosen for its perfect alignment with ChefDollsCakeShelf's brand identity: feminine luxury, celebratory warmth, and boutique premium feel. The editorial aesthetic elevates the brand beyond a typical bakery website while remaining approachable and emotionally resonant.

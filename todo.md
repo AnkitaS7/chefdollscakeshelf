@@ -1,4 +1,4 @@
-# ChefDollsCakeShop TODO
+# ChefDollsCakeShelf TODO
 
 ## Completed
 - [x] Hero section with split layout and animations

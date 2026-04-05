@@ -46,8 +46,8 @@ export default function BuildYourCake() {
   const [selectedDecorations, setSelectedDecorations] = useState<string[]>([]);
 
   const toggleDecoration = (label: string) => {
-    setSelectedDecorations((prev) =>
-      prev.includes(label) ? prev.filter((d) => d !== label) : [...prev, label]
+    setSelectedDecorations(prev =>
+      prev.includes(label) ? prev.filter(d => d !== label) : [...prev, label]
     );
   };
 
@@ -55,8 +55,8 @@ export default function BuildYourCake() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting && headRef.current) {
             headRef.current.classList.add("visible");
           }
@@ -69,7 +69,7 @@ export default function BuildYourCake() {
   }, []);
 
   const buildWhatsAppMsg = () => {
-    const msg = `Hi Dhvani! I'd like to build a custom cake from ChefDollsCakeShop.%0A%0A🎂 *My Cake Design:*%0A• Size: ${selectedSize.label} (${selectedSize.serves})%0A• Flavor: ${selectedFlavor.label}%0A• Frosting: ${selectedFrosting.label}%0A• Decorations: ${selectedDecorations.length > 0 ? selectedDecorations.join(", ") : "None"}%0A• Estimated Budget: ₹${totalPrice}+%0A%0APlease let me know availability and final pricing!`;
+    const msg = `Hi Dhvani! I'd like to build a custom cake from ChefDollsCakeShelf.%0A%0A🎂 *My Cake Design:*%0A• Size: ${selectedSize.label} (${selectedSize.serves})%0A• Flavor: ${selectedFlavor.label}%0A• Frosting: ${selectedFrosting.label}%0A• Decorations: ${selectedDecorations.length > 0 ? selectedDecorations.join(", ") : "None"}%0A• Estimated Budget: ₹${totalPrice}+%0A%0APlease let me know availability and final pricing!`;
     window.open(`https://wa.me/919999999999?text=${msg}`, "_blank");
   };
 
@@ -82,13 +82,19 @@ export default function BuildYourCake() {
     >
       <div
         className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)" }}
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
+        }}
       />
 
       <div className="container relative z-10">
         {/* Header */}
         <div ref={headRef} className="reveal text-center mb-12">
-          <p className="font-script text-2xl mb-1" style={{ color: "oklch(0.72 0.12 70)" }}>
+          <p
+            className="font-script text-2xl mb-1"
+            style={{ color: "oklch(0.72 0.12 70)" }}
+          >
             Design Your Own
           </p>
           <h2
@@ -103,7 +109,10 @@ export default function BuildYourCake() {
           </h2>
           <p
             className="text-base max-w-lg mx-auto"
-            style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+            style={{
+              color: "oklch(0.50 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
           >
             Mix and match to create your perfect cake. Once you're happy, send
             it directly to Dhvani via WhatsApp!
@@ -119,22 +128,31 @@ export default function BuildYourCake() {
             {/* Size */}
             <BuildStep title="1. Choose Your Size" emoji="📏">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {sizes.map((s) => (
+                {sizes.map(s => (
                   <button
                     key={s.label}
                     onClick={() => setSelectedSize(s)}
                     className="p-3 rounded-2xl text-center transition-all duration-200 hover:scale-105"
                     style={{
-                      background: selectedSize.label === s.label ? "oklch(0.65 0.12 10)" : "white",
+                      background:
+                        selectedSize.label === s.label
+                          ? "oklch(0.65 0.12 10)"
+                          : "white",
                       border: `2px solid ${selectedSize.label === s.label ? "oklch(0.65 0.12 10)" : "oklch(0.88 0.04 60)"}`,
-                      boxShadow: selectedSize.label === s.label ? "0 4px 15px oklch(0.65 0.12 10 / 0.3)" : "none",
+                      boxShadow:
+                        selectedSize.label === s.label
+                          ? "0 4px 15px oklch(0.65 0.12 10 / 0.3)"
+                          : "none",
                     }}
                   >
                     <p className="text-xl mb-1">{s.emoji}</p>
                     <p
                       className="text-sm font-semibold"
                       style={{
-                        color: selectedSize.label === s.label ? "white" : "oklch(0.35 0.05 30)",
+                        color:
+                          selectedSize.label === s.label
+                            ? "white"
+                            : "oklch(0.35 0.05 30)",
                         fontFamily: "var(--font-body)",
                       }}
                     >
@@ -143,7 +161,10 @@ export default function BuildYourCake() {
                     <p
                       className="text-xs"
                       style={{
-                        color: selectedSize.label === s.label ? "white/80" : "oklch(0.55 0.04 30)",
+                        color:
+                          selectedSize.label === s.label
+                            ? "white/80"
+                            : "oklch(0.55 0.04 30)",
                         fontFamily: "var(--font-body)",
                         opacity: selectedSize.label === s.label ? 0.85 : 1,
                       }}
@@ -153,7 +174,10 @@ export default function BuildYourCake() {
                     <p
                       className="text-xs font-bold mt-1"
                       style={{
-                        color: selectedSize.label === s.label ? "oklch(0.95 0.04 60)" : "oklch(0.55 0.12 10)",
+                        color:
+                          selectedSize.label === s.label
+                            ? "oklch(0.95 0.04 60)"
+                            : "oklch(0.55 0.12 10)",
                         fontFamily: "var(--font-body)",
                       }}
                     >
@@ -167,13 +191,16 @@ export default function BuildYourCake() {
             {/* Flavor */}
             <BuildStep title="2. Pick Your Flavor" emoji="🍰">
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {flavors.map((f) => (
+                {flavors.map(f => (
                   <button
                     key={f.label}
                     onClick={() => setSelectedFlavor(f)}
                     className="p-3 rounded-2xl text-left flex items-center gap-3 transition-all duration-200 hover:scale-[1.02]"
                     style={{
-                      background: selectedFlavor.label === f.label ? "oklch(0.95 0.04 10)" : "white",
+                      background:
+                        selectedFlavor.label === f.label
+                          ? "oklch(0.95 0.04 10)"
+                          : "white",
                       border: `2px solid ${selectedFlavor.label === f.label ? "oklch(0.65 0.12 10)" : "oklch(0.88 0.04 60)"}`,
                     }}
                   >
@@ -181,7 +208,10 @@ export default function BuildYourCake() {
                     <span
                       className="text-sm font-medium"
                       style={{
-                        color: selectedFlavor.label === f.label ? "oklch(0.45 0.1 10)" : "oklch(0.40 0.05 30)",
+                        color:
+                          selectedFlavor.label === f.label
+                            ? "oklch(0.45 0.1 10)"
+                            : "oklch(0.40 0.05 30)",
                         fontFamily: "var(--font-body)",
                       }}
                     >
@@ -195,17 +225,21 @@ export default function BuildYourCake() {
             {/* Frosting */}
             <BuildStep title="3. Choose Frosting" emoji="🎂">
               <div className="flex flex-wrap gap-3">
-                {frostings.map((f) => (
+                {frostings.map(f => (
                   <button
                     key={f.label}
                     onClick={() => setSelectedFrosting(f)}
                     className="px-4 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-200 hover:scale-105"
                     style={{
-                      background: selectedFrosting.label === f.label
-                        ? "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.72 0.1 5))"
-                        : "white",
+                      background:
+                        selectedFrosting.label === f.label
+                          ? "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.72 0.1 5))"
+                          : "white",
                       border: `2px solid ${selectedFrosting.label === f.label ? "oklch(0.65 0.12 10)" : "oklch(0.88 0.04 60)"}`,
-                      color: selectedFrosting.label === f.label ? "white" : "oklch(0.40 0.05 30)",
+                      color:
+                        selectedFrosting.label === f.label
+                          ? "white"
+                          : "oklch(0.40 0.05 30)",
                       fontFamily: "var(--font-body)",
                     }}
                   >
@@ -218,7 +252,7 @@ export default function BuildYourCake() {
             {/* Decorations */}
             <BuildStep title="4. Add Decorations" emoji="✨">
               <div className="flex flex-wrap gap-3">
-                {decorations.map((d) => {
+                {decorations.map(d => {
                   const selected = selectedDecorations.includes(d.label);
                   return (
                     <button
@@ -230,7 +264,9 @@ export default function BuildYourCake() {
                           ? "linear-gradient(135deg, oklch(0.72 0.12 70), oklch(0.82 0.1 75))"
                           : "white",
                         border: `2px solid ${selected ? "oklch(0.72 0.12 70)" : "oklch(0.88 0.04 60)"}`,
-                        color: selected ? "oklch(0.22 0.04 40)" : "oklch(0.40 0.05 30)",
+                        color: selected
+                          ? "oklch(0.22 0.04 40)"
+                          : "oklch(0.40 0.05 30)",
                         fontFamily: "var(--font-body)",
                       }}
                     >
@@ -261,12 +297,25 @@ export default function BuildYourCake() {
               </h3>
 
               <div className="space-y-3 mb-6">
-                <SummaryRow label="Size" value={`${selectedSize.label} (${selectedSize.serves})`} />
-                <SummaryRow label="Flavor" value={`${selectedFlavor.emoji} ${selectedFlavor.label}`} />
-                <SummaryRow label="Frosting" value={`${selectedFrosting.emoji} ${selectedFrosting.label}`} />
+                <SummaryRow
+                  label="Size"
+                  value={`${selectedSize.label} (${selectedSize.serves})`}
+                />
+                <SummaryRow
+                  label="Flavor"
+                  value={`${selectedFlavor.emoji} ${selectedFlavor.label}`}
+                />
+                <SummaryRow
+                  label="Frosting"
+                  value={`${selectedFrosting.emoji} ${selectedFrosting.label}`}
+                />
                 <SummaryRow
                   label="Decorations"
-                  value={selectedDecorations.length > 0 ? selectedDecorations.join(", ") : "None selected"}
+                  value={
+                    selectedDecorations.length > 0
+                      ? selectedDecorations.join(", ")
+                      : "None selected"
+                  }
                 />
               </div>
 
@@ -276,7 +325,10 @@ export default function BuildYourCake() {
               >
                 <p
                   className="text-xs mb-1"
-                  style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
+                  style={{
+                    color: "oklch(0.55 0.04 30)",
+                    fontFamily: "var(--font-body)",
+                  }}
                 >
                   Estimated Starting Price
                 </p>
@@ -288,7 +340,10 @@ export default function BuildYourCake() {
                 </p>
                 <p
                   className="text-xs mt-1"
-                  style={{ color: "oklch(0.60 0.04 30)", fontFamily: "var(--font-body)" }}
+                  style={{
+                    color: "oklch(0.60 0.04 30)",
+                    fontFamily: "var(--font-body)",
+                  }}
                 >
                   Final price confirmed after consultation
                 </p>

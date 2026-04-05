@@ -6,7 +6,8 @@
 import { useEffect, useRef } from "react";
 import { Heart, Leaf, Star } from "lucide-react";
 
-const ABOUT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663513006516/gFNz9nK7irL8AANKwrwZkG/about-baker-EVGXhxwBjcMG8spSgcFCcy.webp";
+const ABOUT_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663513006516/gFNz9nK7irL8AANKwrwZkG/about-baker-EVGXhxwBjcMG8spSgcFCcy.webp";
 
 const stats = [
   { value: "500+", label: "Cakes Created" },
@@ -22,8 +23,8 @@ export default function AboutSection() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             if (leftRef.current) leftRef.current.classList.add("visible");
             if (rightRef.current) rightRef.current.classList.add("visible");
@@ -59,7 +60,10 @@ export default function AboutSection() {
         {/* Section label */}
         <div className="flex justify-center mb-12">
           <div className="text-center">
-            <p className="font-script text-2xl mb-1" style={{ color: "oklch(0.72 0.12 70)" }}>
+            <p
+              className="font-script text-2xl mb-1"
+              style={{ color: "oklch(0.72 0.12 70)" }}
+            >
               The Story Behind
             </p>
             <h2
@@ -81,18 +85,24 @@ export default function AboutSection() {
               {/* Decorative frame */}
               <div
                 className="absolute -inset-4 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] opacity-20"
-                style={{ background: "linear-gradient(135deg, oklch(0.88 0.05 10), oklch(0.78 0.1 70))" }}
+                style={{
+                  background:
+                    "linear-gradient(135deg, oklch(0.88 0.05 10), oklch(0.78 0.1 70))",
+                }}
               />
               {/* Main portrait */}
               <div className="relative rounded-[30%_70%_70%_30%/30%_30%_70%_70%] overflow-hidden shadow-2xl w-72 h-80 md:w-96 md:h-[480px]">
                 <img
                   src={ABOUT_IMG}
-                  alt="Dhvani Hariya, founder of ChefDollsCakeShop, decorating a cake"
+                  alt="Dhvani Hariya, founder of ChefDollsCakeShelf, decorating a cake"
                   className="w-full h-full object-cover"
                 />
                 <div
                   className="absolute inset-0 opacity-10"
-                  style={{ background: "linear-gradient(to top, oklch(0.35 0.08 10), transparent)" }}
+                  style={{
+                    background:
+                      "linear-gradient(to top, oklch(0.35 0.08 10), transparent)",
+                  }}
                 />
               </div>
 
@@ -101,11 +111,28 @@ export default function AboutSection() {
                 className="absolute -bottom-6 -right-6 md:-right-10 bg-white rounded-2xl shadow-xl p-4 max-w-[180px] animate-float"
                 style={{ border: "1px solid oklch(0.90 0.03 60)" }}
               >
-                <Heart className="w-5 h-5 mb-2" style={{ color: "oklch(0.65 0.12 10)" }} fill="oklch(0.65 0.12 10)" />
-                <p className="text-xs leading-relaxed" style={{ color: "oklch(0.45 0.05 30)", fontFamily: "var(--font-body)" }}>
-                  "Every cake is a little piece of my heart, baked just for you."
+                <Heart
+                  className="w-5 h-5 mb-2"
+                  style={{ color: "oklch(0.65 0.12 10)" }}
+                  fill="oklch(0.65 0.12 10)"
+                />
+                <p
+                  className="text-xs leading-relaxed"
+                  style={{
+                    color: "oklch(0.45 0.05 30)",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  "Every cake is a little piece of my heart, baked just for
+                  you."
                 </p>
-                <p className="text-xs font-semibold mt-1" style={{ color: "oklch(0.65 0.12 10)", fontFamily: "var(--font-body)" }}>
+                <p
+                  className="text-xs font-semibold mt-1"
+                  style={{
+                    color: "oklch(0.65 0.12 10)",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
                   — Dhvani
                 </p>
               </div>
@@ -116,10 +143,16 @@ export default function AboutSection() {
           <div ref={rightRef} className="reveal-right flex flex-col gap-6">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <Leaf className="w-4 h-4" style={{ color: "oklch(0.55 0.15 140)" }} />
+                <Leaf
+                  className="w-4 h-4"
+                  style={{ color: "oklch(0.55 0.15 140)" }}
+                />
                 <span
                   className="text-xs font-semibold uppercase tracking-widest"
-                  style={{ color: "oklch(0.55 0.15 140)", fontFamily: "var(--font-body)" }}
+                  style={{
+                    color: "oklch(0.55 0.15 140)",
+                    fontFamily: "var(--font-body)",
+                  }}
                 >
                   100% Eggless Specialist
                 </span>
@@ -134,23 +167,41 @@ export default function AboutSection() {
               </p>
             </div>
 
-            <div className="space-y-4" style={{ fontFamily: "var(--font-body)" }}>
-              <p className="text-base leading-relaxed" style={{ color: "oklch(0.45 0.04 30)" }}>
-                Hi, I'm <strong style={{ color: "oklch(0.35 0.06 20)" }}>Dhvani Hariya</strong> — a
-                Mumbai-based home baker with a deep passion for creating cakes that
-                don't just look stunning, but taste absolutely divine. What started
-                as a love for baking in my home kitchen has grown into a boutique
-                brand trusted by hundreds of families across Mumbai.
+            <div
+              className="space-y-4"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              <p
+                className="text-base leading-relaxed"
+                style={{ color: "oklch(0.45 0.04 30)" }}
+              >
+                Hi, I'm{" "}
+                <strong style={{ color: "oklch(0.35 0.06 20)" }}>
+                  Dhvani Hariya
+                </strong>{" "}
+                — a Mumbai-based home baker with a deep passion for creating
+                cakes that don't just look stunning, but taste absolutely
+                divine. What started as a love for baking in my home kitchen has
+                grown into a boutique brand trusted by hundreds of families
+                across Mumbai.
               </p>
-              <p className="text-base leading-relaxed" style={{ color: "oklch(0.45 0.04 30)" }}>
-                Every single creation from ChefDollsCakeShop is{" "}
-                <strong style={{ color: "oklch(0.35 0.06 20)" }}>100% eggless</strong> — because
-                I believe that everyone deserves to enjoy the most beautiful,
-                indulgent cakes, regardless of dietary preferences. I use only
-                premium ingredients, and every cake is made fresh to order with
-                the same love I'd put into a cake for my own family.
+              <p
+                className="text-base leading-relaxed"
+                style={{ color: "oklch(0.45 0.04 30)" }}
+              >
+                Every single creation from ChefDollsCakeShelf is{" "}
+                <strong style={{ color: "oklch(0.35 0.06 20)" }}>
+                  100% eggless
+                </strong>{" "}
+                — because I believe that everyone deserves to enjoy the most
+                beautiful, indulgent cakes, regardless of dietary preferences. I
+                use only premium ingredients, and every cake is made fresh to
+                order with the same love I'd put into a cake for my own family.
               </p>
-              <p className="text-base leading-relaxed" style={{ color: "oklch(0.45 0.04 30)" }}>
+              <p
+                className="text-base leading-relaxed"
+                style={{ color: "oklch(0.45 0.04 30)" }}
+              >
                 Whether it's a birthday, anniversary, wedding, or just a Tuesday
                 that deserves something special — I'm here to make it
                 unforgettable.
@@ -159,7 +210,7 @@ export default function AboutSection() {
 
             {/* Stats grid */}
             <div className="grid grid-cols-2 gap-4 mt-4">
-              {stats.map((stat) => (
+              {stats.map(stat => (
                 <div
                   key={stat.label}
                   className="rounded-2xl p-4 text-center card-hover"
@@ -177,7 +228,10 @@ export default function AboutSection() {
                   </p>
                   <p
                     className="text-xs font-medium mt-0.5"
-                    style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
+                    style={{
+                      color: "oklch(0.55 0.04 30)",
+                      fontFamily: "var(--font-body)",
+                    }}
                   >
                     {stat.label}
                   </p>
@@ -194,13 +248,19 @@ export default function AboutSection() {
             >
               <div
                 className="w-8 h-8 rounded-full flex items-center justify-center"
-                style={{ background: "linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)" }}
+                style={{
+                  background:
+                    "linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)",
+                }}
               >
                 <Star className="w-4 h-4 text-white" fill="white" />
               </div>
               <span
                 className="text-sm font-semibold group-hover:underline"
-                style={{ color: "oklch(0.45 0.1 10)", fontFamily: "var(--font-body)" }}
+                style={{
+                  color: "oklch(0.45 0.1 10)",
+                  fontFamily: "var(--font-body)",
+                }}
               >
                 Follow @chefdollscakeshelf on Instagram
               </span>

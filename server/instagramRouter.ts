@@ -1,7 +1,7 @@
 /**
  * ============================================================
  * instagramRouter.ts — Instagram Graph API Integration
- * ChefDollsCakeShop by Dhvani Hariya
+ * ChefDollsCakeShelf by Dhvani Hariya
  * ============================================================
  *
  * HOW TO ACTIVATE THE LIVE INSTAGRAM FEED
@@ -110,8 +110,8 @@ async function fetchLiveFeed(
   };
 
   return (json.data ?? [])
-    .filter((p) => p.media_url || p.thumbnail_url)
-    .map((p) => ({
+    .filter(p => p.media_url || p.thumbnail_url)
+    .map(p => ({
       id: p.id,
       mediaUrl: p.media_url ?? p.thumbnail_url ?? "",
       thumbnailUrl: p.thumbnail_url,

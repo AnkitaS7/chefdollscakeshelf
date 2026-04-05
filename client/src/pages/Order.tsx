@@ -3,7 +3,6 @@
    ============================================================= */
 
 import PageLayout from "@/components/PageLayout";
-import OrderLeadTime from "@/components/OrderLeadTime";
 import OrderOnline from "@/components/OrderOnline";
 import BuildYourCake from "@/components/BuildYourCake";
 import MarqueeBanner from "@/components/MarqueeBanner";
@@ -15,16 +14,22 @@ export default function Order() {
       <div
         className="relative py-14 md:py-20 text-center overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, oklch(0.97 0.03 10), oklch(0.96 0.04 60), oklch(0.97 0.02 80))",
+          background:
+            "linear-gradient(135deg, oklch(0.97 0.03 10), oklch(0.96 0.04 60), oklch(0.97 0.02 80))",
         }}
       >
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-4 left-8 text-4xl opacity-20">📦</div>
           <div className="absolute top-8 right-12 text-3xl opacity-15">✨</div>
-          <div className="absolute bottom-4 left-1/3 text-2xl opacity-10">🎂</div>
+          <div className="absolute bottom-4 left-1/3 text-2xl opacity-10">
+            🎂
+          </div>
         </div>
         <div className="container relative z-10">
-          <p className="font-script text-2xl mb-2" style={{ color: "oklch(0.72 0.12 70)" }}>
+          <p
+            className="font-script text-2xl mb-2"
+            style={{ color: "oklch(0.72 0.12 70)" }}
+          >
             Place Your Order
           </p>
           <h1
@@ -39,7 +44,10 @@ export default function Order() {
           </h1>
           <p
             className="mt-3 text-base max-w-md mx-auto"
-            style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+            style={{
+              color: "oklch(0.50 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
           >
             Everything you need to know before placing your order - timelines,
             steps, and our interactive cake builder.
@@ -50,13 +58,20 @@ export default function Order() {
         </div>
       </div>
 
+      <div
+        className="flex flex-row justify-center text-white overflow-hidden py-3 relative"
+        style={{
+          background: "maroon",
+        }}
+      >
+        <p className="font-bold">Kindly Note:&ensp;</p> For 🎂 Custom Cakes we
+        need 5–7 Days Notice and for 🧁 Cupcakes & Pastries we need 48-Hour
+        Notice. 💍 Wedding & large orders: 2–3 weeks ahead recommended.
+      </div>
       <MarqueeBanner />
 
       {/* Order Online - 4-step process */}
       <OrderOnline />
-
-      {/* Order Lead Time - compact banner, shown before builder */}
-      <OrderLeadTime />
 
       {/* Build Your Cake - interactive builder */}
       <BuildYourCake />

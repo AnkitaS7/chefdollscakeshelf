@@ -1,6 +1,6 @@
 /* =============================================================
-   Home — Landing page for ChefDollsCakeShelf
-   Design: Confectionery Editorial — Soft Maximalism
+   Home - Landing page for ChefDollsCakeShelf
+   Design: Confectionery Editorial - Soft Maximalism
    Sections: Hero, Marquee, About preview, Gallery preview,
              Why Choose Us, Testimonials preview, Order CTA
    ============================================================= */
@@ -55,7 +55,7 @@ const features = [
     emoji: "🎂",
     title: "Our Story",
     description:
-      "Meet Dhvani Hariya — Mumbai's passionate home baker behind every eggless masterpiece. Learn about the love and craft that goes into each creation.",
+      "Meet Dhvani Hariya - Mumbai's passionate home baker behind every eggless masterpiece. Learn about the love and craft that goes into each creation.",
     cta: "Meet Dhvani",
     href: "/about",
     bg: "oklch(0.97 0.03 10)",
@@ -66,7 +66,7 @@ const features = [
     emoji: "🧁",
     title: "Browse the Menu",
     description:
-      "From custom wedding cakes to cupcake boxes — explore our full collection of 100% eggless cakes and desserts, each made fresh to order.",
+      "From custom wedding cakes to cupcake boxes - explore our full collection of 100% eggless cakes and desserts, each made fresh to order.",
     cta: "View Full Menu",
     href: "/menu",
     bg: "oklch(0.97 0.03 60)",

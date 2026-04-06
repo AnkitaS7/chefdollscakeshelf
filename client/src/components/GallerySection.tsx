@@ -13,22 +13,29 @@ export default function GallerySection() {
   const sectionRef = useRef<HTMLElement>(null);
   const headRef = useRef<HTMLDivElement>(null);
 
-  const { data: products = [], isLoading, isError } = trpc.googleDrive.getGallery.useQuery(
+  const {
+    data: products = [],
+    isLoading,
+    isError,
+  } = trpc.googleDrive.getGallery.useQuery(
     undefined,
     { staleTime: 5 * 60 * 1000 } // treat as fresh for 5 minutes, matching server cache
   );
 
-  const categories = ["All", ...Array.from(new Set(products.map((p) => p.category)))];
+  const categories = [
+    "All",
+    ...Array.from(new Set(products.map(p => p.category))),
+  ];
 
   const filtered =
     activeCategory === "All"
       ? products
-      : products.filter((p) => p.category === activeCategory);
+      : products.filter(p => p.category === activeCategory);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting && headRef.current) {
             headRef.current.classList.add("visible");
           }
@@ -51,14 +58,20 @@ export default function GallerySection() {
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute top-0 left-0 right-0 h-px"
-          style={{ background: "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)" }}
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
+          }}
         />
       </div>
 
       <div className="container relative z-10">
         {/* Header */}
         <div ref={headRef} className="reveal text-center mb-12">
-          <p className="font-script text-2xl mb-1" style={{ color: "oklch(0.72 0.12 70)" }}>
+          <p
+            className="font-script text-2xl mb-1"
+            style={{ color: "oklch(0.72 0.12 70)" }}
+          >
             Our Creations
           </p>
           <h2
@@ -69,7 +82,10 @@ export default function GallerySection() {
           </h2>
           <p
             className="text-base max-w-xl mx-auto"
-            style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+            style={{
+              color: "oklch(0.50 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
           >
             Each cake is a unique work of edible art - designed to match your
             vision, crafted with premium ingredients, and delivered with love.
@@ -82,7 +98,7 @@ export default function GallerySection() {
         {/* Category Tabs */}
         {!isLoading && !isError && (
           <div className="flex flex-wrap justify-center gap-2 mb-10">
-            {categories.map((cat) => (
+            {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
@@ -93,8 +109,12 @@ export default function GallerySection() {
                     activeCategory === cat
                       ? "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.72 0.1 5))"
                       : "oklch(0.96 0.02 60)",
-                  color: activeCategory === cat ? "white" : "oklch(0.45 0.06 30)",
-                  border: activeCategory === cat ? "none" : "1px solid oklch(0.88 0.04 60)",
+                  color:
+                    activeCategory === cat ? "white" : "oklch(0.45 0.06 30)",
+                  border:
+                    activeCategory === cat
+                      ? "none"
+                      : "1px solid oklch(0.88 0.04 60)",
                   boxShadow:
                     activeCategory === cat
                       ? "0 4px 15px oklch(0.65 0.12 10 / 0.3)"
@@ -114,7 +134,10 @@ export default function GallerySection() {
               <div
                 key={i}
                 className="rounded-3xl overflow-hidden animate-pulse"
-                style={{ background: "oklch(0.93 0.02 60)", aspectRatio: "4/3" }}
+                style={{
+                  background: "oklch(0.93 0.02 60)",
+                  aspectRatio: "4/3",
+                }}
               />
             ))}
           </div>
@@ -122,7 +145,13 @@ export default function GallerySection() {
 
         {/* Error state */}
         {isError && (
-          <p className="text-center" style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}>
+          <p
+            className="text-center"
+            style={{
+              color: "oklch(0.55 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
+          >
             Could not load gallery. Please try again later.
           </p>
         )}
@@ -136,7 +165,10 @@ export default function GallerySection() {
             {filtered.length === 0 && (
               <p
                 className="col-span-3 text-center py-12"
-                style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
+                style={{
+                  color: "oklch(0.55 0.04 30)",
+                  fontFamily: "var(--font-body)",
+                }}
               >
                 No items in this category yet.
               </p>
@@ -148,7 +180,10 @@ export default function GallerySection() {
         <div className="text-center mt-12">
           <p
             className="text-sm mb-4"
-            style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
+            style={{
+              color: "oklch(0.55 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
           >
             Don't see what you're looking for? We create fully custom designs!
           </p>
@@ -165,14 +200,20 @@ export default function GallerySection() {
   );
 }
 
-function ProductCard({ product, delay }: { product: GalleryItem; delay: number }) {
+function ProductCard({
+  product,
+  delay,
+}: {
+  product: GalleryItem;
+  delay: number;
+}) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting && cardRef.current) {
             setTimeout(() => {
               if (cardRef.current) cardRef.current.classList.add("visible");
@@ -214,7 +255,7 @@ function ProductCard({ product, delay }: { product: GalleryItem; delay: number }
           }}
         >
           <a
-            href="/contact"
+            href={`/order?cake=${encodeURIComponent(product.name)}#build-cake`}
             className="px-6 py-2.5 rounded-full text-sm font-semibold text-white border-2 border-white hover:bg-white hover:text-rose-800 transition-all duration-200 inline-block"
             style={{ fontFamily: "var(--font-body)", textDecoration: "none" }}
           >
@@ -248,7 +289,10 @@ function ProductCard({ product, delay }: { product: GalleryItem; delay: number }
         {product.description && (
           <p
             className="text-sm mb-3"
-            style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
+            style={{
+              color: "oklch(0.55 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
           >
             {product.description}
           </p>
@@ -257,7 +301,7 @@ function ProductCard({ product, delay }: { product: GalleryItem; delay: number }
         {/* Tags */}
         {product.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-4">
-            {product.tags.map((tag) => (
+            {product.tags.map(tag => (
               <span
                 key={tag}
                 className="px-2 py-0.5 rounded-full text-xs"

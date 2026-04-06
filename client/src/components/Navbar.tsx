@@ -6,6 +6,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "wouter";
+import brandLogo from "../images/brand-logo.jpg";
 
 const navLinks = [
   { label: "Home",    href: "/" },
@@ -49,7 +50,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-1 group">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663513006516/gFNz9nK7irL8AANKwrwZkG/logo_bdef0cf2.jpeg"
+                src={brandLogo}
                 alt="ChefDolls CakeShelf Logo"
                 className="h-12 w-12 object-contain group-hover:scale-105 transition-transform duration-300 rounded-full"
               />

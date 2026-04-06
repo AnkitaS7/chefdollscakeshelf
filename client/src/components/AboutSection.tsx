@@ -5,9 +5,7 @@
 
 import { useEffect, useRef } from "react";
 import { Heart, Leaf, Star } from "lucide-react";
-
-const ABOUT_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663513006516/gFNz9nK7irL8AANKwrwZkG/about-baker-EVGXhxwBjcMG8spSgcFCcy.webp";
+import ABOUT_IMG from "../images/dhvani.jpg";
 
 const stats = [
   { value: "500+", label: "Cakes Created" },

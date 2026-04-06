@@ -8,9 +8,16 @@ import { useEffect, useRef, useState } from "react";
 import type { OrderState, ProductType } from "./types";
 import {
   PRODUCTS,
-  CAKE_SIZES, CAKE_FLAVORS, CAKE_FROSTINGS, CAKE_DECORATIONS,
-  CUPCAKE_SIZES, CUPCAKE_FLAVORS, CUPCAKE_FROSTINGS, CUPCAKE_DECORATIONS,
-  BROWNIE_SIZES, BROWNIE_ADDONS,
+  CAKE_SIZES,
+  CAKE_FLAVORS,
+  CAKE_FROSTINGS,
+  CAKE_DECORATIONS,
+  CUPCAKE_SIZES,
+  CUPCAKE_FLAVORS,
+  CUPCAKE_FROSTINGS,
+  CUPCAKE_DECORATIONS,
+  BROWNIE_SIZES,
+  BROWNIE_ADDONS,
   getSteps,
 } from "./data";
 import ProgressBar from "./ProgressBar";
@@ -30,13 +37,18 @@ export default function BuildYourCake() {
 
   // Read ?cake= URL param — if present, open "Choose from Menu" tab with that cake pre-selected
   const urlCake = new URLSearchParams(window.location.search).get("cake") ?? "";
-  const [activeTab, setActiveTab] = useState<"build" | "menu">(urlCake ? "menu" : "build");
+  const [activeTab, setActiveTab] = useState<"build" | "menu">(
+    urlCake ? "menu" : "build"
+  );
 
   // Scroll to this section when arriving from the gallery with a pre-selected cake
   useEffect(() => {
     if (urlCake && sectionRef.current) {
       setTimeout(() => {
-        sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        sectionRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       }, 100);
     }
   }, [urlCake]);
@@ -84,7 +96,8 @@ export default function BuildYourCake() {
   };
 
   const handleNext = () => {
-    if (currentStepIndex < steps.length - 1) goToStep(currentStepIndex + 1, "forward");
+    if (currentStepIndex < steps.length - 1)
+      goToStep(currentStepIndex + 1, "forward");
   };
 
   const handleBack = () => {
@@ -92,7 +105,15 @@ export default function BuildYourCake() {
   };
 
   const selectProduct = (type: ProductType) => {
-    setOrder({ product: type, size: null, flavor: null, frosting: null, decorations: [], addons: [], message: "" });
+    setOrder({
+      product: type,
+      size: null,
+      flavor: null,
+      frosting: null,
+      decorations: [],
+      addons: [],
+      message: "",
+    });
     goToStep(1, "forward");
   };
 
@@ -108,7 +129,8 @@ export default function BuildYourCake() {
   const totalPrice = () => {
     const base = order.size?.price ?? 0;
     if (order.product === "cake") return base + order.decorations.length * 150;
-    if (order.product === "cupcake") return base + order.decorations.length * 50;
+    if (order.product === "cupcake")
+      return base + order.decorations.length * 50;
     if (order.product === "brownie") return base + order.addons.length * 60;
     return 0;
   };
@@ -140,35 +162,45 @@ export default function BuildYourCake() {
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
-          background: "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
+          background:
+            "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
         }}
       />
 
       <div className="container relative z-10">
         {/* Header */}
         <div ref={headRef} className="reveal text-center mb-10">
-          <p className="font-script text-2xl mb-1" style={{ color: "oklch(0.72 0.12 70)" }}>
-            Design Your Own
+          <p
+            className="font-script text-2xl mb-1"
+            style={{ color: "oklch(0.72 0.12 70)" }}
+          >
+            {activeTab === "build" ? "Design Your Own" : "Menu Order"}
           </p>
           <h2
             className="font-display text-4xl md:text-5xl font-semibold mb-3"
             style={{ color: "oklch(0.22 0.04 40)" }}
           >
-            Build Your
+            {activeTab === "build" ? "Build Your" : "Order From"}
             <br />
             <em style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}>
-              {order.product === "cupcake"
-                ? "Dream Cupcakes"
-                : order.product === "brownie"
-                  ? "Dream Brownies"
-                  : "Dream Cake"}
+              {activeTab === "menu"
+                ? "Our Amazing Menu"
+                : order.product === "cupcake"
+                  ? "Dream Cupcakes"
+                  : order.product === "brownie"
+                    ? "Dream Brownies"
+                    : "Dream Cake"}
             </em>
           </h2>
           <p
             className="text-base max-w-lg mx-auto"
-            style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+            style={{
+              color: "oklch(0.50 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
           >
-            Choose your product, customise your way, and send it straight to Dhvani via WhatsApp!
+            Choose your product, customise your way, and send it straight to
+            Dhvani via WhatsApp!
           </p>
         </div>
 
@@ -176,7 +208,10 @@ export default function BuildYourCake() {
         <div className="flex justify-center mb-8">
           <div
             className="flex rounded-full p-1 gap-1"
-            style={{ background: "oklch(0.93 0.02 60)", border: "1px solid oklch(0.88 0.04 60)" }}
+            style={{
+              background: "oklch(0.93 0.02 60)",
+              border: "1px solid oklch(0.88 0.04 60)",
+            }}
           >
             {(["build", "menu"] as const).map(tab => (
               <button
@@ -185,11 +220,15 @@ export default function BuildYourCake() {
                 className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300"
                 style={{
                   fontFamily: "var(--font-body)",
-                  background: activeTab === tab
-                    ? "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.58 0.14 10))"
-                    : "transparent",
+                  background:
+                    activeTab === tab
+                      ? "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.58 0.14 10))"
+                      : "transparent",
                   color: activeTab === tab ? "white" : "oklch(0.45 0.06 30)",
-                  boxShadow: activeTab === tab ? "0 2px 10px oklch(0.58 0.14 10 / 0.3)" : "none",
+                  boxShadow:
+                    activeTab === tab
+                      ? "0 2px 10px oklch(0.58 0.14 10 / 0.3)"
+                      : "none",
                 }}
               >
                 {tab === "build" ? "🎨 Build Your Cake" : "📋 Choose from Menu"}
@@ -199,169 +238,191 @@ export default function BuildYourCake() {
         </div>
 
         {/* Menu order flow */}
-        {activeTab === "menu" && (
-          <MenuOrder preselectedCake={urlCake} />
-        )}
+        {activeTab === "menu" && <MenuOrder preselectedCake={urlCake} />}
 
         {/* Custom builder flow */}
-        {activeTab === "build" && <>
-
-        {/* Progress bar */}
-        <ProgressBar
-          steps={steps}
-          currentIndex={currentStepIndex}
-          onStepClick={i => {
-            if (i < currentStepIndex) goToStep(i, "back");
-          }}
-        />
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
-          {/* Main step area */}
-          <div
-            className={
-              currentStep.id === "summary"
-                ? "col-span-1 lg:col-span-full"
-                : "lg:col-span-2"
-            }
-          >
-            <div
-              ref={stepRef}
-              className="rounded-3xl p-6 md:p-8 min-h-[360px] flex flex-col"
-              style={{
-                background: "white",
-                border: "1px solid oklch(0.92 0.03 60)",
-                boxShadow: "0 2px 12px oklch(0.65 0.12 10 / 0.05)",
-                opacity: animating ? 0 : 1,
-                transform: animating
-                  ? direction === "forward"
-                    ? "translateX(18px)"
-                    : "translateX(-18px)"
-                  : "translateX(0)",
-                transition: "opacity 0.22s ease, transform 0.22s ease",
+        {activeTab === "build" && (
+          <>
+            {/* Progress bar */}
+            <ProgressBar
+              steps={steps}
+              currentIndex={currentStepIndex}
+              onStepClick={i => {
+                if (i < currentStepIndex) goToStep(i, "back");
               }}
-            >
-              {currentStep.id === "product" && (
-                <StepProduct onSelect={selectProduct} selected={order.product} />
-              )}
+            />
 
-              {currentStep.id === "size" && (
-                <StepSize
-                  product={order.product!}
-                  sizes={
-                    order.product === "cake" ? CAKE_SIZES
-                    : order.product === "cupcake" ? CUPCAKE_SIZES
-                    : BROWNIE_SIZES
-                  }
-                  selected={order.size}
-                  onSelect={s => setOrder(o => ({ ...o, size: s }))}
-                />
-              )}
-
-              {currentStep.id === "flavor" && (
-                <StepFlavor
-                  product={order.product!}
-                  flavors={order.product === "cupcake" ? CUPCAKE_FLAVORS : CAKE_FLAVORS}
-                  selected={order.flavor}
-                  onSelect={f => setOrder(o => ({ ...o, flavor: f }))}
-                />
-              )}
-
-              {currentStep.id === "frosting" && (
-                <StepFrosting
-                  product={order.product!}
-                  frostings={order.product === "cupcake" ? CUPCAKE_FROSTINGS : CAKE_FROSTINGS}
-                  selected={order.frosting}
-                  onSelect={f => setOrder(o => ({ ...o, frosting: f }))}
-                />
-              )}
-
-              {currentStep.id === "decorations" && (
-                <StepDecorations
-                  product={order.product!}
-                  items={
-                    order.product === "cake" ? CAKE_DECORATIONS
-                    : order.product === "cupcake" ? CUPCAKE_DECORATIONS
-                    : BROWNIE_ADDONS
-                  }
-                  selected={order.product === "brownie" ? order.addons : order.decorations}
-                  onToggle={label => {
-                    if (order.product === "brownie") {
-                      setOrder(o => ({
-                        ...o,
-                        addons: o.addons.includes(label)
-                          ? o.addons.filter(d => d !== label)
-                          : [...o.addons, label],
-                      }));
-                    } else {
-                      setOrder(o => ({
-                        ...o,
-                        decorations: o.decorations.includes(label)
-                          ? o.decorations.filter(d => d !== label)
-                          : [...o.decorations, label],
-                      }));
-                    }
-                  }}
-                  message={order.message}
-                  onMessage={msg => setOrder(o => ({ ...o, message: msg }))}
-                />
-              )}
-
-              {currentStep.id === "summary" && (
-                <StepSummary order={order} total={totalPrice()} onSend={buildWhatsAppMsg} />
-              )}
-
-              {/* Navigation */}
-              {currentStep.id !== "product" && (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+              {/* Main step area */}
+              <div
+                className={
+                  currentStep.id === "summary"
+                    ? "col-span-1 lg:col-span-full"
+                    : "lg:col-span-2"
+                }
+              >
                 <div
-                  className="flex justify-between items-center mt-auto pt-6 border-t"
-                  style={{ borderColor: "oklch(0.93 0.02 60)" }}
+                  ref={stepRef}
+                  className="rounded-3xl p-6 md:p-8 min-h-[360px] flex flex-col"
+                  style={{
+                    background: "white",
+                    border: "1px solid oklch(0.92 0.03 60)",
+                    boxShadow: "0 2px 12px oklch(0.65 0.12 10 / 0.05)",
+                    opacity: animating ? 0 : 1,
+                    transform: animating
+                      ? direction === "forward"
+                        ? "translateX(18px)"
+                        : "translateX(-18px)"
+                      : "translateX(0)",
+                    transition: "opacity 0.22s ease, transform 0.22s ease",
+                  }}
                 >
-                  <button
-                    onClick={handleBack}
-                    className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105"
-                    style={{
-                      background: "oklch(0.96 0.02 60)",
-                      color: "oklch(0.40 0.05 30)",
-                      fontFamily: "var(--font-body)",
-                      border: "1.5px solid oklch(0.88 0.04 60)",
-                    }}
-                  >
-                    ← Back
-                  </button>
+                  {currentStep.id === "product" && (
+                    <StepProduct
+                      onSelect={selectProduct}
+                      selected={order.product}
+                    />
+                  )}
 
-                  {currentStep.id !== "summary" && (
-                    <button
-                      onClick={handleNext}
-                      disabled={!canProceed()}
-                      className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
-                      style={{
-                        background: canProceed()
-                          ? (productMeta?.selectedBg ?? "oklch(0.58 0.14 10)")
-                          : "oklch(0.88 0.02 40)",
-                        color: "white",
-                        fontFamily: "var(--font-body)",
+                  {currentStep.id === "size" && (
+                    <StepSize
+                      product={order.product!}
+                      sizes={
+                        order.product === "cake"
+                          ? CAKE_SIZES
+                          : order.product === "cupcake"
+                            ? CUPCAKE_SIZES
+                            : BROWNIE_SIZES
+                      }
+                      selected={order.size}
+                      onSelect={s => setOrder(o => ({ ...o, size: s }))}
+                    />
+                  )}
+
+                  {currentStep.id === "flavor" && (
+                    <StepFlavor
+                      product={order.product!}
+                      flavors={
+                        order.product === "cupcake"
+                          ? CUPCAKE_FLAVORS
+                          : CAKE_FLAVORS
+                      }
+                      selected={order.flavor}
+                      onSelect={f => setOrder(o => ({ ...o, flavor: f }))}
+                    />
+                  )}
+
+                  {currentStep.id === "frosting" && (
+                    <StepFrosting
+                      product={order.product!}
+                      frostings={
+                        order.product === "cupcake"
+                          ? CUPCAKE_FROSTINGS
+                          : CAKE_FROSTINGS
+                      }
+                      selected={order.frosting}
+                      onSelect={f => setOrder(o => ({ ...o, frosting: f }))}
+                    />
+                  )}
+
+                  {currentStep.id === "decorations" && (
+                    <StepDecorations
+                      product={order.product!}
+                      items={
+                        order.product === "cake"
+                          ? CAKE_DECORATIONS
+                          : order.product === "cupcake"
+                            ? CUPCAKE_DECORATIONS
+                            : BROWNIE_ADDONS
+                      }
+                      selected={
+                        order.product === "brownie"
+                          ? order.addons
+                          : order.decorations
+                      }
+                      onToggle={label => {
+                        if (order.product === "brownie") {
+                          setOrder(o => ({
+                            ...o,
+                            addons: o.addons.includes(label)
+                              ? o.addons.filter(d => d !== label)
+                              : [...o.addons, label],
+                          }));
+                        } else {
+                          setOrder(o => ({
+                            ...o,
+                            decorations: o.decorations.includes(label)
+                              ? o.decorations.filter(d => d !== label)
+                              : [...o.decorations, label],
+                          }));
+                        }
                       }}
+                      message={order.message}
+                      onMessage={msg => setOrder(o => ({ ...o, message: msg }))}
+                    />
+                  )}
+
+                  {currentStep.id === "summary" && (
+                    <StepSummary
+                      order={order}
+                      total={totalPrice()}
+                      onSend={buildWhatsAppMsg}
+                    />
+                  )}
+
+                  {/* Navigation */}
+                  {currentStep.id !== "product" && (
+                    <div
+                      className="flex justify-between items-center mt-auto pt-6 border-t"
+                      style={{ borderColor: "oklch(0.93 0.02 60)" }}
                     >
-                      Continue →
-                    </button>
+                      <button
+                        onClick={handleBack}
+                        className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105"
+                        style={{
+                          background: "oklch(0.96 0.02 60)",
+                          color: "oklch(0.40 0.05 30)",
+                          fontFamily: "var(--font-body)",
+                          border: "1.5px solid oklch(0.88 0.04 60)",
+                        }}
+                      >
+                        ← Back
+                      </button>
+
+                      {currentStep.id !== "summary" && (
+                        <button
+                          onClick={handleNext}
+                          disabled={!canProceed()}
+                          className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+                          style={{
+                            background: canProceed()
+                              ? (productMeta?.selectedBg ??
+                                "oklch(0.58 0.14 10)")
+                              : "oklch(0.88 0.02 40)",
+                            color: "white",
+                            fontFamily: "var(--font-body)",
+                          }}
+                        >
+                          Continue →
+                        </button>
+                      )}
+                    </div>
                   )}
                 </div>
-              )}
+              </div>
+
+              {/* Live summary sidebar */}
+              <div className="lg:col-span-1">
+                <OrderSidebar
+                  order={order}
+                  total={totalPrice()}
+                  onSend={buildWhatsAppMsg}
+                  currentStep={currentStep.id}
+                />
+              </div>
             </div>
-          </div>
-
-          {/* Live summary sidebar */}
-          <div className="lg:col-span-1">
-            <OrderSidebar
-              order={order}
-              total={totalPrice()}
-              onSend={buildWhatsAppMsg}
-              currentStep={currentStep.id}
-            />
-          </div>
-        </div>
-
-        </>}
+          </>
+        )}
       </div>
     </section>
   );

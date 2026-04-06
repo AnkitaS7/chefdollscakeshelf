@@ -99,7 +99,7 @@ const CAKE_DECORATIONS = [
   { label: "Gold Leaf", emoji: "✨" },
   { label: "Macarons", emoji: "🍬" },
   { label: "Edible Glitter", emoji: "💫" },
-  { label: "Custom Message", emoji: "✍️" },
+  { label: "Custom Message Card", emoji: "✍️" },
   { label: "Fruit Topping", emoji: "🍓" },
 ];
 
@@ -131,7 +131,7 @@ const CUPCAKE_DECORATIONS = [
   { label: "Sprinkles", emoji: "🌈" },
   { label: "Edible Glitter", emoji: "💫" },
   { label: "Fondant Topper", emoji: "🌸" },
-  { label: "Custom Message", emoji: "✍️" },
+  { label: "Custom Message Card", emoji: "✍️" },
   { label: "Gold Dust", emoji: "✨" },
   { label: "Fruit Slice", emoji: "🍓" },
 ];
@@ -946,28 +946,11 @@ function StepDecorations({
       : product === "cupcake"
         ? "oklch(0.55 0.14 200)"
         : "oklch(0.40 0.08 40)";
+  const hasCustomMessage = selected.includes("Custom Message Card");
 
   return (
     <div className="flex-1 flex flex-col gap-5">
-      <div>
-        <h3
-          className="font-display text-2xl font-semibold mb-2"
-          style={{ color: "oklch(0.28 0.05 30)" }}
-        >
-          {isBrownie ? "🌰 Choose Your Add-ons" : "✨ Add Decorations"}
-        </h3>
-        <p
-          className="text-sm"
-          style={{
-            color: "oklch(0.55 0.04 30)",
-            fontFamily: "var(--font-body)",
-          }}
-        >
-          {isBrownie
-            ? `Customise your brownies. Each add-on is +₹${addonPrice}.`
-            : `Personalise your ${product}. Each decoration is +₹${addonPrice}. All optional!`}
-        </p>
-      </div>
+      // ... existing code ...
       <div className="flex flex-wrap gap-3">
         {items.map(d => {
           const isSelected = selected.includes(d.label);
@@ -997,6 +980,50 @@ function StepDecorations({
           );
         })}
       </div>
+      {/* Custom Message inline text box */}
+      {hasCustomMessage && (
+        <div
+          className="rounded-2xl px-4 py-3 flex flex-col gap-2"
+          style={{
+            background: "oklch(0.97 0.03 70)",
+            border: `1.5px solid ${accentColor}`,
+            animation: "fadeSlideIn 0.22s ease",
+          }}
+        >
+          <label
+            className="text-xs font-semibold uppercase tracking-wide flex items-center gap-1.5"
+            style={{ color: accentColor, fontFamily: "var(--font-body)" }}
+          >
+            ✍️ What should the message say?
+          </label>
+          <input
+            type="text"
+            value={message}
+            onChange={e => onMessage(e.target.value)}
+            placeholder="e.g. Happy Birthday Priya! 🎂"
+            maxLength={60}
+            className="w-full rounded-xl px-3 py-2 text-sm outline-none transition-all duration-200"
+            style={{
+              border: "1.5px solid oklch(0.88 0.04 60)",
+              fontFamily: "var(--font-body)",
+              color: "oklch(0.35 0.05 30)",
+              background: "white",
+            }}
+            onFocus={e => (e.target.style.borderColor = accentColor)}
+            onBlur={e => (e.target.style.borderColor = "oklch(0.88 0.04 60)")}
+            autoFocus
+          />
+          <p
+            className="text-xs text-right"
+            style={{
+              color: "oklch(0.65 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
+          >
+            {message.length}/60 characters
+          </p>
+        </div>
+      )}
       {/* Optional message field */}
       <div>
         <label

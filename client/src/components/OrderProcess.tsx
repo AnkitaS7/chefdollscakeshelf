@@ -176,7 +176,7 @@ export default function OrderProcess() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="https://wa.me/919999999999?text=Hi%20Dhvani!%20I%20would%20like%20to%20order%20a%20cake%20from%20ChefDollsCakeShelf."
+                href="https://wa.me/919867390830?text=Hi%20Dhvani!%20I%20would%20like%20to%20order%20a%20cake%20from%20ChefDollsCakeShelf."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"

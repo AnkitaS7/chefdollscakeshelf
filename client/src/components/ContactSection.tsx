@@ -131,7 +131,7 @@ const InquiryForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
       topicLine +
       `%0A%0A*Question:*%0A${encodeURIComponent(form.question)}`;
 
-    window.open(`https://wa.me/919999999999?text=${msg}`, "_blank");
+    window.open(`https://wa.me/919867390830?text=${msg}`, "_blank");
     onSubmit();
   };
 
@@ -285,7 +285,7 @@ const ReviewForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
       `%0A*Rating:* ${stars} (${form.rating}/5)` +
       `%0A*Review:* ${encodeURIComponent(form.review)}`;
 
-    window.open(`https://wa.me/919999999999?text=${msg}`, "_blank");
+    window.open(`https://wa.me/919867390830?text=${msg}`, "_blank");
     onSubmit();
   };
 
@@ -668,11 +668,11 @@ export default function ContactSection() {
                       WhatsApp
                     </p>
                     <a
-                      href="https://wa.me/919999999999"
+                      href="https://wa.me/919867390830"
                       className="text-sm hover:underline"
                       style={{ color: "oklch(0.55 0.15 140)", fontFamily: "var(--font-body)" }}
                     >
-                      +91 99999 99999
+                      +91 98673 90830
                     </a>
                   </div>
                 </div>
@@ -737,7 +737,7 @@ export default function ContactSection() {
             {/* Quick contact buttons */}
             <div className="space-y-3">
               <a
-                href="https://wa.me/919999999999?text=Hi%21%20I%20have%20a%20question%20about%20ChefDollsCakeShelf."
+                href="https://wa.me/919867390830?text=Hi%21%20I%20have%20a%20question%20about%20ChefDollsCakeShelf."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 w-full py-4 rounded-2xl text-sm font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"

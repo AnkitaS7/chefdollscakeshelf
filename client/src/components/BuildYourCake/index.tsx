@@ -147,7 +147,7 @@ export default function BuildYourCake() {
     }
     if (order.message) msg += `%0A• Note: ${order.message}`;
     msg += `%0A%0APlease let me know availability and final pricing!`;
-    window.open(`https://wa.me/919999999999?text=${msg}`, "_blank");
+    window.open(`https://wa.me/919867390830?text=${msg}`, "_blank");
   };
 
   const productMeta = PRODUCTS.find(p => p.type === order.product);

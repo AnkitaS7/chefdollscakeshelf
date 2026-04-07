@@ -150,7 +150,7 @@ export default function Navbar() {
                 Order Now
               </Link>
               <a
-                href="https://wa.me/919999999999?text=Hi%20Dhvani!%20I%20would%20like%20to%20order%20a%20cake."
+                href="https://wa.me/919867390830?text=Hi%20Dhvani!%20I%20would%20like%20to%20order%20a%20cake."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-full text-sm font-semibold border border-green-300 text-green-700 hover:bg-green-50 transition-colors"

@@ -75,7 +75,7 @@ export default function MenuOrder({
       msg += `%0A• Special Instructions: ${order.instructions}`;
     }
     msg += `%0A%0APlease let me know availability and final pricing!`;
-    window.open(`https://wa.me/919999999999?text=${msg}`, "_blank");
+    window.open(`https://wa.me/919867390830?text=${msg}`, "_blank");
   };
 
   return (

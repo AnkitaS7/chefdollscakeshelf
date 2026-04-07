@@ -1,5 +1,5 @@
 /* =============================================================
-   LoadingScreen — Animated entrance with brand identity
+   LoadingScreen - Animated entrance with brand identity
    ============================================================= */
 
 import { useEffect, useState } from "react";

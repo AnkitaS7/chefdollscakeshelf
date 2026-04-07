@@ -3,6 +3,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { instagramRouter } from "./instagramRouter";
+import { googleDriveRouter } from "./googleDriveRouter";
 
 export const appRouter = router({
   system: systemRouter,
@@ -18,6 +19,9 @@ export const appRouter = router({
 
   // Instagram Graph API feed integration
   instagram: instagramRouter,
+
+  // Google Drive product gallery
+  googleDrive: googleDriveRouter,
 });
 
 export type AppRouter = typeof appRouter;

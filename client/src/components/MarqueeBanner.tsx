@@ -1,5 +1,5 @@
 /* =============================================================
-   MarqueeBanner — Scrolling brand message strip
+   MarqueeBanner - Scrolling brand message strip
    Design: Gold gradient band with continuous scroll
    ============================================================= */
 
@@ -9,7 +9,7 @@ const items = [
   "🌸 Custom Designs",
   "💛 Premium Ingredients",
   "🎀 Handmade with Love",
-  "📍 Mumbai Delivery",
+  "📍 Borivali Delivery",
   "⭐ 5-Star Rated",
   "🌿 Always Eggless",
   "🎉 Celebrations Made Special",
@@ -22,7 +22,8 @@ export default function MarqueeBanner() {
     <div
       className="overflow-hidden py-3 relative"
       style={{
-        background: "linear-gradient(135deg, oklch(0.28 0.05 30), oklch(0.22 0.04 40))",
+        background:
+          "linear-gradient(135deg, oklch(0.28 0.05 30), oklch(0.22 0.04 40))",
       }}
     >
       <div

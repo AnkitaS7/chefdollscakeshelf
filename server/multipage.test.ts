@@ -4,7 +4,7 @@ import type { TrpcContext } from "./_core/context";
 
 /**
  * Tests for multi-page site routes and Instagram feed behavior
- * (server-side procedures only — UI routing is tested via browser)
+ * (server-side procedures only - UI routing is tested via browser)
  */
 
 function createPublicContext(): TrpcContext {
@@ -53,7 +53,7 @@ describe("instagram.feed (no credentials)", () => {
 
     const result = await caller.instagram.feed();
 
-    // When unconfigured, posts is empty — the frontend renders the simulated feed
+    // When unconfigured, posts is empty - the frontend renders the simulated feed
     expect(Array.isArray(result.posts)).toBe(true);
     expect(result.configured).toBe(false);
     expect(result.error).toBeNull();

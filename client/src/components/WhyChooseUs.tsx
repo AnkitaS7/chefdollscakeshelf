@@ -1,5 +1,5 @@
 /* =============================================================
-   WhyChooseUs — Feature cards with icons and hover effects
+   WhyChooseUs - Feature cards with icons and hover effects
    Design: Offset grid with warm card aesthetic
    ============================================================= */
 
@@ -11,7 +11,7 @@ const features = [
     icon: Leaf,
     title: "100% Eggless",
     description:
-      "Every single creation is completely eggless — no exceptions. Enjoy the most indulgent cakes without compromise.",
+      "Every single creation is completely eggless - no exceptions. Enjoy the most indulgent cakes without compromise.",
     color: "oklch(0.55 0.15 140)",
     bg: "oklch(0.94 0.05 140)",
     emoji: "🌿",
@@ -29,7 +29,7 @@ const features = [
     icon: Palette,
     title: "Custom Designs",
     description:
-      "From hand-painted florals to sculpted fondant art — we bring your dream cake to life, exactly as you envision it.",
+      "From hand-painted florals to sculpted fondant art - we bring your dream cake to life, exactly as you envision it.",
     color: "oklch(0.55 0.12 280)",
     bg: "oklch(0.94 0.04 280)",
     emoji: "🎨",
@@ -38,7 +38,7 @@ const features = [
     icon: Award,
     title: "Premium Ingredients",
     description:
-      "We source only the finest ingredients — Belgian chocolate, real butter, fresh cream, and natural flavors.",
+      "We source only the finest ingredients - Belgian chocolate, real butter, fresh cream, and natural flavors.",
     color: "oklch(0.65 0.12 60)",
     bg: "oklch(0.95 0.05 60)",
     emoji: "✨",
@@ -56,7 +56,7 @@ const features = [
     icon: Sparkles,
     title: "Celebration Specialists",
     description:
-      "Birthdays, anniversaries, weddings, baby showers — we specialize in making every milestone unforgettable.",
+      "Birthdays, anniversaries, weddings, baby showers - we specialize in making every milestone unforgettable.",
     color: "oklch(0.55 0.12 320)",
     bg: "oklch(0.94 0.04 320)",
     emoji: "🎉",
@@ -117,7 +117,7 @@ export default function WhyChooseUs() {
             className="text-base max-w-lg mx-auto"
             style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
           >
-            We don't just bake cakes — we craft experiences that make your
+            We don't just bake cakes - we craft experiences that make your
             celebrations truly extraordinary.
           </p>
           <div className="ornament-line mt-4 max-w-xs mx-auto">

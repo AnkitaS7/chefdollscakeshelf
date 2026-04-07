@@ -1,6 +1,6 @@
 /* =============================================================
-   Home — Landing page for ChefDollsCakeShelf
-   Design: Confectionery Editorial — Soft Maximalism
+   Home - Landing page for ChefDollsCakeShelf
+   Design: Confectionery Editorial - Soft Maximalism
    Sections: Hero, Marquee, About preview, Gallery preview,
              Why Choose Us, Testimonials preview, Order CTA
    ============================================================= */
@@ -34,7 +34,7 @@ export default function Home() {
 
       {/* WhatsApp floating button */}
       <a
-        href="https://wa.me/919999999999?text=Hi%20Dhvani!%20I%20would%20like%20to%20order%20a%20cake%20from%20ChefDollsCakeShelf."
+        href="https://wa.me/919867390830?text=Hi%20Dhvani!%20I%20would%20like%20to%20order%20a%20cake%20from%20ChefDollsCakeShelf."
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-float"
@@ -55,7 +55,7 @@ const features = [
     emoji: "🎂",
     title: "Our Story",
     description:
-      "Meet Dhvani Hariya — Mumbai's passionate home baker behind every eggless masterpiece. Learn about the love and craft that goes into each creation.",
+      "Meet Dhvani Hariya - Mumbai's passionate home baker behind every eggless masterpiece. Learn about the love and craft that goes into each creation.",
     cta: "Meet Dhvani",
     href: "/about",
     bg: "oklch(0.97 0.03 10)",
@@ -66,7 +66,7 @@ const features = [
     emoji: "🧁",
     title: "Browse the Menu",
     description:
-      "From custom wedding cakes to cupcake boxes — explore our full collection of 100% eggless cakes and desserts, each made fresh to order.",
+      "From custom wedding cakes to cupcake boxes - explore our full collection of 100% eggless cakes and desserts, each made fresh to order.",
     cta: "View Full Menu",
     href: "/menu",
     bg: "oklch(0.97 0.03 60)",

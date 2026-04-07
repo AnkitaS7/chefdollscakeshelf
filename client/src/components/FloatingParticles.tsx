@@ -1,5 +1,5 @@
 /* =============================================================
-   FloatingParticles — Ambient sparkle and decoration elements
+   FloatingParticles - Ambient sparkle and decoration elements
    ============================================================= */
 
 const particles = [

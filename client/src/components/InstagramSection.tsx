@@ -1,5 +1,5 @@
 /* =============================================================
-   InstagramSection — Real-time Instagram feed with graceful fallback
+   InstagramSection - Real-time Instagram feed with graceful fallback
    
    BEHAVIOUR:
    • When INSTAGRAM_ACCESS_TOKEN + INSTAGRAM_USER_ID are set on the server,
@@ -9,8 +9,8 @@
    
    TO ACTIVATE THE LIVE FEED:
    Add these two secrets in Manus → Settings → Secrets:
-     INSTAGRAM_ACCESS_TOKEN  — long-lived token from Meta Developer Console
-     INSTAGRAM_USER_ID       — numeric Instagram user ID from /me endpoint
+     INSTAGRAM_ACCESS_TOKEN  - long-lived token from Meta Developer Console
+     INSTAGRAM_USER_ID       - numeric Instagram user ID from /me endpoint
    See server/instagramRouter.ts for the full step-by-step guide.
    ============================================================= */
 

@@ -1,11 +1,12 @@
 /* =============================================================
-   Navbar — Sticky header with multi-page navigation
+   Navbar - Sticky header with multi-page navigation
    Design: Transparent → frosted glass on scroll
    ============================================================= */
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "wouter";
+import brandLogo from "../images/brand-logo.jpg";
 
 const navLinks = [
   { label: "Home",    href: "/" },
@@ -49,7 +50,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-1 group">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663513006516/gFNz9nK7irL8AANKwrwZkG/logo_bdef0cf2.jpeg"
+                src={brandLogo}
                 alt="ChefDolls CakeShelf Logo"
                 className="h-12 w-12 object-contain group-hover:scale-105 transition-transform duration-300 rounded-full"
               />
@@ -149,7 +150,7 @@ export default function Navbar() {
                 Order Now
               </Link>
               <a
-                href="https://wa.me/919999999999?text=Hi%20Dhvani!%20I%20would%20like%20to%20order%20a%20cake."
+                href="https://wa.me/919867390830?text=Hi%20Dhvani!%20I%20would%20like%20to%20order%20a%20cake."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-full text-sm font-semibold border border-green-300 text-green-700 hover:bg-green-50 transition-colors"

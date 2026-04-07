@@ -1,5 +1,5 @@
 /* =============================================================
-   HeroSection — Full-bleed split layout with parallax feel
+   HeroSection - Full-bleed split layout with parallax feel
    Left: brand text + CTAs | Right: hero cake image
    ============================================================= */
 
@@ -16,7 +16,7 @@ export default function HeroSection() {
   const imgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Hero is always visible on load — trigger immediately after mount
+    // Hero is always visible on load - trigger immediately after mount
     // Show hero content after loading screen fades (2.4s)
     const timer = setTimeout(() => {
       if (textRef.current) textRef.current.classList.add("visible");
@@ -119,7 +119,7 @@ export default function HeroSection() {
               }}
             >
               Mumbai's homegrown premium bakery for custom cakes &amp; desserts.
-              Every creation is a celebration — baked fresh, designed with
+              Every creation is a celebration - baked fresh, designed with
               heart, and delivered with joy.
             </p>
 

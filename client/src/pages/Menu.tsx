@@ -1,5 +1,5 @@
 /* =============================================================
-   Menu Page — Full product gallery with categories
+   Menu Page - Full product gallery with categories
    ============================================================= */
 
 import PageLayout from "@/components/PageLayout";
@@ -41,7 +41,7 @@ export default function Menu() {
             style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
           >
             Browse our collection of 100% eggless cakes, cupcakes, and desserts.
-            Every item is made fresh to order — just for you.
+            Every item is made fresh to order - just for you.
           </p>
           <div className="ornament-line mt-4 max-w-xs mx-auto">
             <span className="text-amber-400 text-sm">✦</span>

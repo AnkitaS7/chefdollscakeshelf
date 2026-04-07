@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * instagramRouter.ts — Instagram Graph API Integration
+ * instagramRouter.ts - Instagram Graph API Integration
  * ChefDollsCakeShelf by Dhvani Hariya
  * ============================================================
  *
@@ -43,7 +43,7 @@
  * WHEN CREDENTIALS ARE NOT SET
  * ─────────────────────────────
  * The frontend will automatically display a beautiful simulated feed.
- * No errors, no broken UI — it just works as a placeholder until
+ * No errors, no broken UI - it just works as a placeholder until
  * the real credentials are added.
  * ============================================================
  */
@@ -53,7 +53,7 @@ import { router, publicProcedure } from "./_core/trpc";
 const GRAPH_API_BASE = "https://graph.facebook.com/v25.0";
 const INSTAGRAM_API_BASE = "https://graph.instagram.com";
 
-/** Cache TTL: 30 minutes — avoids hammering the API on every page load */
+/** Cache TTL: 30 minutes - avoids hammering the API on every page load */
 const CACHE_TTL_MS = 30 * 60 * 1000;
 
 // ─── In-memory cache ─────────────────────────────────────────────────────────

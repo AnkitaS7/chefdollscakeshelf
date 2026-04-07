@@ -8,6 +8,10 @@ dist/
 build/
 *.dist
 
+# Credentials
+credentials.json
+token.json
+
 # Environment variables
 .env
 .env.local

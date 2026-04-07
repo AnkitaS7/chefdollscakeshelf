@@ -24,10 +24,10 @@ from google.oauth2.credentials import Credentials
 
 # --- CONFIGURATION -----------------------------------------------------------
 
-LOCAL_FILE_PATH = "Test.jpg"          # Path to the file you want to upload
+LOCAL_FILE_PATH = "mickey-mouse.jpg"          # Path to the file you want to upload
 DRIVE_FILE_NAME = "Demo.jpg"    # Name it will have on Google Drive
 FILE_DESCRIPTION = "This is my file description, visible in Drive Details panel."
-DRIVE_FOLDER_ID  = None                 # Optional: paste a folder ID string, or leave None for root
+DRIVE_FOLDER_ID  = "1_fvNbAOopJ1IvTNbX0vXmZebMOYrWtrg"                # Optional: paste a folder ID string, or leave None for root
 
 # -----------------------------------------------------------------------------
 

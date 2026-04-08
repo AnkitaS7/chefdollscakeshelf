@@ -101,7 +101,7 @@ export default function TestimonialsSection() {
     if (isAnimating) return;
     setIsAnimating(true);
     setTimeout(() => {
-      setCurrent((prev) =>
+      setCurrent(prev =>
         dir === "next"
           ? (prev + 1) % testimonials.length
           : (prev - 1 + testimonials.length) % testimonials.length
@@ -118,8 +118,8 @@ export default function TestimonialsSection() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting && headRef.current) {
             headRef.current.classList.add("visible");
           }
@@ -157,7 +157,10 @@ export default function TestimonialsSection() {
       <div className="container relative z-10">
         {/* Header */}
         <div ref={headRef} className="reveal text-center mb-10">
-          <p className="font-script text-2xl mb-1" style={{ color: "oklch(0.72 0.12 70)" }}>
+          <p
+            className="font-script text-2xl mb-1"
+            style={{ color: "oklch(0.72 0.12 70)" }}
+          >
             What They Say
           </p>
           <h2
@@ -168,9 +171,13 @@ export default function TestimonialsSection() {
           </h2>
           <p
             className="text-sm max-w-md mx-auto"
-            style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+            style={{
+              color: "oklch(0.50 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
           >
-            Real words from real customers - unfiltered, unedited, and full of love.
+            Real words from real customers - unfiltered, unedited, and full of
+            love.
           </p>
           <div className="ornament-line mt-4 max-w-xs mx-auto">
             <span className="text-amber-400 text-sm">✦</span>
@@ -191,7 +198,10 @@ export default function TestimonialsSection() {
             {/* Quote icon */}
             <div
               className="absolute -top-5 left-10 w-10 h-10 rounded-full flex items-center justify-center shadow-md"
-              style={{ background: "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.72 0.1 5))" }}
+              style={{
+                background:
+                  "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.72 0.1 5))",
+              }}
             >
               <Quote className="w-5 h-5 text-white" fill="white" />
             </div>
@@ -199,7 +209,9 @@ export default function TestimonialsSection() {
             {/* Stars */}
             <div className="flex gap-1 mb-3">
               {Array.from({ length: t.rating }).map((_, i) => (
-                <span key={i} className="text-amber-400 text-base">★</span>
+                <span key={i} className="text-amber-400 text-base">
+                  ★
+                </span>
               ))}
             </div>
 
@@ -223,13 +235,19 @@ export default function TestimonialsSection() {
                 <div>
                   <p
                     className="font-semibold text-sm"
-                    style={{ color: "oklch(0.28 0.05 30)", fontFamily: "var(--font-body)" }}
+                    style={{
+                      color: "oklch(0.28 0.05 30)",
+                      fontFamily: "var(--font-body)",
+                    }}
                   >
                     {t.name}
                   </p>
                   <p
                     className="text-xs"
-                    style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
+                    style={{
+                      color: "oklch(0.55 0.04 30)",
+                      fontFamily: "var(--font-body)",
+                    }}
                   >
                     {t.source}
                   </p>
@@ -269,14 +287,19 @@ export default function TestimonialsSection() {
               {testimonials.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => { setCurrent(i); setPaused(true); setTimeout(() => setPaused(false), 6000); }}
+                  onClick={() => {
+                    setCurrent(i);
+                    setPaused(true);
+                    setTimeout(() => setPaused(false), 6000);
+                  }}
                   className="rounded-full transition-all duration-300"
                   style={{
                     width: i === current ? "20px" : "7px",
                     height: "7px",
-                    background: i === current
-                      ? "oklch(0.65 0.12 10)"
-                      : "oklch(0.85 0.04 20)",
+                    background:
+                      i === current
+                        ? "oklch(0.65 0.12 10)"
+                        : "oklch(0.85 0.04 20)",
                   }}
                   aria-label={`Go to review ${i + 1}`}
                 />
@@ -304,7 +327,11 @@ export default function TestimonialsSection() {
           {testimonials.slice(0, 4).map((item, i) => (
             <button
               key={i}
-              onClick={() => { setCurrent(i); setPaused(true); setTimeout(() => setPaused(false), 6000); }}
+              onClick={() => {
+                setCurrent(i);
+                setPaused(true);
+                setTimeout(() => setPaused(false), 6000);
+              }}
               className="rounded-xl p-3 text-left transition-all duration-200 hover:shadow-md"
               style={{
                 background: current === i ? "oklch(0.95 0.03 20)" : "white",
@@ -313,18 +340,26 @@ export default function TestimonialsSection() {
             >
               <div className="flex gap-0.5 mb-1">
                 {Array.from({ length: 5 }).map((_, j) => (
-                  <span key={j} className="text-amber-400 text-xs">★</span>
+                  <span key={j} className="text-amber-400 text-xs">
+                    ★
+                  </span>
                 ))}
               </div>
               <p
                 className="text-xs font-semibold truncate"
-                style={{ color: "oklch(0.35 0.05 30)", fontFamily: "var(--font-body)" }}
+                style={{
+                  color: "oklch(0.35 0.05 30)",
+                  fontFamily: "var(--font-body)",
+                }}
               >
                 {item.name}
               </p>
               <p
                 className="text-xs truncate"
-                style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
+                style={{
+                  color: "oklch(0.55 0.04 30)",
+                  fontFamily: "var(--font-body)",
+                }}
               >
                 {item.occasion}
               </p>

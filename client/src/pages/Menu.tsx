@@ -14,16 +14,22 @@ export default function Menu() {
       <div
         className="relative py-14 md:py-20 text-center overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, oklch(0.97 0.03 10), oklch(0.96 0.04 60), oklch(0.97 0.02 80))",
+          background:
+            "linear-gradient(135deg, oklch(0.97 0.03 10), oklch(0.96 0.04 60), oklch(0.97 0.02 80))",
         }}
       >
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-4 left-8 text-4xl opacity-20">🧁</div>
           <div className="absolute top-8 right-12 text-3xl opacity-15">🎂</div>
-          <div className="absolute bottom-4 right-1/3 text-2xl opacity-10">✨</div>
+          <div className="absolute bottom-4 right-1/3 text-2xl opacity-10">
+            ✨
+          </div>
         </div>
         <div className="container relative z-10">
-          <p className="font-script text-2xl mb-2" style={{ color: "oklch(0.72 0.12 70)" }}>
+          <p
+            className="font-script text-2xl mb-2"
+            style={{ color: "oklch(0.72 0.12 70)" }}
+          >
             Our Creations
           </p>
           <h1
@@ -38,7 +44,10 @@ export default function Menu() {
           </h1>
           <p
             className="mt-3 text-base max-w-md mx-auto"
-            style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+            style={{
+              color: "oklch(0.50 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
           >
             Browse our collection of 100% eggless cakes, cupcakes, and desserts.
             Every item is made fresh to order - just for you.
@@ -57,7 +66,10 @@ export default function Menu() {
         className="py-16 text-center"
         style={{ background: "oklch(0.97 0.02 60)" }}
       >
-        <p className="font-script text-2xl mb-2" style={{ color: "oklch(0.72 0.12 70)" }}>
+        <p
+          className="font-script text-2xl mb-2"
+          style={{ color: "oklch(0.72 0.12 70)" }}
+        >
           Don't see what you're looking for?
         </p>
         <h2
@@ -68,9 +80,13 @@ export default function Menu() {
         </h2>
         <p
           className="text-base max-w-md mx-auto mb-8"
-          style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+          style={{
+            color: "oklch(0.50 0.04 30)",
+            fontFamily: "var(--font-body)",
+          }}
         >
-          Every cake is custom-made. Tell us your vision and we'll bring it to life.
+          Every cake is custom-made. Tell us your vision and we'll bring it to
+          life.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link

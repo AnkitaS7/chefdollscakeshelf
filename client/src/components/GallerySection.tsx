@@ -175,7 +175,6 @@ export default function GallerySection() {
             )}
           </div>
         )}
-
       </div>
     </section>
   );

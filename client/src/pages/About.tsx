@@ -14,16 +14,22 @@ export default function About() {
       <div
         className="relative py-14 md:py-20 text-center overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, oklch(0.97 0.03 10), oklch(0.96 0.04 60), oklch(0.97 0.02 80))",
+          background:
+            "linear-gradient(135deg, oklch(0.97 0.03 10), oklch(0.96 0.04 60), oklch(0.97 0.02 80))",
         }}
       >
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-4 left-8 text-4xl opacity-20">🎂</div>
           <div className="absolute top-8 right-12 text-3xl opacity-15">✨</div>
-          <div className="absolute bottom-4 left-1/3 text-2xl opacity-10">🌸</div>
+          <div className="absolute bottom-4 left-1/3 text-2xl opacity-10">
+            🌸
+          </div>
         </div>
         <div className="container relative z-10">
-          <p className="font-script text-2xl mb-2" style={{ color: "oklch(0.72 0.12 70)" }}>
+          <p
+            className="font-script text-2xl mb-2"
+            style={{ color: "oklch(0.72 0.12 70)" }}
+          >
             Our Story
           </p>
           <h1

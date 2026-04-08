@@ -68,7 +68,9 @@ export default function StepSize({
               <p
                 className="text-xs mt-0.5"
                 style={{
-                  color: isSelected ? "rgba(255,255,255,0.8)" : "oklch(0.55 0.04 30)",
+                  color: isSelected
+                    ? "rgba(255,255,255,0.8)"
+                    : "oklch(0.55 0.04 30)",
                   fontFamily: "var(--font-body)",
                 }}
               >

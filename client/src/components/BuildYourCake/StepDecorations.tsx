@@ -91,7 +91,10 @@ export default function StepDecorations({
           />
           <p
             className="text-xs text-right"
-            style={{ color: "oklch(0.65 0.04 30)", fontFamily: "var(--font-body)" }}
+            style={{
+              color: "oklch(0.65 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
           >
             {message.length}/60 characters
           </p>
@@ -101,7 +104,10 @@ export default function StepDecorations({
       <div>
         <label
           className="block text-xs font-semibold uppercase tracking-wide mb-2"
-          style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
+          style={{
+            color: "oklch(0.55 0.04 30)",
+            fontFamily: "var(--font-body)",
+          }}
         >
           Special Order Instructions (optional)
         </label>

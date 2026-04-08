@@ -45,7 +45,9 @@ export default function StepFlavor({
               <span
                 className="text-sm font-medium"
                 style={{
-                  color: isSelected ? "oklch(0.45 0.1 10)" : "oklch(0.40 0.05 30)",
+                  color: isSelected
+                    ? "oklch(0.45 0.1 10)"
+                    : "oklch(0.40 0.05 30)",
                   fontFamily: "var(--font-body)",
                 }}
               >

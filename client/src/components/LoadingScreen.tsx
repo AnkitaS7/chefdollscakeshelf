@@ -11,7 +11,10 @@ export default function LoadingScreen() {
   useEffect(() => {
     const timer1 = setTimeout(() => setFadeOut(true), 1600);
     const timer2 = setTimeout(() => setVisible(false), 2200);
-    return () => { clearTimeout(timer1); clearTimeout(timer2); };
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
   }, []);
 
   if (!visible) return null;
@@ -25,10 +28,20 @@ export default function LoadingScreen() {
     >
       {/* Decorative circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full opacity-20"
-          style={{ background: "radial-gradient(circle, oklch(0.88 0.05 10), transparent)" }} />
-        <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full opacity-15"
-          style={{ background: "radial-gradient(circle, oklch(0.78 0.1 70), transparent)" }} />
+        <div
+          className="absolute -top-20 -left-20 w-64 h-64 rounded-full opacity-20"
+          style={{
+            background:
+              "radial-gradient(circle, oklch(0.88 0.05 10), transparent)",
+          }}
+        />
+        <div
+          className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full opacity-15"
+          style={{
+            background:
+              "radial-gradient(circle, oklch(0.78 0.1 70), transparent)",
+          }}
+        />
       </div>
 
       <div className="relative flex flex-col items-center gap-4">
@@ -43,7 +56,7 @@ export default function LoadingScreen() {
 
         {/* Loading dots */}
         <div className="flex gap-1.5 mt-2">
-          {[0, 1, 2].map((i) => (
+          {[0, 1, 2].map(i => (
             <div
               key={i}
               className="w-2 h-2 rounded-full animate-bounce"

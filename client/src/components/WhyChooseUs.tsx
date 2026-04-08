@@ -69,8 +69,8 @@ export default function WhyChooseUs() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting && headRef.current) {
             headRef.current.classList.add("visible");
           }
@@ -88,23 +88,34 @@ export default function WhyChooseUs() {
       ref={sectionRef}
       className="py-20 md:py-28 relative overflow-hidden"
       style={{
-        background: "linear-gradient(160deg, oklch(0.97 0.025 20) 0%, oklch(0.99 0.01 60) 50%, oklch(0.97 0.02 10) 100%)",
+        background:
+          "linear-gradient(160deg, oklch(0.97 0.025 20) 0%, oklch(0.99 0.01 60) 50%, oklch(0.97 0.02 10) 100%)",
       }}
     >
       {/* Decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-10 right-10 text-4xl animate-float opacity-20">🎂</div>
-        <div className="absolute bottom-20 left-10 text-3xl animate-float-delayed opacity-15">🌸</div>
+        <div className="absolute top-10 right-10 text-4xl animate-float opacity-20">
+          🎂
+        </div>
+        <div className="absolute bottom-20 left-10 text-3xl animate-float-delayed opacity-15">
+          🌸
+        </div>
         <div
           className="absolute top-0 left-0 right-0 h-px"
-          style={{ background: "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)" }}
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
+          }}
         />
       </div>
 
       <div className="container relative z-10">
         {/* Header */}
         <div ref={headRef} className="reveal text-center mb-14">
-          <p className="font-script text-2xl mb-1" style={{ color: "oklch(0.72 0.12 70)" }}>
+          <p
+            className="font-script text-2xl mb-1"
+            style={{ color: "oklch(0.72 0.12 70)" }}
+          >
             Why We're Different
           </p>
           <h2
@@ -115,7 +126,10 @@ export default function WhyChooseUs() {
           </h2>
           <p
             className="text-base max-w-lg mx-auto"
-            style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+            style={{
+              color: "oklch(0.50 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
           >
             We don't just bake cakes - we craft experiences that make your
             celebrations truly extraordinary.
@@ -128,7 +142,11 @@ export default function WhyChooseUs() {
         {/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, i) => (
-            <FeatureCard key={feature.title} feature={feature} delay={i * 100} />
+            <FeatureCard
+              key={feature.title}
+              feature={feature}
+              delay={i * 100}
+            />
           ))}
         </div>
       </div>
@@ -148,8 +166,8 @@ function FeatureCard({
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting && cardRef.current) {
             setTimeout(() => {
               if (cardRef.current) cardRef.current.classList.add("visible");
@@ -198,7 +216,9 @@ function FeatureCard({
       {/* Bottom accent */}
       <div
         className="mt-4 h-0.5 w-0 rounded-full transition-all duration-500 group-hover:w-full"
-        style={{ background: `linear-gradient(90deg, ${feature.color}, transparent)` }}
+        style={{
+          background: `linear-gradient(90deg, ${feature.color}, transparent)`,
+        }}
       />
     </div>
   );

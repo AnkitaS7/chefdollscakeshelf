@@ -65,11 +65,16 @@ async function fetchFromDrive(): Promise<GalleryItem[]> {
 
   // Helper: parse optional file description
   function parseDescription(raw: string | null | undefined) {
-    const parts = (raw ?? "").split("|").map((s) => s.trim());
+    const parts = (raw ?? "").split("|").map(s => s.trim());
     return {
       description: parts[0] ?? "",
       price: parts[1] ?? "Contact for pricing",
-      tags: parts[2] ? parts[2].split(",").map((t) => t.trim()).filter(Boolean) : [],
+      tags: parts[2]
+        ? parts[2]
+            .split(",")
+            .map(t => t.trim())
+            .filter(Boolean)
+        : [],
     };
   }
 
@@ -83,7 +88,7 @@ async function fetchFromDrive(): Promise<GalleryItem[]> {
       orderBy: "name",
     });
 
-    for (const file of (filesRes.data.files ?? [])) {
+    for (const file of filesRes.data.files ?? []) {
       if (!file.id || !file.name) continue;
       const productName = file.name.replace(/\.[^/.]+$/, "");
       const { description, price, tags } = parseDescription(file.description);
@@ -101,7 +106,7 @@ async function fetchFromDrive(): Promise<GalleryItem[]> {
   }
 
   // Images directly in root (placed in "Other" category)
-  for (const file of (rootImagesRes.data.files ?? [])) {
+  for (const file of rootImagesRes.data.files ?? []) {
     if (!file.id || !file.name) continue;
     const productName = file.name.replace(/\.[^/.]+$/, "");
     const { description, price, tags } = parseDescription(file.description);

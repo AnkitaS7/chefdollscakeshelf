@@ -77,11 +77,11 @@ const inputStyle: React.CSSProperties = {
 };
 
 const focusColor = "oklch(0.65 0.12 10)";
-const blurColor  = "oklch(0.88 0.04 60)";
+const blurColor = "oklch(0.88 0.04 60)";
 
 const onFocus = (e: React.FocusEvent<HTMLElement>) =>
   ((e.target as HTMLElement).style.borderColor = focusColor);
-const onBlur  = (e: React.FocusEvent<HTMLElement>) =>
+const onBlur = (e: React.FocusEvent<HTMLElement>) =>
   ((e.target as HTMLElement).style.borderColor = blurColor);
 
 /* ─── Label helper ───────────────────────────────────────────── */
@@ -255,8 +255,8 @@ const InquiryForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
         className="text-center text-xs"
         style={{ color: "oklch(0.60 0.04 30)", fontFamily: "var(--font-body)" }}
       >
-        This opens WhatsApp with your question pre-filled. We typically
-        respond within a few hours.
+        This opens WhatsApp with your question pre-filled. We typically respond
+        within a few hours.
       </p>
     </form>
   );
@@ -289,7 +289,7 @@ const ReviewForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
     onSubmit();
   };
 
-  const starActive   = "oklch(0.72 0.18 70)";
+  const starActive = "oklch(0.72 0.18 70)";
   const starInactive = "oklch(0.88 0.04 60)";
   const displayRating = form.hoverRating || form.rating;
 
@@ -331,7 +331,10 @@ const ReviewForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
       <div>
         <p
           className="block text-sm font-semibold mb-2"
-          style={{ color: "oklch(0.35 0.06 30)", fontFamily: "var(--font-body)" }}
+          style={{
+            color: "oklch(0.35 0.06 30)",
+            fontFamily: "var(--font-body)",
+          }}
         >
           Your Rating *{" "}
           {displayRating > 0 && (
@@ -418,8 +421,8 @@ const ReviewForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
         className="text-center text-xs"
         style={{ color: "oklch(0.60 0.04 30)", fontFamily: "var(--font-body)" }}
       >
-        Your review will be sent via WhatsApp and may be shared on our page
-        with your permission.
+        Your review will be sent via WhatsApp and may be shared on our page with
+        your permission.
       </p>
     </form>
   );
@@ -461,9 +464,9 @@ const SuccessState: React.FC<{ mode: Mode }> = ({ mode }) => (
 ═══════════════════════════════════════════════════════════════ */
 export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const headRef    = useRef<HTMLDivElement>(null);
+  const headRef = useRef<HTMLDivElement>(null);
 
-  const [mode, setMode]           = useState<Mode>("inquiry");
+  const [mode, setMode] = useState<Mode>("inquiry");
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -506,8 +509,8 @@ export default function ContactSection() {
     gap: "0.4rem",
     transition: "all 0.22s ease",
     background: active ? "oklch(0.55 0.14 10)" : "transparent",
-    color:      active ? "white" : "oklch(0.45 0.06 30)",
-    boxShadow:  active ? "0 4px 14px oklch(0.55 0.14 10 / 0.3)" : "none",
+    color: active ? "white" : "oklch(0.45 0.06 30)",
+    boxShadow: active ? "0 4px 14px oklch(0.55 0.14 10 / 0.3)" : "none",
   });
 
   return (
@@ -554,14 +557,18 @@ export default function ContactSection() {
             {mode === "inquiry" ? (
               <>
                 Got a{" "}
-                <em style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}>
+                <em
+                  style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}
+                >
                   Question?
                 </em>
               </>
             ) : (
               <>
                 Share Your{" "}
-                <em style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}>
+                <em
+                  style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}
+                >
                   Experience
                 </em>
               </>
@@ -569,7 +576,10 @@ export default function ContactSection() {
           </h2>
           <p
             className="text-base max-w-lg mx-auto"
-            style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+            style={{
+              color: "oklch(0.50 0.04 30)",
+              fontFamily: "var(--font-body)",
+            }}
           >
             {mode === "inquiry"
               ? "Curious about what we make, pricing, ingredients, or availability? Send us a message and we'll get back to you."
@@ -663,14 +673,20 @@ export default function ContactSection() {
                   <div>
                     <p
                       className="text-sm font-semibold"
-                      style={{ color: "oklch(0.35 0.05 30)", fontFamily: "var(--font-body)" }}
+                      style={{
+                        color: "oklch(0.35 0.05 30)",
+                        fontFamily: "var(--font-body)",
+                      }}
                     >
                       WhatsApp
                     </p>
                     <a
                       href="https://wa.me/919867390830"
                       className="text-sm hover:underline"
-                      style={{ color: "oklch(0.55 0.15 140)", fontFamily: "var(--font-body)" }}
+                      style={{
+                        color: "oklch(0.55 0.15 140)",
+                        fontFamily: "var(--font-body)",
+                      }}
                     >
                       +91 98673 90830
                     </a>
@@ -690,7 +706,10 @@ export default function ContactSection() {
                   <div>
                     <p
                       className="text-sm font-semibold"
-                      style={{ color: "oklch(0.35 0.05 30)", fontFamily: "var(--font-body)" }}
+                      style={{
+                        color: "oklch(0.35 0.05 30)",
+                        fontFamily: "var(--font-body)",
+                      }}
                     >
                       Instagram
                     </p>
@@ -699,7 +718,10 @@ export default function ContactSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm hover:underline"
-                      style={{ color: "oklch(0.55 0.12 320)", fontFamily: "var(--font-body)" }}
+                      style={{
+                        color: "oklch(0.55 0.12 320)",
+                        fontFamily: "var(--font-body)",
+                      }}
                     >
                       @chefdollscakeshelf
                     </a>
@@ -719,13 +741,19 @@ export default function ContactSection() {
                   <div>
                     <p
                       className="text-sm font-semibold"
-                      style={{ color: "oklch(0.35 0.05 30)", fontFamily: "var(--font-body)" }}
+                      style={{
+                        color: "oklch(0.35 0.05 30)",
+                        fontFamily: "var(--font-body)",
+                      }}
                     >
                       Location
                     </p>
                     <p
                       className="text-sm"
-                      style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+                      style={{
+                        color: "oklch(0.50 0.04 30)",
+                        fontFamily: "var(--font-body)",
+                      }}
                     >
                       Mumbai, Maharashtra, India
                     </p>
@@ -779,21 +807,24 @@ export default function ContactSection() {
             >
               <p
                 className="text-xs leading-relaxed"
-                style={{ color: "oklch(0.45 0.06 30)", fontFamily: "var(--font-body)" }}
+                style={{
+                  color: "oklch(0.45 0.06 30)",
+                  fontFamily: "var(--font-body)",
+                }}
               >
                 {mode === "inquiry" ? (
                   <>
-                    <strong>💡 Response time:</strong> We typically reply
-                    within a few hours on WhatsApp. For complex questions
-                    about custom designs or pricing, please allow up to{" "}
+                    <strong>💡 Response time:</strong> We typically reply within
+                    a few hours on WhatsApp. For complex questions about custom
+                    designs or pricing, please allow up to{" "}
                     <strong>24 hours</strong> for a detailed response.
                   </>
                 ) : (
                   <>
-                    <strong>⭐ Review Note:</strong> Your review will be
-                    sent to us via WhatsApp. With your permission, we may
-                    feature it on our page or social media as a testimonial.
-                    We read every single one - thank you! 🎂
+                    <strong>⭐ Review Note:</strong> Your review will be sent to
+                    us via WhatsApp. With your permission, we may feature it on
+                    our page or social media as a testimonial. We read every
+                    single one - thank you! 🎂
                   </>
                 )}
               </p>

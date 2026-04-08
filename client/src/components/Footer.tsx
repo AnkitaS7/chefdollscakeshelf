@@ -5,7 +5,7 @@
 
 import { Instagram, MapPin, Heart } from "lucide-react";
 import { Link } from "wouter";
-import brandLogo from "../images/brand-logo.jpg";
+import brandLogo from "/brand-logo.jpg";
 
 const navLinks = [
   { label: "Home", href: "/" },

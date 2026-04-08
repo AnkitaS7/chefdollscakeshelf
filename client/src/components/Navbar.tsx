@@ -6,13 +6,13 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "wouter";
-import brandLogo from "../images/brand-logo.jpg";
+import brandLogo from "/brand-logo.jpg";
 
 const navLinks = [
-  { label: "Home",    href: "/" },
-  { label: "About",   href: "/about" },
-  { label: "Menu",    href: "/menu" },
-  { label: "Order",   href: "/order" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Menu", href: "/menu" },
+  { label: "Order", href: "/order" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -58,7 +58,7 @@ export default function Navbar() {
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
+              {navLinks.map(link => (
                 <Link
                   key={link.label}
                   href={link.href}
@@ -97,7 +97,11 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label="Toggle menu"
               >
-                {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {menuOpen ? (
+                  <X className="w-5 h-5" />
+                ) : (
+                  <Menu className="w-5 h-5" />
+                )}
               </button>
             </div>
           </div>
@@ -107,7 +111,9 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div
         className={`fixed inset-0 z-40 transition-all duration-300 ${
-          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          menuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
       >
         <div
@@ -125,14 +131,18 @@ export default function Navbar() {
               <div className="h-px bg-gradient-to-r from-rose-200 to-amber-200 mt-1" />
             </div>
             <nav className="flex flex-col gap-1">
-              {navLinks.map((link) => (
+              {navLinks.map(link => (
                 <Link
                   key={link.label}
                   href={link.href}
                   className="text-left font-display text-xl py-2 px-3 rounded-xl transition-colors"
                   style={{
-                    color: isActive(link.href) ? "oklch(0.55 0.12 10)" : "oklch(0.35 0.05 30)",
-                    background: isActive(link.href) ? "oklch(0.97 0.04 10)" : "transparent",
+                    color: isActive(link.href)
+                      ? "oklch(0.55 0.12 10)"
+                      : "oklch(0.35 0.05 30)",
+                    background: isActive(link.href)
+                      ? "oklch(0.97 0.04 10)"
+                      : "transparent",
                     textDecoration: "none",
                     display: "block",
                   }}

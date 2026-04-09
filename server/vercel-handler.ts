@@ -1,9 +1,9 @@
 import "dotenv/config";
 import express from "express";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import { appRouter } from "../server/routers";
-import { createContext } from "../server/_core/context";
-import { buildDriveClient } from "../server/googleDriveRouter";
+import { appRouter } from "./routers";
+import { createContext } from "./_core/context";
+import { buildDriveClient } from "./googleDriveRouter";
 
 const app = express();
 

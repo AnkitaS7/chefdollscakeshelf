@@ -380,6 +380,36 @@ export default function MenuOrder({
               </div>
             )}
 
+          {/* Special instructions */}
+          {order.cakeName && (<div>
+            <label
+              className="block text-xs font-semibold uppercase tracking-wide mb-2"
+              style={{
+                color: "oklch(0.55 0.04 30)",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Special Instructions (optional)
+            </label>
+            <textarea
+              rows={3}
+              value={order.instructions}
+              onChange={e =>
+                setOrder(o => ({ ...o, instructions: e.target.value }))
+              }
+              placeholder="e.g. Dietary requirements, allergies, or a personalised message for your cake..."
+              className="w-full rounded-xl px-4 py-3 text-sm resize-none outline-none transition-all duration-200"
+              style={{
+                border: "1.5px solid oklch(0.88 0.04 60)",
+                fontFamily: "var(--font-body)",
+                color: "oklch(0.35 0.05 30)",
+                background: "oklch(0.99 0.01 80)",
+              }}
+              onFocus={e => (e.target.style.borderColor = ACCENT)}
+              onBlur={e => (e.target.style.borderColor = "oklch(0.88 0.04 60)")}
+            />
+          </div>)}
+
             {/* Continue button */}
             <div
               className="flex justify-end pt-2 border-t"
@@ -556,6 +586,10 @@ export default function MenuOrder({
                 year: "numeric",
               })}
             />
+            <PreviewRow
+              label="Special Instructions"
+              value={order.instructions || "None"}
+            />
           </div>
 
           {/* Price */}
@@ -587,36 +621,6 @@ export default function MenuOrder({
             >
               Final price confirmed after consultation
             </p>
-          </div>
-
-          {/* Special instructions */}
-          <div>
-            <label
-              className="block text-xs font-semibold uppercase tracking-wide mb-2"
-              style={{
-                color: "oklch(0.55 0.04 30)",
-                fontFamily: "var(--font-body)",
-              }}
-            >
-              Special Instructions (optional)
-            </label>
-            <textarea
-              rows={3}
-              value={order.instructions}
-              onChange={e =>
-                setOrder(o => ({ ...o, instructions: e.target.value }))
-              }
-              placeholder="e.g. Custom message on cake, allergy info, delivery preferences..."
-              className="w-full rounded-xl px-4 py-3 text-sm resize-none outline-none transition-all duration-200"
-              style={{
-                border: "1.5px solid oklch(0.88 0.04 60)",
-                fontFamily: "var(--font-body)",
-                color: "oklch(0.35 0.05 30)",
-                background: "oklch(0.99 0.01 80)",
-              }}
-              onFocus={e => (e.target.style.borderColor = ACCENT)}
-              onBlur={e => (e.target.style.borderColor = "oklch(0.88 0.04 60)")}
-            />
           </div>
 
           {/* Navigation */}

@@ -8,15 +8,6 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Happy Customer",
-    source: "WhatsApp Review",
-    rating: 5,
-    text: "The cake was super awesome - everyone liked it very much, super soft and moist. The way I wanted, you made exactly the same. Thank you so much! 😊",
-    occasion: "Custom Cake",
-    avatar: "🌸",
-    avatarColor: "oklch(0.82 0.08 340)",
-  },
-  {
     name: "Disha Doshi",
     source: "WhatsApp Review",
     rating: 5,
@@ -87,6 +78,15 @@ const testimonials = [
     occasion: "Chai & Biscoff Cakes",
     avatar: "🌟",
     avatarColor: "oklch(0.78 0.10 70)",
+  },
+  {
+    name: "Happy Customer",
+    source: "WhatsApp Review",
+    rating: 5,
+    text: "The cake was super awesome - everyone liked it very much, super soft and moist. The way I wanted, you made exactly the same. Thank you so much! 😊",
+    occasion: "Custom Cake",
+    avatar: "🌸",
+    avatarColor: "oklch(0.82 0.08 340)",
   },
 ];
 

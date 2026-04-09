@@ -115,7 +115,7 @@ export default function StepDecorations({
           rows={2}
           value={message}
           onChange={e => onMessage(e.target.value)}
-          placeholder={`Any special instructions for your ${product}?`}
+          placeholder={`e.g. Dietary requirements, allergies, or a personalised message for your ${product}`}
           className="w-full rounded-xl px-4 py-3 text-sm resize-none outline-none transition-all duration-200"
           style={{
             border: "1.5px solid oklch(0.88 0.04 60)",

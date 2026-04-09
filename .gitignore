@@ -4,7 +4,6 @@ package-lock.json
 
 # Build output
 dist/
-api/index.js
 
 # Credentials
 credentials.json

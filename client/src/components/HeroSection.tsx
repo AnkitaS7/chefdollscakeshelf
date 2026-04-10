@@ -3,17 +3,22 @@
    Left: brand text + CTAs | Right: hero cake image
    ============================================================= */
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Link } from "wouter";
 
-const HERO_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663513006516/gFNz9nK7irL8AANKwrwZkG/hero-cake-gefdk8N67kM7hmNuUEyU2P.webp";
+const HERO_IMGS = [
+  "/home-page-product1.png",
+  "/home-page-product2.png",
+  "/home-page-product3.png",
+];
+
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLDivElement>(null);
+  const [imgIndex, setImgIndex] = useState(0);
 
   useEffect(() => {
     // Hero is always visible on load - trigger immediately after mount
@@ -23,6 +28,13 @@ export default function HeroSection() {
       if (imgRef.current) imgRef.current.classList.add("visible");
     }, 2300);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setImgIndex(i => (i + 1) % HERO_IMGS.length);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   const scrollToNext = () => {
@@ -224,13 +236,20 @@ export default function HeroSection() {
                 }}
               />
               {/* Main image */}
-              <div className="relative rounded-[40%_60%_60%_40%/40%_40%_60%_60%] overflow-hidden shadow-2xl">
-                <img
-                  src={HERO_IMG}
-                  alt="Beautiful multi-tiered eggless celebration cake by ChefDollsCakeShelf"
-                  className="w-full h-auto object-cover"
-                  style={{ aspectRatio: "4/5" }}
-                />
+              <div className="relative rounded-[40%_60%_60%_40%/40%_40%_60%_60%] overflow-hidden shadow-2xl" style={{ aspectRatio: "4/5" }}>
+                {HERO_IMGS.map((src, i) => (
+                  <img
+                    key={src}
+                    src={src}
+                    alt={i === 0 ? "Beautiful multi-tiered eggless celebration cake by ChefDollsCakeShelf" : ""}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{
+                      opacity: i === imgIndex ? 1 : 0,
+                      transition: "opacity 0.9s ease-in-out",
+                    }}
+                  />
+                ))}
+                <div style={{ aspectRatio: "4/5" }} />
                 {/* Overlay shimmer */}
                 <div
                   className="absolute inset-0 opacity-10"

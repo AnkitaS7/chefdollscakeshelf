@@ -304,7 +304,10 @@ export default function BuildYourCake() {
                             : BROWNIE_SIZES
                       }
                       selected={order.size}
-                      onSelect={s => setOrder(o => ({ ...o, size: s }))}
+                      onSelect={s => {
+                        setOrder(o => ({ ...o, size: s }));
+                        goToStep(currentStepIndex + 1, "forward");
+                      }}
                     />
                   )}
 
@@ -312,7 +315,10 @@ export default function BuildYourCake() {
                     <StepDeliveryDate
                       product={order.product!}
                       selected={order.deliveryDate}
-                      onSelect={date => setOrder(o => ({ ...o, deliveryDate: date }))}
+                      onSelect={date => {
+                        setOrder(o => ({ ...o, deliveryDate: date }));
+                        goToStep(currentStepIndex + 1, "forward");
+                      }}
                     />
                   )}
 
@@ -325,7 +331,10 @@ export default function BuildYourCake() {
                           : CAKE_FLAVORS
                       }
                       selected={order.flavor}
-                      onSelect={f => setOrder(o => ({ ...o, flavor: f }))}
+                      onSelect={f => {
+                        setOrder(o => ({ ...o, flavor: f }));
+                        goToStep(currentStepIndex + 1, "forward");
+                      }}
                     />
                   )}
 
@@ -338,7 +347,10 @@ export default function BuildYourCake() {
                           : CAKE_FROSTINGS
                       }
                       selected={order.frosting}
-                      onSelect={f => setOrder(o => ({ ...o, frosting: f }))}
+                      onSelect={f => {
+                        setOrder(o => ({ ...o, frosting: f }));
+                        goToStep(currentStepIndex + 1, "forward");
+                      }}
                     />
                   )}
 

@@ -49,6 +49,7 @@ export default function MenuOrder({
     });
 
   const cakeNames = Array.from(new Set(gallery.map(item => item.name))).sort();
+  const selectedItem = gallery.find(item => item.name === order.cakeName);
 
   const canProceed =
     order.cakeName.trim() !== "" &&
@@ -70,7 +71,14 @@ export default function MenuOrder({
   const sendWhatsApp = () => {
     let msg = `Hi Dhvani! I'd like to order from ChefDollsCakeShelf.%0A%0A`;
     msg += `🎂 *Menu Order:*%0A`;
-    const dateStr = new Date(order.deliveryDate + "T00:00:00").toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    const dateStr = new Date(
+      order.deliveryDate + "T00:00:00"
+    ).toLocaleDateString("en-IN", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
     msg += `• Cake: ${order.cakeName}%0A`;
     msg += `• Size: ${order.size?.label} (${order.size?.serves})%0A`;
     msg += `• Flavor: ${order.flavor?.emoji} ${order.flavor?.label}%0A`;
@@ -289,25 +297,44 @@ export default function MenuOrder({
               <div>
                 <label
                   className="block text-xs font-semibold uppercase tracking-wide mb-2"
-                  style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
+                  style={{
+                    color: "oklch(0.55 0.04 30)",
+                    fontFamily: "var(--font-body)",
+                  }}
                 >
                   Delivery Date
                 </label>
                 {/* Cakes need 5 days notice */}
                 <div
                   className="rounded-2xl px-4 py-3 mb-3 flex items-start gap-2"
-                  style={{ background: "oklch(0.97 0.03 70)", border: `1.5px solid ${ACCENT}` }}
+                  style={{
+                    background: "oklch(0.97 0.03 70)",
+                    border: `1.5px solid ${ACCENT}`,
+                  }}
                 >
                   <span className="text-base mt-0.5">⏰</span>
-                  <p className="text-sm" style={{ color: "oklch(0.40 0.06 40)", fontFamily: "var(--font-body)" }}>
-                    <strong>Heads up:</strong> Custom cakes require at least 5–7 days notice.
+                  <p
+                    className="text-sm"
+                    style={{
+                      color: "oklch(0.40 0.06 40)",
+                      fontFamily: "var(--font-body)",
+                    }}
+                  >
+                    <strong>Heads up:</strong> Custom cakes require at least 5–7
+                    days notice.
                   </p>
                 </div>
                 <input
                   type="date"
                   value={order.deliveryDate}
-                  min={new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString().split("T")[0]}
-                  onChange={e => setOrder(o => ({ ...o, deliveryDate: e.target.value }))}
+                  min={
+                    new Date(Date.now() + 5 * 24 * 60 * 60 * 1000)
+                      .toISOString()
+                      .split("T")[0]
+                  }
+                  onChange={e =>
+                    setOrder(o => ({ ...o, deliveryDate: e.target.value }))
+                  }
                   className="rounded-xl px-4 py-3 text-sm outline-none transition-all duration-200"
                   style={{
                     border: `1.5px solid ${order.deliveryDate ? ACCENT : "oklch(0.88 0.04 60)"}`,
@@ -317,16 +344,36 @@ export default function MenuOrder({
                     cursor: "pointer",
                   }}
                   onFocus={e => (e.target.style.borderColor = ACCENT)}
-                  onBlur={e => (e.target.style.borderColor = order.deliveryDate ? ACCENT : "oklch(0.88 0.04 60)")}
+                  onBlur={e =>
+                    (e.target.style.borderColor = order.deliveryDate
+                      ? ACCENT
+                      : "oklch(0.88 0.04 60)")
+                  }
                 />
                 {order.deliveryDate && (
                   <div
-                    className="mt-3 rounded-2xl px-4 py-3 inline-flex items-center gap-2"
-                    style={{ background: "oklch(0.96 0.04 140)", border: "1.5px solid oklch(0.75 0.1 140)" }}
+                    className="mt-3 rounded-2xl px-4 py-3 inline-flex items-center gap-2 mx-2"
+                    style={{
+                      background: "oklch(0.96 0.04 140)",
+                      border: "1.5px solid oklch(0.75 0.1 140)",
+                    }}
                   >
                     <span>✅</span>
-                    <span className="text-sm font-semibold" style={{ color: "oklch(0.28 0.05 30)", fontFamily: "var(--font-body)" }}>
-                      {new Date(order.deliveryDate + "T00:00:00").toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
+                    <span
+                      className="text-sm font-semibold"
+                      style={{
+                        color: "oklch(0.28 0.05 30)",
+                        fontFamily: "var(--font-body)",
+                      }}
+                    >
+                      {new Date(
+                        order.deliveryDate + "T00:00:00"
+                      ).toLocaleDateString("en-IN", {
+                        weekday: "long",
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
                     </span>
                   </div>
                 )}
@@ -410,7 +457,14 @@ export default function MenuOrder({
                   Make a selection to see your order preview.
                 </p>
               ) : (
-                <div className="space-y-3">
+                <div className="space-y-6">
+                  {selectedItem?.image && (
+                    <img
+                      src={selectedItem.image}
+                      alt={order.cakeName}
+                      className="rounded-2xl object-cover"
+                    />
+                  )}
                   {order.cakeName && (
                     <PreviewRow label="Cake" value={order.cakeName} />
                   )}
@@ -429,7 +483,13 @@ export default function MenuOrder({
                   {order.deliveryDate && (
                     <PreviewRow
                       label="Date"
-                      value={new Date(order.deliveryDate + "T00:00:00").toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
+                      value={new Date(
+                        order.deliveryDate + "T00:00:00"
+                      ).toLocaleDateString("en-IN", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
                     />
                   )}
                   {order.size && (
@@ -498,6 +558,14 @@ export default function MenuOrder({
               border: "1px solid oklch(0.90 0.04 60)",
             }}
           >
+            {selectedItem?.image && (
+              <img
+                src={selectedItem.image}
+                alt={order.cakeName}
+                className="block w-fit rounded-2xl object-cover mx-auto"
+                style={{ maxHeight: "250px" }}
+              />
+            )}
             <PreviewRow label="Cake" value={order.cakeName} />
             <PreviewRow
               label="Size"
@@ -509,7 +577,14 @@ export default function MenuOrder({
             />
             <PreviewRow
               label="Delivery Date"
-              value={new Date(order.deliveryDate + "T00:00:00").toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
+              value={new Date(
+                order.deliveryDate + "T00:00:00"
+              ).toLocaleDateString("en-IN", {
+                weekday: "long",
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
             />
             <PreviewRow
               label="Special Instructions"

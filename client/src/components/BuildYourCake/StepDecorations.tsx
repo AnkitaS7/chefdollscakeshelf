@@ -7,6 +7,8 @@ export default function StepDecorations({
   onToggle,
   message,
   onMessage,
+  customCardMessage,
+  onCustomCardMessage,
 }: {
   product: ProductType;
   items: { label: string; emoji: string }[];
@@ -14,6 +16,8 @@ export default function StepDecorations({
   onToggle: (label: string) => void;
   message: string;
   onMessage: (msg: string) => void;
+  customCardMessage: string;
+  onCustomCardMessage: (msg: string) => void;
 }) {
   const isBrownie = product === "brownie";
   const addonPrice = isBrownie ? 60 : product === "cupcake" ? 50 : 150;
@@ -74,8 +78,8 @@ export default function StepDecorations({
           </label>
           <input
             type="text"
-            value={message}
-            onChange={e => onMessage(e.target.value)}
+            value={customCardMessage}
+            onChange={e => onCustomCardMessage(e.target.value)}
             placeholder="e.g. Happy Birthday Priya! 🎂"
             maxLength={60}
             className="w-full rounded-xl px-3 py-2 text-sm outline-none transition-all duration-200"
@@ -96,7 +100,7 @@ export default function StepDecorations({
               fontFamily: "var(--font-body)",
             }}
           >
-            {message.length}/60 characters
+            {customCardMessage}/60 characters
           </p>
         </div>
       )}

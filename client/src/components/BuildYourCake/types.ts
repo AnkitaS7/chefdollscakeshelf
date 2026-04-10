@@ -42,4 +42,5 @@ export interface OrderState {
   decorations: string[];
   addons: string[];
   message: string;
+  customCardMessage: string;
 }

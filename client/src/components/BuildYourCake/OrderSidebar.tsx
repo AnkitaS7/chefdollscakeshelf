@@ -83,6 +83,12 @@ export default function OrderSidebar({
                 )}
               />
             )}
+            {(isBrownie ? order.addons : order.decorations).includes('Custom Message Card') && order.customCardMessage && (
+              <SummaryRow
+                label="Custom Card Message"
+                value={order.customCardMessage}
+              />
+            )}
           </div>
 
           {order.size && (

@@ -100,7 +100,7 @@ export default function StepDecorations({
               fontFamily: "var(--font-body)",
             }}
           >
-            {customCardMessage}/60 characters
+            {customCardMessage.length}/60 characters
           </p>
         </div>
       )}

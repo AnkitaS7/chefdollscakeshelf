@@ -117,6 +117,7 @@ export default function BuildYourCake() {
       decorations: [],
       addons: [],
       message: "",
+      customCardMessage: "",
     });
     goToStep(1, "forward");
   };

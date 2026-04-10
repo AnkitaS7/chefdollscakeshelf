@@ -148,9 +148,9 @@ export default function BuildYourCake() {
       ? new Date(order.deliveryDate + "T00:00:00").toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })
       : "Not specified";
     if (p === "cake") {
-      msg += `🎂 *Custom Cake Order:*%0A• Size: ${order.size?.label} (${order.size?.serves})%0A• Delivery Date: ${dateStr}%0A• Flavor: ${order.flavor?.label}%0A• Frosting: ${order.frosting?.label}%0A• Decorations: ${order.decorations.length > 0 ? order.decorations.join(", ") : "None"}%0A• Estimated Budget: ₹${totalPrice()}+`;
+      msg += `🎂 *Custom Cake Order:*%0A• Size: ${order.size?.label} (${order.size?.serves})%0A• Delivery Date: ${dateStr}%0A• Flavor: ${order.flavor?.label}%0A• Frosting: ${order.frosting?.label}%0A• Decorations: ${order.decorations.length > 0 ? order.decorations.join(", ") : "None"}%0A• ${order.decorations.includes('Custom Message Card') ? 'Message for the Custom Message Card: ' + order.customCardMessage + '%0A•': ''} Estimated Budget: ₹${totalPrice()}+`;
     } else if (p === "cupcake") {
-      msg += `🧁 *Cupcake Order:*%0A• Quantity: ${order.size?.label}%0A• Delivery Date: ${dateStr}%0A• Flavor: ${order.flavor?.label}%0A• Frosting: ${order.frosting?.label}%0A• Toppings: ${order.decorations.length > 0 ? order.decorations.join(", ") : "None"}%0A• ${order.decorations.includes('Custom Message Card') ? 'Message for the Custom Message Card:' + order.customCardMessage + '%0A•': ''} Estimated Budget: ₹${totalPrice()}+`;
+      msg += `🧁 *Cupcake Order:*%0A• Quantity: ${order.size?.label}%0A• Delivery Date: ${dateStr}%0A• Flavor: ${order.flavor?.label}%0A• Frosting: ${order.frosting?.label}%0A• Toppings: ${order.decorations.length > 0 ? order.decorations.join(", ") : "None"}%0A• ${order.decorations.includes('Custom Message Card') ? 'Message for the Custom Message Card: ' + order.customCardMessage + '%0A•': ''} Estimated Budget: ₹${totalPrice()}+`;
     } else {
       msg += `🍫 *Brownie Order:*%0A• Quantity: ${order.size?.label}%0A• Delivery Date: ${dateStr}%0A• Add-ons: ${order.addons.length > 0 ? order.addons.join(", ") : "None"}%0A• ${order.addons.includes('Custom Message Card') ? 'Message for the Custom Message Card: ' + order.customCardMessage + '%0A•': ''} Estimated Budget: ₹${totalPrice()}+`;
     }

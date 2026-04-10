@@ -312,10 +312,8 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <button
-        onClick={scrollToNext}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-60 hover:opacity-100 transition-opacity"
-        aria-label="Scroll down"
+      <div
+        className="absolute bottom-1 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-60 hover:opacity-100 transition-opacity"
       >
         <span
           className="text-xs font-body"
@@ -330,7 +328,7 @@ export default function HeroSection() {
           className="w-5 h-5 animate-bounce"
           style={{ color: "oklch(0.65 0.12 10)" }}
         />
-      </button>
+      </div>
     </section>
   );
 }

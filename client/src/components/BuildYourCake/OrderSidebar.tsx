@@ -15,6 +15,7 @@ export default function OrderSidebar({
 }) {
   const productMeta = PRODUCTS.find(p => p.type === order.product);
   const isBrownie = order.product === "brownie";
+  const isCookieTin = order.product === "cookietin";
 
   if (currentStep === "summary") return null;
 
@@ -53,7 +54,7 @@ export default function OrderSidebar({
             />
             {order.size && (
               <SummaryRow
-                label={isBrownie ? "Qty" : "Size"}
+                label={isBrownie ? "Qty" : isCookieTin ? "Tin" : "Size"}
                 value={order.size.label}
               />
             )}

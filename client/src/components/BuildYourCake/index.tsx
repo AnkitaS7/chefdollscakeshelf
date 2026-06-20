@@ -18,6 +18,7 @@ import {
   CUPCAKE_DECORATIONS,
   BROWNIE_SIZES,
   BROWNIE_ADDONS,
+  COOKIETIN_SIZES,
   getSteps,
 } from "./data";
 import ProgressBar from "./ProgressBar";
@@ -134,10 +135,19 @@ export default function BuildYourCake() {
 
   const totalPrice = () => {
     const base = order.size?.price ?? 0;
-    if (order.product === "cake") return base + order.decorations.length * 150;
+    if (order.product === "cake") {
+      // Cakes are priced by flavor × weight: pricePerKg × kg. Before a flavor is
+      // chosen, fall back to the plain size base so the sidebar shows a "from" price.
+      const kg = order.size?.kg ?? 0;
+      const perKg = order.flavor?.pricePerKg ?? 0;
+      const cakeBase = perKg > 0 && kg > 0 ? perKg * kg : base;
+      return cakeBase + order.decorations.length * 150;
+    }
     if (order.product === "cupcake")
       return base + order.decorations.length * 50;
     if (order.product === "brownie") return base + order.addons.length * 60;
+    // Cookie tins are a fixed price per 500gms tin (no add-ons).
+    if (order.product === "cookietin") return base;
     return 0;
   };
 
@@ -151,6 +161,8 @@ export default function BuildYourCake() {
       msg += `🎂 *Custom Cake Order:*%0A• Size: ${order.size?.label} (${order.size?.serves})%0A• Delivery Date: ${dateStr}%0A• Flavor: ${order.flavor?.label}%0A• Frosting: ${order.frosting?.label}%0A• Decorations: ${order.decorations.length > 0 ? order.decorations.join(", ") : "None"}%0A• ${order.decorations.includes('Custom Message Card') ? 'Message for the Custom Message Card: ' + order.customCardMessage + '%0A•': ''} Estimated Budget: ₹${totalPrice()}+`;
     } else if (p === "cupcake") {
       msg += `🧁 *Cupcake Order:*%0A• Quantity: ${order.size?.label}%0A• Delivery Date: ${dateStr}%0A• Flavor: ${order.flavor?.label}%0A• Frosting: ${order.frosting?.label}%0A• Toppings: ${order.decorations.length > 0 ? order.decorations.join(", ") : "None"}%0A• ${order.decorations.includes('Custom Message Card') ? 'Message for the Custom Message Card: ' + order.customCardMessage + '%0A•': ''} Estimated Budget: ₹${totalPrice()}+`;
+    } else if (p === "cookietin") {
+      msg += `🍪 *Cookie Tin Order:*%0A• Tin: ${order.size?.label} (${order.size?.serves})%0A• Delivery Date: ${dateStr}%0A• Estimated Budget: ₹${totalPrice()}+`;
     } else {
       msg += `🍫 *Brownie Order:*%0A• Quantity: ${order.size?.label}%0A• Delivery Date: ${dateStr}%0A• Add-ons: ${order.addons.length > 0 ? order.addons.join(", ") : "None"}%0A• ${order.addons.includes('Custom Message Card') ? 'Message for the Custom Message Card: ' + order.customCardMessage + '%0A•': ''} Estimated Budget: ₹${totalPrice()}+`;
     }
@@ -198,7 +210,9 @@ export default function BuildYourCake() {
                   ? "Dream Cupcakes"
                   : order.product === "brownie"
                     ? "Dream Brownies"
-                    : "Dream Cake"}
+                    : order.product === "cookietin"
+                      ? "Dream Cookie Tins"
+                      : "Dream Cake"}
             </em>
           </h2>
           <p
@@ -301,7 +315,9 @@ export default function BuildYourCake() {
                           ? CAKE_SIZES
                           : order.product === "cupcake"
                             ? CUPCAKE_SIZES
-                            : BROWNIE_SIZES
+                            : order.product === "brownie"
+                              ? BROWNIE_SIZES
+                              : COOKIETIN_SIZES
                       }
                       selected={order.size}
                       onSelect={s => {

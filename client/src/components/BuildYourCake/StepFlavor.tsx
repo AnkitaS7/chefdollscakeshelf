@@ -42,16 +42,29 @@ export default function StepFlavor({
               }}
             >
               <span className="text-2xl">{f.emoji}</span>
-              <span
-                className="text-sm font-medium"
-                style={{
-                  color: isSelected
-                    ? "oklch(0.45 0.1 10)"
-                    : "oklch(0.40 0.05 30)",
-                  fontFamily: "var(--font-body)",
-                }}
-              >
-                {f.label}
+              <span className="flex flex-col">
+                <span
+                  className="text-sm font-medium"
+                  style={{
+                    color: isSelected
+                      ? "oklch(0.45 0.1 10)"
+                      : "oklch(0.40 0.05 30)",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  {f.label}
+                </span>
+                {f.pricePerKg != null && (
+                  <span
+                    className="text-xs font-semibold"
+                    style={{
+                      color: isSelected ? accentColor : "oklch(0.58 0.08 30)",
+                      fontFamily: "var(--font-body)",
+                    }}
+                  >
+                    ₹{f.pricePerKg}/kg
+                  </span>
+                )}
               </span>
             </button>
           );

@@ -5,6 +5,7 @@ const MIN_NOTICE: Record<ProductType, number> = {
   cake: 5,
   cupcake: 2,
   brownie: 2,
+  cookietin: 2,
 };
 
 function toISODate(date: Date): string {
@@ -26,14 +27,16 @@ export default function StepDeliveryDate({
   const noticeLabel =
     product === "cake"
       ? "Custom cakes require at least 5–7 days notice."
-      : "Cupcakes & brownies require at least 48 hours notice.";
+      : "Cupcakes, brownies & cookie tins require at least 48 hours notice.";
 
   const accentColor =
     product === "cake"
       ? "oklch(0.65 0.12 10)"
       : product === "cupcake"
         ? "oklch(0.55 0.14 200)"
-        : "oklch(0.40 0.08 40)";
+        : product === "cookietin"
+          ? "oklch(0.55 0.10 70)"
+          : "oklch(0.40 0.08 40)";
 
   // Format selected date for display (e.g. "Sunday, 13 April 2026")
   const displayDate = selected

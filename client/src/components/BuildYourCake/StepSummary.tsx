@@ -34,6 +34,7 @@ export default function StepSummary({
 }) {
   const productMeta = PRODUCTS.find(p => p.type === order.product)!;
   const isBrownie = order.product === "brownie";
+  const isCookieTin = order.product === "cookietin";
 
   return (
     <div className="flex-1 flex flex-col gap-5">
@@ -68,7 +69,7 @@ export default function StepSummary({
           value={`${productMeta.emoji} ${productMeta.label}`}
         />
         <SummaryRow
-          label={isBrownie ? "Quantity" : "Size"}
+          label={isBrownie ? "Quantity" : isCookieTin ? "Tin" : "Size"}
           value={`${order.size?.emoji} ${order.size?.label} - ${order.size?.serves}`}
         />
         {order.deliveryDate && (
@@ -89,14 +90,16 @@ export default function StepSummary({
             value={`${order.frosting.emoji} ${order.frosting.label}`}
           />
         )}
-        <SummaryRow
-          label={isBrownie ? "Add-ons" : "Decorations"}
-          value={
-            (isBrownie ? order.addons : order.decorations).length > 0
-              ? (isBrownie ? order.addons : order.decorations).join(", ")
-              : "None"
-          }
-        />
+        {!isCookieTin && (
+          <SummaryRow
+            label={isBrownie ? "Add-ons" : "Decorations"}
+            value={
+              (isBrownie ? order.addons : order.decorations).length > 0
+                ? (isBrownie ? order.addons : order.decorations).join(", ")
+                : "None"
+            }
+          />
+        )}
         {(isBrownie ? order.addons : order.decorations).includes('Custom Message Card') && order.customCardMessage && <SummaryRow label="Custom Card Message" value={order.customCardMessage} />}
         {order.message && <SummaryRow label="Note" value={order.message} />}
       </div>

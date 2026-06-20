@@ -16,14 +16,18 @@ export default function StepSize({
       ? "📏 Choose Your Cake Size"
       : product === "cupcake"
         ? "🧁 Choose Your Serving Size"
-        : "🍫 Choose Your Quantity";
+        : product === "cookietin"
+          ? "🍪 Choose Your Cookie Tin"
+          : "🍫 Choose Your Quantity";
 
   const accentColor =
     product === "cake"
       ? "oklch(0.65 0.12 10)"
       : product === "cupcake"
         ? "oklch(0.55 0.14 200)"
-        : "oklch(0.40 0.08 40)";
+        : product === "cookietin"
+          ? "oklch(0.55 0.10 70)"
+          : "oklch(0.40 0.08 40)";
 
   return (
     <div className="flex-1 flex flex-col">
@@ -39,7 +43,9 @@ export default function StepSize({
       >
         {product === "brownie"
           ? "How many brownies would you like?"
-          : "Pick the right size for your occasion."}
+          : product === "cookietin"
+            ? "Each tin is a generous 500gms of freshly baked cookies."
+            : "Pick the right size for your occasion."}
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {sizes.map(s => {

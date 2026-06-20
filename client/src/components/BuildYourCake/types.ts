@@ -1,4 +1,4 @@
-export type ProductType = "cake" | "cupcake" | "brownie";
+export type ProductType = "cake" | "cupcake" | "brownie" | "cookietin";
 
 export type StepId =
   | "product"
@@ -18,7 +18,8 @@ export interface StepConfig {
 export interface SizeOption {
   label: string;
   serves: string;
-  price: number;
+  price: number; // base price for this size (plain cake, before flavor) — also used as "from" indicator
+  kg?: number; // weight multiplier for cakes (0.5/1/1.5/2); used with FlavorOption.pricePerKg
   emoji: string;
 }
 
@@ -26,6 +27,7 @@ export interface FlavorOption {
   label: string;
   emoji: string;
   color: string;
+  pricePerKg?: number; // cake price for 1kg of this flavor; total = pricePerKg × size.kg
 }
 
 export interface FrostingOption {

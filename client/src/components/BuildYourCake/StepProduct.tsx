@@ -23,7 +23,7 @@ export default function StepProduct({
         Select a product to get started. Your selection shapes the entire
         ordering experience.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-2">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-2">
         {PRODUCTS.map(p => {
           const isSelected = selected === p.type;
           return (

@@ -149,6 +149,7 @@ export default function Footer() {
                 "Birthday Cakes",
                 "Anniversary Cakes",
                 "Cupcake Boxes",
+                "Cookie Tins",
                 "Baby Shower Cakes",
                 "Engagement Cakes",
                 "Festival Specials",

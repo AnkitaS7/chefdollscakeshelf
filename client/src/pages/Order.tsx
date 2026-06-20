@@ -65,8 +65,9 @@ export default function Order() {
         }}
       >
         <p className="font-bold">Kindly Note:&ensp;</p> For 🎂 Custom Cakes we
-        need 5–7 Days Notice and for 🧁 Cupcakes & Pastries we need 48-Hour
-        Notice. 💍 Wedding & large orders: 2–3 weeks ahead recommended.
+        need 5–7 Days Notice and for 🧁 Cupcakes, Pastries & 🍪 Cookie Tins we
+        need 48-Hour Notice. 💍 Wedding & large orders: 2–3 weeks ahead
+        recommended.
       </div>
       <MarqueeBanner />
 

@@ -66,7 +66,12 @@ export default function MenuOrder({
     }, 220);
   };
 
-  const totalPrice = order.size?.price ?? 0;
+  // Cakes are priced by flavor × weight (pricePerKg × kg); fall back to the plain
+  // size base until a flavor is picked.
+  const totalPrice =
+    order.flavor?.pricePerKg && order.size?.kg
+      ? order.flavor.pricePerKg * order.size.kg
+      : (order.size?.price ?? 0);
 
   const sendWhatsApp = () => {
     let msg = `Hi Dhvani! I'd like to order from ChefDollsCakeShelf.%0A%0A`;
@@ -274,16 +279,31 @@ export default function MenuOrder({
                         }}
                       >
                         <span className="text-2xl">{f.emoji}</span>
-                        <span
-                          className="text-sm font-medium"
-                          style={{
-                            color: isSelected
-                              ? "oklch(0.45 0.1 10)"
-                              : "oklch(0.40 0.05 30)",
-                            fontFamily: "var(--font-body)",
-                          }}
-                        >
-                          {f.label}
+                        <span className="flex flex-col">
+                          <span
+                            className="text-sm font-medium"
+                            style={{
+                              color: isSelected
+                                ? "oklch(0.45 0.1 10)"
+                                : "oklch(0.40 0.05 30)",
+                              fontFamily: "var(--font-body)",
+                            }}
+                          >
+                            {f.label}
+                          </span>
+                          {f.pricePerKg != null && (
+                            <span
+                              className="text-xs font-semibold"
+                              style={{
+                                color: isSelected
+                                  ? ACCENT
+                                  : "oklch(0.58 0.08 30)",
+                                fontFamily: "var(--font-body)",
+                              }}
+                            >
+                              ₹{f.pricePerKg}/kg
+                            </span>
+                          )}
                         </span>
                       </button>
                     );
@@ -510,7 +530,7 @@ export default function MenuOrder({
                         className="font-display text-2xl font-bold"
                         style={{ color: "oklch(0.45 0.1 10)" }}
                       >
-                        ₹{order.size.price}+
+                        ₹{totalPrice}+
                       </p>
                     </div>
                   )}

@@ -5,6 +5,7 @@
    ============================================================= */
 
 import { useEffect, useRef, useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { OrderState, ProductType } from "./types";
 import {
   PRODUCTS,
@@ -406,7 +407,7 @@ export default function BuildYourCake() {
                     >
                       <button
                         onClick={handleBack}
-                        className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105"
+                        className="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-1.5 transition-all duration-200 hover:scale-105"
                         style={{
                           background: "oklch(0.96 0.02 60)",
                           color: "oklch(0.40 0.05 30)",
@@ -414,14 +415,15 @@ export default function BuildYourCake() {
                           border: "1.5px solid oklch(0.88 0.04 60)",
                         }}
                       >
-                        ← Back
+                        <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+                        Back
                       </button>
 
                       {currentStep.id !== "summary" && (
                         <button
                           onClick={handleNext}
                           disabled={!canProceed()}
-                          className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+                          className="px-6 py-2.5 rounded-full text-sm font-semibold flex items-center gap-1.5 transition-all duration-200 hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
                           style={{
                             background: canProceed()
                               ? (productMeta?.selectedBg ??
@@ -431,7 +433,8 @@ export default function BuildYourCake() {
                             fontFamily: "var(--font-body)",
                           }}
                         >
-                          Continue →
+                          Continue
+                          <ArrowRight className="w-4 h-4" aria-hidden="true" />
                         </button>
                       )}
                     </div>

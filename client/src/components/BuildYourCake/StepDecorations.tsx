@@ -1,4 +1,6 @@
+import { PenLine } from "lucide-react";
 import type { ProductType } from "./types";
+import { decorIcon } from "./icons";
 
 export default function StepDecorations({
   product,
@@ -34,10 +36,12 @@ export default function StepDecorations({
       <div className="flex flex-wrap gap-3">
         {items.map(d => {
           const isSelected = selected.includes(d.label);
+          const Icon = decorIcon(d.label);
           return (
             <button
               key={d.label}
               onClick={() => onToggle(d.label)}
+              aria-pressed={isSelected}
               className="px-4 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-200 hover:scale-105"
               style={{
                 background: isSelected
@@ -52,7 +56,8 @@ export default function StepDecorations({
                 fontFamily: "var(--font-body)",
               }}
             >
-              {d.emoji} {d.label}
+              <Icon className="w-4 h-4" aria-hidden="true" />
+              {d.label}
               {isSelected && (
                 <span className="text-xs opacity-80">+₹{addonPrice}</span>
               )}
@@ -74,7 +79,8 @@ export default function StepDecorations({
             className="text-xs font-semibold uppercase tracking-wide flex items-center gap-1.5"
             style={{ color: accentColor, fontFamily: "var(--font-body)" }}
           >
-            ✍️ What should the message say?
+            <PenLine className="w-3.5 h-3.5" aria-hidden="true" />
+            What should the message say?
           </label>
           <input
             type="text"

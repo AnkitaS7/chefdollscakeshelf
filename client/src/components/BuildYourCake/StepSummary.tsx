@@ -1,5 +1,6 @@
 import type { OrderState } from "./types";
 import { PRODUCTS } from "./data";
+import { PRODUCT_ICONS, WhatsAppIcon } from "./icons";
 
 export function SummaryRow({ label, value }: { label: string; value: string }) {
   return (
@@ -35,16 +36,22 @@ export default function StepSummary({
   const productMeta = PRODUCTS.find(p => p.type === order.product)!;
   const isBrownie = order.product === "brownie";
   const isCookieTin = order.product === "cookietin";
+  const ProductIcon = PRODUCT_ICONS[productMeta.type];
 
   return (
     <div className="flex-1 flex flex-col gap-5">
       <div className="text-center">
-        <span style={{ fontSize: "3.5rem" }}>{productMeta.emoji}</span>
+        <ProductIcon
+          className="w-14 h-14 mx-auto"
+          strokeWidth={1.25}
+          style={{ color: productMeta.color }}
+          aria-hidden="true"
+        />
         <h3
           className="font-display text-2xl font-semibold mt-2"
           style={{ color: "oklch(0.28 0.05 30)" }}
         >
-          Your {productMeta.label} is Ready to Order! 🎉
+          Your {productMeta.label} is Ready to Order!
         </h3>
         <p
           className="text-sm mt-1"
@@ -64,13 +71,10 @@ export default function StepSummary({
           border: "1px solid oklch(0.90 0.04 60)",
         }}
       >
-        <SummaryRow
-          label="Product"
-          value={`${productMeta.emoji} ${productMeta.label}`}
-        />
+        <SummaryRow label="Product" value={productMeta.label} />
         <SummaryRow
           label={isBrownie ? "Quantity" : isCookieTin ? "Tin" : "Size"}
-          value={`${order.size?.emoji} ${order.size?.label} - ${order.size?.serves}`}
+          value={`${order.size?.label} - ${order.size?.serves}`}
         />
         {order.deliveryDate && (
           <SummaryRow
@@ -85,10 +89,7 @@ export default function StepSummary({
           />
         )}
         {!isBrownie && !isCookieTin && (
-          <SummaryRow
-            label="Frosting"
-            value={`${order.frosting.emoji} ${order.frosting.label}`}
-          />
+          <SummaryRow label="Frosting" value={order.frosting.label} />
         )}
         {!isCookieTin && (
           <SummaryRow
@@ -144,7 +145,8 @@ export default function StepSummary({
           boxShadow: "0 4px 15px rgba(37, 211, 102, 0.3)",
         }}
       >
-        💬 Send to Dhvani via WhatsApp
+        <WhatsAppIcon className="w-4 h-4" />
+        Send to Dhvani via WhatsApp
       </button>
     </div>
   );

@@ -5,9 +5,13 @@
    ============================================================= */
 
 import { useState, useEffect } from "react";
+import { ArrowLeft, ArrowRight, Cake, CircleCheck, Clock } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import type { SizeOption, FlavorOption } from "./types";
 import { CAKE_SIZES, CAKE_FLAVORS } from "./data";
+import { WhatsAppIcon } from "./icons";
+import FlavorPicker from "./FlavorPicker";
+import SizeCards from "./SizeCards";
 
 interface MenuOrderState {
   cakeName: string;
@@ -121,10 +125,11 @@ export default function MenuOrder({
           >
             <div>
               <h3
-                className="font-display text-2xl font-semibold mb-1"
+                className="font-display text-2xl font-semibold mb-1 flex items-center gap-2"
                 style={{ color: "oklch(0.28 0.05 30)" }}
               >
-                🎂 Choose Your Cake
+                <Cake className="w-5 h-5" aria-hidden="true" />
+                Choose Your Cake
               </h3>
               <p
                 className="text-sm"
@@ -198,56 +203,13 @@ export default function MenuOrder({
                 >
                   Size
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  {CAKE_SIZES.map(s => {
-                    const isSelected = order.size?.label === s.label;
-                    return (
-                      <button
-                        key={s.label}
-                        onClick={() => setOrder(o => ({ ...o, size: s }))}
-                        className="p-4 rounded-2xl text-center transition-all duration-200 hover:scale-105"
-                        style={{
-                          background: isSelected ? ACCENT : "white",
-                          border: `2px solid ${isSelected ? ACCENT : "oklch(0.88 0.04 60)"}`,
-                          boxShadow: isSelected
-                            ? `0 4px 15px ${ACCENT}50`
-                            : "none",
-                        }}
-                      >
-                        <p className="text-2xl mb-1">{s.emoji}</p>
-                        <p
-                          className="text-sm font-semibold"
-                          style={{
-                            color: isSelected ? "white" : "oklch(0.35 0.05 30)",
-                            fontFamily: "var(--font-body)",
-                          }}
-                        >
-                          {s.label}
-                        </p>
-                        <p
-                          className="text-xs mt-0.5"
-                          style={{
-                            color: isSelected
-                              ? "rgba(255,255,255,0.8)"
-                              : "oklch(0.55 0.04 30)",
-                            fontFamily: "var(--font-body)",
-                          }}
-                        >
-                          {s.serves}
-                        </p>
-                        <p
-                          className="text-xs font-bold mt-1"
-                          style={{
-                            color: isSelected ? "oklch(0.95 0.04 60)" : ACCENT,
-                            fontFamily: "var(--font-body)",
-                          }}
-                        >
-                          ₹{s.price}+
-                        </p>
-                      </button>
-                    );
-                  })}
-                </div>
+                <SizeCards
+                  product="cake"
+                  sizes={CAKE_SIZES}
+                  selected={order.size}
+                  onSelect={s => setOrder(o => ({ ...o, size: s }))}
+                  accentColor={ACCENT}
+                />
               </div>
             )}
 
@@ -263,52 +225,12 @@ export default function MenuOrder({
                 >
                   Flavor
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {CAKE_FLAVORS.map(f => {
-                    const isSelected = order.flavor?.label === f.label;
-                    return (
-                      <button
-                        key={f.label}
-                        onClick={() => setOrder(o => ({ ...o, flavor: f }))}
-                        className="p-3 rounded-2xl text-left flex items-center gap-3 transition-all duration-200 hover:scale-[1.02]"
-                        style={{
-                          background: isSelected
-                            ? "oklch(0.95 0.04 10)"
-                            : "white",
-                          border: `2px solid ${isSelected ? ACCENT : "oklch(0.88 0.04 60)"}`,
-                        }}
-                      >
-                        <span className="text-2xl">{f.emoji}</span>
-                        <span className="flex flex-col">
-                          <span
-                            className="text-sm font-medium"
-                            style={{
-                              color: isSelected
-                                ? "oklch(0.45 0.1 10)"
-                                : "oklch(0.40 0.05 30)",
-                              fontFamily: "var(--font-body)",
-                            }}
-                          >
-                            {f.label}
-                          </span>
-                          {f.pricePerKg != null && (
-                            <span
-                              className="text-xs font-semibold"
-                              style={{
-                                color: isSelected
-                                  ? ACCENT
-                                  : "oklch(0.58 0.08 30)",
-                                fontFamily: "var(--font-body)",
-                              }}
-                            >
-                              ₹{f.pricePerKg}/kg
-                            </span>
-                          )}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
+                <FlavorPicker
+                  flavors={CAKE_FLAVORS}
+                  selected={order.flavor}
+                  onSelect={f => setOrder(o => ({ ...o, flavor: f }))}
+                  accentColor={ACCENT}
+                />
               </div>
             )}
 
@@ -332,7 +254,11 @@ export default function MenuOrder({
                     border: `1.5px solid ${ACCENT}`,
                   }}
                 >
-                  <span className="text-base mt-0.5">⏰</span>
+                  <Clock
+                    className="w-4 h-4 mt-0.5 flex-shrink-0"
+                    style={{ color: ACCENT }}
+                    aria-hidden="true"
+                  />
                   <p
                     className="text-sm"
                     style={{
@@ -378,7 +304,11 @@ export default function MenuOrder({
                       border: "1.5px solid oklch(0.75 0.1 140)",
                     }}
                   >
-                    <span>✅</span>
+                    <CircleCheck
+                      className="w-4 h-4 flex-shrink-0"
+                      style={{ color: "oklch(0.55 0.15 140)" }}
+                      aria-hidden="true"
+                    />
                     <span
                       className="text-sm font-semibold"
                       style={{
@@ -438,14 +368,15 @@ export default function MenuOrder({
               <button
                 onClick={() => goTo("summary", "forward")}
                 disabled={!canProceed}
-                className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="px-6 py-2.5 rounded-full text-sm font-semibold flex items-center gap-1.5 transition-all duration-200 hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
                 style={{
                   background: canProceed ? ACCENT : "oklch(0.88 0.02 40)",
                   color: "white",
                   fontFamily: "var(--font-body)",
                 }}
               >
-                Review Order →
+                Review Order
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -461,10 +392,11 @@ export default function MenuOrder({
               }}
             >
               <h3
-                className="font-display text-xl font-semibold mb-4 text-center"
+                className="font-display text-xl font-semibold mb-4 flex items-center justify-center gap-2"
                 style={{ color: "oklch(0.28 0.05 30)" }}
               >
-                🎂 Your Selection
+                <Cake className="w-5 h-5" aria-hidden="true" />
+                Your Selection
               </h3>
               {!order.cakeName && !order.size && !order.flavor ? (
                 <p
@@ -551,12 +483,17 @@ export default function MenuOrder({
           }}
         >
           <div className="text-center">
-            <span style={{ fontSize: "3.5rem" }}>🎂</span>
+            <Cake
+              className="w-14 h-14 mx-auto"
+              strokeWidth={1.25}
+              style={{ color: ACCENT }}
+              aria-hidden="true"
+            />
             <h3
               className="font-display text-2xl font-semibold mt-2"
               style={{ color: "oklch(0.28 0.05 30)" }}
             >
-              Your Order is Ready! 🎉
+              Your Order is Ready!
             </h3>
             <p
               className="text-sm mt-1"
@@ -589,7 +526,7 @@ export default function MenuOrder({
             <PreviewRow label="Cake" value={order.cakeName} />
             <PreviewRow
               label="Size"
-              value={`${order.size?.emoji} ${order.size?.label} · ${order.size?.serves}`}
+              value={`${order.size?.label} · ${order.size?.serves}`}
             />
             <PreviewRow
               label="Flavor"
@@ -650,7 +587,7 @@ export default function MenuOrder({
           >
             <button
               onClick={() => goTo("select", "back")}
-              className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105"
+              className="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-1.5 transition-all duration-200 hover:scale-105"
               style={{
                 background: "oklch(0.96 0.02 60)",
                 color: "oklch(0.40 0.05 30)",
@@ -658,7 +595,8 @@ export default function MenuOrder({
                 border: "1.5px solid oklch(0.88 0.04 60)",
               }}
             >
-              ← Back
+              <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+              Back
             </button>
             <button
               onClick={sendWhatsApp}
@@ -670,7 +608,8 @@ export default function MenuOrder({
                 boxShadow: "0 4px 15px rgba(37, 211, 102, 0.3)",
               }}
             >
-              💬 Send to Dhvani via WhatsApp
+              <WhatsAppIcon className="w-4 h-4" />
+              Send to Dhvani via WhatsApp
             </button>
           </div>
         </div>

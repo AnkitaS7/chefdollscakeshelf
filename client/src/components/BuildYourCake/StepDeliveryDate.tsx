@@ -1,3 +1,4 @@
+import { CalendarDays, CircleCheck, Clock } from "lucide-react";
 import type { ProductType } from "./types";
 
 // Minimum notice days per product type
@@ -51,10 +52,11 @@ export default function StepDeliveryDate({
   return (
     <div className="flex-1 flex flex-col">
       <h3
-        className="font-display text-2xl font-semibold mb-2"
+        className="font-display text-2xl font-semibold mb-2 flex items-center gap-2"
         style={{ color: "oklch(0.28 0.05 30)" }}
       >
-        📆 When do you need it?
+        <CalendarDays className="w-5 h-5" aria-hidden="true" />
+        When do you need it?
       </h3>
       <p
         className="text-sm mb-6"
@@ -71,7 +73,11 @@ export default function StepDeliveryDate({
           border: `1.5px solid ${accentColor}`,
         }}
       >
-        <span className="text-base mt-0.5">⏰</span>
+        <Clock
+          className="w-4 h-4 mt-0.5 flex-shrink-0"
+          style={{ color: accentColor }}
+          aria-hidden="true"
+        />
         <p
           className="text-sm"
           style={{ color: "oklch(0.40 0.06 40)", fontFamily: "var(--font-body)" }}
@@ -118,7 +124,11 @@ export default function StepDeliveryDate({
             border: "1.5px solid oklch(0.75 0.1 140)",
           }}
         >
-          <span className="text-xl">✅</span>
+          <CircleCheck
+            className="w-5 h-5 flex-shrink-0"
+            style={{ color: "oklch(0.55 0.15 140)" }}
+            aria-hidden="true"
+          />
           <div>
             <p
               className="text-xs font-semibold uppercase tracking-wide"

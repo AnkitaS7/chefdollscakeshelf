@@ -1,6 +1,7 @@
 import type { OrderState, StepId } from "./types";
 import { PRODUCTS } from "./data";
 import { SummaryRow } from "./StepSummary";
+import { PRODUCT_ICONS, WhatsAppIcon } from "./icons";
 
 export default function OrderSidebar({
   order,
@@ -16,6 +17,7 @@ export default function OrderSidebar({
   const productMeta = PRODUCTS.find(p => p.type === order.product);
   const isBrownie = order.product === "brownie";
   const isCookieTin = order.product === "cookietin";
+  const ProductIcon = productMeta ? PRODUCT_ICONS[productMeta.type] : null;
 
   if (currentStep === "summary") return null;
 
@@ -29,10 +31,17 @@ export default function OrderSidebar({
       }}
     >
       <h3
-        className="font-display text-xl font-semibold mb-4 text-center"
+        className="font-display text-xl font-semibold mb-4 flex items-center justify-center gap-2"
         style={{ color: "oklch(0.28 0.05 30)" }}
       >
-        {productMeta ? `${productMeta.emoji} Your Order` : "🎂 Your Order"}
+        {ProductIcon && (
+          <ProductIcon
+            className="w-5 h-5"
+            style={{ color: productMeta?.color }}
+            aria-hidden="true"
+          />
+        )}
+        Your Order
       </h3>
 
       {!order.product ? (
@@ -48,10 +57,7 @@ export default function OrderSidebar({
       ) : (
         <>
           <div className="space-y-3 mb-5">
-            <SummaryRow
-              label="Product"
-              value={`${productMeta?.emoji} ${productMeta?.label}`}
-            />
+            <SummaryRow label="Product" value={productMeta?.label ?? ""} />
             {order.size && (
               <SummaryRow
                 label={isBrownie ? "Qty" : isCookieTin ? "Tin" : "Size"}
@@ -71,10 +77,7 @@ export default function OrderSidebar({
               />
             )}
             {!isBrownie && !isCookieTin && (
-              <SummaryRow
-                label="Frosting"
-                value={`${order.frosting.emoji} ${order.frosting.label}`}
-              />
+              <SummaryRow label="Frosting" value={order.frosting.label} />
             )}
             {(isBrownie ? order.addons : order.decorations).length > 0 && (
               <SummaryRow
@@ -125,7 +128,8 @@ export default function OrderSidebar({
                   boxShadow: "0 4px 15px rgba(37,211,102,0.25)",
                 }}
               >
-                💬 WhatsApp Order
+                <WhatsAppIcon className="w-4 h-4" />
+                WhatsApp Order
               </button>
             </>
           )}

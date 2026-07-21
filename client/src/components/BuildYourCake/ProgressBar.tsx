@@ -1,4 +1,6 @@
+import { Check } from "lucide-react";
 import type { StepConfig } from "./types";
+import { STEP_ICONS } from "./icons";
 
 export default function ProgressBar({
   steps,
@@ -14,6 +16,7 @@ export default function ProgressBar({
       {steps.map((step, i) => {
         const done = i < currentIndex;
         const active = i === currentIndex;
+        const StepIcon = STEP_ICONS[step.id];
         return (
           <div key={step.id} className="flex items-center">
             <button
@@ -21,6 +24,10 @@ export default function ProgressBar({
               disabled={i > currentIndex}
               className="flex flex-col items-center gap-1 group"
               style={{ minWidth: 56 }}
+              // The text label is hidden below `sm`, so the button would
+              // otherwise be an unlabelled emoji for mobile screen readers.
+              aria-label={`Step ${i + 1}: ${step.label}`}
+              aria-current={active ? "step" : undefined}
             >
               <div
                 className="w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300"
@@ -41,7 +48,11 @@ export default function ProgressBar({
                   cursor: i < currentIndex ? "pointer" : "default",
                 }}
               >
-                {done ? "✓" : step.emoji}
+                {done ? (
+                  <Check className="w-5 h-5" aria-hidden="true" />
+                ) : (
+                  <StepIcon className="w-5 h-5" aria-hidden="true" />
+                )}
               </div>
               <span
                 className="text-xs font-medium hidden sm:block"

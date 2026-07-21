@@ -11,15 +11,13 @@ export type StepId =
 export interface StepConfig {
   id: StepId;
   label: string;
-  emoji: string;
 }
 
 export interface SizeOption {
   label: string;
   serves: string;
-  price: number; // base price for this size (plain cake, before flavor) — also used as "from" indicator
+  price: number; // starting price for this size; exact for tins, "from" for cakes
   kg?: number; // weight multiplier for cakes (0.5/1/1.5/2); used with FlavorOption.pricePerKg
-  emoji: string;
 }
 
 export interface FlavorOption {
@@ -27,6 +25,7 @@ export interface FlavorOption {
   emoji: string;
   color: string;
   pricePerKg?: number; // cake price for 1kg of this flavor; total = pricePerKg × size.kg
+  group?: string; // family heading in the flavor picker (cakes only)
 }
 
 export interface FrostingOption {

@@ -1,5 +1,7 @@
+import { Check, ShoppingBag } from "lucide-react";
 import type { ProductType } from "./types";
 import { PRODUCTS } from "./data";
+import { PRODUCT_ICONS } from "./icons";
 
 export default function StepProduct({
   onSelect,
@@ -11,10 +13,11 @@ export default function StepProduct({
   return (
     <div className="flex-1 flex flex-col">
       <h3
-        className="font-display text-2xl font-semibold mb-2"
+        className="font-display text-2xl font-semibold mb-2 flex items-center gap-2"
         style={{ color: "oklch(0.28 0.05 30)" }}
       >
-        🛍️ What would you like to order?
+        <ShoppingBag className="w-5 h-5" aria-hidden="true" />
+        What would you like to order?
       </h3>
       <p
         className="text-sm mb-6"
@@ -26,10 +29,12 @@ export default function StepProduct({
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-2">
         {PRODUCTS.map(p => {
           const isSelected = selected === p.type;
+          const Icon = PRODUCT_ICONS[p.type];
           return (
             <button
               key={p.type}
               onClick={() => onSelect(p.type)}
+              aria-pressed={isSelected}
               className="rounded-2xl p-6 text-center flex flex-col items-center gap-3 transition-all duration-250 hover:scale-[1.03] hover:shadow-md"
               style={{
                 background: isSelected ? p.selectedBg : p.bg,
@@ -38,7 +43,12 @@ export default function StepProduct({
                 transform: isSelected ? "scale(1.03)" : "scale(1)",
               }}
             >
-              <span style={{ fontSize: "3rem", lineHeight: 1 }}>{p.emoji}</span>
+              <Icon
+                className="w-11 h-11"
+                strokeWidth={1.5}
+                style={{ color: isSelected ? "white" : p.color }}
+                aria-hidden="true"
+              />
               <div>
                 <p
                   className="font-display text-xl font-semibold"
@@ -68,7 +78,7 @@ export default function StepProduct({
                     color: "white",
                   }}
                 >
-                  ✓
+                  <Check className="w-3.5 h-3.5" aria-hidden="true" />
                 </div>
               )}
             </button>

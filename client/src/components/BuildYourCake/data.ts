@@ -49,63 +49,64 @@ export const PRODUCTS = [
   },
 ];
 
-// Cake — priced by weight (kg). Base price = plain cake; final price = flavor.pricePerKg × kg.
-export const CAKE_SIZES: SizeOption[] = [
-  { label: "0.5 kg", serves: "Serves 4–6", price: 500, kg: 0.5, emoji: "🎂" },
-  { label: "1 kg", serves: "Serves 8–10", price: 1000, kg: 1, emoji: "🎂" },
-  { label: "1.5 kg", serves: "Serves 12–16", price: 1500, kg: 1.5, emoji: "🎂" },
-  { label: "2 kg", serves: "Serves 18–22", price: 2000, kg: 2, emoji: "🎂" },
-];
-
+// Grouped by family: the flavor picker renders headings by walking this order,
+// so keep each family's rows contiguous.
 // Prices are per 1kg (from the official price list). Total = pricePerKg × size.kg.
 export const CAKE_FLAVORS: FlavorOption[] = [
-  // Dutch Truffle family
-  { label: "Dutch Truffle (15% Dark)", emoji: "🍫", color: "oklch(0.42 0.08 40)", pricePerKg: 1400 },
-  { label: "Dutch Truffle (46% Dark)", emoji: "🍫", color: "oklch(0.36 0.08 40)", pricePerKg: 1800 },
-  { label: "Dutch Truffle with Salted Caramel", emoji: "🍯", color: "oklch(0.60 0.10 55)", pricePerKg: 1500 },
-  { label: "Pure Dutch Truffle with Salted Caramel", emoji: "🍯", color: "oklch(0.55 0.10 50)", pricePerKg: 1900 },
-  // Caramel family
-  { label: "Caramel", emoji: "🍯", color: "oklch(0.75 0.10 65)", pricePerKg: 1100 },
-  { label: "Caramel Dutch Truffle with Roasted Almond", emoji: "🌰", color: "oklch(0.55 0.09 55)", pricePerKg: 1650 },
-  { label: "Caramel Pure Dutch Truffle with Roasted Almond", emoji: "🌰", color: "oklch(0.48 0.09 50)", pricePerKg: 2600 },
-  // Chocolate
-  { label: "Chocolate Mousse", emoji: "🍫", color: "oklch(0.38 0.08 40)", pricePerKg: 1100 },
-  { label: "Pure Chocolate Mousse", emoji: "🍫", color: "oklch(0.34 0.08 40)", pricePerKg: 1150 },
-  // Nutella / premium
-  { label: "Nutella", emoji: "🌰", color: "oklch(0.48 0.09 45)", pricePerKg: 1350 },
-  { label: "Nutella Hazelnut", emoji: "🌰", color: "oklch(0.50 0.09 45)", pricePerKg: 1750 },
-  { label: "Ferrero Rocher", emoji: "🍫", color: "oklch(0.40 0.07 45)", pricePerKg: 3150 },
-  { label: "KitKat", emoji: "🍫", color: "oklch(0.45 0.08 40)", pricePerKg: 2300 },
-  { label: "Biscoff", emoji: "🍪", color: "oklch(0.68 0.10 55)", pricePerKg: 1750 },
-  // Classics
-  { label: "Black Forest", emoji: "🍒", color: "oklch(0.35 0.08 20)", pricePerKg: 1150 },
-  { label: "Cookie Cream", emoji: "🍪", color: "oklch(0.88 0.03 80)", pricePerKg: 1100 },
-  { label: "Red Velvet Cheese Cake", emoji: "🧀", color: "oklch(0.58 0.13 15)", pricePerKg: 1550 },
-  // Fruit
-  { label: "Mix Fruit", emoji: "🍑", color: "oklch(0.80 0.10 60)", pricePerKg: 1050 },
-  { label: "Pineapple", emoji: "🍍", color: "oklch(0.88 0.12 90)", pricePerKg: 1050 },
-  { label: "Blueberry", emoji: "🫐", color: "oklch(0.55 0.14 270)", pricePerKg: 1100 },
-  { label: "Strawberry", emoji: "🍓", color: "oklch(0.75 0.12 10)", pricePerKg: 1050 },
-  { label: "Chocolate Strawberry", emoji: "🍓", color: "oklch(0.50 0.10 20)", pricePerKg: 1050 },
-  { label: "Dutch Truffle Strawberry", emoji: "🍓", color: "oklch(0.45 0.10 18)", pricePerKg: 1450 },
-  { label: "Pure Dutch Truffle Strawberry", emoji: "🍓", color: "oklch(0.40 0.10 18)", pricePerKg: 1850 },
-  { label: "Mango (Seasonal)", emoji: "🥭", color: "oklch(0.85 0.12 75)", pricePerKg: 1550 },
-  { label: "Dutch Truffle Mango", emoji: "🥭", color: "oklch(0.70 0.11 70)", pricePerKg: 1950 },
-  { label: "Pure Dutch Truffle Mango", emoji: "🥭", color: "oklch(0.60 0.11 65)", pricePerKg: 2350 },
-  // Indian / specialty
-  { label: "Rasmalai", emoji: "🥛", color: "oklch(0.93 0.03 80)", pricePerKg: 2800 },
-  { label: "Gulab Jamun", emoji: "🟤", color: "oklch(0.55 0.10 50)", pricePerKg: 1300 },
-  { label: "Gulkand", emoji: "🌹", color: "oklch(0.75 0.12 350)", pricePerKg: 1150 },
-  { label: "Tender Coconut and Gulkand", emoji: "🥥", color: "oklch(0.80 0.08 140)", pricePerKg: 1400 },
-  { label: "Paan", emoji: "🌿", color: "oklch(0.55 0.12 145)", pricePerKg: 1550 },
-  // Coffee
-  { label: "Coffee", emoji: "☕", color: "oklch(0.45 0.07 40)", pricePerKg: 1100 },
-  { label: "Coffee Caramel", emoji: "☕", color: "oklch(0.58 0.09 50)", pricePerKg: 1150 },
-  { label: "Mocha", emoji: "☕", color: "oklch(0.40 0.07 35)", pricePerKg: 1100 },
-  // Other
-  { label: "Chai", emoji: "🍵", color: "oklch(0.70 0.08 55)", pricePerKg: 1100 },
-  { label: "Dulce de Leches", emoji: "🍮", color: "oklch(0.78 0.10 65)", pricePerKg: 2000 },
+  { group: "Dutch Truffle", label: "Dutch Truffle (15% Dark)", emoji: "🍫", color: "oklch(0.42 0.08 40)", pricePerKg: 1400 },
+  { group: "Dutch Truffle", label: "Dutch Truffle (46% Dark)", emoji: "🍫", color: "oklch(0.36 0.08 40)", pricePerKg: 1800 },
+  { group: "Dutch Truffle", label: "Dutch Truffle with Salted Caramel", emoji: "🍯", color: "oklch(0.60 0.10 55)", pricePerKg: 1500 },
+  { group: "Dutch Truffle", label: "Pure Dutch Truffle with Salted Caramel", emoji: "🍯", color: "oklch(0.55 0.10 50)", pricePerKg: 1900 },
+  { group: "Caramel", label: "Caramel", emoji: "🍯", color: "oklch(0.75 0.10 65)", pricePerKg: 1100 },
+  { group: "Caramel", label: "Caramel Dutch Truffle with Roasted Almond", emoji: "🌰", color: "oklch(0.55 0.09 55)", pricePerKg: 1650 },
+  { group: "Caramel", label: "Caramel Pure Dutch Truffle with Roasted Almond", emoji: "🌰", color: "oklch(0.48 0.09 50)", pricePerKg: 2600 },
+  { group: "Chocolate", label: "Chocolate Mousse", emoji: "🍫", color: "oklch(0.38 0.08 40)", pricePerKg: 1100 },
+  { group: "Chocolate", label: "Pure Chocolate Mousse", emoji: "🍫", color: "oklch(0.34 0.08 40)", pricePerKg: 1150 },
+  { group: "Nutella & Premium", label: "Nutella", emoji: "🌰", color: "oklch(0.48 0.09 45)", pricePerKg: 1350 },
+  { group: "Nutella & Premium", label: "Nutella Hazelnut", emoji: "🌰", color: "oklch(0.50 0.09 45)", pricePerKg: 1750 },
+  { group: "Nutella & Premium", label: "Ferrero Rocher", emoji: "🍫", color: "oklch(0.40 0.07 45)", pricePerKg: 3150 },
+  { group: "Nutella & Premium", label: "KitKat", emoji: "🍫", color: "oklch(0.45 0.08 40)", pricePerKg: 2300 },
+  { group: "Nutella & Premium", label: "Biscoff", emoji: "🍪", color: "oklch(0.68 0.10 55)", pricePerKg: 1750 },
+  { group: "Classics", label: "Black Forest", emoji: "🍒", color: "oklch(0.35 0.08 20)", pricePerKg: 1150 },
+  { group: "Classics", label: "Cookie Cream", emoji: "🍪", color: "oklch(0.88 0.03 80)", pricePerKg: 1100 },
+  { group: "Classics", label: "Red Velvet Cheese Cake", emoji: "🧀", color: "oklch(0.58 0.13 15)", pricePerKg: 1550 },
+  { group: "Fruit", label: "Mix Fruit", emoji: "🍑", color: "oklch(0.80 0.10 60)", pricePerKg: 1050 },
+  { group: "Fruit", label: "Pineapple", emoji: "🍍", color: "oklch(0.88 0.12 90)", pricePerKg: 1050 },
+  { group: "Fruit", label: "Blueberry", emoji: "🫐", color: "oklch(0.55 0.14 270)", pricePerKg: 1100 },
+  { group: "Fruit", label: "Strawberry", emoji: "🍓", color: "oklch(0.75 0.12 10)", pricePerKg: 1050 },
+  { group: "Fruit", label: "Chocolate Strawberry", emoji: "🍓", color: "oklch(0.50 0.10 20)", pricePerKg: 1050 },
+  { group: "Fruit", label: "Dutch Truffle Strawberry", emoji: "🍓", color: "oklch(0.45 0.10 18)", pricePerKg: 1450 },
+  { group: "Fruit", label: "Pure Dutch Truffle Strawberry", emoji: "🍓", color: "oklch(0.40 0.10 18)", pricePerKg: 1850 },
+  { group: "Fruit", label: "Mango (Seasonal)", emoji: "🥭", color: "oklch(0.85 0.12 75)", pricePerKg: 1550 },
+  { group: "Fruit", label: "Dutch Truffle Mango", emoji: "🥭", color: "oklch(0.70 0.11 70)", pricePerKg: 1950 },
+  { group: "Fruit", label: "Pure Dutch Truffle Mango", emoji: "🥭", color: "oklch(0.60 0.11 65)", pricePerKg: 2350 },
+  { group: "Indian Specials", label: "Rasmalai", emoji: "🥛", color: "oklch(0.93 0.03 80)", pricePerKg: 2800 },
+  { group: "Indian Specials", label: "Gulab Jamun", emoji: "🟤", color: "oklch(0.55 0.10 50)", pricePerKg: 1300 },
+  { group: "Indian Specials", label: "Gulkand", emoji: "🌹", color: "oklch(0.75 0.12 350)", pricePerKg: 1150 },
+  { group: "Indian Specials", label: "Tender Coconut and Gulkand", emoji: "🥥", color: "oklch(0.80 0.08 140)", pricePerKg: 1400 },
+  { group: "Indian Specials", label: "Paan", emoji: "🌿", color: "oklch(0.55 0.12 145)", pricePerKg: 1550 },
+  { group: "Coffee", label: "Coffee", emoji: "☕", color: "oklch(0.45 0.07 40)", pricePerKg: 1100 },
+  { group: "Coffee", label: "Coffee Caramel", emoji: "☕", color: "oklch(0.58 0.09 50)", pricePerKg: 1150 },
+  { group: "Coffee", label: "Mocha", emoji: "☕", color: "oklch(0.40 0.07 35)", pricePerKg: 1100 },
+  { group: "Other", label: "Chai", emoji: "🍵", color: "oklch(0.70 0.08 55)", pricePerKg: 1100 },
+  { group: "Other", label: "Dulce de Leches", emoji: "🍮", color: "oklch(0.78 0.10 65)", pricePerKg: 2000 },
 ];
+
+// The official list quotes a ₹1000/kg plain-cake base, but every cake is made in
+// a flavor and the cheapest flavor is dearer than that base — so the price shown
+// on the size cards is the real starting price: cheapest flavor × kg. Derived,
+// so adding a cheaper flavor updates every "from" price automatically.
+export const CAKE_MIN_PRICE_PER_KG = Math.min(
+  ...CAKE_FLAVORS.map(f => f.pricePerKg ?? Infinity)
+);
+
+// Cake — priced by weight (kg). Final price = flavor.pricePerKg × kg.
+export const CAKE_SIZES: SizeOption[] = [
+  { label: "0.5 kg", serves: "Serves 4–6", kg: 0.5 },
+  { label: "1 kg", serves: "Serves 8–10", kg: 1 },
+  { label: "1.5 kg", serves: "Serves 12–16", kg: 1.5 },
+  { label: "2 kg", serves: "Serves 18–22", kg: 2 },
+].map(s => ({ ...s, price: CAKE_MIN_PRICE_PER_KG * s.kg }));
 
 // The bakery makes only one frosting — whipped cream. It is applied to every cake
 // and cupcake automatically, so there is no frosting step in the builder.
@@ -125,10 +126,10 @@ export const CAKE_DECORATIONS = [
 
 // Cupcake
 export const CUPCAKE_SIZES: SizeOption[] = [
-  { label: "4 Cupcakes", serves: "Mini box", price: 320, emoji: "🧁" },
-  { label: "8 Cupcakes", serves: "Party box", price: 600, emoji: "🧁" },
-  { label: "12 Cupcakes", serves: "Celebration box", price: 880, emoji: "🧁" },
-  { label: "16 Cupcakes", serves: "Grand box", price: 1150, emoji: "🧁" },
+  { label: "4 Cupcakes", serves: "Mini box", price: 320 },
+  { label: "8 Cupcakes", serves: "Party box", price: 600 },
+  { label: "12 Cupcakes", serves: "Celebration box", price: 880 },
+  { label: "16 Cupcakes", serves: "Grand box", price: 1150 },
 ];
 
 export const CUPCAKE_FLAVORS: FlavorOption[] = [
@@ -151,10 +152,10 @@ export const CUPCAKE_DECORATIONS = [
 
 // Brownie
 export const BROWNIE_SIZES: SizeOption[] = [
-  { label: "4 Brownies", serves: "Small box", price: 240, emoji: "🍫" },
-  { label: "8 Brownies", serves: "Gift box", price: 450, emoji: "🍫" },
-  { label: "12 Brownies", serves: "Party box", price: 650, emoji: "🍫" },
-  { label: "16 Brownies", serves: "Grand box", price: 840, emoji: "🍫" },
+  { label: "4 Brownies", serves: "Small box", price: 240 },
+  { label: "8 Brownies", serves: "Gift box", price: 450 },
+  { label: "12 Brownies", serves: "Party box", price: 650 },
+  { label: "16 Brownies", serves: "Grand box", price: 840 },
 ];
 
 export const BROWNIE_ADDONS = [
@@ -169,44 +170,36 @@ export const BROWNIE_ADDONS = [
 // Cookie Tin — each variant is a 500gms tin at a fixed price; the flavor is the
 // priced choice, so the variants live in the "size" slot (like brownie quantities).
 export const COOKIETIN_SIZES: SizeOption[] = [
-  { label: "Vanilla Chocolate Chunk", serves: "500 gms tin", price: 750, emoji: "🍪" },
-  { label: "Chocolate Chunk", serves: "500 gms tin", price: 850, emoji: "🍪" },
-  { label: "Nutella Vanilla Chocolate Chunk", serves: "500 gms tin", price: 800, emoji: "🍪" },
-  { label: "Nutella Chocolate Chunk", serves: "500 gms tin", price: 900, emoji: "🍪" },
+  { label: "Vanilla Chocolate Chunk", serves: "500 gms tin", price: 750 },
+  { label: "Chocolate Chunk", serves: "500 gms tin", price: 850 },
+  { label: "Nutella Vanilla Chocolate Chunk", serves: "500 gms tin", price: 800 },
+  { label: "Nutella Chocolate Chunk", serves: "500 gms tin", price: 900 },
 ];
 
 export function getSteps(product: ProductType | null): StepConfig[] {
   if (product === "brownie") {
     return [
-      { id: "product", label: "Product", emoji: "🛍️" },
-      { id: "size", label: "Quantity", emoji: "📦" },
-      { id: "date", label: "Delivery Date", emoji: "📆" },
-      { id: "decorations", label: "Add-ons", emoji: "✨" },
-      { id: "summary", label: "Summary", emoji: "🎉" },
+      { id: "product", label: "Product" },
+      { id: "size", label: "Quantity" },
+      { id: "date", label: "Delivery Date" },
+      { id: "decorations", label: "Add-ons" },
+      { id: "summary", label: "Summary" },
     ];
   }
   if (product === "cookietin") {
     return [
-      { id: "product", label: "Product", emoji: "🛍️" },
-      { id: "size", label: "Tin", emoji: "🍪" },
-      { id: "date", label: "Delivery Date", emoji: "📆" },
-      { id: "summary", label: "Summary", emoji: "🎉" },
+      { id: "product", label: "Product" },
+      { id: "size", label: "Tin" },
+      { id: "date", label: "Delivery Date" },
+      { id: "summary", label: "Summary" },
     ];
   }
   return [
-    { id: "product", label: "Product", emoji: "🛍️" },
-    {
-      id: "size",
-      label: product === "cupcake" ? "Serving" : "Size",
-      emoji: "📏",
-    },
-    { id: "date", label: "Delivery Date", emoji: "📆" },
-    { id: "flavor", label: "Flavor", emoji: "🍰" },
-    {
-      id: "decorations",
-      label: product === "cupcake" ? "Toppings" : "Decor",
-      emoji: "✨",
-    },
-    { id: "summary", label: "Summary", emoji: "🎉" },
+    { id: "product", label: "Product" },
+    { id: "size", label: product === "cupcake" ? "Serving" : "Size" },
+    { id: "date", label: "Delivery Date" },
+    { id: "flavor", label: "Flavor" },
+    { id: "decorations", label: product === "cupcake" ? "Toppings" : "Decor" },
+    { id: "summary", label: "Summary" },
   ];
 }

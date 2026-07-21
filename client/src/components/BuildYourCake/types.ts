@@ -5,7 +5,6 @@ export type StepId =
   | "size"
   | "date"
   | "flavor"
-  | "frosting"
   | "decorations"
   | "summary";
 
@@ -40,7 +39,7 @@ export interface OrderState {
   size: SizeOption | null;
   deliveryDate: string; // ISO date string "YYYY-MM-DD"
   flavor: FlavorOption | null;
-  frosting: FrostingOption | null;
+  frosting: FrostingOption; // always whipped cream — the only frosting we make
   decorations: string[];
   addons: string[];
   message: string;

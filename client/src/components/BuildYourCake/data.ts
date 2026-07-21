@@ -107,12 +107,12 @@ export const CAKE_FLAVORS: FlavorOption[] = [
   { label: "Dulce de Leches", emoji: "🍮", color: "oklch(0.78 0.10 65)", pricePerKg: 2000 },
 ];
 
-export const CAKE_FROSTINGS: FrostingOption[] = [
-  { label: "Whipped Cream", emoji: "🤍" },
-  { label: "Buttercream", emoji: "💛" },
-  { label: "Fondant", emoji: "🌸" },
-  { label: "Ganache", emoji: "🍫" },
-];
+// The bakery makes only one frosting — whipped cream. It is applied to every cake
+// and cupcake automatically, so there is no frosting step in the builder.
+export const WHIPPED_CREAM: FrostingOption = {
+  label: "Whipped Cream",
+  emoji: "🤍",
+};
 
 export const CAKE_DECORATIONS = [
   { label: "Fresh Flowers", emoji: "🌸" },
@@ -138,13 +138,6 @@ export const CUPCAKE_FLAVORS: FlavorOption[] = [
   { label: "Red Velvet", emoji: "❤️", color: "oklch(0.55 0.15 15)" },
   { label: "Lemon Zest", emoji: "🍋", color: "oklch(0.90 0.12 95)" },
   { label: "Funfetti", emoji: "🎉", color: "oklch(0.88 0.1 85)" },
-];
-
-export const CUPCAKE_FROSTINGS: FrostingOption[] = [
-  { label: "Swirl Buttercream", emoji: "💛" },
-  { label: "Whipped Cream", emoji: "🤍" },
-  { label: "Cream Cheese", emoji: "🧀" },
-  { label: "Ganache Drip", emoji: "🍫" },
 ];
 
 export const CUPCAKE_DECORATIONS = [
@@ -209,7 +202,6 @@ export function getSteps(product: ProductType | null): StepConfig[] {
     },
     { id: "date", label: "Delivery Date", emoji: "📆" },
     { id: "flavor", label: "Flavor", emoji: "🍰" },
-    { id: "frosting", label: "Frosting", emoji: "🎂" },
     {
       id: "decorations",
       label: product === "cupcake" ? "Toppings" : "Decor",

@@ -29,7 +29,7 @@ const features = [
     icon: Palette,
     title: "Custom Designs",
     description:
-      "From hand-painted florals to sculpted fondant art - we bring your dream cake to life, exactly as you envision it.",
+      "From hand-piped florals to sculpted whipped cream artistry - we bring your dream cake to life, exactly as you envision it.",
     color: "oklch(0.55 0.12 280)",
     bg: "oklch(0.94 0.04 280)",
     emoji: "🎨",

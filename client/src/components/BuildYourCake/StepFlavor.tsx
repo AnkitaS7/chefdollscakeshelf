@@ -26,7 +26,9 @@ export default function StepFlavor({
         className="text-sm mb-6"
         style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
       >
-        Every bite matters - choose your favourite.
+        Every bite matters - choose your favourite. Every{" "}
+        {product === "cupcake" ? "cupcake" : "cake"} is finished in our signature
+        🤍 whipped cream.
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {flavors.map(f => {

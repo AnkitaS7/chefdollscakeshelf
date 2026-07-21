@@ -70,7 +70,7 @@ export default function OrderSidebar({
                 value={`${order.flavor.emoji} ${order.flavor.label}`}
               />
             )}
-            {!isBrownie && order.frosting && (
+            {!isBrownie && !isCookieTin && (
               <SummaryRow
                 label="Frosting"
                 value={`${order.frosting.emoji} ${order.frosting.label}`}

@@ -10,12 +10,11 @@ import {
   PRODUCTS,
   CAKE_SIZES,
   CAKE_FLAVORS,
-  CAKE_FROSTINGS,
   CAKE_DECORATIONS,
   CUPCAKE_SIZES,
   CUPCAKE_FLAVORS,
-  CUPCAKE_FROSTINGS,
   CUPCAKE_DECORATIONS,
+  WHIPPED_CREAM,
   BROWNIE_SIZES,
   BROWNIE_ADDONS,
   COOKIETIN_SIZES,
@@ -25,7 +24,6 @@ import ProgressBar from "./ProgressBar";
 import StepProduct from "./StepProduct";
 import StepSize from "./StepSize";
 import StepFlavor from "./StepFlavor";
-import StepFrosting from "./StepFrosting";
 import StepDecorations from "./StepDecorations";
 import StepDeliveryDate from "./StepDeliveryDate";
 import StepSummary from "./StepSummary";
@@ -64,7 +62,7 @@ export default function BuildYourCake() {
     size: null,
     deliveryDate: "",
     flavor: null,
-    frosting: null,
+    frosting: WHIPPED_CREAM,
     decorations: [],
     addons: [],
     message: "",
@@ -114,7 +112,7 @@ export default function BuildYourCake() {
       size: null,
       deliveryDate: "",
       flavor: null,
-      frosting: null,
+      frosting: WHIPPED_CREAM,
       decorations: [],
       addons: [],
       message: "",
@@ -129,7 +127,6 @@ export default function BuildYourCake() {
     if (id === "size") return order.size !== null;
     if (id === "date") return order.deliveryDate !== "";
     if (id === "flavor") return order.flavor !== null;
-    if (id === "frosting") return order.frosting !== null;
     return true;
   };
 
@@ -349,22 +346,6 @@ export default function BuildYourCake() {
                       selected={order.flavor}
                       onSelect={f => {
                         setOrder(o => ({ ...o, flavor: f }));
-                        goToStep(currentStepIndex + 1, "forward");
-                      }}
-                    />
-                  )}
-
-                  {currentStep.id === "frosting" && (
-                    <StepFrosting
-                      product={order.product!}
-                      frostings={
-                        order.product === "cupcake"
-                          ? CUPCAKE_FROSTINGS
-                          : CAKE_FROSTINGS
-                      }
-                      selected={order.frosting}
-                      onSelect={f => {
-                        setOrder(o => ({ ...o, frosting: f }));
                         goToStep(currentStepIndex + 1, "forward");
                       }}
                     />

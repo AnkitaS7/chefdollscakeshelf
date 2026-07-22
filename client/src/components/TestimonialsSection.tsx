@@ -146,11 +146,11 @@ export default function TestimonialsSection() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute -top-20 right-0 w-80 h-80 rounded-full blur-3xl opacity-20"
-          style={{ background: "oklch(0.88 0.05 10)" }}
+          style={{ background: "var(--blush)" }}
         />
         <div
           className="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-3xl opacity-15"
-          style={{ background: "oklch(0.78 0.1 70)" }}
+          style={{ background: "var(--gold)" }}
         />
       </div>
 
@@ -159,20 +159,20 @@ export default function TestimonialsSection() {
         <div ref={headRef} className="reveal text-center mb-10">
           <p
             className="font-script text-2xl mb-1"
-            style={{ color: "oklch(0.72 0.12 70)" }}
+            style={{ color: "var(--gold-deep)" }}
           >
             What They Say
           </p>
           <h2
             className="font-display text-4xl md:text-5xl font-semibold mb-2"
-            style={{ color: "oklch(0.22 0.04 40)" }}
+            style={{ color: "var(--text-strong)" }}
           >
             Straight from the Heart
           </h2>
           <p
             className="text-sm max-w-md mx-auto"
             style={{
-              color: "oklch(0.50 0.04 30)",
+              color: "var(--text-body)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -190,7 +190,7 @@ export default function TestimonialsSection() {
             className="rounded-3xl p-7 md:p-10 relative transition-opacity duration-200"
             style={{
               background: "white",
-              border: "1px solid oklch(0.92 0.03 60)",
+              border: "1px solid var(--line-soft)",
               boxShadow: "0 8px 40px oklch(0.65 0.12 10 / 0.1)",
               opacity: isAnimating ? 0 : 1,
             }}
@@ -200,7 +200,7 @@ export default function TestimonialsSection() {
               className="absolute -top-5 left-10 w-10 h-10 rounded-full flex items-center justify-center shadow-md"
               style={{
                 background:
-                  "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.72 0.1 5))",
+                  "linear-gradient(135deg, var(--rose), oklch(0.72 0.1 5))",
               }}
             >
               <Quote className="w-5 h-5 text-white" fill="white" />
@@ -236,7 +236,7 @@ export default function TestimonialsSection() {
                   <p
                     className="font-semibold text-sm"
                     style={{
-                      color: "oklch(0.28 0.05 30)",
+                      color: "var(--text-heading)",
                       fontFamily: "var(--font-body)",
                     }}
                   >
@@ -245,7 +245,7 @@ export default function TestimonialsSection() {
                   <p
                     className="text-xs"
                     style={{
-                      color: "oklch(0.55 0.04 30)",
+                      color: "var(--text-muted)",
                       fontFamily: "var(--font-body)",
                     }}
                   >
@@ -273,7 +273,7 @@ export default function TestimonialsSection() {
               className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
               style={{
                 background: "white",
-                border: "1px solid oklch(0.88 0.04 60)",
+                border: "1px solid var(--line)",
                 boxShadow: "0 2px 8px oklch(0.65 0.12 10 / 0.1)",
                 color: "oklch(0.45 0.08 10)",
               }}
@@ -298,7 +298,7 @@ export default function TestimonialsSection() {
                     height: "7px",
                     background:
                       i === current
-                        ? "oklch(0.65 0.12 10)"
+                        ? "var(--rose)"
                         : "oklch(0.85 0.04 20)",
                   }}
                   aria-label={`Go to review ${i + 1}`}
@@ -311,7 +311,7 @@ export default function TestimonialsSection() {
               className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
               style={{
                 background: "white",
-                border: "1px solid oklch(0.88 0.04 60)",
+                border: "1px solid var(--line)",
                 boxShadow: "0 2px 8px oklch(0.65 0.12 10 / 0.1)",
                 color: "oklch(0.45 0.08 10)",
               }}
@@ -335,7 +335,7 @@ export default function TestimonialsSection() {
               className="rounded-xl p-3 text-left transition-all duration-200 hover:shadow-md"
               style={{
                 background: current === i ? "oklch(0.95 0.03 20)" : "white",
-                border: `1px solid ${current === i ? "oklch(0.75 0.08 10)" : "oklch(0.92 0.03 60)"}`,
+                border: `1px solid ${current === i ? "oklch(0.75 0.08 10)" : "var(--line-soft)"}`,
               }}
             >
               <div className="flex gap-0.5 mb-1">
@@ -348,7 +348,7 @@ export default function TestimonialsSection() {
               <p
                 className="text-xs font-semibold truncate"
                 style={{
-                  color: "oklch(0.35 0.05 30)",
+                  color: "var(--text-dark)",
                   fontFamily: "var(--font-body)",
                 }}
               >
@@ -357,7 +357,7 @@ export default function TestimonialsSection() {
               <p
                 className="text-xs truncate"
                 style={{
-                  color: "oklch(0.55 0.04 30)",
+                  color: "var(--text-muted)",
                   fontFamily: "var(--font-body)",
                 }}
               >

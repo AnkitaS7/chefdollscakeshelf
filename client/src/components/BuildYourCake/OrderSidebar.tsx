@@ -26,13 +26,13 @@ export default function OrderSidebar({
       className="sticky top-24 rounded-3xl p-6"
       style={{
         background: "white",
-        border: "1px solid oklch(0.92 0.03 60)",
+        border: "1px solid var(--line-soft)",
         boxShadow: "0 8px 40px oklch(0.65 0.12 10 / 0.1)",
       }}
     >
       <h3
         className="font-display text-xl font-semibold mb-4 flex items-center justify-center gap-2"
-        style={{ color: "oklch(0.28 0.05 30)" }}
+        style={{ color: "var(--text-heading)" }}
       >
         {ProductIcon && (
           <ProductIcon
@@ -99,12 +99,12 @@ export default function OrderSidebar({
             <>
               <div
                 className="rounded-2xl p-4 mb-4 text-center"
-                style={{ background: "oklch(0.97 0.025 60)" }}
+                style={{ background: "var(--surface-warm)" }}
               >
                 <p
                   className="text-xs mb-1"
                   style={{
-                    color: "oklch(0.55 0.04 30)",
+                    color: "var(--text-muted)",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -112,7 +112,7 @@ export default function OrderSidebar({
                 </p>
                 <p
                   className="font-display text-2xl font-bold"
-                  style={{ color: "oklch(0.45 0.1 10)" }}
+                  style={{ color: "var(--rose-ink)" }}
                 >
                   ₹{total}+
                 </p>

@@ -182,7 +182,7 @@ export default function BuildYourCake() {
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-            "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
+            "linear-gradient(90deg, transparent, var(--gold), transparent)",
         }}
       />
 
@@ -191,17 +191,17 @@ export default function BuildYourCake() {
         <div ref={headRef} className="reveal text-center mb-10">
           <p
             className="font-script text-2xl mb-1"
-            style={{ color: "oklch(0.72 0.12 70)" }}
+            style={{ color: "var(--gold-deep)" }}
           >
             {activeTab === "build" ? "Design Your Own" : "Menu Order"}
           </p>
           <h2
             className="font-display text-4xl md:text-5xl font-semibold mb-3"
-            style={{ color: "oklch(0.22 0.04 40)" }}
+            style={{ color: "var(--text-strong)" }}
           >
             {activeTab === "build" ? "Build Your" : "Order From"}
             <br />
-            <em style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}>
+            <em style={{ color: "var(--rose-accent)", fontStyle: "italic" }}>
               {activeTab === "menu"
                 ? "Our Amazing Menu"
                 : order.product === "cupcake"
@@ -216,7 +216,7 @@ export default function BuildYourCake() {
           <p
             className="text-base max-w-lg mx-auto"
             style={{
-              color: "oklch(0.50 0.04 30)",
+              color: "var(--text-body)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -230,8 +230,8 @@ export default function BuildYourCake() {
           <div
             className="flex rounded-full p-1 gap-1"
             style={{
-              background: "oklch(0.93 0.02 60)",
-              border: "1px solid oklch(0.88 0.04 60)",
+              background: "var(--surface-muted)",
+              border: "1px solid var(--line)",
             }}
           >
             {(["build", "menu"] as const).map(tab => (
@@ -243,7 +243,7 @@ export default function BuildYourCake() {
                   fontFamily: "var(--font-body)",
                   background:
                     activeTab === tab
-                      ? "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.58 0.14 10))"
+                      ? "linear-gradient(135deg, var(--rose), var(--rose-strong))"
                       : "transparent",
                   color: activeTab === tab ? "white" : "oklch(0.45 0.06 30)",
                   boxShadow:
@@ -287,7 +287,7 @@ export default function BuildYourCake() {
                   className="rounded-3xl p-6 md:p-8 min-h-[360px] flex flex-col"
                   style={{
                     background: "white",
-                    border: "1px solid oklch(0.92 0.03 60)",
+                    border: "1px solid var(--line-soft)",
                     boxShadow: "0 2px 12px oklch(0.65 0.12 10 / 0.05)",
                     opacity: animating ? 0 : 1,
                     transform: animating
@@ -403,7 +403,7 @@ export default function BuildYourCake() {
                   {currentStep.id !== "product" && (
                     <div
                       className="flex justify-between items-center mt-auto pt-6 border-t"
-                      style={{ borderColor: "oklch(0.93 0.02 60)" }}
+                      style={{ borderColor: "var(--surface-muted)" }}
                     >
                       <button
                         onClick={handleBack}
@@ -412,7 +412,7 @@ export default function BuildYourCake() {
                           background: "oklch(0.96 0.02 60)",
                           color: "oklch(0.40 0.05 30)",
                           fontFamily: "var(--font-body)",
-                          border: "1.5px solid oklch(0.88 0.04 60)",
+                          border: "1.5px solid var(--line)",
                         }}
                       >
                         <ArrowLeft className="w-4 h-4" aria-hidden="true" />
@@ -427,7 +427,7 @@ export default function BuildYourCake() {
                           style={{
                             background: canProceed()
                               ? (productMeta?.selectedBg ??
-                                "oklch(0.58 0.14 10)")
+                                "var(--rose-strong)")
                               : "oklch(0.88 0.02 40)",
                             color: "white",
                             fontFamily: "var(--font-body)",

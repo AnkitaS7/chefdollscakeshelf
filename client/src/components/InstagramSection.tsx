@@ -151,7 +151,7 @@ export default function InstagramSection() {
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-            "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
+            "linear-gradient(90deg, transparent, var(--gold), transparent)",
         }}
       />
 
@@ -176,18 +176,18 @@ export default function InstagramSection() {
 
           <h2
             className="font-display text-4xl md:text-5xl font-semibold mb-3"
-            style={{ color: "oklch(0.22 0.04 40)" }}
+            style={{ color: "var(--text-strong)" }}
           >
             Follow Our
             <br />
-            <em style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}>
+            <em style={{ color: "var(--rose-accent)", fontStyle: "italic" }}>
               Sweet Journey
             </em>
           </h2>
           <p
             className="text-base max-w-md mx-auto"
             style={{
-              color: "oklch(0.50 0.04 30)",
+              color: "var(--text-body)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -202,7 +202,7 @@ export default function InstagramSection() {
                 className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full"
                 style={{
                   background: "oklch(0.93 0.03 60)",
-                  color: "oklch(0.50 0.04 30)",
+                  color: "var(--text-body)",
                   fontFamily: "var(--font-body)",
                 }}
               >
@@ -231,7 +231,7 @@ export default function InstagramSection() {
                 className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full"
                 style={{
                   background: "oklch(0.95 0.03 60)",
-                  color: "oklch(0.55 0.04 30)",
+                  color: "var(--text-muted)",
                   fontFamily: "var(--font-body)",
                 }}
               >
@@ -247,7 +247,7 @@ export default function InstagramSection() {
                 disabled={isRefetching}
                 className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full transition-opacity hover:opacity-70"
                 style={{
-                  color: "oklch(0.55 0.04 30)",
+                  color: "var(--text-muted)",
                   fontFamily: "var(--font-body)",
                 }}
                 title="Refresh feed"
@@ -272,7 +272,7 @@ export default function InstagramSection() {
               <div
                 key={i}
                 className="rounded-2xl aspect-square animate-pulse"
-                style={{ background: "oklch(0.90 0.03 60)" }}
+                style={{ background: "var(--border)" }}
               />
             ))}
           </div>
@@ -311,7 +311,7 @@ export default function InstagramSection() {
           <p
             className="mt-3 text-sm"
             style={{
-              color: "oklch(0.55 0.04 30)",
+              color: "var(--text-muted)",
               fontFamily: "var(--font-body)",
             }}
           >

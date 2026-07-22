@@ -28,24 +28,24 @@ export default function Order() {
         <div className="container relative z-10">
           <p
             className="font-script text-2xl mb-2"
-            style={{ color: "oklch(0.72 0.12 70)" }}
+            style={{ color: "var(--gold-deep)" }}
           >
             Place Your Order
           </p>
           <h1
             className="font-display text-4xl md:text-6xl font-semibold"
-            style={{ color: "oklch(0.22 0.04 40)" }}
+            style={{ color: "var(--text-strong)" }}
           >
             Order Your
             <br />
-            <em style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}>
+            <em style={{ color: "var(--rose-accent)", fontStyle: "italic" }}>
               Dream Cake
             </em>
           </h1>
           <p
             className="mt-3 text-base max-w-md mx-auto"
             style={{
-              color: "oklch(0.50 0.04 30)",
+              color: "var(--text-body)",
               fontFamily: "var(--font-body)",
             }}
           >

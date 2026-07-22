@@ -12,10 +12,10 @@ export const PRODUCTS = [
     label: "Cake",
     emoji: "🎂",
     tagline: "Custom layered cakes",
-    color: "oklch(0.58 0.14 10)",
+    color: "var(--rose-strong)",
     bg: "oklch(0.97 0.04 10)",
     border: "oklch(0.88 0.08 10)",
-    selectedBg: "oklch(0.58 0.14 10)",
+    selectedBg: "var(--rose-strong)",
   },
   {
     type: "cupcake" as ProductType,

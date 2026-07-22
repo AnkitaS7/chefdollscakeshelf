@@ -12,12 +12,13 @@ import MarqueeBanner from "@/components/MarqueeBanner";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 import FloatingParticles from "@/components/FloatingParticles";
+import StickyOrderBar from "@/components/StickyOrderBar";
 import { Link } from "wouter";
 import { useEffect, useRef } from "react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen" style={{ background: "oklch(0.99 0.01 80)" }}>
+    <div className="min-h-screen" style={{ background: "var(--background)" }}>
       <LoadingScreen />
       <FloatingParticles />
       <Navbar />
@@ -31,6 +32,8 @@ export default function Home() {
       </main>
 
       <Footer />
+
+      <StickyOrderBar />
 
       {/* WhatsApp floating button */}
       <a
@@ -60,7 +63,7 @@ const features = [
     href: "/about",
     bg: "oklch(0.97 0.03 10)",
     border: "oklch(0.90 0.06 10)",
-    accent: "oklch(0.58 0.14 10)",
+    accent: "var(--rose-strong)",
   },
   {
     emoji: "🧁",
@@ -115,17 +118,17 @@ function HomeFeaturedPreview() {
         <div ref={headRef} className="reveal text-center mb-12">
           <p
             className="font-script text-2xl mb-1"
-            style={{ color: "oklch(0.72 0.12 70)" }}
+            style={{ color: "var(--gold-deep)" }}
           >
             Explore
           </p>
           <h2
             className="font-display text-4xl md:text-5xl font-semibold"
-            style={{ color: "oklch(0.22 0.04 40)" }}
+            style={{ color: "var(--text-strong)" }}
           >
             Everything
             <br />
-            <em style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}>
+            <em style={{ color: "var(--rose-accent)", fontStyle: "italic" }}>
               ChefDollsCakeShelf
             </em>
           </h2>
@@ -182,13 +185,13 @@ function FeatureCard({
       <div className="text-4xl">{feature.emoji}</div>
       <h3
         className="font-display text-2xl font-semibold"
-        style={{ color: "oklch(0.22 0.04 40)" }}
+        style={{ color: "var(--text-strong)" }}
       >
         {feature.title}
       </h3>
       <p
         className="text-sm leading-relaxed flex-1"
-        style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+        style={{ color: "var(--text-body)", fontFamily: "var(--font-body)" }}
       >
         {feature.description}
       </p>
@@ -241,7 +244,7 @@ function HomeOrderCTA() {
   return (
     <section
       className="py-16 md:py-20"
-      style={{ background: "oklch(0.99 0.01 80)" }}
+      style={{ background: "var(--background)" }}
     >
       <div className="container">
         <div
@@ -249,7 +252,7 @@ function HomeOrderCTA() {
           className="reveal rounded-3xl p-8 md:p-14 text-center relative overflow-hidden"
           style={{
             background:
-              "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.55 0.14 350))",
+              "linear-gradient(135deg, var(--rose), oklch(0.55 0.14 350))",
           }}
         >
           <div className="absolute inset-0 pointer-events-none overflow-hidden">

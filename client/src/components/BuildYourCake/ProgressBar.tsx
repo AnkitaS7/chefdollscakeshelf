@@ -33,11 +33,11 @@ export default function ProgressBar({
                 className="w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300"
                 style={{
                   background: done
-                    ? "oklch(0.55 0.15 140)"
+                    ? "var(--green)"
                     : active
-                      ? "oklch(0.58 0.14 10)"
-                      : "oklch(0.93 0.02 60)",
-                  color: done || active ? "white" : "oklch(0.60 0.04 30)",
+                      ? "var(--rose-strong)"
+                      : "var(--surface-muted)",
+                  color: done || active ? "white" : "var(--text-faint)",
                   border: active
                     ? "2.5px solid oklch(0.45 0.12 10)"
                     : "2px solid transparent",
@@ -75,7 +75,7 @@ export default function ProgressBar({
                 style={{
                   background:
                     i < currentIndex
-                      ? "oklch(0.55 0.15 140)"
+                      ? "var(--green)"
                       : "oklch(0.88 0.03 60)",
                 }}
               />

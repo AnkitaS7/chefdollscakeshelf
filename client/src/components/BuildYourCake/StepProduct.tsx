@@ -14,14 +14,14 @@ export default function StepProduct({
     <div className="flex-1 flex flex-col">
       <h3
         className="font-display text-2xl font-semibold mb-2 flex items-center gap-2"
-        style={{ color: "oklch(0.28 0.05 30)" }}
+        style={{ color: "var(--text-heading)" }}
       >
         <ShoppingBag className="w-5 h-5" aria-hidden="true" />
         What would you like to order?
       </h3>
       <p
         className="text-sm mb-6"
-        style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
+        style={{ color: "var(--text-muted)", fontFamily: "var(--font-body)" }}
       >
         Select a product to get started. Your selection shapes the entire
         ordering experience.
@@ -53,7 +53,7 @@ export default function StepProduct({
                 <p
                   className="font-display text-xl font-semibold"
                   style={{
-                    color: isSelected ? "white" : "oklch(0.28 0.05 30)",
+                    color: isSelected ? "white" : "var(--text-heading)",
                   }}
                 >
                   {p.label}
@@ -63,7 +63,7 @@ export default function StepProduct({
                   style={{
                     color: isSelected
                       ? "rgba(255,255,255,0.8)"
-                      : "oklch(0.55 0.04 30)",
+                      : "var(--text-muted)",
                     fontFamily: "var(--font-body)",
                   }}
                 >

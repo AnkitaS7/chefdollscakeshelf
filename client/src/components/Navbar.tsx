@@ -3,10 +3,10 @@
    Design: Transparent → frosted glass on scroll
    ============================================================= */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "wouter";
-import brandLogo from "/brand-logo.jpg";
+import Picture from "./Picture";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -27,8 +27,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
+  // Close mobile menu on route change. Layout effect rather than a passive one
+  // so the scroll reset lands before the view transition snapshots the new page
+  // - otherwise the incoming page is captured at the old scroll position.
+  useLayoutEffect(() => {
     setMenuOpen(false);
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [location]);
@@ -39,7 +41,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`site-nav fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
             ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-rose-100/60"
             : "bg-transparent"
@@ -49,9 +51,12 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-1 group">
-              <img
-                src={brandLogo}
+              <Picture
+                name="brand-logo"
                 alt="ChefDolls CakeShelf Logo"
+                width={192}
+                height={192}
+                priority
                 className="h-12 w-12 object-contain group-hover:scale-105 transition-transform duration-300 rounded-full"
               />
             </Link>
@@ -68,7 +73,7 @@ export default function Navbar() {
                     fontWeight: 500,
                     fontSize: "0.875rem",
                     color: isActive(link.href)
-                      ? "oklch(0.55 0.12 10)"
+                      ? "var(--rose-accent)"
                       : "oklch(0.45 0.04 30)",
                     textDecoration: "none",
                   }}
@@ -138,8 +143,8 @@ export default function Navbar() {
                   className="text-left font-display text-xl py-2 px-3 rounded-xl transition-colors"
                   style={{
                     color: isActive(link.href)
-                      ? "oklch(0.55 0.12 10)"
-                      : "oklch(0.35 0.05 30)",
+                      ? "var(--rose-accent)"
+                      : "var(--text-dark)",
                     background: isActive(link.href)
                       ? "oklch(0.97 0.04 10)"
                       : "transparent",

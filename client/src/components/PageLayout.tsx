@@ -6,6 +6,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingParticles from "@/components/FloatingParticles";
+import StickyOrderBar from "@/components/StickyOrderBar";
 import { useEffect } from "react";
 
 interface PageLayoutProps {
@@ -23,13 +24,15 @@ export default function PageLayout({
   }, [scrollTop]);
 
   return (
-    <div className="min-h-screen" style={{ background: "oklch(0.99 0.01 80)" }}>
+    <div className="min-h-screen" style={{ background: "var(--background)" }}>
       <FloatingParticles />
       <Navbar />
 
       <main className="pt-16 md:pt-20">{children}</main>
 
       <Footer />
+
+      <StickyOrderBar />
 
       {/* WhatsApp floating button */}
       <a

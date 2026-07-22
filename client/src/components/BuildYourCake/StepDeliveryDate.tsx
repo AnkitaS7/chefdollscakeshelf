@@ -32,7 +32,7 @@ export default function StepDeliveryDate({
 
   const accentColor =
     product === "cake"
-      ? "oklch(0.65 0.12 10)"
+      ? "var(--rose)"
       : product === "cupcake"
         ? "oklch(0.55 0.14 200)"
         : product === "cookietin"
@@ -53,14 +53,14 @@ export default function StepDeliveryDate({
     <div className="flex-1 flex flex-col">
       <h3
         className="font-display text-2xl font-semibold mb-2 flex items-center gap-2"
-        style={{ color: "oklch(0.28 0.05 30)" }}
+        style={{ color: "var(--text-heading)" }}
       >
         <CalendarDays className="w-5 h-5" aria-hidden="true" />
         When do you need it?
       </h3>
       <p
         className="text-sm mb-6"
-        style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
+        style={{ color: "var(--text-muted)", fontFamily: "var(--font-body)" }}
       >
         Pick your preferred delivery or pickup date.
       </p>
@@ -91,7 +91,7 @@ export default function StepDeliveryDate({
       <div className="flex flex-col gap-2 max-w-xs">
         <label
           className="text-xs font-semibold uppercase tracking-wide"
-          style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
+          style={{ color: "var(--text-muted)", fontFamily: "var(--font-body)" }}
         >
           Select Date
         </label>
@@ -102,15 +102,15 @@ export default function StepDeliveryDate({
           onChange={e => onSelect(e.target.value)}
           className="rounded-xl px-4 py-3 text-sm outline-none transition-all duration-200"
           style={{
-            border: `1.5px solid ${selected ? accentColor : "oklch(0.88 0.04 60)"}`,
+            border: `1.5px solid ${selected ? accentColor : "var(--line)"}`,
             fontFamily: "var(--font-body)",
-            color: "oklch(0.35 0.05 30)",
+            color: "var(--text-dark)",
             background: "white",
             cursor: "pointer",
           }}
           onFocus={e => (e.target.style.borderColor = accentColor)}
           onBlur={e =>
-            (e.target.style.borderColor = selected ? accentColor : "oklch(0.88 0.04 60)")
+            (e.target.style.borderColor = selected ? accentColor : "var(--line)")
           }
         />
       </div>
@@ -126,7 +126,7 @@ export default function StepDeliveryDate({
         >
           <CircleCheck
             className="w-5 h-5 flex-shrink-0"
-            style={{ color: "oklch(0.55 0.15 140)" }}
+            style={{ color: "var(--green)" }}
             aria-hidden="true"
           />
           <div>
@@ -138,7 +138,7 @@ export default function StepDeliveryDate({
             </p>
             <p
               className="text-sm font-semibold mt-0.5"
-              style={{ color: "oklch(0.28 0.05 30)", fontFamily: "var(--font-body)" }}
+              style={{ color: "var(--text-heading)", fontFamily: "var(--font-body)" }}
             >
               {displayDate}
             </p>

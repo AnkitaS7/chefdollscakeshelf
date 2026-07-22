@@ -26,7 +26,7 @@ export default function StepSize({
 
   const accentColor =
     product === "cake"
-      ? "oklch(0.65 0.12 10)"
+      ? "var(--rose)"
       : product === "cupcake"
         ? "oklch(0.55 0.14 200)"
         : product === "cookietin"
@@ -46,14 +46,14 @@ export default function StepSize({
     <div className="flex-1 flex flex-col">
       <h3
         className="font-display text-2xl font-semibold mb-2 flex items-center gap-2"
-        style={{ color: "oklch(0.28 0.05 30)" }}
+        style={{ color: "var(--text-heading)" }}
       >
         <Icon className="w-5 h-5" aria-hidden="true" />
         {title}
       </h3>
       <p
         className="text-sm mb-6"
-        style={{ color: "oklch(0.55 0.04 30)", fontFamily: "var(--font-body)" }}
+        style={{ color: "var(--text-muted)", fontFamily: "var(--font-body)" }}
       >
         {subtitle}
       </p>

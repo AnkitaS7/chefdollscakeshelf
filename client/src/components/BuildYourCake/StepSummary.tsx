@@ -6,17 +6,17 @@ export function SummaryRow({ label, value }: { label: string; value: string }) {
   return (
     <div
       className="flex justify-between items-start gap-2 pb-2"
-      style={{ borderBottom: "1px solid oklch(0.93 0.02 60)" }}
+      style={{ borderBottom: "1px solid var(--surface-muted)" }}
     >
       <span
         className="text-xs font-semibold uppercase tracking-wide flex-shrink-0"
-        style={{ color: "oklch(0.60 0.04 30)", fontFamily: "var(--font-body)" }}
+        style={{ color: "var(--text-faint)", fontFamily: "var(--font-body)" }}
       >
         {label}
       </span>
       <span
         className="text-xs text-right"
-        style={{ color: "oklch(0.35 0.05 30)", fontFamily: "var(--font-body)" }}
+        style={{ color: "var(--text-dark)", fontFamily: "var(--font-body)" }}
       >
         {value}
       </span>
@@ -49,14 +49,14 @@ export default function StepSummary({
         />
         <h3
           className="font-display text-2xl font-semibold mt-2"
-          style={{ color: "oklch(0.28 0.05 30)" }}
+          style={{ color: "var(--text-heading)" }}
         >
           Your {productMeta.label} is Ready to Order!
         </h3>
         <p
           className="text-sm mt-1"
           style={{
-            color: "oklch(0.55 0.04 30)",
+            color: "var(--text-muted)",
             fontFamily: "var(--font-body)",
           }}
         >
@@ -67,7 +67,7 @@ export default function StepSummary({
       <div
         className="rounded-2xl p-5 space-y-3"
         style={{
-          background: "oklch(0.97 0.025 60)",
+          background: "var(--surface-warm)",
           border: "1px solid oklch(0.90 0.04 60)",
         }}
       >
@@ -107,12 +107,12 @@ export default function StepSummary({
 
       <div
         className="rounded-2xl p-4 text-center"
-        style={{ background: "oklch(0.97 0.025 60)" }}
+        style={{ background: "var(--surface-warm)" }}
       >
         <p
           className="text-xs mb-1"
           style={{
-            color: "oklch(0.55 0.04 30)",
+            color: "var(--text-muted)",
             fontFamily: "var(--font-body)",
           }}
         >
@@ -120,14 +120,14 @@ export default function StepSummary({
         </p>
         <p
           className="font-display text-3xl font-bold"
-          style={{ color: "oklch(0.45 0.1 10)" }}
+          style={{ color: "var(--rose-ink)" }}
         >
           ₹{total}+
         </p>
         <p
           className="text-xs mt-1"
           style={{
-            color: "oklch(0.60 0.04 30)",
+            color: "var(--text-faint)",
             fontFamily: "var(--font-body)",
           }}
         >

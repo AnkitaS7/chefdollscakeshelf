@@ -40,7 +40,7 @@ export default function SizeCards({
             className="p-4 rounded-2xl text-center flex flex-col items-center transition-all duration-200 hover:scale-105"
             style={{
               background: isSelected ? accentColor : "white",
-              border: `2px solid ${isSelected ? accentColor : "oklch(0.88 0.04 60)"}`,
+              border: `2px solid ${isSelected ? accentColor : "var(--line)"}`,
               boxShadow: isSelected ? `0 4px 15px ${accentColor}50` : "none",
             }}
           >
@@ -52,7 +52,7 @@ export default function SizeCards({
             <p
               className="text-sm font-semibold"
               style={{
-                color: isSelected ? "white" : "oklch(0.35 0.05 30)",
+                color: isSelected ? "white" : "var(--text-dark)",
                 fontFamily: "var(--font-body)",
               }}
             >
@@ -63,7 +63,7 @@ export default function SizeCards({
               style={{
                 color: isSelected
                   ? "rgba(255,255,255,0.8)"
-                  : "oklch(0.55 0.04 30)",
+                  : "var(--text-muted)",
                 fontFamily: "var(--font-body)",
               }}
             >

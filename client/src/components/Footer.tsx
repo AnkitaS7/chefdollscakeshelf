@@ -5,7 +5,7 @@
 
 import { Instagram, MapPin, Heart } from "lucide-react";
 import { Link } from "wouter";
-import brandLogo from "/brand-logo.jpg";
+import Picture from "./Picture";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -34,11 +34,11 @@ export default function Footer() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute -top-20 right-0 w-64 h-64 rounded-full blur-3xl opacity-10"
-          style={{ background: "oklch(0.65 0.12 10)" }}
+          style={{ background: "var(--rose)" }}
         />
         <div
           className="absolute bottom-0 left-0 w-48 h-48 rounded-full blur-3xl opacity-8"
-          style={{ background: "oklch(0.78 0.1 70)" }}
+          style={{ background: "var(--gold)" }}
         />
       </div>
 
@@ -47,9 +47,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center mb-4">
-              <img
-                src={brandLogo}
+              <Picture
+                name="brand-logo"
                 alt="ChefDolls CakeShelf"
+                width={192}
+                height={192}
                 className="h-12 w-12 object-contain rounded-full"
               />
             </div>
@@ -113,7 +115,7 @@ export default function Footer() {
           <div>
             <h4
               className="font-display text-lg font-semibold mb-4"
-              style={{ color: "oklch(0.90 0.03 60)" }}
+              style={{ color: "var(--border)" }}
             >
               Quick Links
             </h4>
@@ -139,7 +141,7 @@ export default function Footer() {
           <div>
             <h4
               className="font-display text-lg font-semibold mb-4"
-              style={{ color: "oklch(0.90 0.03 60)" }}
+              style={{ color: "var(--border)" }}
             >
               Our Specialties
             </h4>

@@ -52,7 +52,7 @@ export default function GallerySection() {
       id="gallery"
       ref={sectionRef}
       className="py-20 md:py-28 relative overflow-hidden"
-      style={{ background: "oklch(0.99 0.01 80)" }}
+      style={{ background: "var(--background)" }}
     >
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
@@ -60,7 +60,7 @@ export default function GallerySection() {
           className="absolute top-0 left-0 right-0 h-px"
           style={{
             background:
-              "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
+              "linear-gradient(90deg, transparent, var(--gold), transparent)",
           }}
         />
       </div>
@@ -70,20 +70,20 @@ export default function GallerySection() {
         <div ref={headRef} className="reveal text-center mb-12">
           <p
             className="font-script text-2xl mb-1"
-            style={{ color: "oklch(0.72 0.12 70)" }}
+            style={{ color: "var(--gold-deep)" }}
           >
             Our Creations
           </p>
           <h2
             className="font-display text-4xl md:text-5xl font-semibold mb-3"
-            style={{ color: "oklch(0.22 0.04 40)" }}
+            style={{ color: "var(--text-strong)" }}
           >
             A Feast for the Eyes
           </h2>
           <p
             className="text-base max-w-xl mx-auto"
             style={{
-              color: "oklch(0.50 0.04 30)",
+              color: "var(--text-body)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -107,14 +107,14 @@ export default function GallerySection() {
                   fontFamily: "var(--font-body)",
                   background:
                     activeCategory === cat
-                      ? "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.72 0.1 5))"
+                      ? "linear-gradient(135deg, var(--rose), oklch(0.72 0.1 5))"
                       : "oklch(0.96 0.02 60)",
                   color:
                     activeCategory === cat ? "white" : "oklch(0.45 0.06 30)",
                   border:
                     activeCategory === cat
                       ? "none"
-                      : "1px solid oklch(0.88 0.04 60)",
+                      : "1px solid var(--line)",
                   boxShadow:
                     activeCategory === cat
                       ? "0 4px 15px oklch(0.65 0.12 10 / 0.3)"
@@ -135,7 +135,7 @@ export default function GallerySection() {
                 key={i}
                 className="rounded-3xl overflow-hidden animate-pulse"
                 style={{
-                  background: "oklch(0.93 0.02 60)",
+                  background: "var(--surface-muted)",
                   aspectRatio: "4/3",
                 }}
               />
@@ -148,7 +148,7 @@ export default function GallerySection() {
           <p
             className="text-center"
             style={{
-              color: "oklch(0.55 0.04 30)",
+              color: "var(--text-muted)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -166,7 +166,7 @@ export default function GallerySection() {
               <p
                 className="col-span-3 text-center py-12"
                 style={{
-                  color: "oklch(0.55 0.04 30)",
+                  color: "var(--text-muted)",
                   fontFamily: "var(--font-body)",
                 }}
               >
@@ -210,10 +210,13 @@ function ProductCard({
   return (
     <div
       ref={cardRef}
-      className="reveal group rounded-3xl overflow-hidden card-hover"
+      // @container: the card sizes its own text from its own width, not the
+      // viewport's. It matters at the 2-column tablet layout, where each card
+      // is far wider than the same card in the 3-column desktop grid.
+      className="@container reveal group rounded-3xl overflow-hidden card-hover"
       style={{
         background: "white",
-        border: "1px solid oklch(0.92 0.03 60)",
+        border: "1px solid var(--line-soft)",
         boxShadow: "0 4px 20px oklch(0.65 0.12 10 / 0.06)",
       }}
       onMouseEnter={() => setHovered(true)}
@@ -225,6 +228,8 @@ function ProductCard({
           src={product.image}
           alt={product.name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          loading="lazy"
+          decoding="async"
         />
         {/* Hover overlay */}
         <div
@@ -259,18 +264,18 @@ function ProductCard({
       </div>
 
       {/* Content */}
-      <div className="p-5">
+      <div className="p-5 @lg:p-7">
         <h3
-          className="font-display text-xl font-semibold mb-1"
-          style={{ color: "oklch(0.28 0.05 30)" }}
+          className="font-display text-xl @lg:text-2xl font-semibold mb-1"
+          style={{ color: "var(--text-heading)" }}
         >
           {product.name}
         </h3>
         {product.description && (
           <p
-            className="text-sm mb-3"
+            className="text-sm @lg:text-base mb-3"
             style={{
-              color: "oklch(0.55 0.04 30)",
+              color: "var(--text-muted)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -300,7 +305,7 @@ function ProductCard({
         <div className="flex items-center justify-between">
           <span
             className="font-display text-lg font-semibold"
-            style={{ color: "oklch(0.55 0.12 10)" }}
+            style={{ color: "var(--rose-accent)" }}
           >
             {product.price}
           </span>

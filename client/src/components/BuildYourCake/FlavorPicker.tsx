@@ -59,7 +59,7 @@ export default function FlavorPicker({
             htmlFor="flavor-search"
             className="text-xs font-semibold uppercase tracking-wide"
             style={{
-              color: "oklch(0.55 0.04 30)",
+              color: "var(--text-muted)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -79,16 +79,16 @@ export default function FlavorPicker({
               placeholder="Try “mango”, “nutella”, “coffee”…"
               className="w-full rounded-xl pl-10 pr-11 py-3 text-sm outline-none transition-all duration-200"
               style={{
-                border: `1.5px solid ${query ? accentColor : "oklch(0.88 0.04 60)"}`,
+                border: `1.5px solid ${query ? accentColor : "var(--line)"}`,
                 fontFamily: "var(--font-body)",
-                color: "oklch(0.35 0.05 30)",
+                color: "var(--text-dark)",
                 background: "white",
               }}
               onFocus={e => (e.target.style.borderColor = accentColor)}
               onBlur={e =>
                 (e.target.style.borderColor = query
                   ? accentColor
-                  : "oklch(0.88 0.04 60)")
+                  : "var(--line)")
               }
             />
             {query && (
@@ -97,7 +97,7 @@ export default function FlavorPicker({
                 onClick={() => setQuery("")}
                 aria-label="Clear search"
                 className="absolute right-1 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-xl"
-                style={{ color: "oklch(0.55 0.04 30)" }}
+                style={{ color: "var(--text-muted)" }}
               >
                 <X className="w-4 h-4" />
               </button>
@@ -112,7 +112,7 @@ export default function FlavorPicker({
       {matches.length === 0 ? (
         <div
           className="rounded-2xl px-4 py-8 text-center"
-          style={{ background: "oklch(0.97 0.025 60)" }}
+          style={{ background: "var(--surface-warm)" }}
         >
           <p
             className="text-sm"
@@ -174,7 +174,7 @@ export default function FlavorPicker({
                       className="p-3 rounded-2xl text-left flex items-center gap-3 transition-all duration-200 hover:scale-[1.02]"
                       style={{
                         background: isSelected ? "oklch(0.95 0.04 10)" : "white",
-                        border: `2px solid ${isSelected ? accentColor : "oklch(0.88 0.04 60)"}`,
+                        border: `2px solid ${isSelected ? accentColor : "var(--line)"}`,
                       }}
                     >
                       <span className="text-2xl" aria-hidden="true">
@@ -185,7 +185,7 @@ export default function FlavorPicker({
                           className="text-sm font-medium"
                           style={{
                             color: isSelected
-                              ? "oklch(0.45 0.1 10)"
+                              ? "var(--rose-ink)"
                               : "oklch(0.40 0.05 30)",
                             fontFamily: "var(--font-body)",
                           }}

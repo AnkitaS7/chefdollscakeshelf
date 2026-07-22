@@ -23,7 +23,7 @@ export default function MarqueeBanner() {
       className="overflow-hidden py-3 relative"
       style={{
         background:
-          "linear-gradient(135deg, oklch(0.28 0.05 30), oklch(0.22 0.04 40))",
+          "linear-gradient(135deg, var(--text-heading), var(--text-strong))",
       }}
     >
       <div
@@ -45,7 +45,7 @@ export default function MarqueeBanner() {
             {item}
             <span
               className="inline-block w-1.5 h-1.5 rounded-full ml-4"
-              style={{ background: "oklch(0.78 0.1 70)" }}
+              style={{ background: "var(--gold)" }}
             />
           </span>
         ))}

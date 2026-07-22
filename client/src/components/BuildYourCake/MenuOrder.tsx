@@ -21,7 +21,7 @@ interface MenuOrderState {
   instructions: string;
 }
 
-const ACCENT = "oklch(0.58 0.14 10)";
+const ACCENT = "var(--rose-strong)";
 
 export default function MenuOrder({
   preselectedCake,
@@ -119,14 +119,14 @@ export default function MenuOrder({
             className="lg:col-span-2 rounded-3xl p-6 md:p-8 flex flex-col gap-6"
             style={{
               background: "white",
-              border: "1px solid oklch(0.92 0.03 60)",
+              border: "1px solid var(--line-soft)",
               boxShadow: "0 2px 12px oklch(0.65 0.12 10 / 0.05)",
             }}
           >
             <div>
               <h3
                 className="font-display text-2xl font-semibold mb-1 flex items-center gap-2"
-                style={{ color: "oklch(0.28 0.05 30)" }}
+                style={{ color: "var(--text-heading)" }}
               >
                 <Cake className="w-5 h-5" aria-hidden="true" />
                 Choose Your Cake
@@ -134,7 +134,7 @@ export default function MenuOrder({
               <p
                 className="text-sm"
                 style={{
-                  color: "oklch(0.55 0.04 30)",
+                  color: "var(--text-muted)",
                   fontFamily: "var(--font-body)",
                 }}
               >
@@ -147,7 +147,7 @@ export default function MenuOrder({
               <label
                 className="block text-xs font-semibold uppercase tracking-wide mb-2"
                 style={{
-                  color: "oklch(0.55 0.04 30)",
+                  color: "var(--text-muted)",
                   fontFamily: "var(--font-body)",
                 }}
               >
@@ -156,7 +156,7 @@ export default function MenuOrder({
               {isLoading ? (
                 <div
                   className="h-11 rounded-xl animate-pulse"
-                  style={{ background: "oklch(0.93 0.02 60)" }}
+                  style={{ background: "var(--surface-muted)" }}
                 />
               ) : (
                 <select
@@ -166,10 +166,10 @@ export default function MenuOrder({
                   }
                   className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all duration-200 appearance-none"
                   style={{
-                    border: `1.5px solid ${order.cakeName ? ACCENT : "oklch(0.88 0.04 60)"}`,
+                    border: `1.5px solid ${order.cakeName ? ACCENT : "var(--line)"}`,
                     fontFamily: "var(--font-body)",
                     color: order.cakeName
-                      ? "oklch(0.28 0.05 30)"
+                      ? "var(--text-heading)"
                       : "oklch(0.60 0.03 30)",
                     background: "white",
                     cursor: "pointer",
@@ -178,7 +178,7 @@ export default function MenuOrder({
                   onBlur={e =>
                     (e.target.style.borderColor = order.cakeName
                       ? ACCENT
-                      : "oklch(0.88 0.04 60)")
+                      : "var(--line)")
                   }
                 >
                   <option value="">— Pick a cake from our menu —</option>
@@ -197,7 +197,7 @@ export default function MenuOrder({
                 <label
                   className="block text-xs font-semibold uppercase tracking-wide mb-3"
                   style={{
-                    color: "oklch(0.55 0.04 30)",
+                    color: "var(--text-muted)",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -219,7 +219,7 @@ export default function MenuOrder({
                 <label
                   className="block text-xs font-semibold uppercase tracking-wide mb-3"
                   style={{
-                    color: "oklch(0.55 0.04 30)",
+                    color: "var(--text-muted)",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -240,7 +240,7 @@ export default function MenuOrder({
                 <label
                   className="block text-xs font-semibold uppercase tracking-wide mb-2"
                   style={{
-                    color: "oklch(0.55 0.04 30)",
+                    color: "var(--text-muted)",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -283,9 +283,9 @@ export default function MenuOrder({
                   }
                   className="rounded-xl px-4 py-3 text-sm outline-none transition-all duration-200"
                   style={{
-                    border: `1.5px solid ${order.deliveryDate ? ACCENT : "oklch(0.88 0.04 60)"}`,
+                    border: `1.5px solid ${order.deliveryDate ? ACCENT : "var(--line)"}`,
                     fontFamily: "var(--font-body)",
-                    color: "oklch(0.35 0.05 30)",
+                    color: "var(--text-dark)",
                     background: "white",
                     cursor: "pointer",
                   }}
@@ -293,7 +293,7 @@ export default function MenuOrder({
                   onBlur={e =>
                     (e.target.style.borderColor = order.deliveryDate
                       ? ACCENT
-                      : "oklch(0.88 0.04 60)")
+                      : "var(--line)")
                   }
                 />
                 {order.deliveryDate && (
@@ -306,13 +306,13 @@ export default function MenuOrder({
                   >
                     <CircleCheck
                       className="w-4 h-4 flex-shrink-0"
-                      style={{ color: "oklch(0.55 0.15 140)" }}
+                      style={{ color: "var(--green)" }}
                       aria-hidden="true"
                     />
                     <span
                       className="text-sm font-semibold"
                       style={{
-                        color: "oklch(0.28 0.05 30)",
+                        color: "var(--text-heading)",
                         fontFamily: "var(--font-body)",
                       }}
                     >
@@ -335,7 +335,7 @@ export default function MenuOrder({
             <label
               className="block text-xs font-semibold uppercase tracking-wide mb-2"
               style={{
-                color: "oklch(0.55 0.04 30)",
+                color: "var(--text-muted)",
                 fontFamily: "var(--font-body)",
               }}
             >
@@ -350,20 +350,20 @@ export default function MenuOrder({
               placeholder="e.g. Dietary requirements, allergies, or a personalised message for your cake..."
               className="w-full rounded-xl px-4 py-3 text-sm resize-none outline-none transition-all duration-200"
               style={{
-                border: "1.5px solid oklch(0.88 0.04 60)",
+                border: "1.5px solid var(--line)",
                 fontFamily: "var(--font-body)",
-                color: "oklch(0.35 0.05 30)",
-                background: "oklch(0.99 0.01 80)",
+                color: "var(--text-dark)",
+                background: "var(--background)",
               }}
               onFocus={e => (e.target.style.borderColor = ACCENT)}
-              onBlur={e => (e.target.style.borderColor = "oklch(0.88 0.04 60)")}
+              onBlur={e => (e.target.style.borderColor = "var(--line)")}
             />
           </div>)}
 
             {/* Continue button */}
             <div
               className="flex justify-end pt-2 border-t"
-              style={{ borderColor: "oklch(0.93 0.02 60)" }}
+              style={{ borderColor: "var(--surface-muted)" }}
             >
               <button
                 onClick={() => goTo("summary", "forward")}
@@ -387,13 +387,13 @@ export default function MenuOrder({
               className="sticky top-24 rounded-3xl p-6"
               style={{
                 background: "white",
-                border: "1px solid oklch(0.92 0.03 60)",
+                border: "1px solid var(--line-soft)",
                 boxShadow: "0 8px 40px oklch(0.65 0.12 10 / 0.1)",
               }}
             >
               <h3
                 className="font-display text-xl font-semibold mb-4 flex items-center justify-center gap-2"
-                style={{ color: "oklch(0.28 0.05 30)" }}
+                style={{ color: "var(--text-heading)" }}
               >
                 <Cake className="w-5 h-5" aria-hidden="true" />
                 Your Selection
@@ -415,6 +415,8 @@ export default function MenuOrder({
                       src={selectedItem.image}
                       alt={order.cakeName}
                       className="rounded-2xl object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   )}
                   {order.cakeName && (
@@ -447,12 +449,12 @@ export default function MenuOrder({
                   {order.size && (
                     <div
                       className="rounded-2xl p-3 mt-2 text-center"
-                      style={{ background: "oklch(0.97 0.025 60)" }}
+                      style={{ background: "var(--surface-warm)" }}
                     >
                       <p
                         className="text-xs mb-1"
                         style={{
-                          color: "oklch(0.55 0.04 30)",
+                          color: "var(--text-muted)",
                           fontFamily: "var(--font-body)",
                         }}
                       >
@@ -460,7 +462,7 @@ export default function MenuOrder({
                       </p>
                       <p
                         className="font-display text-2xl font-bold"
-                        style={{ color: "oklch(0.45 0.1 10)" }}
+                        style={{ color: "var(--rose-ink)" }}
                       >
                         ₹{totalPrice}+
                       </p>
@@ -478,7 +480,7 @@ export default function MenuOrder({
           className="rounded-3xl p-6 md:p-8 flex flex-col gap-6"
           style={{
             background: "white",
-            border: "1px solid oklch(0.92 0.03 60)",
+            border: "1px solid var(--line-soft)",
             boxShadow: "0 2px 12px oklch(0.65 0.12 10 / 0.05)",
           }}
         >
@@ -491,14 +493,14 @@ export default function MenuOrder({
             />
             <h3
               className="font-display text-2xl font-semibold mt-2"
-              style={{ color: "oklch(0.28 0.05 30)" }}
+              style={{ color: "var(--text-heading)" }}
             >
               Your Order is Ready!
             </h3>
             <p
               className="text-sm mt-1"
               style={{
-                color: "oklch(0.55 0.04 30)",
+                color: "var(--text-muted)",
                 fontFamily: "var(--font-body)",
               }}
             >
@@ -511,7 +513,7 @@ export default function MenuOrder({
           <div
             className="rounded-2xl p-5 space-y-3"
             style={{
-              background: "oklch(0.97 0.025 60)",
+              background: "var(--surface-warm)",
               border: "1px solid oklch(0.90 0.04 60)",
             }}
           >
@@ -521,6 +523,8 @@ export default function MenuOrder({
                 alt={order.cakeName}
                 className="block w-fit rounded-2xl object-cover mx-auto"
                 style={{ maxHeight: "250px" }}
+                loading="lazy"
+                decoding="async"
               />
             )}
             <PreviewRow label="Cake" value={order.cakeName} />
@@ -552,12 +556,12 @@ export default function MenuOrder({
           {/* Price */}
           <div
             className="rounded-2xl p-4 text-center"
-            style={{ background: "oklch(0.97 0.025 60)" }}
+            style={{ background: "var(--surface-warm)" }}
           >
             <p
               className="text-xs mb-1"
               style={{
-                color: "oklch(0.55 0.04 30)",
+                color: "var(--text-muted)",
                 fontFamily: "var(--font-body)",
               }}
             >
@@ -565,14 +569,14 @@ export default function MenuOrder({
             </p>
             <p
               className="font-display text-3xl font-bold"
-              style={{ color: "oklch(0.45 0.1 10)" }}
+              style={{ color: "var(--rose-ink)" }}
             >
               ₹{totalPrice}+
             </p>
             <p
               className="text-xs mt-1"
               style={{
-                color: "oklch(0.60 0.04 30)",
+                color: "var(--text-faint)",
                 fontFamily: "var(--font-body)",
               }}
             >
@@ -583,7 +587,7 @@ export default function MenuOrder({
           {/* Navigation */}
           <div
             className="flex justify-between items-center pt-2 border-t"
-            style={{ borderColor: "oklch(0.93 0.02 60)" }}
+            style={{ borderColor: "var(--surface-muted)" }}
           >
             <button
               onClick={() => goTo("select", "back")}
@@ -592,7 +596,7 @@ export default function MenuOrder({
                 background: "oklch(0.96 0.02 60)",
                 color: "oklch(0.40 0.05 30)",
                 fontFamily: "var(--font-body)",
-                border: "1.5px solid oklch(0.88 0.04 60)",
+                border: "1.5px solid var(--line)",
               }}
             >
               <ArrowLeft className="w-4 h-4" aria-hidden="true" />
@@ -622,17 +626,17 @@ function PreviewRow({ label, value }: { label: string; value: string }) {
   return (
     <div
       className="flex justify-between items-start gap-2 pb-2"
-      style={{ borderBottom: "1px solid oklch(0.93 0.02 60)" }}
+      style={{ borderBottom: "1px solid var(--surface-muted)" }}
     >
       <span
         className="text-xs font-semibold uppercase tracking-wide flex-shrink-0"
-        style={{ color: "oklch(0.60 0.04 30)", fontFamily: "var(--font-body)" }}
+        style={{ color: "var(--text-faint)", fontFamily: "var(--font-body)" }}
       >
         {label}
       </span>
       <span
         className="text-xs text-right"
-        style={{ color: "oklch(0.35 0.05 30)", fontFamily: "var(--font-body)" }}
+        style={{ color: "var(--text-dark)", fontFamily: "var(--font-body)" }}
       >
         {value}
       </span>

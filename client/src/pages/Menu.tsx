@@ -28,24 +28,24 @@ export default function Menu() {
         <div className="container relative z-10">
           <p
             className="font-script text-2xl mb-2"
-            style={{ color: "oklch(0.72 0.12 70)" }}
+            style={{ color: "var(--gold-deep)" }}
           >
             Our Creations
           </p>
           <h1
             className="font-display text-4xl md:text-6xl font-semibold"
-            style={{ color: "oklch(0.22 0.04 40)" }}
+            style={{ color: "var(--text-strong)" }}
           >
             The Menu
             <br />
-            <em style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}>
+            <em style={{ color: "var(--rose-accent)", fontStyle: "italic" }}>
               Every Bite, a Memory
             </em>
           </h1>
           <p
             className="mt-3 text-base max-w-md mx-auto"
             style={{
-              color: "oklch(0.50 0.04 30)",
+              color: "var(--text-body)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -68,20 +68,20 @@ export default function Menu() {
       >
         <p
           className="font-script text-2xl mb-2"
-          style={{ color: "oklch(0.72 0.12 70)" }}
+          style={{ color: "var(--gold-deep)" }}
         >
           Don't see what you're looking for?
         </p>
         <h2
           className="font-display text-3xl md:text-4xl font-semibold mb-4"
-          style={{ color: "oklch(0.22 0.04 40)" }}
+          style={{ color: "var(--text-strong)" }}
         >
           Let's Build Your Dream Cake
         </h2>
         <p
           className="text-base max-w-md mx-auto mb-8"
           style={{
-            color: "oklch(0.50 0.04 30)",
+            color: "var(--text-body)",
             fontFamily: "var(--font-body)",
           }}
         >
@@ -100,7 +100,7 @@ export default function Menu() {
             href="/contact"
             className="px-8 py-3.5 rounded-full text-sm font-semibold border-2 hover:scale-105 transition-all duration-300"
             style={{
-              borderColor: "oklch(0.72 0.12 70)",
+              borderColor: "var(--gold-deep)",
               color: "oklch(0.45 0.08 30)",
               fontFamily: "var(--font-body)",
             }}

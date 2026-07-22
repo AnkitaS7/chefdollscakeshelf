@@ -6,11 +6,14 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Link } from "wouter";
+import Picture from "./Picture";
+import { HERO_REVEAL_MS } from "@/lib/intro";
 
+// Basenames only - <Picture> resolves .avif / .webp / .jpg from /public.
 const HERO_IMGS = [
-  "/home-page-product1.jpg",
-  "/home-page-product2.jpg",
-  "/home-page-product3.jpg",
+  { name: "home-page-product1", width: 1100, height: 1375 },
+  { name: "home-page-product2", width: 1100, height: 1100 },
+  { name: "home-page-product3", width: 1100, height: 1100 },
 ];
 
 
@@ -21,12 +24,13 @@ export default function HeroSection() {
   const [imgIndex, setImgIndex] = useState(0);
 
   useEffect(() => {
-    // Hero is always visible on load - trigger immediately after mount
-    // Show hero content after loading screen fades (2.4s)
+    // Hero is above the fold, so it reveals on a timer rather than on scroll -
+    // held until the loading screen has cleared, or almost immediately when the
+    // intro is skipped for a returning visitor.
     const timer = setTimeout(() => {
       if (textRef.current) textRef.current.classList.add("visible");
       if (imgRef.current) imgRef.current.classList.add("visible");
-    }, 2300);
+    }, HERO_REVEAL_MS);
     return () => clearTimeout(timer);
   }, []);
 
@@ -48,7 +52,7 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{
         background:
-          "linear-gradient(135deg, oklch(0.99 0.015 80) 0%, oklch(0.96 0.03 20) 50%, oklch(0.97 0.025 60) 100%)",
+          "linear-gradient(135deg, oklch(0.99 0.015 80) 0%, oklch(0.96 0.03 20) 50%, var(--surface-warm) 100%)",
       }}
     >
       {/* Floating decorative elements */}
@@ -71,7 +75,7 @@ export default function HeroSection() {
         {/* Soft blobs */}
         <div
           className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl opacity-30"
-          style={{ background: "oklch(0.88 0.05 10)" }}
+          style={{ background: "var(--blush)" }}
         />
         <div
           className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full blur-3xl opacity-25"
@@ -79,7 +83,7 @@ export default function HeroSection() {
         />
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl opacity-10"
-          style={{ background: "oklch(0.78 0.1 70)" }}
+          style={{ background: "var(--gold)" }}
         />
       </div>
 
@@ -88,14 +92,14 @@ export default function HeroSection() {
           {/* Text Content */}
           <div
             ref={textRef}
-            className="reveal-left flex flex-col justify-center order-2 lg:order-1 pb-12 lg:pb-0"
+            className="reveal-left reveal-instant flex flex-col justify-center order-2 lg:order-1 pb-12 lg:pb-0"
           >
             {/* Script label */}
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-8 bg-gradient-to-r from-transparent to-amber-400" />
               <span
                 className="font-script text-xl"
-                style={{ color: "oklch(0.72 0.12 70)" }}
+                style={{ color: "var(--gold-deep)" }}
               >
                 Mumbai's Finest
               </span>
@@ -106,13 +110,13 @@ export default function HeroSection() {
               className="font-display leading-[1.05] mb-4"
               style={{
                 fontSize: "clamp(2.8rem, 6vw, 5rem)",
-                color: "oklch(0.22 0.04 40)",
+                color: "var(--text-strong)",
                 fontWeight: 600,
               }}
             >
               Handcrafted
               <br />
-              <em style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}>
+              <em style={{ color: "var(--rose-accent)", fontStyle: "italic" }}>
                 Eggless
               </em>{" "}
               Delights
@@ -174,7 +178,7 @@ export default function HeroSection() {
                 href="/menu"
                 className="px-8 py-3.5 rounded-full text-sm font-semibold border-2 transition-all duration-300 hover:shadow-md hover:bg-rose-50"
                 style={{
-                  borderColor: "oklch(0.72 0.12 70)",
+                  borderColor: "var(--gold-deep)",
                   color: "oklch(0.45 0.1 30)",
                   fontFamily: "var(--font-body)",
                   background: "transparent",
@@ -211,7 +215,7 @@ export default function HeroSection() {
                 <p
                   className="text-xs"
                   style={{
-                    color: "oklch(0.55 0.04 30)",
+                    color: "var(--text-muted)",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -224,7 +228,7 @@ export default function HeroSection() {
           {/* Hero Image */}
           <div
             ref={imgRef}
-            className="reveal-right flex justify-center items-center order-1 lg:order-2 pt-24 lg:pt-0"
+            className="reveal-right reveal-instant flex justify-center items-center order-1 lg:order-2 pt-24 lg:pt-0"
           >
             <div className="relative w-full max-w-md lg:max-w-lg">
               {/* Decorative ring */}
@@ -232,15 +236,18 @@ export default function HeroSection() {
                 className="absolute inset-0 rounded-[40%_60%_60%_40%/40%_40%_60%_60%] scale-105 opacity-30"
                 style={{
                   background:
-                    "linear-gradient(135deg, oklch(0.88 0.05 10), oklch(0.93 0.04 60))",
+                    "linear-gradient(135deg, var(--blush), oklch(0.93 0.04 60))",
                 }}
               />
               {/* Main image */}
               <div className="relative rounded-[40%_60%_60%_40%/40%_40%_60%_60%] overflow-hidden shadow-2xl" style={{ aspectRatio: "4/5" }}>
-                {HERO_IMGS.map((src, i) => (
-                  <img
-                    key={src}
-                    src={src}
+                {HERO_IMGS.map((img, i) => (
+                  <Picture
+                    key={img.name}
+                    name={img.name}
+                    width={img.width}
+                    height={img.height}
+                    priority={i === 0}
                     alt={i === 0 ? "Beautiful multi-tiered eggless celebration cake by ChefDollsCakeShelf" : ""}
                     className="absolute inset-0 w-full h-full object-cover"
                     style={{
@@ -255,7 +262,7 @@ export default function HeroSection() {
                   className="absolute inset-0 opacity-10"
                   style={{
                     background:
-                      "linear-gradient(135deg, oklch(0.78 0.1 70) 0%, transparent 60%)",
+                      "linear-gradient(135deg, var(--gold) 0%, transparent 60%)",
                   }}
                 />
               </div>
@@ -263,11 +270,11 @@ export default function HeroSection() {
               {/* Floating badge */}
               <div
                 className="absolute -bottom-4 -left-4 md:-left-8 bg-white rounded-2xl shadow-xl px-4 py-3 animate-float"
-                style={{ border: "1px solid oklch(0.90 0.03 60)" }}
+                style={{ border: "1px solid var(--border)" }}
               >
                 <p
                   className="font-script text-lg"
-                  style={{ color: "oklch(0.72 0.12 70)" }}
+                  style={{ color: "var(--gold-deep)" }}
                 >
                   100% Eggless
                 </p>
@@ -285,7 +292,7 @@ export default function HeroSection() {
               {/* Top badge */}
               <div
                 className="absolute -top-4 -right-4 md:-right-8 bg-white rounded-2xl shadow-xl px-4 py-3 animate-float-delayed"
-                style={{ border: "1px solid oklch(0.90 0.03 60)" }}
+                style={{ border: "1px solid var(--border)" }}
               >
                 <p
                   className="text-xs font-semibold text-center"
@@ -299,7 +306,7 @@ export default function HeroSection() {
                 <p
                   className="text-xs"
                   style={{
-                    color: "oklch(0.55 0.04 30)",
+                    color: "var(--text-muted)",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -326,7 +333,7 @@ export default function HeroSection() {
         </span>
         <ChevronDown
           className="w-5 h-5 animate-bounce"
-          style={{ color: "oklch(0.65 0.12 10)" }}
+          style={{ color: "var(--rose)" }}
         />
       </div>
     </section>

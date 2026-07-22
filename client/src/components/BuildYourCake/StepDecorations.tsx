@@ -25,7 +25,7 @@ export default function StepDecorations({
   const addonPrice = isBrownie ? 60 : product === "cupcake" ? 50 : 150;
   const accentColor =
     product === "cake"
-      ? "oklch(0.72 0.12 70)"
+      ? "var(--gold-deep)"
       : product === "cupcake"
         ? "oklch(0.55 0.14 200)"
         : "oklch(0.40 0.08 40)";
@@ -47,10 +47,10 @@ export default function StepDecorations({
                 background: isSelected
                   ? `linear-gradient(135deg, ${accentColor}, oklch(0.82 0.1 75))`
                   : "white",
-                border: `2px solid ${isSelected ? accentColor : "oklch(0.88 0.04 60)"}`,
+                border: `2px solid ${isSelected ? accentColor : "var(--line)"}`,
                 color: isSelected
                   ? product === "cake"
-                    ? "oklch(0.22 0.04 40)"
+                    ? "var(--text-strong)"
                     : "white"
                   : "oklch(0.40 0.05 30)",
                 fontFamily: "var(--font-body)",
@@ -90,13 +90,13 @@ export default function StepDecorations({
             maxLength={60}
             className="w-full rounded-xl px-3 py-2 text-sm outline-none transition-all duration-200"
             style={{
-              border: "1.5px solid oklch(0.88 0.04 60)",
+              border: "1.5px solid var(--line)",
               fontFamily: "var(--font-body)",
-              color: "oklch(0.35 0.05 30)",
+              color: "var(--text-dark)",
               background: "white",
             }}
             onFocus={e => (e.target.style.borderColor = accentColor)}
-            onBlur={e => (e.target.style.borderColor = "oklch(0.88 0.04 60)")}
+            onBlur={e => (e.target.style.borderColor = "var(--line)")}
             autoFocus
           />
           <p
@@ -115,7 +115,7 @@ export default function StepDecorations({
         <label
           className="block text-xs font-semibold uppercase tracking-wide mb-2"
           style={{
-            color: "oklch(0.55 0.04 30)",
+            color: "var(--text-muted)",
             fontFamily: "var(--font-body)",
           }}
         >
@@ -128,13 +128,13 @@ export default function StepDecorations({
           placeholder={`e.g. Dietary requirements, allergies, or a personalised message for your ${product}`}
           className="w-full rounded-xl px-4 py-3 text-sm resize-none outline-none transition-all duration-200"
           style={{
-            border: "1.5px solid oklch(0.88 0.04 60)",
+            border: "1.5px solid var(--line)",
             fontFamily: "var(--font-body)",
-            color: "oklch(0.35 0.05 30)",
-            background: "oklch(0.99 0.01 80)",
+            color: "var(--text-dark)",
+            background: "var(--background)",
           }}
           onFocus={e => (e.target.style.borderColor = accentColor)}
-          onBlur={e => (e.target.style.borderColor = "oklch(0.88 0.04 60)")}
+          onBlur={e => (e.target.style.borderColor = "var(--line)")}
         />
       </div>
     </div>

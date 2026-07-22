@@ -13,7 +13,7 @@ const steps = [
     title: "Choose Your Item",
     description:
       "Browse our menu and pick your favourite or design a custom creation.",
-    color: "oklch(0.58 0.14 10)",
+    color: "var(--rose-strong)",
     bg: "oklch(0.97 0.04 10)",
     border: "oklch(0.88 0.08 10)",
   },
@@ -33,7 +33,7 @@ const steps = [
     title: "Confirmation",
     description:
       "We'll confirm within 24 hours with pricing and pickup details.",
-    color: "oklch(0.55 0.15 140)",
+    color: "var(--green)",
     bg: "oklch(0.95 0.05 140)",
     border: "oklch(0.84 0.08 140)",
   },
@@ -54,14 +54,14 @@ export default function OrderOnline() {
     <section
       id="order-online"
       className="py-8 relative overflow-hidden"
-      style={{ background: "oklch(0.99 0.01 80)" }}
+      style={{ background: "var(--background)" }}
     >
       {/* Top gradient line */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-            "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
+            "linear-gradient(90deg, transparent, var(--gold), transparent)",
         }}
       />
 
@@ -71,20 +71,20 @@ export default function OrderOnline() {
           <div className="mb-5">
             <p
               className="flex justify-center font-script text-2xl"
-              style={{ color: "oklch(0.72 0.12 70)" }}
+              style={{ color: "var(--gold-deep)" }}
             >
               Simple & Sweet
             </p>
             <h2
               className="flex justify-center font-display text-2xl md:text-3xl font-semibold"
-              style={{ color: "oklch(0.22 0.04 40)" }}
+              style={{ color: "var(--text-strong)" }}
             >
               Order in 4 Easy Steps
             </h2>
             <p
               className="text-sm mt-0.5"
               style={{
-                color: "oklch(0.55 0.04 30)",
+                color: "var(--text-muted)",
                 fontFamily: "var(--font-body)",
               }}
             >
@@ -118,7 +118,7 @@ export default function OrderOnline() {
               {/* Title */}
               <h3
                 className="font-display text-xl font-semibold leading-tight"
-                style={{ color: "oklch(0.22 0.04 40)" }}
+                style={{ color: "var(--text-strong)" }}
               >
                 {step.title}
               </h3>
@@ -127,7 +127,7 @@ export default function OrderOnline() {
               <p
                 className="text-sm leading-relaxed"
                 style={{
-                  color: "oklch(0.50 0.04 30)",
+                  color: "var(--text-body)",
                   fontFamily: "var(--font-body)",
                 }}
               >

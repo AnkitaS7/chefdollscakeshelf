@@ -1,7 +1,8 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Router as WouterRouter, Switch } from "wouter";
+import { viewTransitionNav } from "./lib/viewTransitionNav";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -29,7 +30,9 @@ function App() {
     <ErrorBoundary>
       <TooltipProvider>
         <Toaster position="top-center" richColors />
-        <Router />
+        <WouterRouter aroundNav={viewTransitionNav}>
+          <Router />
+        </WouterRouter>
       </TooltipProvider>
     </ErrorBoundary>
   );

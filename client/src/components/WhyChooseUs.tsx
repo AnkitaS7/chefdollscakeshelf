@@ -12,7 +12,7 @@ const features = [
     title: "100% Eggless",
     description:
       "Every single creation is completely eggless - no exceptions. Enjoy the most indulgent cakes without compromise.",
-    color: "oklch(0.55 0.15 140)",
+    color: "var(--green)",
     bg: "oklch(0.94 0.05 140)",
     emoji: "🌿",
   },
@@ -104,7 +104,7 @@ export default function WhyChooseUs() {
           className="absolute top-0 left-0 right-0 h-px"
           style={{
             background:
-              "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
+              "linear-gradient(90deg, transparent, var(--gold), transparent)",
           }}
         />
       </div>
@@ -114,20 +114,20 @@ export default function WhyChooseUs() {
         <div ref={headRef} className="reveal text-center mb-14">
           <p
             className="font-script text-2xl mb-1"
-            style={{ color: "oklch(0.72 0.12 70)" }}
+            style={{ color: "var(--gold-deep)" }}
           >
             Why We're Different
           </p>
           <h2
             className="font-display text-4xl md:text-5xl font-semibold mb-3"
-            style={{ color: "oklch(0.22 0.04 40)" }}
+            style={{ color: "var(--text-strong)" }}
           >
             The ChefDolls Promise
           </h2>
           <p
             className="text-base max-w-lg mx-auto"
             style={{
-              color: "oklch(0.50 0.04 30)",
+              color: "var(--text-body)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -187,7 +187,7 @@ function FeatureCard({
       className="reveal rounded-3xl p-6 card-hover group"
       style={{
         background: "white",
-        border: "1px solid oklch(0.92 0.03 60)",
+        border: "1px solid var(--line-soft)",
         boxShadow: "0 4px 20px oklch(0.65 0.12 10 / 0.05)",
       }}
     >
@@ -202,13 +202,13 @@ function FeatureCard({
       {/* Content */}
       <h3
         className="font-display text-xl font-semibold mb-2"
-        style={{ color: "oklch(0.28 0.05 30)" }}
+        style={{ color: "var(--text-heading)" }}
       >
         {feature.emoji} {feature.title}
       </h3>
       <p
         className="text-sm leading-relaxed"
-        style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+        style={{ color: "var(--text-body)", fontFamily: "var(--font-body)" }}
       >
         {feature.description}
       </p>

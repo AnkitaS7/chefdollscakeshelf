@@ -5,7 +5,7 @@
 
 import { useEffect, useRef } from "react";
 import { Heart, Leaf, Star } from "lucide-react";
-import ABOUT_IMG from "/dhvani.jpg";
+import Picture from "./Picture";
 
 const stats = [
   { value: "500+", label: "Cakes Created" },
@@ -46,7 +46,7 @@ export default function AboutSection() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute -right-40 top-0 w-96 h-96 rounded-full blur-3xl opacity-20"
-          style={{ background: "oklch(0.88 0.05 10)" }}
+          style={{ background: "var(--blush)" }}
         />
         <div
           className="absolute -left-20 bottom-0 w-64 h-64 rounded-full blur-3xl opacity-15"
@@ -60,13 +60,13 @@ export default function AboutSection() {
           <div className="text-center">
             <p
               className="font-script text-2xl mb-1"
-              style={{ color: "oklch(0.72 0.12 70)" }}
+              style={{ color: "var(--gold-deep)" }}
             >
               The Story Behind
             </p>
             <h2
               className="font-display text-4xl md:text-5xl font-semibold"
-              style={{ color: "oklch(0.22 0.04 40)" }}
+              style={{ color: "var(--text-strong)" }}
             >
               Meet Dhvani
             </h2>
@@ -85,14 +85,16 @@ export default function AboutSection() {
                 className="absolute -inset-4 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] opacity-20"
                 style={{
                   background:
-                    "linear-gradient(135deg, oklch(0.88 0.05 10), oklch(0.78 0.1 70))",
+                    "linear-gradient(135deg, var(--blush), var(--gold))",
                 }}
               />
               {/* Main portrait */}
               <div className="relative rounded-[30%_70%_70%_30%/30%_30%_70%_70%] overflow-hidden shadow-2xl w-72 h-80 md:w-96 md:h-[480px]">
-                <img
-                  src={ABOUT_IMG}
+                <Picture
+                  name="dhvani"
                   alt="Dhvani Hariya, founder of ChefDollsCakeShelf, decorating a cake"
+                  width={800}
+                  height={800}
                   className="w-full h-full object-cover"
                 />
                 <div
@@ -107,12 +109,12 @@ export default function AboutSection() {
               {/* Floating quote card */}
               <div
                 className="absolute -bottom-6 -right-6 md:-right-10 bg-white rounded-2xl shadow-xl p-4 max-w-[180px] animate-float"
-                style={{ border: "1px solid oklch(0.90 0.03 60)" }}
+                style={{ border: "1px solid var(--border)" }}
               >
                 <Heart
                   className="w-5 h-5 mb-2"
-                  style={{ color: "oklch(0.65 0.12 10)" }}
-                  fill="oklch(0.65 0.12 10)"
+                  style={{ color: "var(--rose)" }}
+                  fill="var(--rose)"
                 />
                 <p
                   className="text-xs leading-relaxed"
@@ -127,7 +129,7 @@ export default function AboutSection() {
                 <p
                   className="text-xs font-semibold mt-1"
                   style={{
-                    color: "oklch(0.65 0.12 10)",
+                    color: "var(--rose)",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -143,12 +145,12 @@ export default function AboutSection() {
               <div className="flex items-center gap-2 mb-3">
                 <Leaf
                   className="w-4 h-4"
-                  style={{ color: "oklch(0.55 0.15 140)" }}
+                  style={{ color: "var(--green)" }}
                 />
                 <span
                   className="text-xs font-semibold uppercase tracking-widest"
                   style={{
-                    color: "oklch(0.55 0.15 140)",
+                    color: "var(--green)",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -157,10 +159,10 @@ export default function AboutSection() {
               </div>
               <p
                 className="font-display text-2xl md:text-3xl font-medium leading-relaxed mb-4"
-                style={{ color: "oklch(0.28 0.05 30)" }}
+                style={{ color: "var(--text-heading)" }}
               >
                 "Baking isn't just what I do - it's how I{" "}
-                <em style={{ color: "oklch(0.55 0.12 10)" }}>celebrate</em> the
+                <em style={{ color: "var(--rose-accent)" }}>celebrate</em> the
                 people I love."
               </p>
             </div>
@@ -214,20 +216,20 @@ export default function AboutSection() {
                   className="rounded-2xl p-4 text-center card-hover"
                   style={{
                     background: "white",
-                    border: "1px solid oklch(0.92 0.03 60)",
+                    border: "1px solid var(--line-soft)",
                     boxShadow: "0 2px 12px oklch(0.65 0.12 10 / 0.06)",
                   }}
                 >
                   <p
                     className="font-display text-2xl font-bold"
-                    style={{ color: "oklch(0.45 0.1 10)" }}
+                    style={{ color: "var(--rose-ink)" }}
                   >
                     {stat.value}
                   </p>
                   <p
                     className="text-xs font-medium mt-0.5"
                     style={{
-                      color: "oklch(0.55 0.04 30)",
+                      color: "var(--text-muted)",
                       fontFamily: "var(--font-body)",
                     }}
                   >
@@ -256,7 +258,7 @@ export default function AboutSection() {
               <span
                 className="text-sm font-semibold group-hover:underline"
                 style={{
-                  color: "oklch(0.45 0.1 10)",
+                  color: "var(--rose-ink)",
                   fontFamily: "var(--font-body)",
                 }}
               >

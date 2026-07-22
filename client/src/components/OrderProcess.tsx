@@ -13,7 +13,7 @@ const steps = [
     title: "Browse Designs",
     description:
       "Explore our gallery of stunning cakes or browse our Instagram @chefdollscakeshelf for inspiration. Find your dream cake or come with your own vision!",
-    color: "oklch(0.65 0.12 10)",
+    color: "var(--rose)",
     bg: "oklch(0.95 0.04 10)",
     emoji: "🔍",
   },
@@ -43,7 +43,7 @@ const steps = [
     title: "Delivery or Pickup",
     description:
       "Your freshly baked masterpiece is carefully packaged and delivered to your doorstep in Mumbai, or you can pick it up from our kitchen.",
-    color: "oklch(0.55 0.15 140)",
+    color: "var(--green)",
     bg: "oklch(0.94 0.05 140)",
     emoji: "🎁",
   },
@@ -73,14 +73,14 @@ export default function OrderProcess() {
       id="order-process"
       ref={sectionRef}
       className="py-20 md:py-28 relative overflow-hidden"
-      style={{ background: "oklch(0.99 0.01 80)" }}
+      style={{ background: "var(--background)" }}
     >
       {/* Decorative top border */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-            "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
+            "linear-gradient(90deg, transparent, var(--gold), transparent)",
         }}
       />
 
@@ -89,24 +89,24 @@ export default function OrderProcess() {
         <div ref={headRef} className="reveal text-center mb-14">
           <p
             className="font-script text-2xl mb-1"
-            style={{ color: "oklch(0.72 0.12 70)" }}
+            style={{ color: "var(--gold-deep)" }}
           >
             Simple & Sweet
           </p>
           <h2
             className="font-display text-4xl md:text-5xl font-semibold mb-3"
-            style={{ color: "oklch(0.22 0.04 40)" }}
+            style={{ color: "var(--text-strong)" }}
           >
             How to Order
             <br />
-            <em style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}>
+            <em style={{ color: "var(--rose-accent)", fontStyle: "italic" }}>
               Your Dream Cake
             </em>
           </h2>
           <p
             className="text-base max-w-lg mx-auto"
             style={{
-              color: "oklch(0.50 0.04 30)",
+              color: "var(--text-body)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -125,7 +125,7 @@ export default function OrderProcess() {
             className="hidden lg:block absolute top-16 left-0 right-0 h-px"
             style={{
               background:
-                "linear-gradient(90deg, transparent 5%, oklch(0.88 0.04 60) 20%, oklch(0.88 0.04 60) 80%, transparent 95%)",
+                "linear-gradient(90deg, transparent 5%, var(--line) 20%, var(--line) 80%, transparent 95%)",
               top: "3.5rem",
             }}
           />
@@ -142,7 +142,7 @@ export default function OrderProcess() {
           className="mt-14 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
           style={{
             background:
-              "linear-gradient(135deg, oklch(0.65 0.12 10), oklch(0.55 0.14 350))",
+              "linear-gradient(135deg, var(--rose), oklch(0.55 0.14 350))",
           }}
         >
           {/* Decorative */}
@@ -253,13 +253,13 @@ function StepCard({ step, delay }: { step: (typeof steps)[0]; delay: number }) {
 
       <h3
         className="font-display text-xl font-semibold mb-2"
-        style={{ color: "oklch(0.28 0.05 30)" }}
+        style={{ color: "var(--text-heading)" }}
       >
         {step.emoji} {step.title}
       </h3>
       <p
         className="text-sm leading-relaxed"
-        style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+        style={{ color: "var(--text-body)", fontFamily: "var(--font-body)" }}
       >
         {step.description}
       </p>

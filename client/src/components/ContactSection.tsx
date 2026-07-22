@@ -67,17 +67,17 @@ const inputStyle: React.CSSProperties = {
   width: "100%",
   padding: "0.75rem 1rem",
   borderRadius: "0.75rem",
-  border: "1.5px solid oklch(0.88 0.04 60)",
-  background: "oklch(0.99 0.01 80)",
-  color: "oklch(0.28 0.05 30)",
+  border: "1.5px solid var(--line)",
+  background: "var(--background)",
+  color: "var(--text-heading)",
   fontFamily: "var(--font-body)",
   fontSize: "0.875rem",
   outline: "none",
   transition: "border-color 0.2s ease",
 };
 
-const focusColor = "oklch(0.65 0.12 10)";
-const blurColor = "oklch(0.88 0.04 60)";
+const focusColor = "var(--rose)";
+const blurColor = "var(--line)";
 
 const onFocus = (e: React.FocusEvent<HTMLElement>) =>
   ((e.target as HTMLElement).style.borderColor = focusColor);
@@ -186,7 +186,7 @@ const InquiryForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
               style={{
                 fontWeight: 400,
                 fontSize: "0.75rem",
-                color: "oklch(0.55 0.04 30)",
+                color: "var(--text-muted)",
               }}
             >
               (optional)
@@ -253,7 +253,7 @@ const InquiryForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
 
       <p
         className="text-center text-xs"
-        style={{ color: "oklch(0.60 0.04 30)", fontFamily: "var(--font-body)" }}
+        style={{ color: "var(--text-faint)", fontFamily: "var(--font-body)" }}
       >
         This opens WhatsApp with your question pre-filled. We typically respond
         within a few hours.
@@ -290,7 +290,7 @@ const ReviewForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
   };
 
   const starActive = "oklch(0.72 0.18 70)";
-  const starInactive = "oklch(0.88 0.04 60)";
+  const starInactive = "var(--line)";
   const displayRating = form.hoverRating || form.rating;
 
   return (
@@ -419,7 +419,7 @@ const ReviewForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
 
       <p
         className="text-center text-xs"
-        style={{ color: "oklch(0.60 0.04 30)", fontFamily: "var(--font-body)" }}
+        style={{ color: "var(--text-faint)", fontFamily: "var(--font-body)" }}
       >
         Your review will be sent via WhatsApp and may be shared on our page with
         your permission.
@@ -439,18 +439,18 @@ const SuccessState: React.FC<{ mode: Mode }> = ({ mode }) => (
     >
       <CheckCircle
         className="w-8 h-8"
-        style={{ color: "oklch(0.55 0.15 140)" }}
+        style={{ color: "var(--green)" }}
       />
     </div>
     <h3
       className="font-display text-2xl font-semibold"
-      style={{ color: "oklch(0.28 0.05 30)" }}
+      style={{ color: "var(--text-heading)" }}
     >
       {mode === "inquiry" ? "Inquiry Sent! 💬" : "Review Submitted! ⭐"}
     </h3>
     <p
       className="text-center text-sm max-w-xs"
-      style={{ color: "oklch(0.50 0.04 30)", fontFamily: "var(--font-body)" }}
+      style={{ color: "var(--text-body)", fontFamily: "var(--font-body)" }}
     >
       {mode === "inquiry"
         ? "Your question has been sent via WhatsApp. We'll get back to you within a few hours!"
@@ -524,17 +524,17 @@ export default function ContactSection() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl opacity-20"
-          style={{ background: "oklch(0.88 0.05 10)" }}
+          style={{ background: "var(--blush)" }}
         />
         <div
           className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full blur-3xl opacity-15"
-          style={{ background: "oklch(0.78 0.1 70)" }}
+          style={{ background: "var(--gold)" }}
         />
         <div
           className="absolute top-0 left-0 right-0 h-px"
           style={{
             background:
-              "linear-gradient(90deg, transparent, oklch(0.78 0.1 70), transparent)",
+              "linear-gradient(90deg, transparent, var(--gold), transparent)",
           }}
         />
       </div>
@@ -544,7 +544,7 @@ export default function ContactSection() {
         <div ref={headRef} className="reveal text-center mb-14">
           <p
             className="font-script text-2xl mb-1"
-            style={{ color: "oklch(0.72 0.12 70)" }}
+            style={{ color: "var(--gold-deep)" }}
           >
             {mode === "inquiry"
               ? "We're Here to Help"
@@ -552,13 +552,13 @@ export default function ContactSection() {
           </p>
           <h2
             className="font-display text-4xl md:text-5xl font-semibold mb-3"
-            style={{ color: "oklch(0.22 0.04 40)" }}
+            style={{ color: "var(--text-strong)" }}
           >
             {mode === "inquiry" ? (
               <>
                 Got a{" "}
                 <em
-                  style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}
+                  style={{ color: "var(--rose-accent)", fontStyle: "italic" }}
                 >
                   Question?
                 </em>
@@ -567,7 +567,7 @@ export default function ContactSection() {
               <>
                 Share Your{" "}
                 <em
-                  style={{ color: "oklch(0.55 0.12 10)", fontStyle: "italic" }}
+                  style={{ color: "var(--rose-accent)", fontStyle: "italic" }}
                 >
                   Experience
                 </em>
@@ -577,7 +577,7 @@ export default function ContactSection() {
           <p
             className="text-base max-w-lg mx-auto"
             style={{
-              color: "oklch(0.50 0.04 30)",
+              color: "var(--text-body)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -597,7 +597,7 @@ export default function ContactSection() {
               className="rounded-3xl p-6 md:p-8"
               style={{
                 background: "white",
-                border: "1px solid oklch(0.92 0.03 60)",
+                border: "1px solid var(--line-soft)",
                 boxShadow: "0 8px 40px oklch(0.65 0.12 10 / 0.08)",
               }}
             >
@@ -649,13 +649,13 @@ export default function ContactSection() {
               className="rounded-3xl p-6"
               style={{
                 background: "white",
-                border: "1px solid oklch(0.92 0.03 60)",
+                border: "1px solid var(--line-soft)",
                 boxShadow: "0 4px 20px oklch(0.65 0.12 10 / 0.06)",
               }}
             >
               <h3
                 className="font-display text-xl font-semibold mb-4"
-                style={{ color: "oklch(0.28 0.05 30)" }}
+                style={{ color: "var(--text-heading)" }}
               >
                 Get in Touch
               </h3>
@@ -667,14 +667,14 @@ export default function ContactSection() {
                   >
                     <MessageCircle
                       className="w-4 h-4"
-                      style={{ color: "oklch(0.55 0.15 140)" }}
+                      style={{ color: "var(--green)" }}
                     />
                   </div>
                   <div>
                     <p
                       className="text-sm font-semibold"
                       style={{
-                        color: "oklch(0.35 0.05 30)",
+                        color: "var(--text-dark)",
                         fontFamily: "var(--font-body)",
                       }}
                     >
@@ -684,7 +684,7 @@ export default function ContactSection() {
                       href="https://wa.me/919867390830"
                       className="text-sm hover:underline"
                       style={{
-                        color: "oklch(0.55 0.15 140)",
+                        color: "var(--green)",
                         fontFamily: "var(--font-body)",
                       }}
                     >
@@ -707,7 +707,7 @@ export default function ContactSection() {
                     <p
                       className="text-sm font-semibold"
                       style={{
-                        color: "oklch(0.35 0.05 30)",
+                        color: "var(--text-dark)",
                         fontFamily: "var(--font-body)",
                       }}
                     >
@@ -742,7 +742,7 @@ export default function ContactSection() {
                     <p
                       className="text-sm font-semibold"
                       style={{
-                        color: "oklch(0.35 0.05 30)",
+                        color: "var(--text-dark)",
                         fontFamily: "var(--font-body)",
                       }}
                     >
@@ -751,7 +751,7 @@ export default function ContactSection() {
                     <p
                       className="text-sm"
                       style={{
-                        color: "oklch(0.50 0.04 30)",
+                        color: "var(--text-body)",
                         fontFamily: "var(--font-body)",
                       }}
                     >
@@ -801,7 +801,7 @@ export default function ContactSection() {
             <div
               className="rounded-2xl p-4"
               style={{
-                background: "oklch(0.97 0.025 60)",
+                background: "var(--surface-warm)",
                 border: "1px solid oklch(0.90 0.04 60)",
               }}
             >

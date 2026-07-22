@@ -345,6 +345,7 @@ export default function BuildYourCake() {
                           : CAKE_FLAVORS
                       }
                       selected={order.flavor}
+                      sizeKg={order.size?.kg}
                       onSelect={f => {
                         setOrder(o => ({ ...o, flavor: f }));
                         goToStep(currentStepIndex + 1, "forward");

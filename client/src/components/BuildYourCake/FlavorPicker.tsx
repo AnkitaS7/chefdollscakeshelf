@@ -8,20 +8,34 @@ import { useMemo, useState } from "react";
 import { Search, X } from "lucide-react";
 import type { FlavorOption } from "./types";
 import { flavorGroupIcon } from "./icons";
+import { flavorSurcharge } from "./data";
 
 export default function FlavorPicker({
   flavors,
   selected,
   onSelect,
   accentColor,
+  sizeKg,
 }: {
   flavors: FlavorOption[];
   selected: FlavorOption | null;
   onSelect: (f: FlavorOption) => void;
   accentColor: string;
+  /** Chosen cake weight. Set, the surcharge is priced for that whole cake;
+      unset (menu tab, before a size is picked) it falls back to a per-kg rate. */
+  sizeKg?: number;
 }) {
   const [query, setQuery] = useState("");
   const q = query.trim().toLowerCase();
+
+  // Surcharges are quoted per kg in the price list, so a 2kg Dutch Truffle
+  // adds ₹400 × 2. Rounded because the list works in whole rupees.
+  const surchargeLabel = (pricePerKg: number) => {
+    const perKg = flavorSurcharge(pricePerKg);
+    return sizeKg != null
+      ? `+₹${Math.round(perKg * sizeKg).toLocaleString("en-IN")}`
+      : `+₹${perKg.toLocaleString("en-IN")}/kg`;
+  };
 
   const matches = useMemo(
     () =>
@@ -53,6 +67,14 @@ export default function FlavorPicker({
 
   return (
     <div className="flex flex-col gap-5">
+      {sizeKg != null && (
+        <p
+          className="text-xs font-semibold"
+          style={{ color: accentColor, fontFamily: "var(--font-body)" }}
+        >
+          Prices shown for your {sizeKg} kg cake.
+        </p>
+      )}
       {showSearch && (
         <div className="flex flex-col gap-1.5">
           <label
@@ -202,7 +224,7 @@ export default function FlavorPicker({
                               fontFamily: "var(--font-body)",
                             }}
                           >
-                            ₹{f.pricePerKg}/kg
+                            {surchargeLabel(f.pricePerKg)}
                           </span>
                         )}
                       </span>

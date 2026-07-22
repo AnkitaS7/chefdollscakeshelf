@@ -9,11 +9,10 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { CAKE_FLAVORS } from "./BuildYourCake/data";
+import { CAKE_BASE_PRICE_PER_KG } from "./BuildYourCake/data";
 
-const FROM_PRICE = Math.min(
-  ...CAKE_FLAVORS.map(f => f.pricePerKg ?? Infinity)
-);
+// The base rate from the price list; flavors add their surcharge on top.
+const FROM_PRICE = CAKE_BASE_PRICE_PER_KG;
 
 export default function StickyOrderBar() {
   const [shown, setShown] = useState(false);

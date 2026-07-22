@@ -92,21 +92,25 @@ export const CAKE_FLAVORS: FlavorOption[] = [
   { group: "Other", label: "Dulce de Leches", emoji: "🍮", color: "oklch(0.78 0.10 65)", pricePerKg: 2000 },
 ];
 
-// The official list quotes a ₹1000/kg plain-cake base, but every cake is made in
-// a flavor and the cheapest flavor is dearer than that base — so the price shown
-// on the size cards is the real starting price: cheapest flavor × kg. Derived,
-// so adding a cheaper flavor updates every "from" price automatically.
-export const CAKE_MIN_PRICE_PER_KG = Math.min(
-  ...CAKE_FLAVORS.map(f => f.pricePerKg ?? Infinity)
-);
+// The price list is built as a plain-cake base of ₹1000/kg plus a per-flavor
+// surcharge: Dutch Truffle (15% Dark) adds ₹400, so it costs ₹1400/kg all in.
+// `pricePerKg` above is that all-in figure — it matches the list's 1kg column,
+// and × kg reproduces its 0.5 / 1.5 / 2kg columns exactly.
+export const CAKE_BASE_PRICE_PER_KG = 1000;
 
-// Cake — priced by weight (kg). Final price = flavor.pricePerKg × kg.
+/** What a flavor adds on top of the base, as printed in the list. */
+export function flavorSurcharge(pricePerKg: number): number {
+  return pricePerKg - CAKE_BASE_PRICE_PER_KG;
+}
+
+// Cake — priced by weight (kg). Size cards quote the list's base price for the
+// weight; the total becomes flavor.pricePerKg × kg once a flavor is chosen.
 export const CAKE_SIZES: SizeOption[] = [
   { label: "0.5 kg", serves: "Serves 4–6", kg: 0.5 },
   { label: "1 kg", serves: "Serves 8–10", kg: 1 },
   { label: "1.5 kg", serves: "Serves 12–16", kg: 1.5 },
   { label: "2 kg", serves: "Serves 18–22", kg: 2 },
-].map(s => ({ ...s, price: CAKE_MIN_PRICE_PER_KG * s.kg }));
+].map(s => ({ ...s, price: CAKE_BASE_PRICE_PER_KG * s.kg }));
 
 // The bakery makes only one frosting — whipped cream. It is applied to every cake
 // and cupcake automatically, so there is no frosting step in the builder.

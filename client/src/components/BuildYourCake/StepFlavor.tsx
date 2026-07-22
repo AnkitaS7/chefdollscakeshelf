@@ -7,11 +7,14 @@ export default function StepFlavor({
   flavors,
   selected,
   onSelect,
+  sizeKg,
 }: {
   product: ProductType;
   flavors: FlavorOption[];
   selected: FlavorOption | null;
   onSelect: (f: FlavorOption) => void;
+  /** Weight chosen on the size step, so surcharges price the whole cake. */
+  sizeKg?: number;
 }) {
   const accentColor =
     product === "cupcake" ? "oklch(0.55 0.14 200)" : "var(--rose)";
@@ -38,6 +41,7 @@ export default function StepFlavor({
         selected={selected}
         onSelect={onSelect}
         accentColor={accentColor}
+        sizeKg={sizeKg}
       />
     </div>
   );

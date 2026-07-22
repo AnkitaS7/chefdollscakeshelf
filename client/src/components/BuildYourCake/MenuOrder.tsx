@@ -230,6 +230,9 @@ export default function MenuOrder({
                   selected={order.flavor}
                   onSelect={f => setOrder(o => ({ ...o, flavor: f }))}
                   accentColor={ACCENT}
+                  // Undefined until they pick a size here, which is what makes
+                  // the cards fall back to the per-kg rate.
+                  sizeKg={order.size?.kg}
                 />
               </div>
             )}

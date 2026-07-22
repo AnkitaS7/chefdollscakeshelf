@@ -129,7 +129,9 @@ export default function AboutSection() {
                 <p
                   className="text-xs font-semibold mt-1"
                   style={{
-                    color: "var(--rose)",
+                    // --rose is a fill colour (3.43:1); small text needs the
+                    // deeper step of the ramp.
+                    color: "var(--rose-accent)",
                     fontFamily: "var(--font-body)",
                   }}
                 >

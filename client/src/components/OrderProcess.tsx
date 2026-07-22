@@ -245,7 +245,15 @@ function StepCard({ step, delay }: { step: (typeof steps)[0]; delay: number }) {
         </div>
         <div
           className="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-sm"
-          style={{ background: step.color, fontFamily: "var(--font-body)" }}
+          style={{
+            // The badge is the one place a step's colour sits behind small
+            // white text, and three of the four failed 4.5:1 at full strength.
+            // Mixing 15% black keeps each step's hue while clearing AA; the
+            // shorthand above stays as the fallback if color-mix is missing.
+            background: step.color,
+            backgroundColor: `color-mix(in oklab, ${step.color}, black 15%)`,
+            fontFamily: "var(--font-body)",
+          }}
         >
           {step.step}
         </div>

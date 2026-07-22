@@ -98,7 +98,7 @@ export default function Navbar() {
                 Order Now
               </Link>
               <button
-                className="md:hidden p-2 rounded-lg text-rose-700 hover:bg-rose-50 transition-colors"
+                className="md:hidden p-3 -mr-1 rounded-lg text-rose-700 hover:bg-rose-50 transition-colors"
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label="Toggle menu"
               >

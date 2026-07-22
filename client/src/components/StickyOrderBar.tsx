@@ -34,7 +34,10 @@ export default function StickyOrderBar() {
 
   return (
     <div
-      className="md:hidden fixed bottom-0 left-0 right-0 z-40 transition-transform duration-300"
+      // z-30 (--z-sticky) keeps it under the mobile menu drawer at 40 - it
+      // renders after the navbar in the DOM, so an equal z-index would let it
+      // float on top of the open menu.
+      className="md:hidden fixed bottom-0 left-0 right-0 z-30 transition-transform duration-300"
       style={{
         transform: shown ? "translateY(0)" : "translateY(110%)",
         background: "rgba(255,255,255,0.92)",
@@ -70,7 +73,7 @@ export default function StickyOrderBar() {
         <Link
           href="/order"
           tabIndex={shown ? undefined : -1}
-          className="btn-pink px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap"
+          className="btn-pink px-5 min-h-11 flex items-center rounded-full text-sm font-semibold whitespace-nowrap"
           style={{ fontFamily: "var(--font-body)", textDecoration: "none" }}
         >
           Start an order

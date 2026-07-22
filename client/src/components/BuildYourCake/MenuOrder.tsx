@@ -363,7 +363,6 @@ export default function MenuOrder({
             />
           </div>)}
 
-            {/* Continue button */}
             <div
               className="flex justify-end pt-2 border-t"
               style={{ borderColor: "var(--surface-muted)" }}
@@ -512,7 +511,6 @@ export default function MenuOrder({
             </p>
           </div>
 
-          {/* Summary card */}
           <div
             className="rounded-2xl p-5 space-y-3"
             style={{
@@ -556,7 +554,6 @@ export default function MenuOrder({
             />
           </div>
 
-          {/* Price */}
           <div
             className="rounded-2xl p-4 text-center"
             style={{ background: "var(--surface-warm)" }}
@@ -587,7 +584,6 @@ export default function MenuOrder({
             </p>
           </div>
 
-          {/* Navigation */}
           <div
             className="flex justify-between items-center pt-2 border-t"
             style={{ borderColor: "var(--surface-muted)" }}

@@ -142,7 +142,6 @@ export default function TestimonialsSection() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute -top-20 right-0 w-80 h-80 rounded-full blur-3xl opacity-20"
@@ -155,7 +154,6 @@ export default function TestimonialsSection() {
       </div>
 
       <div className="container relative z-10">
-        {/* Header */}
         <div ref={headRef} className="reveal text-center mb-10">
           <p
             className="font-script text-2xl mb-1"
@@ -195,7 +193,6 @@ export default function TestimonialsSection() {
               opacity: isAnimating ? 0 : 1,
             }}
           >
-            {/* Quote icon */}
             <div
               className="absolute -top-5 left-10 w-10 h-10 rounded-full flex items-center justify-center shadow-md"
               style={{
@@ -206,7 +203,6 @@ export default function TestimonialsSection() {
               <Quote className="w-5 h-5 text-white" fill="white" />
             </div>
 
-            {/* Stars */}
             <div className="flex gap-1 mb-3">
               {Array.from({ length: t.rating }).map((_, i) => (
                 <span key={i} className="text-amber-400 text-base">
@@ -215,7 +211,6 @@ export default function TestimonialsSection() {
               ))}
             </div>
 
-            {/* Review text */}
             <p
               className="font-display text-lg md:text-xl font-medium leading-relaxed mb-6 italic"
               style={{ color: "oklch(0.32 0.05 30)" }}
@@ -223,7 +218,6 @@ export default function TestimonialsSection() {
               "{t.text}"
             </p>
 
-            {/* Reviewer */}
             <div className="flex items-center justify-between flex-wrap gap-3">
               <div className="flex items-center gap-3">
                 <div
@@ -266,7 +260,6 @@ export default function TestimonialsSection() {
             </div>
           </div>
 
-          {/* Navigation */}
           <div className="flex items-center justify-center gap-4 mt-6">
             <button
               onClick={() => navigate("prev")}
@@ -282,7 +275,6 @@ export default function TestimonialsSection() {
               <ChevronLeft className="w-4 h-4" />
             </button>
 
-            {/* Dots */}
             <div className="flex gap-1.5">
               {testimonials.map((_, i) => (
                 <button

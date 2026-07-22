@@ -41,10 +41,6 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToNext = () => {
-    window.location.href = "/about";
-  };
-
   return (
     <section
       id="hero"
@@ -55,7 +51,6 @@ export default function HeroSection() {
           "linear-gradient(135deg, oklch(0.99 0.015 80) 0%, oklch(0.96 0.03 20) 50%, var(--surface-warm) 100%)",
       }}
     >
-      {/* Floating decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-24 left-8 text-3xl animate-float opacity-40">
           ✨
@@ -72,7 +67,6 @@ export default function HeroSection() {
         <div className="absolute bottom-1/4 right-1/3 text-xl animate-float-delayed opacity-25">
           ⭐
         </div>
-        {/* Soft blobs */}
         <div
           className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl opacity-30"
           style={{ background: "var(--blush)" }}
@@ -89,12 +83,10 @@ export default function HeroSection() {
 
       <div className="container relative z-10 pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[85vh]">
-          {/* Text Content */}
           <div
             ref={textRef}
             className="reveal-left reveal-instant flex flex-col justify-center order-2 lg:order-1 pb-12 lg:pb-0"
           >
-            {/* Script label */}
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-8 bg-gradient-to-r from-transparent to-amber-400" />
               <span
@@ -105,7 +97,6 @@ export default function HeroSection() {
               </span>
             </div>
 
-            {/* Main heading */}
             <h1
               className="font-display leading-[1.05] mb-4"
               style={{
@@ -139,7 +130,6 @@ export default function HeroSection() {
               heart, and delivered with joy.
             </p>
 
-            {/* Feature badges */}
             <div className="flex flex-wrap gap-2 mb-8">
               {[
                 "100% Eggless",
@@ -162,7 +152,6 @@ export default function HeroSection() {
               ))}
             </div>
 
-            {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/order"
@@ -189,7 +178,6 @@ export default function HeroSection() {
               </Link>
             </div>
 
-            {/* Social proof */}
             <div className="mt-10 flex items-center gap-4">
               <div className="flex -space-x-2">
                 {["🧁", "🎂", "🍰", "🎀"].map((emoji, i) => (
@@ -225,13 +213,11 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Hero Image */}
           <div
             ref={imgRef}
             className="reveal-right reveal-instant flex justify-center items-center order-1 lg:order-2 pt-24 lg:pt-0"
           >
             <div className="relative w-full max-w-md lg:max-w-lg">
-              {/* Decorative ring */}
               <div
                 className="absolute inset-0 rounded-[40%_60%_60%_40%/40%_40%_60%_60%] scale-105 opacity-30"
                 style={{
@@ -239,7 +225,6 @@ export default function HeroSection() {
                     "linear-gradient(135deg, var(--blush), oklch(0.93 0.04 60))",
                 }}
               />
-              {/* Main image */}
               <div className="relative rounded-[40%_60%_60%_40%/40%_40%_60%_60%] overflow-hidden shadow-2xl" style={{ aspectRatio: "4/5" }}>
                 {HERO_IMGS.map((img, i) => (
                   <Picture
@@ -257,7 +242,6 @@ export default function HeroSection() {
                   />
                 ))}
                 <div style={{ aspectRatio: "4/5" }} />
-                {/* Overlay shimmer */}
                 <div
                   className="absolute inset-0 opacity-10"
                   style={{
@@ -267,7 +251,6 @@ export default function HeroSection() {
                 />
               </div>
 
-              {/* Floating badge */}
               <div
                 className="absolute -bottom-4 -left-4 md:-left-8 bg-white rounded-2xl shadow-xl px-4 py-3 animate-float"
                 style={{ border: "1px solid var(--border)" }}
@@ -289,7 +272,6 @@ export default function HeroSection() {
                 </p>
               </div>
 
-              {/* Top badge */}
               <div
                 className="absolute -top-4 -right-4 md:-right-8 bg-white rounded-2xl shadow-xl px-4 py-3 animate-float-delayed"
                 style={{ border: "1px solid var(--border)" }}
@@ -318,7 +300,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div
         className="absolute bottom-1 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-60 hover:opacity-100 transition-opacity"
       >

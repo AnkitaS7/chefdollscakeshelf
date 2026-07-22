@@ -4,8 +4,6 @@
            title, description) with original color theme
    ============================================================= */
 
-import { Link } from "wouter";
-
 const steps = [
   {
     step: "1",
@@ -56,7 +54,6 @@ export default function OrderOnline() {
       className="py-8 relative overflow-hidden"
       style={{ background: "var(--background)" }}
     >
-      {/* Top gradient line */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
@@ -104,7 +101,6 @@ export default function OrderOnline() {
                 border: `1.5px solid ${step.border}`,
               }}
             >
-              {/* Floating step-number badge */}
               <div
                 className="absolute left-1/2 -translate-x-1/2 -top-4 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white"
                 style={{ background: step.color }}
@@ -112,10 +108,8 @@ export default function OrderOnline() {
                 {step.step}
               </div>
 
-              {/* Emoji icon */}
               <div className="text-4xl mt-2">{step.emoji}</div>
 
-              {/* Title */}
               <h3
                 className="font-display text-xl font-semibold leading-tight"
                 style={{ color: "var(--text-strong)" }}
@@ -123,7 +117,6 @@ export default function OrderOnline() {
                 {step.title}
               </h3>
 
-              {/* Description */}
               <p
                 className="text-sm leading-relaxed"
                 style={{

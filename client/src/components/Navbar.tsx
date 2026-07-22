@@ -49,7 +49,6 @@ export default function Navbar() {
       >
         <div className="container">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
             <Link href="/" className="flex items-center gap-1 group">
               <Picture
                 name="brand-logo"
@@ -61,7 +60,6 @@ export default function Navbar() {
               />
             </Link>
 
-            {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-8">
               {navLinks.map(link => (
                 <Link

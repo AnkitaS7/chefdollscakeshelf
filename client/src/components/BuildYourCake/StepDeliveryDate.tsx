@@ -87,7 +87,6 @@ export default function StepDeliveryDate({
         </p>
       </div>
 
-      {/* Date input */}
       <div className="flex flex-col gap-2 max-w-xs">
         <label
           className="text-xs font-semibold uppercase tracking-wide"

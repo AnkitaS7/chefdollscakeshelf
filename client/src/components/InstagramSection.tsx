@@ -388,7 +388,6 @@ function FeedCard({
         loading="lazy"
       />
 
-      {/* VIDEO badge */}
       {post.mediaType === "VIDEO" && (
         <div
           className="absolute top-2 right-2 px-2 py-0.5 rounded-full text-xs font-semibold"
@@ -401,7 +400,6 @@ function FeedCard({
           ▶ Video
         </div>
       )}
-      {/* CAROUSEL badge */}
       {post.mediaType === "CAROUSEL_ALBUM" && (
         <div className="absolute top-2 right-2 text-white" title="Carousel">
           <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white drop-shadow">
@@ -410,7 +408,6 @@ function FeedCard({
         </div>
       )}
 
-      {/* Hover overlay */}
       <div
         className="absolute inset-0 flex flex-col items-center justify-center gap-2 transition-opacity duration-300 opacity-0 group-hover:opacity-100 p-3"
         style={{ background: "oklch(0.22 0.04 40 / 0.72)" }}

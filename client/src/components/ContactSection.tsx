@@ -147,7 +147,6 @@ const InquiryForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      {/* Name */}
       <div>
         <Label htmlFor="inq-name">Your Name *</Label>
         <input
@@ -205,7 +204,6 @@ const InquiryForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
         </div>
       </div>
 
-      {/* Topic */}
       <div>
         <Label htmlFor="inq-topic">What's Your Inquiry About? *</Label>
         <select
@@ -295,7 +293,6 @@ const ReviewForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      {/* Name */}
       <div>
         <Label htmlFor="rev-name">Your Name *</Label>
         <input
@@ -327,7 +324,6 @@ const ReviewForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
         />
       </div>
 
-      {/* Star rating */}
       <div>
         <p
           className="block text-sm font-semibold mb-2"
@@ -392,7 +388,6 @@ const ReviewForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
         />
       </div>
 
-      {/* Review text */}
       <div>
         <Label htmlFor="rev-text">Your Review *</Label>
         <textarea
@@ -520,7 +515,6 @@ export default function ContactSection() {
       className="py-20 md:py-28 relative overflow-hidden"
       style={{ background: "oklch(0.98 0.015 60)" }}
     >
-      {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl opacity-20"
@@ -540,7 +534,6 @@ export default function ContactSection() {
       </div>
 
       <div className="container relative z-10">
-        {/* Section header */}
         <div ref={headRef} className="reveal text-center mb-14">
           <p
             className="font-script text-2xl mb-1"
@@ -591,7 +584,6 @@ export default function ContactSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
-          {/* Form card */}
           <div className="lg:col-span-3">
             <div
               className="rounded-3xl p-6 md:p-8"

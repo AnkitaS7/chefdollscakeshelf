@@ -29,7 +29,6 @@ export default function LoadingScreen() {
       }`}
       style={{ background: "var(--background)" }}
     >
-      {/* Decorative circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className="absolute -top-20 -left-20 w-64 h-64 rounded-full opacity-20"
@@ -48,7 +47,6 @@ export default function LoadingScreen() {
       </div>
 
       <div className="relative flex flex-col items-center gap-4">
-        {/* Real brand logo */}
         <div className="animate-pulse">
           <Picture
             name="brand-logo"
@@ -60,7 +58,6 @@ export default function LoadingScreen() {
           />
         </div>
 
-        {/* Loading dots */}
         <div className="flex gap-1.5 mt-2">
           {[0, 1, 2].map(i => (
             <div

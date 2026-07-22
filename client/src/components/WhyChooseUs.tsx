@@ -92,7 +92,6 @@ export default function WhyChooseUs() {
           "linear-gradient(160deg, oklch(0.97 0.025 20) 0%, oklch(0.99 0.01 60) 50%, oklch(0.97 0.02 10) 100%)",
       }}
     >
-      {/* Decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-10 right-10 text-4xl animate-float opacity-20">
           🎂
@@ -110,7 +109,6 @@ export default function WhyChooseUs() {
       </div>
 
       <div className="container relative z-10">
-        {/* Header */}
         <div ref={headRef} className="reveal text-center mb-14">
           <p
             className="font-script text-2xl mb-1"
@@ -139,7 +137,6 @@ export default function WhyChooseUs() {
           </div>
         </div>
 
-        {/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, i) => (
             <FeatureCard
@@ -191,7 +188,6 @@ function FeatureCard({
         boxShadow: "0 4px 20px oklch(0.65 0.12 10 / 0.05)",
       }}
     >
-      {/* Icon */}
       <div
         className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
         style={{ background: feature.bg }}
@@ -199,7 +195,6 @@ function FeatureCard({
         <Icon className="w-7 h-7" style={{ color: feature.color }} />
       </div>
 
-      {/* Content */}
       <h3
         className="font-display text-xl font-semibold mb-2"
         style={{ color: "var(--text-heading)" }}
@@ -213,7 +208,6 @@ function FeatureCard({
         {feature.description}
       </p>
 
-      {/* Bottom accent */}
       <div
         className="mt-4 h-0.5 w-0 rounded-full transition-all duration-500 group-hover:w-full"
         style={{

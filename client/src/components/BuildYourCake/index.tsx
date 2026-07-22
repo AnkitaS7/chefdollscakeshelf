@@ -187,7 +187,6 @@ export default function BuildYourCake() {
       />
 
       <div className="container relative z-10">
-        {/* Header */}
         <div ref={headRef} className="reveal text-center mb-10">
           <p
             className="font-script text-2xl mb-1"
@@ -264,7 +263,6 @@ export default function BuildYourCake() {
         {/* Custom builder flow */}
         {activeTab === "build" && (
           <>
-            {/* Progress bar */}
             <ProgressBar
               steps={steps}
               currentIndex={currentStepIndex}
@@ -400,7 +398,6 @@ export default function BuildYourCake() {
                     />
                   )}
 
-                  {/* Navigation */}
                   {currentStep.id !== "product" && (
                     <div
                       className="flex justify-between items-center mt-auto pt-6 border-t"

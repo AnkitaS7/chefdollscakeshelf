@@ -75,7 +75,6 @@ export default function OrderProcess() {
       className="py-20 md:py-28 relative overflow-hidden"
       style={{ background: "var(--background)" }}
     >
-      {/* Decorative top border */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
@@ -85,7 +84,6 @@ export default function OrderProcess() {
       />
 
       <div className="container relative z-10">
-        {/* Header */}
         <div ref={headRef} className="reveal text-center mb-14">
           <p
             className="font-script text-2xl mb-1"
@@ -118,9 +116,7 @@ export default function OrderProcess() {
           </div>
         </div>
 
-        {/* Steps */}
         <div className="relative">
-          {/* Connector line (desktop) */}
           <div
             className="hidden lg:block absolute top-16 left-0 right-0 h-px"
             style={{
@@ -137,7 +133,6 @@ export default function OrderProcess() {
           </div>
         </div>
 
-        {/* CTA */}
         <div
           className="mt-14 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
           style={{
@@ -145,7 +140,6 @@ export default function OrderProcess() {
               "linear-gradient(135deg, var(--rose), oklch(0.55 0.14 350))",
           }}
         >
-          {/* Decorative */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div className="absolute -top-10 -right-10 text-6xl opacity-10">
               🎂
@@ -235,7 +229,6 @@ function StepCard({ step, delay }: { step: (typeof steps)[0]; delay: number }) {
       ref={cardRef}
       className="reveal flex flex-col items-center text-center group"
     >
-      {/* Step number + icon */}
       <div className="relative mb-6">
         <div
           className="w-16 h-16 rounded-full flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-110 relative z-10"

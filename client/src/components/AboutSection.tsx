@@ -42,7 +42,6 @@ export default function AboutSection() {
       className="py-20 md:py-28 relative overflow-hidden"
       style={{ background: "oklch(0.98 0.015 60)" }}
     >
-      {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute -right-40 top-0 w-96 h-96 rounded-full blur-3xl opacity-20"
@@ -55,7 +54,6 @@ export default function AboutSection() {
       </div>
 
       <div className="container relative z-10">
-        {/* Section label */}
         <div className="flex justify-center mb-12">
           <div className="text-center">
             <p
@@ -77,10 +75,8 @@ export default function AboutSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image Side */}
           <div ref={leftRef} className="reveal-left flex justify-center">
             <div className="relative">
-              {/* Decorative frame */}
               <div
                 className="absolute -inset-4 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] opacity-20"
                 style={{
@@ -88,7 +84,6 @@ export default function AboutSection() {
                     "linear-gradient(135deg, var(--blush), var(--gold))",
                 }}
               />
-              {/* Main portrait */}
               <div className="relative rounded-[30%_70%_70%_30%/30%_30%_70%_70%] overflow-hidden shadow-2xl w-72 h-80 md:w-96 md:h-[480px]">
                 <Picture
                   name="dhvani"
@@ -141,7 +136,6 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Text Side */}
           <div ref={rightRef} className="reveal-right flex flex-col gap-6">
             <div>
               <div className="flex items-center gap-2 mb-3">
@@ -210,7 +204,6 @@ export default function AboutSection() {
               </p>
             </div>
 
-            {/* Stats grid */}
             <div className="grid grid-cols-2 gap-4 mt-4">
               {stats.map(stat => (
                 <div

@@ -54,7 +54,6 @@ export default function GallerySection() {
       className="py-20 md:py-28 relative overflow-hidden"
       style={{ background: "var(--background)" }}
     >
-      {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute top-0 left-0 right-0 h-px"
@@ -66,7 +65,6 @@ export default function GallerySection() {
       </div>
 
       <div className="container relative z-10">
-        {/* Header */}
         <div ref={headRef} className="reveal text-center mb-12">
           <p
             className="font-script text-2xl mb-1"
@@ -127,7 +125,6 @@ export default function GallerySection() {
           </div>
         )}
 
-        {/* Loading state */}
         {isLoading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {Array.from({ length: 6 }).map((_, i) => (
@@ -143,7 +140,6 @@ export default function GallerySection() {
           </div>
         )}
 
-        {/* Error state */}
         {isError && (
           <p
             className="text-center"
@@ -156,7 +152,6 @@ export default function GallerySection() {
           </p>
         )}
 
-        {/* Product Grid */}
         {!isLoading && !isError && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((product, i) => (
@@ -222,7 +217,6 @@ function ProductCard({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Image */}
       <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
         <img
           src={product.image}
@@ -231,7 +225,6 @@ function ProductCard({
           loading="lazy"
           decoding="async"
         />
-        {/* Hover overlay */}
         <div
           className="absolute inset-0 flex items-center justify-center transition-opacity duration-300"
           style={{
@@ -247,7 +240,6 @@ function ProductCard({
             Order This Cake
           </a>
         </div>
-        {/* Category badge */}
         <div className="absolute top-3 left-3">
           <span
             className="px-3 py-1 rounded-full text-xs font-semibold"
@@ -263,7 +255,6 @@ function ProductCard({
         </div>
       </div>
 
-      {/* Content */}
       <div className="p-5 @lg:p-7">
         <h3
           className="font-display text-xl @lg:text-2xl font-semibold mb-1"
@@ -283,7 +274,6 @@ function ProductCard({
           </p>
         )}
 
-        {/* Tags */}
         {product.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-4">
             {product.tags.map(tag => (

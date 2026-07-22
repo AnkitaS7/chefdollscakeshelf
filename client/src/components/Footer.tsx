@@ -21,7 +21,6 @@ export default function Footer() {
       className="relative overflow-hidden"
       style={{ background: "oklch(0.18 0.04 30)" }}
     >
-      {/* Top accent line */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
@@ -30,7 +29,6 @@ export default function Footer() {
         }}
       />
 
-      {/* Decorative background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute -top-20 right-0 w-64 h-64 rounded-full blur-3xl opacity-10"
@@ -44,7 +42,6 @@ export default function Footer() {
 
       <div className="container relative z-10 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
-          {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center mb-4">
               <Picture
@@ -81,7 +78,6 @@ export default function Footer() {
                 Mumbai, Maharashtra, India
               </span>
             </div>
-            {/* Social */}
             <div className="flex gap-3">
               <a
                 href="https://www.instagram.com/chefdollscakeshelf"
@@ -111,7 +107,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4
               className="font-display text-lg font-semibold mb-4"
@@ -137,7 +132,6 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Specialties */}
           <div>
             <h4
               className="font-display text-lg font-semibold mb-4"
@@ -172,13 +166,11 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
         <div
           className="h-px mb-6"
           style={{ background: "oklch(0.30 0.03 30)" }}
         />
 
-        {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           <p
             className="text-xs text-center sm:text-left"

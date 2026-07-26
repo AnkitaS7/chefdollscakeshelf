@@ -136,17 +136,14 @@ export default function BuildYourCake() {
     if (order.product === "cake") {
       // Cakes are priced by flavor × weight: pricePerKg × kg. Before a flavor is
       // chosen, fall back to the plain size base so the sidebar shows a "from" price.
+      // Decorations are complimentary — they don't change the price.
       const kg = order.size?.kg ?? 0;
       const perKg = order.flavor?.pricePerKg ?? 0;
-      const cakeBase = perKg > 0 && kg > 0 ? perKg * kg : base;
-      return cakeBase + order.decorations.length * 150;
+      return perKg > 0 && kg > 0 ? perKg * kg : base;
     }
-    if (order.product === "cupcake")
-      return base + order.decorations.length * 50;
-    if (order.product === "brownie") return base + order.addons.length * 60;
-    // Cookie tins are a fixed price per 500gms tin (no add-ons).
-    if (order.product === "cookietin") return base;
-    return 0;
+    // Cupcakes, brownies and cookie tins are all priced by their size/quantity
+    // alone; toppings and add-ons are included at no extra charge.
+    return base;
   };
 
   const buildWhatsAppMsg = () => {

@@ -21,8 +21,6 @@ export default function StepDecorations({
   customCardMessage: string;
   onCustomCardMessage: (msg: string) => void;
 }) {
-  const isBrownie = product === "brownie";
-  const addonPrice = isBrownie ? 60 : product === "cupcake" ? 50 : 150;
   const accentColor =
     product === "cake"
       ? "var(--gold-deep)"
@@ -58,9 +56,6 @@ export default function StepDecorations({
             >
               <Icon className="w-4 h-4" aria-hidden="true" />
               {d.label}
-              {isSelected && (
-                <span className="text-xs opacity-80">+₹{addonPrice}</span>
-              )}
             </button>
           );
         })}

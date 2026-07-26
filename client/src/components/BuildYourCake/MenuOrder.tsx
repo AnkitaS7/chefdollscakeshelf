@@ -10,6 +10,7 @@ import { trpc } from "@/lib/trpc";
 import type { SizeOption, FlavorOption } from "./types";
 import { CAKE_SIZES, CAKE_FLAVORS } from "./data";
 import { WhatsAppIcon } from "./icons";
+import { minDeliveryDate } from "@/lib/date";
 import FlavorPicker from "./FlavorPicker";
 import SizeCards from "./SizeCards";
 
@@ -78,8 +79,11 @@ export default function MenuOrder({
       : (order.size?.price ?? 0);
 
   const sendWhatsApp = () => {
-    let msg = `Hi Dhvani! I'd like to order from ChefDollsCakeShelf.%0A%0A`;
-    msg += `🎂 *Menu Order:*%0A`;
+    // Real newlines + one encode at the end; raw user text (instructions, cake
+    // name) must not be spliced into the URL unescaped — a `#` or `&` would
+    // truncate or split the message the baker receives.
+    let msg = `Hi Dhvani! I'd like to order from ChefDollsCakeShelf.\n\n`;
+    msg += `🎂 *Menu Order:*\n`;
     const dateStr = new Date(
       order.deliveryDate + "T00:00:00"
     ).toLocaleDateString("en-IN", {
@@ -88,16 +92,16 @@ export default function MenuOrder({
       month: "long",
       year: "numeric",
     });
-    msg += `• Cake: ${order.cakeName}%0A`;
-    msg += `• Size: ${order.size?.label} (${order.size?.serves})%0A`;
-    msg += `• Flavor: ${order.flavor?.emoji} ${order.flavor?.label}%0A`;
-    msg += `• Delivery Date: ${dateStr}%0A`;
+    msg += `• Cake: ${order.cakeName}\n`;
+    msg += `• Size: ${order.size?.label} (${order.size?.serves})\n`;
+    msg += `• Flavor: ${order.flavor?.emoji} ${order.flavor?.label}\n`;
+    msg += `• Delivery Date: ${dateStr}\n`;
     msg += `• Estimated Budget: ₹${totalPrice}+`;
     if (order.instructions.trim()) {
-      msg += `%0A• Special Instructions: ${order.instructions}`;
+      msg += `\n• Special Instructions: ${order.instructions}`;
     }
-    msg += `%0A%0APlease let me know availability and final pricing!`;
-    window.open(`https://wa.me/919867390830?text=${msg}`, "_blank");
+    msg += `\n\nPlease let me know availability and final pricing!`;
+    window.open(`https://wa.me/919867390830?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
   return (
@@ -276,11 +280,7 @@ export default function MenuOrder({
                 <input
                   type="date"
                   value={order.deliveryDate}
-                  min={
-                    new Date(Date.now() + 5 * 24 * 60 * 60 * 1000)
-                      .toISOString()
-                      .split("T")[0]
-                  }
+                  min={minDeliveryDate(5)}
                   onChange={e =>
                     setOrder(o => ({ ...o, deliveryDate: e.target.value }))
                   }

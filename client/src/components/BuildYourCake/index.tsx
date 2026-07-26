@@ -151,22 +151,30 @@ export default function BuildYourCake() {
 
   const buildWhatsAppMsg = () => {
     const p = order.product;
-    let msg = `Hi Dhvani! I'd like to order from ChefDollsCakeShelf.%0A%0A`;
+    // Built with real newlines and plain text, then percent-encoded once at the
+    // end. Interpolating raw user text straight into the URL let a `#` in a
+    // note truncate the order and an `&` drop everything after it.
+    let msg = `Hi Dhvani! I'd like to order from ChefDollsCakeShelf.\n\n`;
     const dateStr = order.deliveryDate
       ? new Date(order.deliveryDate + "T00:00:00").toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })
       : "Not specified";
+    // The optional custom-card line, shared by the three flows that offer it.
+    const cardLine = (items: string[]) =>
+      items.includes("Custom Message Card")
+        ? `Message for the Custom Message Card: ${order.customCardMessage}\n•`
+        : "";
     if (p === "cake") {
-      msg += `🎂 *Custom Cake Order:*%0A• Size: ${order.size?.label} (${order.size?.serves})%0A• Delivery Date: ${dateStr}%0A• Flavor: ${order.flavor?.label}%0A• Frosting: ${order.frosting?.label}%0A• Decorations: ${order.decorations.length > 0 ? order.decorations.join(", ") : "None"}%0A• ${order.decorations.includes('Custom Message Card') ? 'Message for the Custom Message Card: ' + order.customCardMessage + '%0A•': ''} Estimated Budget: ₹${totalPrice()}+`;
+      msg += `🎂 *Custom Cake Order:*\n• Size: ${order.size?.label} (${order.size?.serves})\n• Delivery Date: ${dateStr}\n• Flavor: ${order.flavor?.label}\n• Frosting: ${order.frosting?.label}\n• Decorations: ${order.decorations.length > 0 ? order.decorations.join(", ") : "None"}\n• ${cardLine(order.decorations)} Estimated Budget: ₹${totalPrice()}+`;
     } else if (p === "cupcake") {
-      msg += `🧁 *Cupcake Order:*%0A• Quantity: ${order.size?.label}%0A• Delivery Date: ${dateStr}%0A• Flavor: ${order.flavor?.label}%0A• Frosting: ${order.frosting?.label}%0A• Toppings: ${order.decorations.length > 0 ? order.decorations.join(", ") : "None"}%0A• ${order.decorations.includes('Custom Message Card') ? 'Message for the Custom Message Card: ' + order.customCardMessage + '%0A•': ''} Estimated Budget: ₹${totalPrice()}+`;
+      msg += `🧁 *Cupcake Order:*\n• Quantity: ${order.size?.label}\n• Delivery Date: ${dateStr}\n• Flavor: ${order.flavor?.label}\n• Frosting: ${order.frosting?.label}\n• Toppings: ${order.decorations.length > 0 ? order.decorations.join(", ") : "None"}\n• ${cardLine(order.decorations)} Estimated Budget: ₹${totalPrice()}+`;
     } else if (p === "cookietin") {
-      msg += `🍪 *Cookie Tin Order:*%0A• Tin: ${order.size?.label} (${order.size?.serves})%0A• Delivery Date: ${dateStr}%0A• Estimated Budget: ₹${totalPrice()}+`;
+      msg += `🍪 *Cookie Tin Order:*\n• Tin: ${order.size?.label} (${order.size?.serves})\n• Delivery Date: ${dateStr}\n• Estimated Budget: ₹${totalPrice()}+`;
     } else {
-      msg += `🍫 *Brownie Order:*%0A• Quantity: ${order.size?.label}%0A• Delivery Date: ${dateStr}%0A• Add-ons: ${order.addons.length > 0 ? order.addons.join(", ") : "None"}%0A• ${order.addons.includes('Custom Message Card') ? 'Message for the Custom Message Card: ' + order.customCardMessage + '%0A•': ''} Estimated Budget: ₹${totalPrice()}+`;
+      msg += `🍫 *Brownie Order:*\n• Quantity: ${order.size?.label}\n• Delivery Date: ${dateStr}\n• Add-ons: ${order.addons.length > 0 ? order.addons.join(", ") : "None"}\n• ${cardLine(order.addons)} Estimated Budget: ₹${totalPrice()}+`;
     }
-    if (order.message) msg += `%0A• Note: ${order.message}`;
-    msg += `%0A%0APlease let me know availability and final pricing!`;
-    window.open(`https://wa.me/919867390830?text=${msg}`, "_blank");
+    if (order.message) msg += `\n• Note: ${order.message}`;
+    msg += `\n\nPlease let me know availability and final pricing!`;
+    window.open(`https://wa.me/919867390830?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
   const productMeta = PRODUCTS.find(p => p.type === order.product);

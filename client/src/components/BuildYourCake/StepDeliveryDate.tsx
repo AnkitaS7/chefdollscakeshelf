@@ -1,5 +1,6 @@
 import { CalendarDays, CircleCheck, Clock } from "lucide-react";
 import type { ProductType } from "./types";
+import { minDeliveryDate } from "@/lib/date";
 
 // Minimum notice days per product type
 const MIN_NOTICE: Record<ProductType, number> = {
@@ -8,10 +9,6 @@ const MIN_NOTICE: Record<ProductType, number> = {
   brownie: 2,
   cookietin: 2,
 };
-
-function toISODate(date: Date): string {
-  return date.toISOString().split("T")[0];
-}
 
 export default function StepDeliveryDate({
   product,
@@ -23,7 +20,7 @@ export default function StepDeliveryDate({
   onSelect: (date: string) => void;
 }) {
   const minDays = MIN_NOTICE[product];
-  const minDate = toISODate(new Date(Date.now() + minDays * 24 * 60 * 60 * 1000));
+  const minDate = minDeliveryDate(minDays);
 
   const noticeLabel =
     product === "cake"

@@ -15,3 +15,10 @@ export function toLocalISODate(date: Date): string {
 export function minDeliveryDate(days: number): string {
   return toLocalISODate(new Date(Date.now() + days * 24 * 60 * 60 * 1000));
 }
+
+/** Same, but from a lead time in HOURS, rounded up to whole days — the date
+    picker has day granularity, so 10h and 24h both land on tomorrow and 36h
+    lands two days out. */
+export function minDeliveryDateHours(hours: number): string {
+  return minDeliveryDate(Math.ceil(hours / 24));
+}

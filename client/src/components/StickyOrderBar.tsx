@@ -9,7 +9,10 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { CAKE_BASE_PRICE_PER_KG } from "./BuildYourCake/data";
+import {
+  CAKE_BASE_PRICE_PER_KG,
+  STANDARD_NOTICE_HOURS,
+} from "./BuildYourCake/data";
 
 // The base rate from the price list; flavors add their surcharge on top.
 const FROM_PRICE = CAKE_BASE_PRICE_PER_KG;
@@ -66,7 +69,7 @@ export default function StickyOrderBar() {
               fontFamily: "var(--font-body)",
             }}
           >
-            5–7 days notice · 100% eggless
+            From {STANDARD_NOTICE_HOURS}-hour notice · 100% eggless
           </p>
         </div>
         <Link

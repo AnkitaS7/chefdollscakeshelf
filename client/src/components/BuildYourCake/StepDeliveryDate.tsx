@@ -1,14 +1,7 @@
 import { CalendarDays, CircleCheck, Clock } from "lucide-react";
 import type { ProductType } from "./types";
-import { minDeliveryDate } from "@/lib/date";
-
-// Minimum notice days per product type
-const MIN_NOTICE: Record<ProductType, number> = {
-  cake: 5,
-  cupcake: 2,
-  brownie: 2,
-  cookietin: 2,
-};
+import { minDeliveryDateHours } from "@/lib/date";
+import { STANDARD_NOTICE_HOURS } from "./data";
 
 export default function StepDeliveryDate({
   product,
@@ -19,13 +12,19 @@ export default function StepDeliveryDate({
   selected: string;
   onSelect: (date: string) => void;
 }) {
-  const minDays = MIN_NOTICE[product];
-  const minDate = minDeliveryDate(minDays);
+  // Every builder product is a standard item on the same short lead time;
+  // custom and wedding cakes (with longer notice) live on the menu tab.
+  const minDate = minDeliveryDateHours(STANDARD_NOTICE_HOURS);
 
-  const noticeLabel =
+  const noticeLabel = `We need at least ${STANDARD_NOTICE_HOURS} hours' notice for ${
     product === "cake"
-      ? "Custom cakes require at least 5–7 days notice."
-      : "Cupcakes, brownies & cookie tins require at least 48 hours notice.";
+      ? "regular cakes"
+      : product === "cupcake"
+        ? "cupcakes"
+        : product === "cookietin"
+          ? "cookie tins"
+          : "brownies"
+  }.`;
 
   const accentColor =
     product === "cake"

@@ -5,6 +5,7 @@
 
 import { useEffect, useRef } from "react";
 import { Search, MessageCircle, Palette, Package } from "lucide-react";
+import { LEAD_TIME_SUMMARY } from "./BuildYourCake/data";
 
 const steps = [
   {
@@ -165,8 +166,7 @@ export default function OrderProcess() {
               className="text-white/80 mb-8 max-w-md mx-auto"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              Minimum 3 days advance booking required. For wedding cakes, we
-              recommend booking at least 2 weeks in advance.
+              {LEAD_TIME_SUMMARY}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a

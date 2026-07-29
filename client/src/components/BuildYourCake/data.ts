@@ -112,6 +112,34 @@ export const CAKE_SIZES: SizeOption[] = [
   { label: "2 kg", serves: "Serves 18–22", kg: 2 },
 ].map(s => ({ ...s, price: CAKE_BASE_PRICE_PER_KG * s.kg }));
 
+// Minimum lead time by cake type. The "Build Your Cake" builder only makes
+// regular cakes; the "Choose from Menu" tab can be any of these, so it shows a
+// selector that drives the delivery-date minimum. Hours are rounded up to whole
+// days by the date picker (see minDeliveryDateHours).
+export const CAKE_TYPES = [
+  { id: "regular", label: "Regular", noticeHours: 10 },
+  { id: "custom", label: "Custom", noticeHours: 24 },
+  { id: "wedding", label: "Wedding & Engagement", noticeHours: 36 },
+] as const;
+
+export type CakeType = (typeof CAKE_TYPES)[number]["id"];
+
+/** Lead time for the standard builder products (regular cakes, cupcakes,
+    brownies, cookie tins), in hours. */
+export const STANDARD_NOTICE_HOURS = 10;
+
+const noticeFor = (id: CakeType) =>
+  CAKE_TYPES.find(t => t.id === id)!.noticeHours;
+
+/** One-line lead-time summary for notice banners across the site, derived from
+    CAKE_TYPES and STANDARD_NOTICE_HOURS so marketing copy can never drift from
+    the actual delivery-date minimums the pickers enforce. */
+export const LEAD_TIME_SUMMARY = `Regular cakes need ${noticeFor(
+  "regular"
+)}-hour notice, custom cakes ${noticeFor("custom")}-hour, and wedding & engagement cakes ${noticeFor(
+  "wedding"
+)}-hour. Cupcakes, brownies & cookie tins need ${STANDARD_NOTICE_HOURS}-hour notice.`;
+
 // The bakery makes only one frosting — whipped cream. It is applied to every cake
 // and cupcake automatically, so there is no frosting step in the builder.
 export const WHIPPED_CREAM: FrostingOption = {

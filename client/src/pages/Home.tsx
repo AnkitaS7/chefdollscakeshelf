@@ -13,6 +13,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 import FloatingParticles from "@/components/FloatingParticles";
 import StickyOrderBar from "@/components/StickyOrderBar";
+import { LEAD_TIME_SUMMARY } from "@/components/BuildYourCake/data";
 import { Link } from "wouter";
 import { useEffect, useRef } from "react";
 
@@ -280,8 +281,7 @@ function HomeOrderCTA() {
               className="text-white/80 mb-8 max-w-md mx-auto text-base"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              Custom cakes need 5–7 days notice. Cupcakes &amp; pastries just 48
-              hours. Start your order today!
+              {LEAD_TIME_SUMMARY} Start your order today!
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link

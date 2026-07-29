@@ -8,14 +8,15 @@ import { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight, Cake, CircleCheck, Clock } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import type { SizeOption, FlavorOption } from "./types";
-import { CAKE_SIZES, CAKE_FLAVORS } from "./data";
+import { CAKE_SIZES, CAKE_FLAVORS, CAKE_TYPES, type CakeType } from "./data";
 import { WhatsAppIcon } from "./icons";
-import { minDeliveryDate } from "@/lib/date";
+import { minDeliveryDateHours } from "@/lib/date";
 import FlavorPicker from "./FlavorPicker";
 import SizeCards from "./SizeCards";
 
 interface MenuOrderState {
   cakeName: string;
+  cakeType: CakeType;
   size: SizeOption | null;
   flavor: FlavorOption | null;
   deliveryDate: string; // ISO "YYYY-MM-DD"
@@ -35,11 +36,30 @@ export default function MenuOrder({
 
   const [order, setOrder] = useState<MenuOrderState>({
     cakeName: preselectedCake ?? "",
+    cakeType: "regular",
     size: null,
     flavor: null,
     deliveryDate: "",
     instructions: "",
   });
+
+  // Lead time depends on the cake type; the date picker rounds hours up to days.
+  const noticeHours = CAKE_TYPES.find(t => t.id === order.cakeType)!.noticeHours;
+  const minDate = minDeliveryDateHours(noticeHours);
+
+  // Switching type can push the minimum past an already-chosen date; drop a now
+  // too-early date so an invalid one can't be carried into the order.
+  const selectCakeType = (cakeType: CakeType) =>
+    setOrder(o => {
+      const min = minDeliveryDateHours(
+        CAKE_TYPES.find(t => t.id === cakeType)!.noticeHours
+      );
+      return {
+        ...o,
+        cakeType,
+        deliveryDate: o.deliveryDate && o.deliveryDate < min ? "" : o.deliveryDate,
+      };
+    });
 
   // If a cake was pre-selected via URL param, populate it
   useEffect(() => {
@@ -92,7 +112,9 @@ export default function MenuOrder({
       month: "long",
       year: "numeric",
     });
+    const cakeTypeLabel = CAKE_TYPES.find(t => t.id === order.cakeType)!.label;
     msg += `• Cake: ${order.cakeName}\n`;
+    msg += `• Cake Type: ${cakeTypeLabel}\n`;
     msg += `• Size: ${order.size?.label} (${order.size?.serves})\n`;
     msg += `• Flavor: ${order.flavor?.emoji} ${order.flavor?.label}\n`;
     msg += `• Delivery Date: ${dateStr}\n`;
@@ -253,7 +275,42 @@ export default function MenuOrder({
                 >
                   Delivery Date
                 </label>
-                {/* Cakes need 5 days notice */}
+
+                {/* Cake type — drives the minimum notice below */}
+                <fieldset className="mb-3">
+                  <legend
+                    className="text-xs font-semibold uppercase tracking-wide mb-2"
+                    style={{
+                      color: "var(--text-muted)",
+                      fontFamily: "var(--font-body)",
+                    }}
+                  >
+                    Cake type
+                  </legend>
+                  <div className="flex flex-wrap gap-2">
+                    {CAKE_TYPES.map(t => {
+                      const isSelected = order.cakeType === t.id;
+                      return (
+                        <button
+                          key={t.id}
+                          type="button"
+                          onClick={() => selectCakeType(t.id)}
+                          aria-pressed={isSelected}
+                          className="px-4 min-h-11 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105"
+                          style={{
+                            background: isSelected ? ACCENT : "white",
+                            border: `2px solid ${isSelected ? ACCENT : "var(--line)"}`,
+                            color: isSelected ? "white" : "var(--text-dark)",
+                            fontFamily: "var(--font-body)",
+                          }}
+                        >
+                          {t.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </fieldset>
+
                 <div
                   className="rounded-2xl px-4 py-3 mb-3 flex items-start gap-2"
                   style={{
@@ -273,14 +330,18 @@ export default function MenuOrder({
                       fontFamily: "var(--font-body)",
                     }}
                   >
-                    <strong>Heads up:</strong> Custom cakes require at least 5–7
-                    days notice.
+                    <strong>Heads up:</strong> {order.cakeType === "wedding"
+                      ? "Wedding & engagement"
+                      : order.cakeType === "custom"
+                        ? "Custom"
+                        : "Regular"}{" "}
+                    cakes need at least {noticeHours} hours' notice.
                   </p>
                 </div>
                 <input
                   type="date"
                   value={order.deliveryDate}
-                  min={minDeliveryDate(5)}
+                  min={minDate}
                   onChange={e =>
                     setOrder(o => ({ ...o, deliveryDate: e.target.value }))
                   }
@@ -529,6 +590,10 @@ export default function MenuOrder({
               />
             )}
             <PreviewRow label="Cake" value={order.cakeName} />
+            <PreviewRow
+              label="Type"
+              value={CAKE_TYPES.find(t => t.id === order.cakeType)!.label}
+            />
             <PreviewRow
               label="Size"
               value={`${order.size?.label} · ${order.size?.serves}`}

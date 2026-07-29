@@ -30,7 +30,7 @@ const steps = [
     emoji: "✅",
     title: "Confirmation",
     description:
-      "We'll confirm within 24 hours with pricing and pickup details.",
+      "We'll confirm within a few hours with pricing and pickup details.",
     color: "var(--green)",
     bg: "oklch(0.95 0.05 140)",
     border: "oklch(0.84 0.08 140)",

@@ -6,6 +6,7 @@ import PageLayout from "@/components/PageLayout";
 import OrderOnline from "@/components/OrderOnline";
 import BuildYourCake from "@/components/BuildYourCake";
 import MarqueeBanner from "@/components/MarqueeBanner";
+import { LEAD_TIME_SUMMARY } from "@/components/BuildYourCake/data";
 
 export default function Order() {
   return (
@@ -64,10 +65,7 @@ export default function Order() {
           background: "maroon",
         }}
       >
-        <p className="font-bold">Kindly Note:&ensp;</p> For 🎂 Custom Cakes we
-        need 5–7 Days Notice and for 🧁 Cupcakes, Pastries & 🍪 Cookie Tins we
-        need 48-Hour Notice. 💍 Wedding & large orders: 2–3 weeks ahead
-        recommended.
+        <p className="font-bold">Kindly Note:&ensp;</p> {LEAD_TIME_SUMMARY}
       </div>
       <MarqueeBanner />
 

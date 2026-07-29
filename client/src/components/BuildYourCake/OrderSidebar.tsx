@@ -60,7 +60,7 @@ export default function OrderSidebar({
             <SummaryRow label="Product" value={productMeta?.label ?? ""} />
             {order.size && (
               <SummaryRow
-                label={isBrownie ? "Qty" : isCookieTin ? "Tin" : "Size"}
+                label={isBrownie ? "Brownie" : isCookieTin ? "Tin" : "Size"}
                 value={order.size.label}
               />
             )}

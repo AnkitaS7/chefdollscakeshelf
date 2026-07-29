@@ -165,15 +165,19 @@ export const CUPCAKE_FLAVORS: FlavorOption[] = [
 ];
 
 // Brownie
+// Brownie — one 1000gms box; the flavor is the priced choice, so the six
+// variants live in the "size" slot (like the cookie tins).
 export const BROWNIE_SIZES: SizeOption[] = [
-  { label: "4 Brownies", serves: "Small box", price: 240 },
-  { label: "8 Brownies", serves: "Gift box", price: 450 },
-  { label: "12 Brownies", serves: "Party box", price: 650 },
-  { label: "16 Brownies", serves: "Grand box", price: 840 },
+  { label: "Chocolate Walnut", serves: "1000gms", price: 1200 },
+  { label: "Nutella Hazelnut", serves: "1000gms", price: 1350 },
+  { label: "Biscoff", serves: "1000gms", price: 1350 },
+  { label: "Dutch Truffle", serves: "1000gms", price: 1350 },
+  { label: "Sea Salt Caramel", serves: "1000gms", price: 1350 },
+  { label: "Assorted", serves: "1000gms", price: 1500 },
 ];
 
 // Cookie Tin — each variant is a 500gms tin at a fixed price; the flavor is the
-// priced choice, so the variants live in the "size" slot (like brownie quantities).
+// priced choice, so the variants live in the "size" slot (like the brownies).
 export const COOKIETIN_SIZES: SizeOption[] = [
   { label: "Vanilla Chocolate Chunk", serves: "500 gms tin", price: 750 },
   { label: "Chocolate Chunk", serves: "500 gms tin", price: 850 },
@@ -185,7 +189,7 @@ export function getSteps(product: ProductType | null): StepConfig[] {
   if (product === "brownie") {
     return [
       { id: "product", label: "Product" },
-      { id: "size", label: "Quantity" },
+      { id: "size", label: "Flavour" },
       { id: "date", label: "Delivery Date" },
       { id: "summary", label: "Summary" },
     ];

@@ -76,7 +76,7 @@ export default function StepSummary({
       >
         <SummaryRow label="Product" value={productMeta.label} />
         <SummaryRow
-          label={isBrownie ? "Quantity" : isCookieTin ? "Tin" : "Size"}
+          label={isBrownie ? "Brownie" : isCookieTin ? "Tin" : "Size"}
           value={`${order.size?.label} - ${order.size?.serves}`}
         />
         {order.deliveryDate && (

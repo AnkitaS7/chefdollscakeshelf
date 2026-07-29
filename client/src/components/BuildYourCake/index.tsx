@@ -152,7 +152,7 @@ export default function BuildYourCake() {
     } else if (p === "cookietin") {
       msg += `🍪 *Cookie Tin Order:*\n• Tin: ${order.size?.label} (${order.size?.serves})\n• Delivery Date: ${dateStr}\n• Estimated Budget: ₹${totalPrice()}+`;
     } else {
-      msg += `🍫 *Brownie Order:*\n• Quantity: ${order.size?.label}\n• Delivery Date: ${dateStr}\n• Estimated Budget: ₹${totalPrice()}+`;
+      msg += `🍫 *Brownie Order:*\n• Brownie: ${order.size?.label} (${order.size?.serves})\n• Delivery Date: ${dateStr}\n• Estimated Budget: ₹${totalPrice()}+`;
     }
     if (order.message) msg += `\n• Special Instructions: ${order.message}`;
     msg += `\n\nPlease let me know availability and final pricing!`;

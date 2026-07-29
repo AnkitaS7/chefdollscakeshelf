@@ -22,7 +22,7 @@ export default function StepSize({
         ? "Choose Your Serving Size"
         : product === "cookietin"
           ? "Choose Your Cookie Tin"
-          : "Choose Your Quantity";
+          : "Choose Your Brownie Flavour";
 
   const accentColor =
     product === "cake"
@@ -35,7 +35,7 @@ export default function StepSize({
 
   const subtitle =
     product === "brownie"
-      ? "How many brownies would you like?"
+      ? "Each is a generous 1000gms box of freshly baked brownies."
       : product === "cookietin"
         ? "Each tin is a generous 500gms of freshly baked cookies."
         : product === "cake"

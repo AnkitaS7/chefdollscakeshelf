@@ -119,15 +119,6 @@ export const WHIPPED_CREAM: FrostingOption = {
   emoji: "🤍",
 };
 
-export const CAKE_DECORATIONS = [
-  { label: "Fresh Flowers", emoji: "🌸" },
-  { label: "Gold Leaf", emoji: "✨" },
-  { label: "Macarons", emoji: "🍬" },
-  { label: "Edible Glitter", emoji: "💫" },
-  { label: "Custom Message Card", emoji: "✍️" },
-  { label: "Fruit Topping", emoji: "🍓" },
-];
-
 // Cupcake
 export const CUPCAKE_SIZES: SizeOption[] = [
   { label: "4 Cupcakes", serves: "Mini box", price: 320 },
@@ -145,30 +136,12 @@ export const CUPCAKE_FLAVORS: FlavorOption[] = [
   { label: "Funfetti", emoji: "🎉", color: "oklch(0.88 0.1 85)" },
 ];
 
-export const CUPCAKE_DECORATIONS = [
-  { label: "Sprinkles", emoji: "🌈" },
-  { label: "Edible Glitter", emoji: "💫" },
-  { label: "Fondant Topper", emoji: "🌸" },
-  { label: "Custom Message Card", emoji: "✍️" },
-  { label: "Gold Dust", emoji: "✨" },
-  { label: "Fruit Slice", emoji: "🍓" },
-];
-
 // Brownie
 export const BROWNIE_SIZES: SizeOption[] = [
   { label: "4 Brownies", serves: "Small box", price: 240 },
   { label: "8 Brownies", serves: "Gift box", price: 450 },
   { label: "12 Brownies", serves: "Party box", price: 650 },
   { label: "16 Brownies", serves: "Grand box", price: 840 },
-];
-
-export const BROWNIE_ADDONS = [
-  { label: "Walnut", emoji: "🌰" },
-  { label: "Choco Chips", emoji: "🍫" },
-  { label: "Caramel Swirl", emoji: "🍯" },
-  { label: "Sea Salt Sprinkle", emoji: "🧂" },
-  { label: "Custom Message Card", emoji: "✍️" },
-  { label: "Gift Wrap", emoji: "🎁" },
 ];
 
 // Cookie Tin — each variant is a 500gms tin at a fixed price; the flavor is the
@@ -186,7 +159,6 @@ export function getSteps(product: ProductType | null): StepConfig[] {
       { id: "product", label: "Product" },
       { id: "size", label: "Quantity" },
       { id: "date", label: "Delivery Date" },
-      { id: "decorations", label: "Add-ons" },
       { id: "summary", label: "Summary" },
     ];
   }
@@ -203,7 +175,6 @@ export function getSteps(product: ProductType | null): StepConfig[] {
     { id: "size", label: product === "cupcake" ? "Serving" : "Size" },
     { id: "date", label: "Delivery Date" },
     { id: "flavor", label: "Flavor" },
-    { id: "decorations", label: product === "cupcake" ? "Toppings" : "Decor" },
     { id: "summary", label: "Summary" },
   ];
 }

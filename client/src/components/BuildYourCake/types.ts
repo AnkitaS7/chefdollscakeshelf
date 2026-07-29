@@ -1,12 +1,6 @@
 export type ProductType = "cake" | "cupcake" | "brownie" | "cookietin";
 
-export type StepId =
-  | "product"
-  | "size"
-  | "date"
-  | "flavor"
-  | "decorations"
-  | "summary";
+export type StepId = "product" | "size" | "date" | "flavor" | "summary";
 
 export interface StepConfig {
   id: StepId;
@@ -39,8 +33,5 @@ export interface OrderState {
   deliveryDate: string; // ISO date string "YYYY-MM-DD"
   flavor: FlavorOption | null;
   frosting: FrostingOption; // always whipped cream — the only frosting we make
-  decorations: string[];
-  addons: string[];
-  message: string;
-  customCardMessage: string;
+  message: string; // optional special order instructions, entered on the summary
 }

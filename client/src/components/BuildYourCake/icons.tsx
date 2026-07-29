@@ -10,23 +10,17 @@ import {
   CalendarDays,
   Candy,
   Cherry,
-  Citrus,
   ClipboardCheck,
   Coffee,
   Cookie,
   Dessert,
   Droplet,
   Flower2,
-  Gift,
   Nut,
   Palette,
-  PenLine,
   Scale,
   ShoppingBag,
-  Snowflake,
-  Sparkle,
   Sparkles,
-  Stars,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { ProductType, StepId } from "./types";
@@ -43,7 +37,6 @@ export const STEP_ICONS: Record<StepId, LucideIcon> = {
   size: Scale,
   date: CalendarDays,
   flavor: Palette,
-  decorations: Sparkles,
   summary: ClipboardCheck,
 };
 
@@ -61,31 +54,6 @@ const FLAVOR_GROUP_ICONS: Record<string, LucideIcon> = {
 
 export function flavorGroupIcon(group: string): LucideIcon {
   return FLAVOR_GROUP_ICONS[group] ?? Sparkles;
-}
-
-const DECOR_ICONS: Record<string, LucideIcon> = {
-  // Cake
-  "Fresh Flowers": Flower2,
-  "Gold Leaf": Sparkles,
-  Macarons: Candy,
-  "Edible Glitter": Stars,
-  "Custom Message Card": PenLine,
-  "Fruit Topping": Cherry,
-  // Cupcake
-  Sprinkles: Sparkle,
-  "Fondant Topper": Flower2,
-  "Gold Dust": Sparkles,
-  "Fruit Slice": Citrus,
-  // Brownie
-  Walnut: Nut,
-  "Choco Chips": Cookie,
-  "Caramel Swirl": Droplet,
-  "Sea Salt Sprinkle": Snowflake,
-  "Gift Wrap": Gift,
-};
-
-export function decorIcon(label: string): LucideIcon {
-  return DECOR_ICONS[label] ?? Sparkles;
 }
 
 /** WhatsApp is a brand mark, so it ships as its own path rather than a Lucide glyph. */

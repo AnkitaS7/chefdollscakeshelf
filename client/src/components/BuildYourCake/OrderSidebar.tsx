@@ -79,20 +79,6 @@ export default function OrderSidebar({
             {!isBrownie && !isCookieTin && (
               <SummaryRow label="Frosting" value={order.frosting.label} />
             )}
-            {(isBrownie ? order.addons : order.decorations).length > 0 && (
-              <SummaryRow
-                label={isBrownie ? "Add-ons" : "Decor"}
-                value={(isBrownie ? order.addons : order.decorations).join(
-                  ", "
-                )}
-              />
-            )}
-            {(isBrownie ? order.addons : order.decorations).includes('Custom Message Card') && order.customCardMessage && (
-              <SummaryRow
-                label="Custom Card Message"
-                value={order.customCardMessage}
-              />
-            )}
           </div>
 
           {order.size && (

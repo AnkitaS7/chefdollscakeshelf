@@ -11,13 +11,10 @@ import {
   PRODUCTS,
   CAKE_SIZES,
   CAKE_FLAVORS,
-  CAKE_DECORATIONS,
   CUPCAKE_SIZES,
   CUPCAKE_FLAVORS,
-  CUPCAKE_DECORATIONS,
   WHIPPED_CREAM,
   BROWNIE_SIZES,
-  BROWNIE_ADDONS,
   COOKIETIN_SIZES,
   getSteps,
 } from "./data";
@@ -25,7 +22,6 @@ import ProgressBar from "./ProgressBar";
 import StepProduct from "./StepProduct";
 import StepSize from "./StepSize";
 import StepFlavor from "./StepFlavor";
-import StepDecorations from "./StepDecorations";
 import StepDeliveryDate from "./StepDeliveryDate";
 import StepSummary from "./StepSummary";
 import OrderSidebar from "./OrderSidebar";
@@ -64,10 +60,7 @@ export default function BuildYourCake() {
     deliveryDate: "",
     flavor: null,
     frosting: WHIPPED_CREAM,
-    decorations: [],
-    addons: [],
     message: "",
-    customCardMessage: "",
   });
 
   const steps = getSteps(order.product);
@@ -114,10 +107,7 @@ export default function BuildYourCake() {
       deliveryDate: "",
       flavor: null,
       frosting: WHIPPED_CREAM,
-      decorations: [],
-      addons: [],
       message: "",
-      customCardMessage: "",
     });
     goToStep(1, "forward");
   };
@@ -155,21 +145,16 @@ export default function BuildYourCake() {
     const dateStr = order.deliveryDate
       ? new Date(order.deliveryDate + "T00:00:00").toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })
       : "Not specified";
-    // The optional custom-card line, shared by the three flows that offer it.
-    const cardLine = (items: string[]) =>
-      items.includes("Custom Message Card")
-        ? `Message for the Custom Message Card: ${order.customCardMessage}\n•`
-        : "";
     if (p === "cake") {
-      msg += `🎂 *Custom Cake Order:*\n• Size: ${order.size?.label} (${order.size?.serves})\n• Delivery Date: ${dateStr}\n• Flavor: ${order.flavor?.label}\n• Frosting: ${order.frosting?.label}\n• Decorations: ${order.decorations.length > 0 ? order.decorations.join(", ") : "None"}\n• ${cardLine(order.decorations)} Estimated Budget: ₹${totalPrice()}+`;
+      msg += `🎂 *Custom Cake Order:*\n• Size: ${order.size?.label} (${order.size?.serves})\n• Delivery Date: ${dateStr}\n• Flavor: ${order.flavor?.label}\n• Frosting: ${order.frosting?.label}\n• Estimated Budget: ₹${totalPrice()}+`;
     } else if (p === "cupcake") {
-      msg += `🧁 *Cupcake Order:*\n• Quantity: ${order.size?.label}\n• Delivery Date: ${dateStr}\n• Flavor: ${order.flavor?.label}\n• Frosting: ${order.frosting?.label}\n• Toppings: ${order.decorations.length > 0 ? order.decorations.join(", ") : "None"}\n• ${cardLine(order.decorations)} Estimated Budget: ₹${totalPrice()}+`;
+      msg += `🧁 *Cupcake Order:*\n• Quantity: ${order.size?.label}\n• Delivery Date: ${dateStr}\n• Flavor: ${order.flavor?.label}\n• Frosting: ${order.frosting?.label}\n• Estimated Budget: ₹${totalPrice()}+`;
     } else if (p === "cookietin") {
       msg += `🍪 *Cookie Tin Order:*\n• Tin: ${order.size?.label} (${order.size?.serves})\n• Delivery Date: ${dateStr}\n• Estimated Budget: ₹${totalPrice()}+`;
     } else {
-      msg += `🍫 *Brownie Order:*\n• Quantity: ${order.size?.label}\n• Delivery Date: ${dateStr}\n• Add-ons: ${order.addons.length > 0 ? order.addons.join(", ") : "None"}\n• ${cardLine(order.addons)} Estimated Budget: ₹${totalPrice()}+`;
+      msg += `🍫 *Brownie Order:*\n• Quantity: ${order.size?.label}\n• Delivery Date: ${dateStr}\n• Estimated Budget: ₹${totalPrice()}+`;
     }
-    if (order.message) msg += `\n• Note: ${order.message}`;
+    if (order.message) msg += `\n• Special Instructions: ${order.message}`;
     msg += `\n\nPlease let me know availability and final pricing!`;
     window.open(`https://wa.me/919867390830?text=${encodeURIComponent(msg)}`, "_blank");
   };
@@ -356,50 +341,12 @@ export default function BuildYourCake() {
                     />
                   )}
 
-                  {currentStep.id === "decorations" && (
-                    <StepDecorations
-                      product={order.product!}
-                      items={
-                        order.product === "cake"
-                          ? CAKE_DECORATIONS
-                          : order.product === "cupcake"
-                            ? CUPCAKE_DECORATIONS
-                            : BROWNIE_ADDONS
-                      }
-                      selected={
-                        order.product === "brownie"
-                          ? order.addons
-                          : order.decorations
-                      }
-                      onToggle={label => {
-                        if (order.product === "brownie") {
-                          setOrder(o => ({
-                            ...o,
-                            addons: o.addons.includes(label)
-                              ? o.addons.filter(d => d !== label)
-                              : [...o.addons, label],
-                          }));
-                        } else {
-                          setOrder(o => ({
-                            ...o,
-                            decorations: o.decorations.includes(label)
-                              ? o.decorations.filter(d => d !== label)
-                              : [...o.decorations, label],
-                          }));
-                        }
-                      }}
-                      message={order.message}
-                      onMessage={msg => setOrder(o => ({ ...o, message: msg }))}
-                      customCardMessage={order.customCardMessage}
-                      onCustomCardMessage={msg => setOrder(o => ({ ...o, customCardMessage: msg }))}
-                    />
-                  )}
-
                   {currentStep.id === "summary" && (
                     <StepSummary
                       order={order}
                       total={totalPrice()}
                       onSend={buildWhatsAppMsg}
+                      onMessage={msg => setOrder(o => ({ ...o, message: msg }))}
                     />
                   )}
 

@@ -28,15 +28,18 @@ export default function StepSummary({
   order,
   total,
   onSend,
+  onMessage,
 }: {
   order: OrderState;
   total: number;
   onSend: () => void;
+  onMessage: (msg: string) => void;
 }) {
   const productMeta = PRODUCTS.find(p => p.type === order.product)!;
   const isBrownie = order.product === "brownie";
   const isCookieTin = order.product === "cookietin";
   const ProductIcon = PRODUCT_ICONS[productMeta.type];
+  const accentColor = productMeta.color;
 
   return (
     <div className="flex-1 flex flex-col gap-5">
@@ -91,18 +94,32 @@ export default function StepSummary({
         {!isBrownie && !isCookieTin && (
           <SummaryRow label="Frosting" value={order.frosting.label} />
         )}
-        {!isCookieTin && (
-          <SummaryRow
-            label={isBrownie ? "Add-ons" : "Decorations"}
-            value={
-              (isBrownie ? order.addons : order.decorations).length > 0
-                ? (isBrownie ? order.addons : order.decorations).join(", ")
-                : "None"
-            }
-          />
-        )}
-        {(isBrownie ? order.addons : order.decorations).includes('Custom Message Card') && order.customCardMessage && <SummaryRow label="Custom Card Message" value={order.customCardMessage} />}
-        {order.message && <SummaryRow label="Note" value={order.message} />}
+      </div>
+
+      <div>
+        <label
+          htmlFor="special-instructions"
+          className="block text-xs font-semibold uppercase tracking-wide mb-2"
+          style={{ color: "var(--text-muted)", fontFamily: "var(--font-body)" }}
+        >
+          Special Order Instructions (optional)
+        </label>
+        <textarea
+          id="special-instructions"
+          rows={2}
+          value={order.message}
+          onChange={e => onMessage(e.target.value)}
+          placeholder={`e.g. dietary needs, allergies, or a message for the card on your ${productMeta.label.toLowerCase()}`}
+          className="w-full rounded-xl px-4 py-3 text-sm resize-none outline-none transition-all duration-200"
+          style={{
+            border: "1.5px solid var(--line)",
+            fontFamily: "var(--font-body)",
+            color: "var(--text-dark)",
+            background: "var(--background)",
+          }}
+          onFocus={e => (e.target.style.borderColor = accentColor)}
+          onBlur={e => (e.target.style.borderColor = "var(--line)")}
+        />
       </div>
 
       <div

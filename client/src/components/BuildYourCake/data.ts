@@ -85,10 +85,10 @@ export const CAKE_FLAVORS: FlavorOption[] = [
   { group: "Indian Specials", label: "Gulkand", emoji: "🌹", color: "oklch(0.75 0.12 350)", pricePerKg: 1150 },
   { group: "Indian Specials", label: "Tender Coconut and Gulkand", emoji: "🥥", color: "oklch(0.80 0.08 140)", pricePerKg: 1400 },
   { group: "Indian Specials", label: "Paan", emoji: "🌿", color: "oklch(0.55 0.12 145)", pricePerKg: 1550 },
+  { group: "Indian Specials", label: "Chai", emoji: "🍵", color: "oklch(0.70 0.08 55)", pricePerKg: 1100 },
   { group: "Coffee", label: "Coffee", emoji: "☕", color: "oklch(0.45 0.07 40)", pricePerKg: 1100 },
   { group: "Coffee", label: "Coffee Caramel", emoji: "☕", color: "oklch(0.58 0.09 50)", pricePerKg: 1150 },
   { group: "Coffee", label: "Mocha", emoji: "☕", color: "oklch(0.40 0.07 35)", pricePerKg: 1100 },
-  { group: "Other", label: "Chai", emoji: "🍵", color: "oklch(0.70 0.08 55)", pricePerKg: 1100 },
   { group: "Other", label: "Dulce de Leches", emoji: "🍮", color: "oklch(0.78 0.10 65)", pricePerKg: 2000 },
 ];
 

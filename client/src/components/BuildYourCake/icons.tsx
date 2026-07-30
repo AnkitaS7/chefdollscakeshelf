@@ -42,6 +42,7 @@ export const STEP_ICONS: Record<StepId, LucideIcon> = {
 
 const FLAVOR_GROUP_ICONS: Record<string, LucideIcon> = {
   "Dutch Truffle": Candy,
+  "Chocolate & Truffle": Dessert,
   Caramel: Droplet,
   Chocolate: Dessert,
   "Nutella & Premium": Nut,

@@ -15,27 +15,33 @@ export default function CupcakeQuantity({
   selected,
   onSelect,
   accentColor,
+  pricePerPiece,
 }: {
   selected: SizeOption | null;
   onSelect: (s: SizeOption) => void;
   accentColor: string;
+  /** Per-piece rate from the chosen flavor; the running total is this × qty. */
+  pricePerPiece: number;
 }) {
   const qty = selected?.qty ?? CUPCAKE_MIN;
 
-  // Default to the minimum on first arrival so a price shows immediately and the
-  // customer can continue without a forced tap. Only fires when nothing's chosen,
-  // so returning to this step keeps the previous quantity.
+  // Sync the SizeOption to the current flavor's rate. Fires on first arrival
+  // (defaulting to the minimum so a price shows and the customer can continue
+  // without a forced tap) and again if the flavor — and thus the rate — changes,
+  // re-pricing the same quantity.
   useEffect(() => {
-    if (!selected) onSelect(cupcakeSize(CUPCAKE_MIN));
+    onSelect(cupcakeSize(qty, pricePerPiece));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [pricePerPiece]);
 
   const setQty = (n: number) =>
-    onSelect(cupcakeSize(Math.min(CUPCAKE_MAX, Math.max(CUPCAKE_MIN, n))));
+    onSelect(
+      cupcakeSize(Math.min(CUPCAKE_MAX, Math.max(CUPCAKE_MIN, n)), pricePerPiece)
+    );
 
   const atMin = qty <= CUPCAKE_MIN;
   const atMax = qty >= CUPCAKE_MAX;
-  const price = cupcakeSize(qty).price;
+  const price = pricePerPiece * qty;
 
   return (
     <div className="flex flex-col gap-5">

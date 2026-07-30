@@ -305,6 +305,7 @@ export default function BuildYourCake() {
                               : [] // cupcakes use the quantity stepper, not a list
                       }
                       selected={order.size}
+                      pricePerPiece={order.flavor?.pricePerPiece}
                       onSelect={s => {
                         setOrder(o => ({ ...o, size: s }));
                         // The cupcake stepper is adjusted in place; every other

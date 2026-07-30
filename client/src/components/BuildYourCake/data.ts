@@ -149,33 +149,48 @@ export const WHIPPED_CREAM: FrostingOption = {
 
 // Cupcake — sold by the piece in multiples of 4 (min 4), so there is no fixed
 // size list; the quantity stepper builds a SizeOption on the fly via cupcakeSize.
+// The flavor sets the per-piece rate (chosen before quantity), so the total is
+// flavor.pricePerPiece × qty.
 export const CUPCAKE_MIN = 4; // smallest order
 export const CUPCAKE_STEP = 4; // orders move in blocks of 4
 export const CUPCAKE_MAX = 100; // sane upper bound for the stepper
 
-// TODO(pricing): replace with the confirmed price for a box of 4 cupcakes.
-// Interim value is the previous 4-piece box price. Every quantity scales from
-// it — total = CUPCAKE_PRICE_PER_4 × (qty / 4).
-export const CUPCAKE_PRICE_PER_4 = 320;
-
-/** Build the cupcake "size" for a given piece count (a multiple of CUPCAKE_STEP).
-    Price scales linearly from the per-4 block price. */
-export function cupcakeSize(qty: number): SizeOption {
+/** Build the cupcake "size" for a given piece count (a multiple of CUPCAKE_STEP)
+    at the chosen flavor's per-piece rate. */
+export function cupcakeSize(qty: number, pricePerPiece: number): SizeOption {
   return {
     label: `${qty} Cupcakes`,
     serves: `Box of ${qty}`,
     qty,
-    price: CUPCAKE_PRICE_PER_4 * (qty / CUPCAKE_STEP),
+    price: pricePerPiece * qty,
   };
 }
 
+// Priced per single cupcake; total = pricePerPiece × qty. Grouped by family so
+// the picker renders headings by walking this order — keep families contiguous.
 export const CUPCAKE_FLAVORS: FlavorOption[] = [
-  { label: "Vanilla Bean", emoji: "🍦", color: "oklch(0.95 0.03 80)" },
-  { label: "Chocolate", emoji: "🍫", color: "oklch(0.40 0.08 40)" },
-  { label: "Strawberry", emoji: "🍓", color: "oklch(0.75 0.12 10)" },
-  { label: "Red Velvet", emoji: "❤️", color: "oklch(0.55 0.15 15)" },
-  { label: "Lemon Zest", emoji: "🍋", color: "oklch(0.90 0.12 95)" },
-  { label: "Funfetti", emoji: "🎉", color: "oklch(0.88 0.1 85)" },
+  { group: "Chocolate & Truffle", label: "Chocolate Mousse", emoji: "🍫", color: "oklch(0.38 0.08 40)", pricePerPiece: 50 },
+  { group: "Chocolate & Truffle", label: "Dutch Truffle (15% Dark)", emoji: "🍫", color: "oklch(0.42 0.08 40)", pricePerPiece: 70 },
+  { group: "Chocolate & Truffle", label: "Dutch Truffle (46% Dark)", emoji: "🍫", color: "oklch(0.36 0.08 40)", pricePerPiece: 100 },
+  { group: "Chocolate & Truffle", label: "Dutch Truffle Salted Caramel", emoji: "🍯", color: "oklch(0.60 0.10 55)", pricePerPiece: 80 },
+  { group: "Chocolate & Truffle", label: "Choco Hazelnut with Nutella", emoji: "🌰", color: "oklch(0.48 0.09 45)", pricePerPiece: 90 },
+  { group: "Chocolate & Truffle", label: "Nutella", emoji: "🌰", color: "oklch(0.50 0.09 45)", pricePerPiece: 90 },
+  { group: "Chocolate & Truffle", label: "Biscoff", emoji: "🍪", color: "oklch(0.68 0.10 55)", pricePerPiece: 90 },
+  { group: "Coffee", label: "Coffee", emoji: "☕", color: "oklch(0.45 0.07 40)", pricePerPiece: 50 },
+  { group: "Coffee", label: "Coffee Caramel", emoji: "☕", color: "oklch(0.58 0.09 50)", pricePerPiece: 60 },
+  { group: "Coffee", label: "Mocha", emoji: "☕", color: "oklch(0.40 0.07 35)", pricePerPiece: 60 },
+  { group: "Coffee", label: "Coffee Strawberry", emoji: "☕", color: "oklch(0.55 0.10 25)", pricePerPiece: 60 },
+  { group: "Fruit", label: "Strawberry", emoji: "🍓", color: "oklch(0.75 0.12 10)", pricePerPiece: 50 },
+  { group: "Fruit", label: "Chocolate Strawberry", emoji: "🍓", color: "oklch(0.50 0.10 20)", pricePerPiece: 60 },
+  { group: "Fruit", label: "Blueberry", emoji: "🫐", color: "oklch(0.55 0.14 270)", pricePerPiece: 50 },
+  { group: "Fruit", label: "Pineapple", emoji: "🍍", color: "oklch(0.88 0.12 90)", pricePerPiece: 50 },
+  { group: "Fruit", label: "Mix Fruit", emoji: "🍑", color: "oklch(0.80 0.10 60)", pricePerPiece: 50 },
+  { group: "Classics", label: "Cookie Cream", emoji: "🍪", color: "oklch(0.88 0.03 80)", pricePerPiece: 50 },
+  { group: "Classics", label: "Red Velvet", emoji: "❤️", color: "oklch(0.55 0.15 15)", pricePerPiece: 50 },
+  { group: "Classics", label: "Red Velvet Cheese Cream", emoji: "🧀", color: "oklch(0.58 0.13 15)", pricePerPiece: 70 },
+  { group: "Classics", label: "Caramel", emoji: "🍯", color: "oklch(0.75 0.10 65)", pricePerPiece: 50 },
+  { group: "Indian Specials", label: "Rasmalai", emoji: "🥛", color: "oklch(0.93 0.03 80)", pricePerPiece: 100 },
+  { group: "Indian Specials", label: "Gulab Jamun", emoji: "🟤", color: "oklch(0.55 0.10 50)", pricePerPiece: 100 },
 ];
 
 // Brownie
@@ -216,9 +231,20 @@ export function getSteps(product: ProductType | null): StepConfig[] {
       { id: "summary", label: "Summary" },
     ];
   }
+  if (product === "cupcake") {
+    // Flavor sets the per-piece price, so it comes before the quantity stepper —
+    // the stepper can then show an accurate running total.
+    return [
+      { id: "product", label: "Product" },
+      { id: "flavor", label: "Flavor" },
+      { id: "size", label: "Quantity" },
+      { id: "date", label: "Delivery Date" },
+      { id: "summary", label: "Summary" },
+    ];
+  }
   return [
     { id: "product", label: "Product" },
-    { id: "size", label: product === "cupcake" ? "Quantity" : "Size" },
+    { id: "size", label: "Size" },
     { id: "date", label: "Delivery Date" },
     { id: "flavor", label: "Flavor" },
     { id: "summary", label: "Summary" },

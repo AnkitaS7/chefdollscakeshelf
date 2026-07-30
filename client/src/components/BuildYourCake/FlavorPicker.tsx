@@ -62,7 +62,7 @@ export default function FlavorPicker({
     return out;
   }, [matches]);
 
-  // Search only earns its keep on a long list (cakes); cupcakes have six.
+  // Search only earns its keep on a long list (cakes and cupcakes both qualify).
   const showSearch = flavors.length > 12;
 
   return (
@@ -214,7 +214,7 @@ export default function FlavorPicker({
                         >
                           {f.label}
                         </span>
-                        {f.pricePerKg != null && (
+                        {(f.pricePerKg != null || f.pricePerPiece != null) && (
                           <span
                             className="text-xs font-semibold"
                             style={{
@@ -224,7 +224,9 @@ export default function FlavorPicker({
                               fontFamily: "var(--font-body)",
                             }}
                           >
-                            {surchargeLabel(f.pricePerKg)}
+                            {f.pricePerPiece != null
+                              ? `₹${f.pricePerPiece.toLocaleString("en-IN")}/pc`
+                              : surchargeLabel(f.pricePerKg!)}
                           </span>
                         )}
                       </span>

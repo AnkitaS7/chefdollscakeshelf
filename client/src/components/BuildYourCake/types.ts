@@ -20,7 +20,8 @@ export interface FlavorOption {
   emoji: string;
   color: string;
   pricePerKg?: number; // cake price for 1kg of this flavor; total = pricePerKg × size.kg
-  group?: string; // family heading in the flavor picker (cakes only)
+  pricePerPiece?: number; // cupcake price per single piece; total = pricePerPiece × qty
+  group?: string; // family heading in the flavor picker
 }
 
 export interface FrostingOption {

@@ -8,11 +8,14 @@ export default function StepSize({
   sizes,
   selected,
   onSelect,
+  pricePerPiece,
 }: {
   product: ProductType;
   sizes: SizeOption[];
   selected: SizeOption | null;
   onSelect: (s: SizeOption) => void;
+  /** Cupcake per-piece rate from the chosen flavor; drives the stepper's total. */
+  pricePerPiece?: number;
 }) {
   const Icon = PRODUCT_ICONS[product];
 
@@ -65,6 +68,7 @@ export default function StepSize({
           selected={selected}
           onSelect={onSelect}
           accentColor={accentColor}
+          pricePerPiece={pricePerPiece ?? 0}
         />
       ) : (
         <SizeCards

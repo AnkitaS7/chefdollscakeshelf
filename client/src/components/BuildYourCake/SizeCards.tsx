@@ -7,11 +7,10 @@ import type { ProductType, SizeOption } from "./types";
 import { PRODUCT_ICONS } from "./icons";
 
 /** Cakes quote a "from" price (flavor sets the real total); tins and brownies
-    are a single fixed price; cupcake boxes are a "from" starting price. */
+    are a single fixed price. (Cupcakes use the quantity stepper, not cards.) */
 function priceLabel(product: ProductType, price: number) {
   if (product === "cake") return `from ₹${price}`;
-  if (product === "cookietin" || product === "brownie") return `₹${price}`;
-  return `₹${price}+`;
+  return `₹${price}`;
 }
 
 export default function SizeCards({

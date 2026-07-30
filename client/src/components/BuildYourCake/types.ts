@@ -12,6 +12,7 @@ export interface SizeOption {
   serves: string;
   price: number; // starting price for this size; exact for tins, "from" for cakes
   kg?: number; // weight multiplier for cakes (0.5/1/1.5/2); used with FlavorOption.pricePerKg
+  qty?: number; // piece count for cupcakes (multiple of 4); set by cupcakeSize()
 }
 
 export interface FlavorOption {

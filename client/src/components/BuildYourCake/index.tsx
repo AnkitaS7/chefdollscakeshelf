@@ -11,7 +11,6 @@ import {
   PRODUCTS,
   CAKE_SIZES,
   CAKE_FLAVORS,
-  CUPCAKE_SIZES,
   CUPCAKE_FLAVORS,
   WHIPPED_CREAM,
   BROWNIE_SIZES,
@@ -299,16 +298,19 @@ export default function BuildYourCake() {
                       sizes={
                         order.product === "cake"
                           ? CAKE_SIZES
-                          : order.product === "cupcake"
-                            ? CUPCAKE_SIZES
-                            : order.product === "brownie"
-                              ? BROWNIE_SIZES
-                              : COOKIETIN_SIZES
+                          : order.product === "brownie"
+                            ? BROWNIE_SIZES
+                            : order.product === "cookietin"
+                              ? COOKIETIN_SIZES
+                              : [] // cupcakes use the quantity stepper, not a list
                       }
                       selected={order.size}
                       onSelect={s => {
                         setOrder(o => ({ ...o, size: s }));
-                        goToStep(currentStepIndex + 1, "forward");
+                        // The cupcake stepper is adjusted in place; every other
+                        // product picks a card, which advances immediately.
+                        if (order.product !== "cupcake")
+                          goToStep(currentStepIndex + 1, "forward");
                       }}
                     />
                   )}

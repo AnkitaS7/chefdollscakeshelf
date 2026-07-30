@@ -38,6 +38,7 @@ export default function StepSummary({
   const productMeta = PRODUCTS.find(p => p.type === order.product)!;
   const isBrownie = order.product === "brownie";
   const isCookieTin = order.product === "cookietin";
+  const isCupcake = order.product === "cupcake";
   const ProductIcon = PRODUCT_ICONS[productMeta.type];
   const accentColor = productMeta.color;
 
@@ -76,7 +77,15 @@ export default function StepSummary({
       >
         <SummaryRow label="Product" value={productMeta.label} />
         <SummaryRow
-          label={isBrownie ? "Brownie" : isCookieTin ? "Tin" : "Size"}
+          label={
+            isBrownie
+              ? "Brownie"
+              : isCookieTin
+                ? "Tin"
+                : isCupcake
+                  ? "Quantity"
+                  : "Size"
+          }
           value={`${order.size?.label} - ${order.size?.serves}`}
         />
         {order.deliveryDate && (

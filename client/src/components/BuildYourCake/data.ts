@@ -147,13 +147,27 @@ export const WHIPPED_CREAM: FrostingOption = {
   emoji: "🤍",
 };
 
-// Cupcake
-export const CUPCAKE_SIZES: SizeOption[] = [
-  { label: "4 Cupcakes", serves: "Mini box", price: 320 },
-  { label: "8 Cupcakes", serves: "Party box", price: 600 },
-  { label: "12 Cupcakes", serves: "Celebration box", price: 880 },
-  { label: "16 Cupcakes", serves: "Grand box", price: 1150 },
-];
+// Cupcake — sold by the piece in multiples of 4 (min 4), so there is no fixed
+// size list; the quantity stepper builds a SizeOption on the fly via cupcakeSize.
+export const CUPCAKE_MIN = 4; // smallest order
+export const CUPCAKE_STEP = 4; // orders move in blocks of 4
+export const CUPCAKE_MAX = 100; // sane upper bound for the stepper
+
+// TODO(pricing): replace with the confirmed price for a box of 4 cupcakes.
+// Interim value is the previous 4-piece box price. Every quantity scales from
+// it — total = CUPCAKE_PRICE_PER_4 × (qty / 4).
+export const CUPCAKE_PRICE_PER_4 = 320;
+
+/** Build the cupcake "size" for a given piece count (a multiple of CUPCAKE_STEP).
+    Price scales linearly from the per-4 block price. */
+export function cupcakeSize(qty: number): SizeOption {
+  return {
+    label: `${qty} Cupcakes`,
+    serves: `Box of ${qty}`,
+    qty,
+    price: CUPCAKE_PRICE_PER_4 * (qty / CUPCAKE_STEP),
+  };
+}
 
 export const CUPCAKE_FLAVORS: FlavorOption[] = [
   { label: "Vanilla Bean", emoji: "🍦", color: "oklch(0.95 0.03 80)" },
@@ -204,7 +218,7 @@ export function getSteps(product: ProductType | null): StepConfig[] {
   }
   return [
     { id: "product", label: "Product" },
-    { id: "size", label: product === "cupcake" ? "Serving" : "Size" },
+    { id: "size", label: product === "cupcake" ? "Quantity" : "Size" },
     { id: "date", label: "Delivery Date" },
     { id: "flavor", label: "Flavor" },
     { id: "summary", label: "Summary" },

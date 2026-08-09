@@ -101,7 +101,7 @@ const Label: React.FC<{ htmlFor: string; children: React.ReactNode }> = ({
 /* ═══════════════════════════════════════════════════════════════
    INQUIRY FORM
    Purpose: let someone ask a question or explore options.
-   Fields: name, email (required), phone (optional),
+   Fields: name, email (optional), phone (required),
            topic (what they're asking about), free-text question.
 ═══════════════════════════════════════════════════════════════ */
 const InquiryForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
@@ -162,25 +162,25 @@ const InquiryForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
         />
       </div>
 
-      {/* Email + Phone */}
+      {/* Phone + Email */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <Label htmlFor="inq-email">Email Address *</Label>
+          <Label htmlFor="inq-phone">Phone *</Label>
           <input
-            id="inq-email"
-            type="email"
+            id="inq-phone"
+            type="tel"
             required
-            placeholder="priya@example.com"
-            value={form.email}
-            onChange={set("email")}
+            placeholder="+91 98765 43210"
+            value={form.phone}
+            onChange={set("phone")}
             style={inputStyle}
             onFocus={onFocus}
             onBlur={onBlur}
           />
         </div>
         <div>
-          <Label htmlFor="inq-phone">
-            Phone{" "}
+          <Label htmlFor="inq-email">
+            Email Address{" "}
             <span
               style={{
                 fontWeight: 400,
@@ -192,11 +192,11 @@ const InquiryForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
             </span>
           </Label>
           <input
-            id="inq-phone"
-            type="tel"
-            placeholder="+91 98765 43210"
-            value={form.phone}
-            onChange={set("phone")}
+            id="inq-email"
+            type="email"
+            placeholder="priya@example.com"
+            value={form.email}
+            onChange={set("email")}
             style={inputStyle}
             onFocus={onFocus}
             onBlur={onBlur}

@@ -90,6 +90,9 @@ export const CAKE_FLAVORS: FlavorOption[] = [
   { group: "Coffee", label: "Coffee Caramel", emoji: "☕", color: "oklch(0.58 0.09 50)", pricePerKg: 1150 },
   { group: "Coffee", label: "Mocha", emoji: "☕", color: "oklch(0.40 0.07 35)", pricePerKg: 1100 },
   { group: "Other", label: "Dulce de Leches", emoji: "🍮", color: "oklch(0.78 0.10 65)", pricePerKg: 2000 },
+  // No pricePerKg — a custom flavor is quoted after consultation, so the picker
+  // shows no price and the total falls back to the plain per-kg size base.
+  { group: "Other", label: "Make Your Own", emoji: "✨", color: "oklch(0.70 0.12 320)" },
 ];
 
 // The price list is built as a plain-cake base of ₹1000/kg plus a per-flavor

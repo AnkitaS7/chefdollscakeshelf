@@ -62,13 +62,11 @@ export default function OrderSidebar({
             {order.size && (
               <SummaryRow
                 label={
-                  isBrownie
-                    ? "Brownie"
-                    : isCookieTin
-                      ? "Tin"
-                      : isCupcake
-                        ? "Qty"
-                        : "Size"
+                  isCookieTin
+                    ? "Tin"
+                    : isCupcake || isBrownie
+                      ? "Qty"
+                      : "Size"
                 }
                 value={order.size.label}
               />
@@ -79,7 +77,7 @@ export default function OrderSidebar({
                 value={new Date(order.deliveryDate + "T00:00:00").toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
               />
             )}
-            {!isBrownie && order.flavor && (
+            {!isCookieTin && order.flavor && (
               <SummaryRow
                 label="Flavor"
                 value={`${order.flavor.emoji} ${order.flavor.label}`}

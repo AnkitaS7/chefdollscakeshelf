@@ -6,8 +6,9 @@
 import type { ProductType, SizeOption } from "./types";
 import { PRODUCT_ICONS } from "./icons";
 
-/** Cakes quote a "from" price (flavor sets the real total); tins and brownies
-    are a single fixed price. (Cupcakes use the quantity stepper, not cards.) */
+/** Cakes quote a "from" price (flavor sets the real total); tins are a single
+    fixed price; brownies are priced by weight × the chosen flavor's per-kg rate.
+    (Cupcakes use the quantity stepper, not cards.) */
 function priceLabel(product: ProductType, price: number) {
   if (product === "cake") return `from ₹${price}`;
   return `₹${price}`;
@@ -19,12 +20,15 @@ export default function SizeCards({
   selected,
   onSelect,
   accentColor,
+  pricePerKg,
 }: {
   product: ProductType;
   sizes: SizeOption[];
   selected: SizeOption | null;
   onSelect: (s: SizeOption) => void;
   accentColor: string;
+  /** Brownie per-kg rate from the chosen flavor; prices each weight card live. */
+  pricePerKg?: number;
 }) {
   const Icon = PRODUCT_ICONS[product];
 
@@ -32,6 +36,12 @@ export default function SizeCards({
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
       {sizes.map(s => {
         const isSelected = selected?.label === s.label;
+        // Brownies price each weight from the chosen flavor's per-kg rate;
+        // everything else uses the size's own price.
+        const displayPrice =
+          pricePerKg != null && s.kg != null
+            ? Math.round(pricePerKg * s.kg)
+            : s.price;
         return (
           <button
             key={s.label}
@@ -76,7 +86,7 @@ export default function SizeCards({
                 fontFamily: "var(--font-body)",
               }}
             >
-              {priceLabel(product, s.price)}
+              {priceLabel(product, displayPrice)}
             </p>
           </button>
         );

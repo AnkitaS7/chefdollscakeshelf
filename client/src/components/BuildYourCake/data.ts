@@ -193,17 +193,29 @@ export const CUPCAKE_FLAVORS: FlavorOption[] = [
   { group: "Indian Specials", label: "Gulab Jamun", emoji: "🟤", color: "oklch(0.55 0.10 50)", pricePerPiece: 100 },
 ];
 
-// Brownie
-// Brownie — one 1000gms box; the flavor is the priced choice, so the six
-// variants live in the "size" slot (like the cookie tins).
-export const BROWNIE_SIZES: SizeOption[] = [
-  { label: "Chocolate Walnut", serves: "1000gms", price: 1200 },
-  { label: "Nutella Hazelnut", serves: "1000gms", price: 1350 },
-  { label: "Biscoff", serves: "1000gms", price: 1350 },
-  { label: "Dutch Truffle", serves: "1000gms", price: 1350 },
-  { label: "Sea Salt Caramel", serves: "1000gms", price: 1350 },
-  { label: "Assorted", serves: "1000gms", price: 1500 },
+// Brownie — priced by weight (kg), just like cakes. The flavor sets the per-kg
+// rate and the customer then picks a weight; total = flavor.pricePerKg × kg.
+// `pricePerKg` matches the old 1000gms box price (a 1kg box), so 1kg is
+// unchanged and the other weights scale from it.
+export const BROWNIE_FLAVORS: FlavorOption[] = [
+  { label: "Chocolate Walnut", emoji: "🌰", color: "oklch(0.40 0.08 40)", pricePerKg: 1200 },
+  { label: "Nutella Hazelnut", emoji: "🍫", color: "oklch(0.48 0.09 45)", pricePerKg: 1350 },
+  { label: "Biscoff", emoji: "🍪", color: "oklch(0.68 0.10 55)", pricePerKg: 1350 },
+  { label: "Dutch Truffle", emoji: "🍫", color: "oklch(0.36 0.08 40)", pricePerKg: 1350 },
+  { label: "Sea Salt Caramel", emoji: "🍯", color: "oklch(0.60 0.10 55)", pricePerKg: 1350 },
+  { label: "Assorted", emoji: "🎁", color: "oklch(0.55 0.10 50)", pricePerKg: 1500 },
 ];
+
+// Brownie weights. Price is derived from the chosen flavor's per-kg rate
+// (flavor.pricePerKg × kg), so the static `price` here is only a fallback — the
+// flavor is always chosen before this step, so SizeCards shows the live total.
+export const BROWNIE_SIZES: SizeOption[] = [
+  { label: "250 gms", serves: "Serves 2–3", kg: 0.25 },
+  { label: "500 gms", serves: "Serves 4–5", kg: 0.5 },
+  { label: "1 kg", serves: "Serves 8–10", kg: 1 },
+  { label: "1.5 kg", serves: "Serves 12–15", kg: 1.5 },
+  { label: "2 kg", serves: "Serves 16–20", kg: 2 },
+].map(s => ({ ...s, price: 0 }));
 
 // Cookie Tin — each variant is a 500gms tin at a fixed price; the flavor is the
 // priced choice, so the variants live in the "size" slot (like the brownies).
@@ -216,9 +228,12 @@ export const COOKIETIN_SIZES: SizeOption[] = [
 
 export function getSteps(product: ProductType | null): StepConfig[] {
   if (product === "brownie") {
+    // Flavor sets the per-kg price, so it comes before the weight step — the
+    // weight cards can then show an accurate price for the chosen flavor.
     return [
       { id: "product", label: "Product" },
-      { id: "size", label: "Flavour" },
+      { id: "flavor", label: "Flavour" },
+      { id: "size", label: "Quantity" },
       { id: "date", label: "Delivery Date" },
       { id: "summary", label: "Summary" },
     ];

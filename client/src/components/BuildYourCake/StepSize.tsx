@@ -9,6 +9,7 @@ export default function StepSize({
   selected,
   onSelect,
   pricePerPiece,
+  pricePerKg,
 }: {
   product: ProductType;
   sizes: SizeOption[];
@@ -16,6 +17,8 @@ export default function StepSize({
   onSelect: (s: SizeOption) => void;
   /** Cupcake per-piece rate from the chosen flavor; drives the stepper's total. */
   pricePerPiece?: number;
+  /** Brownie per-kg rate from the chosen flavor; prices each weight card. */
+  pricePerKg?: number;
 }) {
   const Icon = PRODUCT_ICONS[product];
 
@@ -26,7 +29,7 @@ export default function StepSize({
         ? "How Many Cupcakes?"
         : product === "cookietin"
           ? "Choose Your Cookie Tin"
-          : "Choose Your Brownie Flavour";
+          : "How Much Brownie?";
 
   const accentColor =
     product === "cake"
@@ -39,7 +42,7 @@ export default function StepSize({
 
   const subtitle =
     product === "brownie"
-      ? "Each is a generous 1000gms box of freshly baked brownies."
+      ? "Freshly baked fudgy brownies — pick a weight to suit your occasion."
       : product === "cookietin"
         ? "Each tin is a generous 500gms of freshly baked cookies."
         : product === "cake"
@@ -77,6 +80,7 @@ export default function StepSize({
           selected={selected}
           onSelect={onSelect}
           accentColor={accentColor}
+          pricePerKg={pricePerKg}
         />
       )}
     </div>

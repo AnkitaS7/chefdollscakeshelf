@@ -14,6 +14,7 @@ import {
   CUPCAKE_FLAVORS,
   WHIPPED_CREAM,
   BROWNIE_SIZES,
+  BROWNIE_FLAVORS,
   COOKIETIN_SIZES,
   getSteps,
 } from "./data";
@@ -122,16 +123,16 @@ export default function BuildYourCake() {
 
   const totalPrice = () => {
     const base = order.size?.price ?? 0;
-    if (order.product === "cake") {
-      // Cakes are priced by flavor × weight: pricePerKg × kg. Before a flavor is
-      // chosen, fall back to the plain size base so the sidebar shows a "from" price.
-      // Decorations are complimentary — they don't change the price.
+    if (order.product === "cake" || order.product === "brownie") {
+      // Cakes and brownies are both priced by flavor × weight: pricePerKg × kg.
+      // Before a flavor is chosen, fall back to the plain size base so the sidebar
+      // shows a "from" price. Decorations are complimentary — no price change.
       const kg = order.size?.kg ?? 0;
       const perKg = order.flavor?.pricePerKg ?? 0;
-      return perKg > 0 && kg > 0 ? perKg * kg : base;
+      return perKg > 0 && kg > 0 ? Math.round(perKg * kg) : base;
     }
-    // Cupcakes, brownies and cookie tins are all priced by their size/quantity
-    // alone; toppings and add-ons are included at no extra charge.
+    // Cupcakes and cookie tins are priced by their size/quantity alone;
+    // toppings and add-ons are included at no extra charge.
     return base;
   };
 
@@ -151,7 +152,7 @@ export default function BuildYourCake() {
     } else if (p === "cookietin") {
       msg += `🍪 *Cookie Tin Order:*\n• Tin: ${order.size?.label} (${order.size?.serves})\n• Delivery Date: ${dateStr}\n• Estimated Budget: ₹${totalPrice()}+`;
     } else {
-      msg += `🍫 *Brownie Order:*\n• Brownie: ${order.size?.label} (${order.size?.serves})\n• Delivery Date: ${dateStr}\n• Estimated Budget: ₹${totalPrice()}+`;
+      msg += `🍫 *Brownie Order:*\n• Flavor: ${order.flavor?.label}\n• Quantity: ${order.size?.label} (${order.size?.serves})\n• Delivery Date: ${dateStr}\n• Estimated Budget: ₹${totalPrice()}+`;
     }
     if (order.message) msg += `\n• Special Instructions: ${order.message}`;
     msg += `\n\nPlease let me know availability and final pricing!`;
@@ -306,6 +307,7 @@ export default function BuildYourCake() {
                       }
                       selected={order.size}
                       pricePerPiece={order.flavor?.pricePerPiece}
+                      pricePerKg={order.flavor?.pricePerKg}
                       onSelect={s => {
                         setOrder(o => ({ ...o, size: s }));
                         // The cupcake stepper is adjusted in place; every other
@@ -333,7 +335,9 @@ export default function BuildYourCake() {
                       flavors={
                         order.product === "cupcake"
                           ? CUPCAKE_FLAVORS
-                          : CAKE_FLAVORS
+                          : order.product === "brownie"
+                            ? BROWNIE_FLAVORS
+                            : CAKE_FLAVORS
                       }
                       selected={order.flavor}
                       sizeKg={order.size?.kg}

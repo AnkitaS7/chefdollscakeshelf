@@ -78,13 +78,11 @@ export default function StepSummary({
         <SummaryRow label="Product" value={productMeta.label} />
         <SummaryRow
           label={
-            isBrownie
-              ? "Brownie"
-              : isCookieTin
-                ? "Tin"
-                : isCupcake
-                  ? "Quantity"
-                  : "Size"
+            isCookieTin
+              ? "Tin"
+              : isCupcake || isBrownie
+                ? "Quantity"
+                : "Size"
           }
           value={`${order.size?.label} - ${order.size?.serves}`}
         />
@@ -94,7 +92,7 @@ export default function StepSummary({
             value={new Date(order.deliveryDate + "T00:00:00").toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
           />
         )}
-        {!isBrownie && order.flavor && (
+        {!isCookieTin && order.flavor && (
           <SummaryRow
             label="Flavor"
             value={`${order.flavor.emoji} ${order.flavor.label}`}

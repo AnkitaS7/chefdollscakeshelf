@@ -17,8 +17,18 @@ export default function StepFlavor({
   sizeKg?: number;
 }) {
   const accentColor =
-    product === "cupcake" ? "oklch(0.55 0.14 200)" : "var(--rose)";
-  const noun = product === "cupcake" ? "Cupcake" : "Cake";
+    product === "cupcake"
+      ? "oklch(0.55 0.14 200)"
+      : product === "brownie"
+        ? "oklch(0.40 0.08 40)"
+        : "var(--rose)";
+  const noun =
+    product === "cupcake"
+      ? "Cupcake"
+      : product === "brownie"
+        ? "Brownie"
+        : "Cake";
+  const isBrownie = product === "brownie";
 
   return (
     <div className="flex-1 flex flex-col">
@@ -33,8 +43,9 @@ export default function StepFlavor({
         className="text-sm mb-6"
         style={{ color: "var(--text-muted)", fontFamily: "var(--font-body)" }}
       >
-        Every bite matters — choose your favourite. Every {noun.toLowerCase()} is
-        finished in our signature whipped cream.
+        Every bite matters — choose your favourite.
+        {!isBrownie &&
+          ` Every ${noun.toLowerCase()} is finished in our signature whipped cream.`}
       </p>
       <FlavorPicker
         flavors={flavors}
@@ -42,6 +53,7 @@ export default function StepFlavor({
         onSelect={onSelect}
         accentColor={accentColor}
         sizeKg={sizeKg}
+        absolutePerKg={isBrownie}
       />
     </div>
   );

@@ -16,6 +16,7 @@ export default function FlavorPicker({
   onSelect,
   accentColor,
   sizeKg,
+  absolutePerKg = false,
 }: {
   flavors: FlavorOption[];
   selected: FlavorOption | null;
@@ -24,13 +25,22 @@ export default function FlavorPicker({
   /** Chosen cake weight. Set, the surcharge is priced for that whole cake;
       unset (menu tab, before a size is picked) it falls back to a per-kg rate. */
   sizeKg?: number;
+  /** Brownies price the whole per-kg rate (no base subtraction), so show the
+      absolute price rather than a "+surcharge". */
+  absolutePerKg?: boolean;
 }) {
   const [query, setQuery] = useState("");
   const q = query.trim().toLowerCase();
 
   // Surcharges are quoted per kg in the price list, so a 2kg Dutch Truffle
-  // adds ₹400 × 2. Rounded because the list works in whole rupees.
-  const surchargeLabel = (pricePerKg: number) => {
+  // adds ₹400 × 2. Rounded because the list works in whole rupees. Brownies
+  // (absolutePerKg) instead show the full per-kg rate as an absolute price.
+  const priceTag = (pricePerKg: number) => {
+    if (absolutePerKg) {
+      return sizeKg != null
+        ? `₹${Math.round(pricePerKg * sizeKg).toLocaleString("en-IN")}`
+        : `₹${pricePerKg.toLocaleString("en-IN")}/kg`;
+    }
     const perKg = flavorSurcharge(pricePerKg);
     return sizeKg != null
       ? `+₹${Math.round(perKg * sizeKg).toLocaleString("en-IN")}`
@@ -226,7 +236,7 @@ export default function FlavorPicker({
                           >
                             {f.pricePerPiece != null
                               ? `₹${f.pricePerPiece.toLocaleString("en-IN")}/pc`
-                              : surchargeLabel(f.pricePerKg!)}
+                              : priceTag(f.pricePerKg!)}
                           </span>
                         )}
                       </span>

@@ -42,7 +42,10 @@ export default function AboutSection() {
       className="py-20 md:py-28 relative overflow-hidden"
       style={{ background: "oklch(0.98 0.015 60)" }}
     >
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        aria-hidden="true"
+      >
         <div
           className="absolute -right-40 top-0 w-96 h-96 rounded-full blur-3xl opacity-20"
           style={{ background: "var(--blush)" }}
@@ -55,7 +58,71 @@ export default function AboutSection() {
 
       <div className="container relative z-10">
         <div className="flex justify-center mb-12">
-          <div className="text-center">
+          <div className="text-center flex flex-col items-center">
+            {/* Highlighted brand crest: layered logo medallion + tagline banner */}
+            <div className="relative mb-5 animate-float-slow">
+              {/* soft glow halo */}
+              <div
+                className="absolute -inset-3 rounded-full blur-xl opacity-40"
+                style={{
+                  background:
+                    "radial-gradient(circle, var(--gold), transparent 70%)",
+                }}
+                aria-hidden="true"
+              />
+              {/* dashed ornament ring */}
+              <div
+                className="absolute -inset-2 rounded-full"
+                style={{ border: "1.5px dashed var(--gold)", opacity: 0.5 }}
+                aria-hidden="true"
+              />
+              {/* gradient medallion frame */}
+              <div
+                className="relative rounded-full p-[3px]"
+                style={{
+                  background:
+                    "conic-gradient(from 140deg, var(--gold), var(--blush), var(--rose), var(--gold))",
+                  boxShadow: "0 12px 34px oklch(0.65 0.12 10 / 0.22)",
+                }}
+              >
+                <div className="rounded-full p-1 bg-white">
+                  <Picture
+                    name="brand-logo"
+                    alt="ChefDollsCakeShelf logo"
+                    width={240}
+                    height={240}
+                    className="h-24 w-24 md:h-28 md:w-28 rounded-full object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Tagline framed as a banner with ornament rules */}
+            <div className="flex items-center gap-3 mb-6 max-w-md">
+              <span
+                className="h-px flex-1"
+                style={{
+                  background:
+                    "linear-gradient(to right, transparent, var(--gold))",
+                }}
+                aria-hidden="true"
+              />
+              <p
+                className="font-script text-3xl md:text-4xl leading-none whitespace-nowrap"
+                style={{ color: "var(--rose-accent)" }}
+              >
+                Treat your tastebuds
+              </p>
+              <span
+                className="h-px flex-1"
+                style={{
+                  background:
+                    "linear-gradient(to left, transparent, var(--gold))",
+                }}
+                aria-hidden="true"
+              />
+            </div>
+
             <p
               className="font-script text-2xl mb-1"
               style={{ color: "var(--gold-deep)" }}
@@ -110,6 +177,7 @@ export default function AboutSection() {
                   className="w-5 h-5 mb-2"
                   style={{ color: "var(--rose)" }}
                   fill="var(--rose)"
+                  aria-hidden="true"
                 />
                 <p
                   className="text-xs leading-relaxed"
@@ -142,6 +210,7 @@ export default function AboutSection() {
                 <Leaf
                   className="w-4 h-4"
                   style={{ color: "var(--green)" }}
+                  aria-hidden="true"
                 />
                 <span
                   className="text-xs font-semibold uppercase tracking-widest"
@@ -248,7 +317,11 @@ export default function AboutSection() {
                     "linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)",
                 }}
               >
-                <Star className="w-4 h-4 text-white" fill="white" />
+                <Star
+                  className="w-4 h-4 text-white"
+                  fill="white"
+                  aria-hidden="true"
+                />
               </div>
               <span
                 className="text-sm font-semibold group-hover:underline"

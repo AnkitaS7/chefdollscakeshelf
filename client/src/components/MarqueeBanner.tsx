@@ -9,7 +9,7 @@ const items = [
   "🌸 Custom Designs",
   "💛 Premium Ingredients",
   "🎀 Handmade with Love",
-  "📍 Borivali Delivery",
+  "📍 Borivali Pickup",
   "⭐ 5-Star Rated",
   "🌿 Always Eggless",
   "🎉 Celebrations Made Special",
@@ -21,6 +21,7 @@ export default function MarqueeBanner() {
   return (
     <div
       className="overflow-hidden py-3 relative"
+      aria-hidden="true"
       style={{
         background:
           "linear-gradient(135deg, var(--text-heading), var(--text-strong))",

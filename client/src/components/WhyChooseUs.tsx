@@ -92,7 +92,10 @@ export default function WhyChooseUs() {
           "linear-gradient(160deg, oklch(0.97 0.025 20) 0%, oklch(0.99 0.01 60) 50%, oklch(0.97 0.02 10) 100%)",
       }}
     >
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        aria-hidden="true"
+      >
         <div className="absolute top-10 right-10 text-4xl animate-float opacity-20">
           🎂
         </div>
@@ -192,14 +195,18 @@ function FeatureCard({
         className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
         style={{ background: feature.bg }}
       >
-        <Icon className="w-7 h-7" style={{ color: feature.color }} />
+        <Icon
+          className="w-7 h-7"
+          style={{ color: feature.color }}
+          aria-hidden="true"
+        />
       </div>
 
       <h3
         className="font-display text-xl font-semibold mb-2"
         style={{ color: "var(--text-heading)" }}
       >
-        {feature.emoji} {feature.title}
+        <span aria-hidden="true">{feature.emoji}</span> {feature.title}
       </h3>
       <p
         className="text-sm leading-relaxed"
